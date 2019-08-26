@@ -1,0 +1,13 @@
+package com.project.attendance;
+
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+
+@SpringBootApplication
+public class AttendanceUsingFingerprintScannerApplication {
+
+    public static void main(String[] args) {
+        SpringApplication.run(AttendanceUsingFingerprintScannerApplication.class, args);
+    }
+
+}
