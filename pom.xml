@@ -11,8 +11,8 @@
     <groupId>com.project</groupId>
     <artifactId>attendance</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>attendance using fingerprint scanner</name>
-    <description>Demo project for Spring Boot</description>
+    <name>attendance</name>
+    <description>attendance of students using fingerprint scanners</description>
 
     <properties>
         <java.version>1.8</java.version>
