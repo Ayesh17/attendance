@@ -68,6 +68,7 @@ public class StudentController {
         if(student==null){
             return  ResponseEntity.notFound().build();
         }
+        studentDAO.delete(student);
         return ResponseEntity.ok().build();
     }
 }
