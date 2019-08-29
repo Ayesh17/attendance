@@ -47,4 +47,10 @@ public class StudentEnrollmentController {
         mav.addObject("student",student);
         return  mav;
     }
+
+    @RequestMapping("/delete/{id}")
+    public String deleteProduct(@PathVariable(name="id") Long id){
+        studentDAO.delete(id);
+        return  "redirect:/";
+    }
 }

@@ -30,8 +30,8 @@ public class StudentDAO {
 
 
     //delete a student
-    public void delete(Student student){
-        studentRepository.delete(student);
+    public void delete(Long id){
+        studentRepository.deleteById(id);
     }
 
 
