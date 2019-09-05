@@ -19,27 +19,27 @@ public class StudentEnrollmentController {
     @Autowired
     private StudentDAO studentDAO;
 
-    @RequestMapping("/")
+    @RequestMapping("/student")
     public String viewHomePage(Model model){
         List<Student> studentDetails=studentDAO.findAll();
         model.addAttribute("studentDetails",studentDetails);
-        return "index";
+        return "student";
     }
 
-    @RequestMapping("/new")
+    @RequestMapping("/student/new")
     public String addStudent(Model model){
         Student student=new Student();
         model.addAttribute("student",student);
-        return "registerStudent";
+        return "addStudent";
     }
 
-    @RequestMapping(value="/save",method= RequestMethod.POST)
+    @RequestMapping(value="/student/save",method= RequestMethod.POST)
     public String saveStudent(@ModelAttribute("student") Student student){
         studentDAO.save(student);
-        return  "redirect:/";
+        return  "redirect:/student";
     }
 
-    @RequestMapping("/edit/{id}")
+    @RequestMapping("/student/edit/{id}")
     public ModelAndView updateStudent(@PathVariable(name="id")Long id){
         ModelAndView mav=new ModelAndView(("updateStudent"));
 
@@ -48,9 +48,9 @@ public class StudentEnrollmentController {
         return  mav;
     }
 
-    @RequestMapping("/delete/{id}")
+    @RequestMapping("/student/delete/{id}")
     public String deleteProduct(@PathVariable(name="id") Long id){
         studentDAO.delete(id);
-        return  "redirect:/";
+        return  "redirect:/student";
     }
 }
