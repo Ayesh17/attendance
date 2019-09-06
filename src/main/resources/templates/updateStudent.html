@@ -11,8 +11,7 @@
     <form action="#" th:action="@{/student/save}" th:object="${student}" method="post">
         <table border="0" cell[adding="10">
             <tr>
-                <td>Student Id:</td>
-                <td><input type="text" th:field="*{id}" readonly="readonly"/></td>
+                <td><input type="hidden" th:field="*{id}" readonly="readonly"/></td>
             </tr>
             <tr>
                 <td>Student Name:</td>
