@@ -7,7 +7,7 @@
 <body>
 <div align="center">
     <h1>Student Details</h1>
-    <a href="new">Register a Student</a>
+    <a href="student/new">Register a Student</a>
     <br><br>
     <table border="1">
         <thead>
@@ -29,10 +29,10 @@
                 <td th:text="${student.course}">course</td>
                 <td th:text="${student.user_id}">user_id</td>
                 <td>
-                    <a th:href="@{'/edit/' + ${student.id}}">Edit</a>
+                    <a th:href="@{'/student/edit/' + ${student.id}}">Edit</a>
                 </td>
                 <td>
-                    <a th:href="@{'/delete/' + ${student.id}}">Delete</a>
+                    <a th:href="@{'/student/delete/' + ${student.id}}">Delete</a>
                 </td>
 
 

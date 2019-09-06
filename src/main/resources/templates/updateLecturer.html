@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Update Lecturer</title>
+</head>
+<body>
+<div align="center">
+    <h1>Update Lecturer</h1>
+    <br/>
+    <form action="#" th:action="@{/lecturer/save}" th:object="${lecturer}" method="post">
+        <table border="0" cell[adding="10">
+            <tr>
+                <td><input type="hidden" th:field="*{id}" readonly="readonly"/></td>
+            </tr>
+            <tr>
+                <td>Lecturer Name:</td>
+                <td><input type="text" th:field="*{name}" /></td>
+            </tr>
+            <tr>
+                <td>Short Code:</td>
+                <td><input type="text" th:field="*{code}" /></td>
+            </tr>
+            <tr>
+                <td colspan="2"><button type="submit">Save</button></td>
+            </tr>
+        </table>
+    </form>
+</div>
+
+</body>
+</html>
