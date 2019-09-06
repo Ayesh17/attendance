@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Lecturer Details</title>
+</head>
+<body>
+<div align="center">
+    <h1>Lecturer Details</h1>
+    <a href="lecturer/new">Register a Lecturer</a>
+    <br><br>
+    <table border="1">
+        <thead>
+        <tr>
+            <th>Name</th>
+            <th>Code</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="lecturer : ${lecturerDetails}">
+            <td th:text="${lecturer.name}">Id</td>
+            <td th:text="${lecturer.code}">Code</td>
+
+            <td>
+                <a th:href="@{'/lecturer/edit/' + ${lecturer.id}}">Edit</a>
+            </td>
+            <td>
+                <a th:href="@{'/lecturer/delete/' + ${lecturer.id}}">Delete</a>
+            </td>
+
+
+        </tr>
+        </tbody>
+    </table>
+
+</div>
+</body>
+</html>
