@@ -25,4 +25,5 @@ public class AppController {
     public String admin() {
         return "admin";
     }
+
 }
