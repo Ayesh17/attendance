@@ -46,7 +46,7 @@ public class CourseController {
         mav.addObject("course",course);
         return  mav;
     }
-    
+
     @RequestMapping("/course/delete/{id}")
     public String deleteProduct(@PathVariable(name="id") Long id){
         courseDAO.delete(id);
