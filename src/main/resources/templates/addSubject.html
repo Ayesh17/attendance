@@ -21,7 +21,7 @@
             <tr>
                 <td>Course:</td>
                 <td>
-                    <select th:field="*{course}">
+                    <select th:field="*{co}">
                         <option value="">Choose..</option>
                         <option th:each="co: ${courses}" th:value="${co.idfield}" th:text="${co.textfield}" />
                     </select>
