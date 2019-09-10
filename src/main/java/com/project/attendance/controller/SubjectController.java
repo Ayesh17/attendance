@@ -19,6 +19,7 @@ import java.util.List;
 public class SubjectController {
     @Autowired
     private SubjectDAO subjectDAO;
+    @Autowired
     private CourseDAO courseDAO;
 
     @RequestMapping("/subject")
@@ -26,16 +27,16 @@ public class SubjectController {
         List<Subject> subjectDetails= subjectDAO.findAll();
         List<Course> courseDetail= courseDAO.findAll();
         model.addAttribute("subjectDetails",subjectDetails);
-        model.addAttribute("courses",courseDetail);
+       model.addAttribute("courseDetails",courseDetail);
         return "subject";
     }
 
     @RequestMapping("/subject/new")
     public String addSubject(Model model){
         Subject subject =new Subject();
-        //Course course=new Course();
         model.addAttribute("subject",subject);
-       //model.addAttribute("course",courseDAO.findAll());
+        List<Course> courseDetail= courseDAO.findAll();
+        model.addAttribute("courses",courseDetail);
         return "addSubject";
     }
 
