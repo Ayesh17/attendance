@@ -12,13 +12,13 @@ public class LectureHall {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-    private int hall_code;
+    private String hall_code;
     private String name;
 
     public LectureHall() {
     }
 
-    public LectureHall(int hall_code, String name) {
+    public LectureHall(String hall_code, String name) {
         this.hall_code = hall_code;
         this.name = name;
     }
@@ -31,11 +31,11 @@ public class LectureHall {
         this.id = id;
     }
 
-    public int getHall_code() {
+    public String getHall_code() {
         return hall_code;
     }
 
-    public void setHall_code(int hall_code) {
+    public void setHall_code(String hall_code) {
         this.hall_code = hall_code;
     }
 

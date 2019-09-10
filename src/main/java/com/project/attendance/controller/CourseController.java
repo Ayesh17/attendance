@@ -47,6 +47,13 @@ public class CourseController {
         return  mav;
     }
 
+    @RequestMapping("/subject/addSubject")
+    public String addSubject(Model model){
+        List<Course> courseDetails= courseDAO.findAll();
+        model.addAttribute("courseDetails",courseDetails);
+        return "course";
+    }
+
     @RequestMapping("/course/delete/{id}")
     public String deleteProduct(@PathVariable(name="id") Long id){
         courseDAO.delete(id);
