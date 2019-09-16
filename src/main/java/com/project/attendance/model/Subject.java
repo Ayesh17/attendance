@@ -1,6 +1,7 @@
 package com.project.attendance.model;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 import javax.persistence.*;
+//import com.project.attendance.model.Course;
 
 
 @Entity

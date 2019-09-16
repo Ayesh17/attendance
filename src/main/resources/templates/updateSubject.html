@@ -1,113 +1,50 @@
-<div class="pcoded-content">
-    <!-- [ breadcrumb ] start -->
-    <div class="page-header">
-        <div class="page-block">
-            <div class="row align-items-center">
-                <div class="col-md-8">
-                    <div class="page-header-title">
-                        <h4 class="m-b-10">Prefect</h4>
-                    </div>
-                    <ul class="breadcrumb">
-                        <li class="breadcrumb-item">
-                            <a href="/">
-                                <i class="feather icon-home"></i>
-                            </a>
-                        </li>
-                        <li class="breadcrumb-item"><a href="#!">Prefects</a>
-                        </li>
-                        <li class="breadcrumb-item">
-                            <a href="#!">Edit</a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- [ breadcrumb ] end -->
-
-    <div class="pcoded-inner-content">
-        <div class="main-body">
-            <div class="page-wrapper">
-                <!-- Page body start -->
-                <div class="page-body">
-                    <div class="row">
-                        <div class="col-sm-12">
-                            <!-- Basic Inputs Validation start -->
-                            <div class="card">
-                                <div class="card-header">
-                                    <h5>Edit Prefect</h5>
-                                </div>
-                                <div class="card-block">
-                                    <form id="main" method="POST" action="{{route('prefects.store')}}">
-                                        @csrf
-                                        <div class="form-group row">
-                                            <label class="col-sm-2 col-form-label">Index Number</label>
-                                            <div class="col-sm-10">
-                                                <input type="text" class="form-control" name="indexNumber" placeholder="indexNumber">
-                                                <span class="messages"></span>
-                                            </div>
-                                        </div>
-                                        <div class="form-group row">
-                                            <label class="col-sm-2 col-form-label">NIC Number</label>
-                                            <div class="col-sm-10">
-                                                <input type="text" class="form-control" name="nic" placeholder="NIC Number">
-                                                <span class="messages"></span>
-                                            </div>
-                                        </div>
-                                        <div class="form-group row">
-                                            <label class="col-sm-2 col-form-label">Name</label>
-                                            <div class="col-sm-10">
-                                                <input type="text" class="form-control" name="name" placeholder="name">
-                                                <span class="messages"></span>
-                                            </div>
-                                        </div>
-                                        <div class="form-group row">
-                                            <label class="col-sm-2 col-form-label">registration Number</label>
-                                            <div class="col-sm-10">
-                                                <input type="text" class="form-control" name="registrationNumber" placeholder="LregistrationNumber">
-                                                <span class="messages"></span>
-                                            </div>
-                                        </div>
-                                        <div class="form-group row">
-                                            <label class="col-sm-2 col-form-label">user_id</label>
-                                            <div class="col-sm-10">
-                                                <input type="text" class="form-control" name="user_id" placeholder="user_id">
-                                                <span class="messages"></span>
-                                            </div>
-                                        </div>
-                                        <div class="form-group row">
-                                            <label class="col-sm-2 col-form-label">Address</label>
-                                            <div class="col-sm-10">
-                                                <input type="text" class="form-control" name="address" placeholder="Address">
-                                                <span class="messages"></span>
-                                            </div>
-                                        </div>
-                                        <div class="form-group row">
-                                            <label class="col-sm-2 col-form-label">course</label>
-                                            <div class="col-sm-10">
-                                                <select class="form-control" name="stream_id">
-                                                    <option value="1" >Science</option>
-                                                    <option value="2">Commerce</option>
-                                                    <option value="3">Art</option>
-                                                    <option value="4">Technology</option>
-                                                </select>
-                                            </div>
-                                        </div>
-                                        <div class="form-group row">
-                                            <label class="col-sm-2"></label>
-                                            <div class="col-sm-10">
-                                                <button type="submit" class="btn btn-primary m-b-0">Submit</button>
-                                            </div>
-                                        </div>
-                                    </form>
-                                </div>
-                            </div>
-                            <!-- Basic Inputs Validation end -->
-                        </div>
-                    </div>
-                </div>
-                <!-- Page body end -->
-            </div>
-        </div>
-    </div>
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Update Subject</title>
+</head>
+<body>
+<div align="center">
+    <h1>Update Subject</h1>
+    <br/>
+    <form action="#" th:action="@{/subject/save}" th:object="${subject}" method="post">
+        <table border="0" cell[adding="10">
+            <tr>
+                <td><input type="hidden" th:field="*{id}" readonly="readonly"/></td>
+            </tr>
+            <tr>
+                <td>Subject Code:</td>
+                <td><input type="text" th:field="*{subject_code}" /></td>
+            </tr>
+            <tr>
+                <td>Subject Name:</td>
+                <td><input type="text" th:field="*{name}" /></td>
+            </tr>
+            <tr>
+                <td>Course:</td>
+                <td>
+                    <select th:field="*{course_code}">
+                        <option value="">Choose..</option>
+                        <option th:each="course: ${courses}" th:value="${course.code}" th:text="${course.name}" />
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td>Lecture Hall:</td>
+                <td>
+                    <select th:field="*{hall_code}">
+                        <option value="">Choose..</option>
+                        <option th:each="hall: ${lectureHalls}" th:value="${hall.hall_code}" th:text="${hall.name}" />
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2"><button type="submit">Save</button></td>
+            </tr>
+        </table>
+    </form>
 </div>
+
+</body>
+</html>
