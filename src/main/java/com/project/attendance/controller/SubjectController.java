@@ -32,9 +32,7 @@ public class SubjectController {
     @RequestMapping("/subject")
     public String viewHomePage(Model model){
         List<Subject> subjectDetails= subjectDAO.findAll();
-        //List<Course> courseDetail= courseDAO.findAll();
         model.addAttribute("subjectDetails",subjectDetails);
-       //model.addAttribute("courseDetails",courseDetail);
         return "subject";
     }
 
@@ -55,8 +53,6 @@ public class SubjectController {
 
     @RequestMapping(value="/subject/save",method= RequestMethod.POST)
     public String saveSubject(@ModelAttribute("subject") Subject subject){
-        System.out.println(subject.getName());
-        System.out.println(subject.getCourse_code());
         subjectDAO.save(subject);
         return  "redirect:/subject";
     }
