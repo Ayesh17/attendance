@@ -1,8 +1,10 @@
 package com.project.attendance.controller;
 
 import com.project.attendance.dao.CourseDAO;
+import com.project.attendance.dao.LectureHallDAO;
 import com.project.attendance.dao.SubjectDAO;
 import com.project.attendance.model.Course;
+import com.project.attendance.model.LectureHall;
 import com.project.attendance.model.Subject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -19,8 +21,13 @@ import java.util.List;
 public class SubjectController {
     @Autowired
     private SubjectDAO subjectDAO;
+
     @Autowired
     private CourseDAO courseDAO;
+
+    @Autowired
+    private LectureHallDAO lectureHallDAO;
+
 
     @RequestMapping("/subject")
     public String viewHomePage(Model model){
@@ -35,13 +42,21 @@ public class SubjectController {
     public String addSubject(Model model){
         Subject subject =new Subject();
         model.addAttribute("subject",subject);
-        List<Course> courseDetail= courseDAO.findAll();
-        model.addAttribute("courses",courseDetail);
+
+            List<Course> courseDetail = courseDAO.findAll();
+            model.addAttribute("courses", courseDetail);
+
+
+            List<LectureHall> lectureHallDetail = lectureHallDAO.findAll();
+            model.addAttribute("lectureHalls",lectureHallDetail);
+
         return "addSubject";
     }
 
     @RequestMapping(value="/subject/save",method= RequestMethod.POST)
-    public String saveCourse(@ModelAttribute("subject") Subject subject){
+    public String saveSubject(@ModelAttribute("subject") Subject subject){
+        System.out.println(subject.getName());
+        System.out.println(subject.getCourse_code());
         subjectDAO.save(subject);
         return  "redirect:/subject";
     }
@@ -52,6 +67,14 @@ public class SubjectController {
 
         Subject subject=subjectDAO.findById(id);
         mav.addObject("subject",subject);
+
+        List<Course> courseDetail = courseDAO.findAll();
+        mav.addObject("courses", courseDetail);
+        List<LectureHall> lectureHallDetail = lectureHallDAO.findAll();
+        mav.addObject("lectureHalls",lectureHallDetail);
+
+
+
         return  mav;
     }
 

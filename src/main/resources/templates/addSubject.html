@@ -21,9 +21,18 @@
             <tr>
                 <td>Course:</td>
                 <td>
-                    <select th:field="*{co}">
+                    <select th:field="*{course_code}">
                         <option value="">Choose..</option>
-                        <option th:each="co: ${courses}" th:value="${co.id}" th:text="${co.name}" />
+                        <option th:each="course: ${courses}" th:value="${course.code}" th:text="${course.name}" />
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td>Lecture Hall:</td>
+                <td>
+                    <select th:field="*{hall_code}">
+                        <option value="">Choose..</option>
+                        <option th:each="hall: ${lectureHalls}" th:value="${hall.hall_code}" th:text="${hall.name}" />
                     </select>
                 </td>
             </tr>
