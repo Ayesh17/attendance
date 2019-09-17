@@ -2,19 +2,27 @@ package com.project.attendance.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+
+import javax.servlet.http.HttpServletRequest;
 
 @Controller
 public class AppController {
 
-    @GetMapping({"/","/login"})
+    @GetMapping({"/", "/login"})
     public String index() {
         return "index";
     }
 
-    @GetMapping("/menu")
-    public String menu() {
-        return "menu";
+    @RequestMapping("/default")
+    public String defaultAfterLogin(HttpServletRequest request) {
+        if (request.isUserInRole("ADMIN")) {
+            return "redirect:/admin/";
+        }
+        return "redirect:/user/";
+
     }
+
 
     @GetMapping("/user")
     public String user() {
@@ -25,5 +33,7 @@ public class AppController {
     public String admin() {
         return "admin";
     }
+
+
 
 }
