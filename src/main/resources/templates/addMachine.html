@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Adding a Machine</title>
+</head>
+<body>
+<div align="center">
+    <h1>Add a new Machine</h1>
+    <br/>
+    <form action="#" th:action="@{/machine/save}" th:object="${machine}" method="post">
+        <table border="0" cell[adding="10">
+            <tr>
+                <td>Machine code:</td>
+                <td><input type="text" th:field="*{machine_code}" /></td>
+            </tr>
+            <tr>
+                <td>Lecture Hall:</td>
+                <td>
+                    <select th:field="*{hall_code}">
+                        <option value="">Choose..</option>
+                        <option th:each="hall: ${lectureHalls}" th:value="${hall.hall_code}" th:text="${hall.name}" />
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2"><button type="submit">Save</button></td>
+            </tr>
+        </table>
+    </form>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Enroll Details</title>
+</head>
+<body>
+<div align="center">
+    <h1>Enroll Details</h1>
+    <a href="../enroll/new">New Enrollment</a>
+    <br><br>
+    <table border="1">
+        <thead>
+        <tr>
+            <th>Index Number</th>
+            <th>Subject code</th>
+            <th>Year</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="enroll : ${enrollDetails}">
+            <td th:text="${enroll.index_number}">Index Number</td>
+            <td th:text="${enroll.subject_code}">Subject Code</td>
+            <td th:text="${enroll.year}">Year</td>
+            <td>
+                <a th:href="@{'/enroll/edit/' + ${enroll.id}}">Edit</a>
+            </td>
+            <td>
+                <a th:href="@{'/enroll/delete/' + ${enroll.id}}">Delete</a>
+            </td>
+
+
+        </tr>
+        </tbody>
+    </table>
+
+</div>
+</body>
+</html>

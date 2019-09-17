@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Machine Details</title>
+</head>
+<body>
+<div align="center">
+    <h1>Machine Details</h1>
+    <a href="../machine/new">Add a new Machine</a>
+    <br><br>
+    <table border="1">
+        <thead>
+        <tr>
+            <th>Machine Code</th>
+            <th>Lecture Hall</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="machine : ${machineDetails}">
+            <td th:text="${machine.machine_code}">Code</td>
+            <td th:text="${machine.hall_code}">Hall</td>
+            <td>
+                <a th:href="@{'/machine/edit/' + ${machine.id}}">Edit</a>
+            </td>
+            <td>
+                <a th:href="@{'/machine/delete/' + ${machine.id}}">Delete</a>
+            </td>
+
+
+        </tr>
+        </tbody>
+    </table>
+
+</div>
+</body>
+</html>
