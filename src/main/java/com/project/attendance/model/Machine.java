@@ -1,16 +1,25 @@
 package com.project.attendance.model;
 
+import org.springframework.data.jpa.domain.support.AuditingEntityListener;
+
+import javax.persistence.*;
+
+@Entity
+@Table(name="machines")
+@EntityListeners(AuditingEntityListener.class)
 public class Machine {
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-    private String code;
+    private String machine_code;
     private String hall_code;
 
     public Machine() {
     }
 
-    public Machine(Long id, String code, String hall_code) {
+    public Machine(Long id, String machine_code, String hall_code) {
         this.id = id;
-        this.code = code;
+        this.machine_code = machine_code;
         this.hall_code = hall_code;
     }
 
@@ -22,12 +31,12 @@ public class Machine {
         this.id = id;
     }
 
-    public String getCode() {
-        return code;
+    public String getMachine_code() {
+        return machine_code;
     }
 
-    public void setCode(String code) {
-        this.code = code;
+    public void setMachine_code(String machine_code) {
+        this.machine_code = machine_code;
     }
 
     public String getHall_code() {
@@ -37,5 +46,4 @@ public class Machine {
     public void setHall_code(String hall_code) {
         this.hall_code = hall_code;
     }
-
 }

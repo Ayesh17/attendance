@@ -3,10 +3,13 @@ package com.project.attendance.dao;
 import com.project.attendance.model.Machine;
 import com.project.attendance.repository.MachineRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+@Service
 public class MachineDAO {
+
     @Autowired
     MachineRepository machineRepository;
 
