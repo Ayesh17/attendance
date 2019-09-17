@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>New Enrollment</title>
+</head>
+<body>
+<div align="center">
+    <h1>New Enrollment</h1>
+    <br/>
+    <form action="#" th:action="@{/enroll/save}" th:object="${enroll}" method="post">
+        <table border="0" cell[adding="10">
+
+            <tr>
+                <td>Student:</td>
+                <td>
+                    <select th:field="*{index_number}">
+                        <option value="">Choose..</option>
+                        <option th:each="student: ${students}" th:value="${student.indexNumber}" th:text="${student.name}" />
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td>Subject:</td>
+                <td>
+                    <select th:field="*{subject_code}">
+                        <option value="">Choose..</option>
+                        <option th:each="subject: ${subjects}" th:value="${subject.subject_code}" th:text="${subject.name}" />
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td>Year:</td>
+                <td>
+                    <select th:field="*{year}">
+                    <option value="2015">2015</option>
+                    <option value="2016">2016</option>
+                    <option value="2017">2017</option>
+                    <option value="2018">2018</option>
+                    <option value="2019">2019</option>
+                    <option value="2020">2020</option>
+                </select>
+                </td>
+
+            </tr>
+            <tr>
+                <td colspan="2"><button type="submit">Save</button></td>
+            </tr>
+        </table>
+    </form>
+</div>
+
+</body>
+</html>
