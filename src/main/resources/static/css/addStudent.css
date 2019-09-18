@@ -1,0 +1,48 @@
+img {
+    max-width: 80%;
+    height: 360px;
+    float:left;
+    padding: 10px;
+
+}
+head{
+    align:center;
+}
+
+h1{
+    font-size: 40px;
+    align:center;
+    text-align:center;
+}
+
+.container {
+    border-radius: 5px;
+    background-color: #e1ebf1ec;
+
+    height:500px;
+    padding-top: 100px;
+}
+
+button{
+    font-size: 15px;
+    width:100px;
+    height: 40px;
+}
+
+.container2{
+    font-size: 20px;
+    padding-left:800px;
+}
+
+input[type=text], select, textarea {
+    width: 90%; /* Full width */
+    padding: 15px; /* Some padding */
+    border: 1px solid rgb(13, 144, 219); /* Gray border */
+    border-radius: 4px; /* Rounded borders */
+    box-sizing: content-box; /* Make sure that padding and width stays in place */
+    margin-top: 6px; /* Add a top margin */
+    margin-bottom: 16px; /* Bottom margin */
+    margin-left:10px;
+    line-height: 8px;
+    resize: vertical /* Allow the user to vertically resize the textarea (not horizontally) */
+}
