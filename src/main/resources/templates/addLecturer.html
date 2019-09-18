@@ -6,29 +6,31 @@
     <title>Lecturer Registration</title>
 </head>
 <body>
-    <h1>Register a Lecturer</h1>
+<h1>Register a Lecturer</h1>
 
-    <div class="container" style="margin-top:30px">
-        <img src="static/img/books.jpeg" th:src="@{/img/books.jpeg}"/>
+<div class="container" style="margin-top:30px">
+    <img src="static/img/books.jpeg" th:src="@{/img/books.jpeg}"/>
 
-        <div class="container2">
+    <div class="container2">
         <form action="#" th:action="@{/lecturer/save}" th:object="${lecturer}" method="post">
             <table border="0" cell[adding="10">
                 <tr>
                     <td>Lecture Name:</td>
-                    <td><input type="text" th:field="*{name}" /></td>
+                    <td><input type="text" th:field="*{name}"/></td>
                 </tr>
                 <tr>
                     <td>Short Code:</td>
-                    <td><input type="text" th:field="*{code}" /></td>
+                    <td><input type="text" th:field="*{code}"/></td>
                 </tr>
                 <tr>
-                    <td colspan="2"><button type="submit">Save</button></td>
+                    <td colspan="2">
+                        <button type="submit">Save</button>
+                    </td>
                 </tr>
             </table>
         </form>
-        </div>
     </div>
+</div>
 
 
 </body>

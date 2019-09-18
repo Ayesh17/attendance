@@ -19,7 +19,7 @@ h1{
     border-radius: 5px;
     background-color: #e1ebf1ec;
 
-    height:500px;
+    height:530px;
     padding-top: 100px;
 }
 
@@ -41,7 +41,7 @@ input[type=text], select, textarea {
     border-radius: 4px; /* Rounded borders */
     box-sizing: content-box; /* Make sure that padding and width stays in place */
     margin-top: 6px; /* Add a top margin */
-    margin-bottom: 16px; /* Bottom margin */
+    margin-bottom: 8px; /* Bottom margin */
     margin-left:10px;
     line-height: 8px;
     resize: vertical /* Allow the user to vertically resize the textarea (not horizontally) */
