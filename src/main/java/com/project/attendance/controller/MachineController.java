@@ -21,8 +21,6 @@ public class MachineController {
     @Autowired
     private MachineDAO machineDAO;
 
-    @Autowired
-    private LectureHallDAO lectureHallDAO;
 
 
     @RequestMapping("/machine")
@@ -36,9 +34,6 @@ public class MachineController {
     public String addMachine(Model model) {
         Machine machine = new Machine();
         model.addAttribute("machine", machine);
-
-        List<LectureHall> lectureHallDetail = lectureHallDAO.findAll();
-        model.addAttribute("lectureHalls", lectureHallDetail);
 
         return "addMachine";
     }
@@ -56,8 +51,6 @@ public class MachineController {
         Machine machine = machineDAO.findById(id);
         mav.addObject("machine", machine);
 
-        List<LectureHall> lectureHallDetail = lectureHallDAO.findAll();
-        mav.addObject("lectureHalls", lectureHallDetail);
 
         return mav;
     }

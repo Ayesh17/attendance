@@ -3,34 +3,28 @@
 <head>
     <link rel="stylesheet" type="text/css" href="static/css/edit.css" th:href="@{/css/edit.css}">
     <meta charset="UTF-8">
-    <title>Update Subject</title>
+    <title>Update Machine Mapping</title>
 </head>
 <body>
 
-<h1>Update Subject</h1>
+<h1>Update Machine Mapping</h1>
+
 <div class="container" style="margin-top:30px">
     <img src="static/img/books.jpeg" th:src="@{/img/books.jpeg}"/>
 
     <div class="container2">
-        <form action="#" th:action="@{/subject/save}" th:object="${subject}" method="post">
+        <form action="#" th:action="@{/machineMapping/save}" th:object="${machineMapping}" method="post">
             <table border="0" cell[adding="10">
                 <tr>
                     <td><input type="hidden" th:field="*{id}" readonly="readonly"/></td>
                 </tr>
                 <tr>
-                    <td>Subject Code:</td>
-                    <td><input type="text" th:field="*{subject_code}"/></td>
-                </tr>
-                <tr>
-                    <td>Subject Name:</td>
-                    <td><input type="text" th:field="*{name}"/></td>
-                </tr>
-                <tr>
-                    <td>Course:</td>
+                    <td>Machine:</td>
                     <td>
-                        <select th:field="*{course_code}">
+                        <select th:field="*{machine_code}">
                             <option value="">Choose..</option>
-                            <option th:each="course: ${courses}" th:value="${course.code}" th:text="${course.name}"/>
+                            <option th:each="machine: ${machines}" th:value="${machine.machine_code}"
+                                    th:text="${machine.machine_code}"/>
                         </select>
                     </td>
                 </tr>
@@ -39,15 +33,12 @@
                     <td>
                         <select th:field="*{hall_code}">
                             <option value="">Choose..</option>
-                            <option th:each="hall: ${lectureHalls}" th:value="${hall.hall_code}"
-                                    th:text="${hall.name}"/>
+                            <option th:each="hall: ${lectureHalls}" th:value="${hall.hall_code}" th:text="${hall.name}" />
                         </select>
                     </td>
                 </tr>
                 <tr>
-                    <td colspan="2">
-                        <button type="submit">Save</button>
-                    </td>
+                    <td colspan="2"><button type="submit">Save</button></td>
                 </tr>
             </table>
         </form>
