@@ -23,13 +23,8 @@
                 <td><input type="text" th:field="*{machine_code}" /></td>
             </tr>
             <tr>
-                <td>Lecture Hall:</td>
-                <td>
-                    <select th:field="*{hall_code}">
-                        <option value="">Choose..</option>
-                        <option th:each="hall: ${lectureHalls}" th:value="${hall.hall_code}" th:text="${hall.name}" />
-                    </select>
-                </td>
+                <td>Machine Index:</td>
+                <td><input type="text" th:field="*{machine_index}" /></td>
             </tr>
             <tr>
                 <td colspan="2"><button type="submit">Save</button></td>
