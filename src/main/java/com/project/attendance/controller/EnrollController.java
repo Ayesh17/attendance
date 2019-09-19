@@ -66,7 +66,6 @@ public class EnrollController {
         mav.addObject("subjects",subjectDetails);
 
 
-
         return  mav;
     }
 
