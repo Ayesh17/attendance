@@ -7,12 +7,20 @@
 </head>
 <body>
 
-<h1 th:field="*{group_code}">Time Table for Student Group</h1>
+
 
         <form action="#" th:action="@{/timeTable/save}" th:object="${timeTable}" method="post">
-            <div>
-                <input type="text" th:field="*{group_code}" readonly="readonly"/>
+
+            <div class="class1">
+
+                <h1><input type="text" th:field="*{year}" readonly="readonly"/></h1>
+
+                <h3><input type="text" th:field="*{semester}"  readonly="readonly"/></h3>
+                <h4 >Time Table for Student Group</h4>
+                <h5><input type="text" th:field="*{group_code}"  readonly="readonly"/></h5>
             </div>
+
+
             <div>
                 <input type="hidden" th:field="*{id}" readonly="readonly"/>
             </div>

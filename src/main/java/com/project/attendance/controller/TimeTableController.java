@@ -35,7 +35,7 @@ public class TimeTableController {
 
 
     @RequestMapping("/timeTable/new")
-    public String addTimeTable(Model model, @PathVariable(name="group_code") String group_code){
+        public String addTimeTable(Model model){
         TimeTable timeTable =new TimeTable();
         model.addAttribute("timeTable",timeTable);
 
@@ -46,7 +46,7 @@ public class TimeTableController {
         List<StudentGroup> studentGroupDetail = studentGroupDAO.findAll();
         model.addAttribute("studentGroups",studentGroupDetail);
 
-        return "updateTimeTable";
+        return "addTimeTable";
     }
 
     @RequestMapping(value="/timeTable/save",method= RequestMethod.POST)
