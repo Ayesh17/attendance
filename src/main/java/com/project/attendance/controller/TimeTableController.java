@@ -37,8 +37,8 @@ public class TimeTableController {
 
 
 
-    @RequestMapping("/timeTable/select")
-    public String addTimeTable(Model model){
+    @RequestMapping("/timeTable/select/{group_code}")
+    public String addTimeTable(Model model, @PathVariable(name="group_code") String group_code){
         TimeTable timeTable =new TimeTable();
         model.addAttribute("timeTable",timeTable);
 
@@ -79,3 +79,5 @@ public class TimeTableController {
         return  "redirect:/timeTable";
     }
 }
+
+

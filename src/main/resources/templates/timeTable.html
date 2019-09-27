@@ -13,7 +13,7 @@
     <img src="static/img/books.jpeg" th:src="@{/img/books.jpeg}"/>
 
     <div class="container2">
-        <form action="#" th:action="@{/timeTable/select}" th:object="${timeTable}" method="post">
+        <form action="#" th:action="@{'/timeTable/select' + ${timeTable.group_code} }" th:object="${timeTable}" method="post">
             <table border="0" cell[adding="10">
 
                 <tr>
@@ -29,6 +29,9 @@
 
                 <tr>
                     <td colspan="2">
+                    <td>
+                        <a th:href="@{'/timeTable/select/' + ${timeTable.group_code}}">Select</a>
+                    </td>
                         <button type="submit">Select</button>
                     </td>
                 </tr>

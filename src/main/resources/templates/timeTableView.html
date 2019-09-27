@@ -12,6 +12,8 @@
     <br><br>
     <table border="1">
         <thead>
+        <tr th:field="*{group_code}" readonly="readonly">
+        </tr>
         <tr>
             <td></td>
             <th>Monday</th>
@@ -22,7 +24,7 @@
         </tr>
         </thead>
         <tbody>
-        for(int i=8;i<17;i++){
+
         <tr th:each="subject : ${subjectDetails}">
             <td> 8.00 - 9.00</td>
 
