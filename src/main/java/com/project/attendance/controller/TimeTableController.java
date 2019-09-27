@@ -27,17 +27,14 @@ public class TimeTableController {
 
     @RequestMapping("/timeTable")
     public String viewHomePage(Model model){
-        TimeTable timeTable =new TimeTable();
-        model.addAttribute("timeTable",timeTable);
-
-        List<StudentGroup> studentGroupDetail = studentGroupDAO.findAll();
-        model.addAttribute("studentGroups", studentGroupDetail);
+        List<TimeTable> timeTableDetails= timeTableDAO.findAll();
+        model.addAttribute("timeTableDetails",timeTableDetails);
         return "timeTable";
     }
 
 
 
-    @RequestMapping("/timeTable/select/{group_code}")
+    @RequestMapping("/timeTable/new")
     public String addTimeTable(Model model, @PathVariable(name="group_code") String group_code){
         TimeTable timeTable =new TimeTable();
         model.addAttribute("timeTable",timeTable);
@@ -49,7 +46,7 @@ public class TimeTableController {
         List<StudentGroup> studentGroupDetail = studentGroupDAO.findAll();
         model.addAttribute("studentGroups",studentGroupDetail);
 
-        return "timeTableView";
+        return "updateTimeTable";
     }
 
     @RequestMapping(value="/timeTable/save",method= RequestMethod.POST)
@@ -65,10 +62,11 @@ public class TimeTableController {
         TimeTable timeTable = timeTableDAO.findById(id);
         mav.addObject("timeTable",timeTable);
 
-        List<Subject> subjectDetail = subjectDAO.findAll();
-        mav.addObject("subjects", subjectDetail);
-        List<StudentGroup> studentGroupDetail = studentGroupDAO.findAll();
-        mav.addObject("studentGroups",studentGroupDetail);
+        List<Subject> subjectDetails = subjectDAO.findAll();
+        mav.addObject("subjects", subjectDetails);
+
+        List<StudentGroup> studentGroupDetails = studentGroupDAO.findAll();
+        mav.addObject("studentGroups",studentGroupDetails);
 
         return  mav;
     }

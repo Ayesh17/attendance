@@ -1,16 +1,25 @@
 /* Style inputs with type="text", select elements and textareas */
 input[type=text], select, textarea {
-    width: 90%; /* Full width */
+    width: 20%; /
     padding: 15px; /* Some padding */
-    border: 1px solid rgb(13, 144, 219); /* Gray border */
-    border-radius: 4px; /* Rounded borders */
-    box-sizing: content-box; /* Make sure that padding and width stays in place */
-    margin-top: 6px; /* Add a top margin */
-    margin-bottom: 16px; /* Bottom margin */
-    margin-left:10px;
+    border: 0px solid red; /* Gray border */
     line-height: 10px;
-    resize: vertical /* Allow the user to vertically resize the textarea (not horizontally) */
+    resize: vertical; /* Allow the user to vertically resize the textarea (not horizontally) */
+    font-size: 40px;
+    padding-left: 700px;
+    font-weight: bold;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
+
+h1{
+    font-size: 40px;
+    align:center;
+    text-align:center;
+    font-weight: bold;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+
+}
+
 
 input[type=number], select, textarea {
     width: 90%; /* Full width */
@@ -43,11 +52,7 @@ label{
     resize: vertical /* Allow the user to vertically resize the textarea (not horizontally) */
 }
 
-h1{
-    font-size: 40px;
-    align:center;
-    text-align:center;
-}
+
 
 h2{
     font-size: 20px;
@@ -113,7 +118,7 @@ img {
     border-radius: 5px;
     background-color: #e1ebf1ec;
 
-    height:530px;
+    height:700px;
     padding-top: 10px;
     padding-left: 120px;
 }
@@ -164,7 +169,7 @@ table {
 }
 
 table, th, td {
-    border: 1px solid black;
+    border: 0px solid black;
 }
 
 table {
