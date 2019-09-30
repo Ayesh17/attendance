@@ -1,43 +1,33 @@
 /* Style inputs with type="text", select elements and textareas */
 input[type=text], select, textarea {
-    width: 20%; /
-    padding: 1px; /* Some padding */
+    width: 100px;
     border: 0px solid red; /* Gray border */
-    line-height: 10px;
-    resize: vertical; /* Allow the user to vertically resize the textarea (not horizontally) */
+    /*  resize: vertical; Allow the user to vertically resize the textarea (not horizontally) */
     font-size: 40px;
     font-weight: bold;
     font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-    padding-left: 1px;
-    padding-right: 1px;
-    margin: 1px;
+    align:center;
+    vertical-align: center;
+
 }
 
 h1{
     font-size: 40px;
     align:center;
-    text-align:left;
+
     font-weight: bold;
     font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-    border-left: 100px;
-    border-right: 2px;
-    padding-left: 500px;
-    padding-right: 10px;
-    margin: 1px;
+    vertical-align: center;
 
 }
 
 h2{
     font-size: 40px;
     align:center;
-    text-align:left;
+    text-align:right;
     font-weight: bold;
     font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-    border-left: 2px;
-    border-right: 2px;
-    padding-left: 10px;
-    padding-right: 10px;
-    margin: 1px;
+    vertical-align: center;
 
 }
 
@@ -47,23 +37,18 @@ h3{
     text-align:left;
     font-weight: bold;
     font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-    border-left: 2px;
-    border-right: 2px;
-    padding-left: 10px;
-    padding-right: 10px;
+    vertical-align: center;
 
 }
 
 h4{
     font-size: 40px;
     align:center;
-    text-align:left;
+    text-align:right;
     font-weight: bold;
     font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-    border-left: 2px;
-    border-right: 2px;
-    padding-left: 10px;
-    padding-right: 10px;
+    padding-right: 120px;
+    vertical-align: center;
 
 }
 
@@ -73,10 +58,7 @@ h5{
     text-align:left;
     font-weight: bold;
     font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-    border-left: 2px;
-    border-right: 2px;
-    padding-left: 10px;
-    padding-right: 10px;
+    vertical-align: center;
 
 }
 
@@ -86,94 +68,9 @@ h6{
     text-align:left;
     font-weight: bold;
     font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-    border-left: 2px;
-    border-right: 2px;
-    padding-left: 10px;
-    padding-right: 10px;
 
 }
 
-
-input[type=number], select, textarea {
-    width: 90%; /* Full width */
-    padding: 15px; /* Some padding */
-    border: 1px solid rgb(13, 144, 219); /* Gray border */
-    border-radius: 4px; /* Rounded borders */
-    box-sizing: content-box; /* Make sure that padding and width stays in place */
-    margin-top: 6px; /* Add a top margin */
-    margin-bottom: 16px; /* Bottom margin */
-    margin-left:10px;
-    line-height: 10px;
-    resize: vertical /* Allow the user to vertically resize the textarea (not horizontally) */
-}
-
-
-label{
-    font-family: 'Roboto Medium', sans-serif;
-    font-size: 40px;
-    text-align: left;
-    width: 90%; /* Full width */
-    padding: 5px; /* Some padding */
-    color: rgb(14, 1, 1);
-    font-weight: bold;
-    border: 0px solid rgb(13, 144, 219); /* Gray border */
-    border-radius: 4px; /* Rounded borders */
-    box-sizing: content-box; /* Make sure that padding and width stays in place */
-    margin-top: 6px; /* Add a top margin */
-    margin-bottom: 16px; /* Bottom margin */
-    margin-left:15px;
-    line-height: 15px;
-    resize: vertical /* Allow the user to vertically resize the textarea (not horizontally) */
-}
-
-
-/* Style the submit button with a specific background color etc */
-button[type=submit] {
-    width:80px;
-    background-color: rgb(103, 175, 218);
-    color: rgb(238, 238, 238);
-    padding: 10px 10px;
-    padding-left: 5px;
-    padding-right: 5px;
-    margin-left:5px;
-    margin-right:5px;
-    margin-top:15px;
-    margin-bottom:15px;
-    border: black;
-    border-radius: 4px;
-    cursor: pointer;
-}
-
-button[type=button] {
-    width:80px;
-    background-color: rgb(103, 175, 218);
-    color: rgb(238, 238, 238);
-    padding: 10px 10px;
-    padding-left: 5px;
-    padding-right: 5px;
-    margin-left:140px;
-    margin-right:5px;
-    margin-top:15px;
-    margin-bottom:15px;
-    border: black;
-    border-radius: 4px;
-    cursor: pointer;
-}
-/* When moving the mouse over the submit button, add a darker green color */
-button[type=submit]:hover {
-    background-color: #251874;
-}
-
-button[type=button]:hover {
-    background-color: #251874;
-}
-
-img {
-    max-width: 90%;
-    height: 360px;
-    border-radius: 10px;
-}
-/* Add a background color and some padding around the form */
 
 .container {
     border-radius: 5px;
@@ -184,79 +81,35 @@ img {
     padding-left: 120px;
 }
 
-.class1 input{
-    float:left;
-}
-
-.dropbtn {
-    background-color: #4CAF50;
-    color: white;
-    padding: 16px;
-    font-size: 16px;
-    border: none;
-    cursor: pointer;
-}
-
-.dropdown {
-    position: relative;
-    display: inline-block;
-}
-
-.dropdown-content {
-    display: none;
-    position: absolute;
-    background-color: #f9f9f9;
-    min-width: 10px;
-    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-    z-index: 1;
-}
-
-.dropdown-content a {
-    color: black;
-    padding: 12px 16px;
-    text-decoration: none;
-    display: block;
-}
-
-.dropdown-content a:hover {background-color: #f1f1f1}
-
-.dropdown:hover .dropdown-content {
-    display: block;
-}
-
-.dropdown:hover .dropbtn {
-    background-color: #3e8e41;
-}
-
-table {
+table.table2 {
     border-collapse: collapse;
 }
 
-table, th, td {
+table.table2, th, td {
     border: 0px solid black;
 }
 
-table {
+table.table2 {
     width: 80%;
 }
 
-th {
+table.table2 th {
     height: 50px;
     background-color: cornflowerblue;
 }
 
-td {
+table.table2 td {
     height: 20px;
     vertical-align: bottom;
     background-color: darkgray;
 }
 
-th, td {
+table.table2 th, td {
     padding: 15px;
     text-align: left;
 }
 
-tr:hover {background-color: rgb(14, 111, 156);}
+table.table2 tr:hover {background-color: rgb(14, 111, 156);}
 
 a {
     color: #3b4652;
@@ -267,3 +120,51 @@ a:hover {
     color: darkred;
     text-decoration: none;
 }
+
+
+
+table.table1 {
+    border-collapse: collapse;
+}
+
+table.table1, th, td {
+    border: 1px solid black;
+}
+
+table.table1 {
+    width: 80%;
+}
+
+table.table1 th {
+    height: 10px;
+    width: 80px;
+    background-color: white;
+}
+
+table.table1 td {
+    height: 10px;
+    width:300px;
+    background-color:white;
+}
+
+table.table1 th, td {
+    text-align: left;
+}
+.grid-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+    grid-template-rows: 70px 70px 70px;
+    grid-template-areas: ". year Semester sem ." ". TimeTable TimeTable TimeTable ." ". StudentGroup StudentGroup CS2 .";
+}
+
+.Semester { grid-area: Semester; text-align:center; }
+
+.CS2 { grid-area: CS2; align:left;text-align:left;  }
+
+.TimeTable { grid-area: TimeTable;text-align:center;  }
+
+.StudentGroup { grid-area: StudentGroup; text-align:right; padding-right: 100px;}
+
+.year { grid-area: year;text-align:right;  }
+
+.sem { grid-area: sem; text-align:left; }

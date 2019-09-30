@@ -7,66 +7,73 @@
 </head>
 <body>
 
+<form action="#" th:action="@{/timeTable/save}" th:object="${timeTable}" method="post">
+
+    <div class="grid-container">
+        <div class="year"><h1><input type="text" th:field="*{year}" readonly="readonly"/></h1></div>
+        <div class="Semester"><h1>Semester</h1></div>
+        <div class="sem"><h1><input type="text" th:field="*{semester}" readonly="readonly"/></h1></div>
+        <div class="TimeTable"><h1>Time Table for</h1></div>
+        <div class="StudentGroup"> <h1>Student Group</h1></div>
+        <div class="CS2"><h1><input type="text" th:field="*{group_code}" readonly="readonly"/></h1></div>
 
 
-        <form action="#" th:action="@{/timeTable/save}" th:object="${timeTable}" method="post">
+    </div>
 
-            <div class="class1">
+</form>
 
-                <h1><input type="text" th:field="*{year}" readonly="readonly"/></h1>
+<div class="container" style="margin-top:30px">
+    <br><br>
+    <table border="1" class="table2">
+        <thead>
+        <tr>
+        </tr>
+        <br>
+        <tr>
+            <td></td>
+            <th>Monday</th>
+            <th>Tuesday</th>
+            <th>Wednesday</th>
+            <th>Thursday</th>
+            <th>Friday</th>
+        </tr>
+        </thead>
+        <tbody>
 
-                <h3><input type="text" th:field="*{semester}"  readonly="readonly"/></h3>
-                <h4 >Time Table for Student Group</h4>
-                <h5><input type="text" th:field="*{group_code}"  readonly="readonly"/></h5>
-            </div>
+        <tr>
+            <td> 8.00 - 9.00</td>
 
-
-            <div>
-                <input type="hidden" th:field="*{id}" readonly="readonly"/>
-            </div>
-        </form>
-
-        <div class="container" style="margin-top:30px">
-            <br><br>
-            <table border="1">
-                <thead>
-                <tr >
-                </tr>
-                <br>
-                <tr>
-                    <td></td>
-                    <th>Monday</th>
-                    <th>Tuesday</th>
-                    <th>Wednesday</th>
-                    <th>Thursday</th>
-                    <th>Friday</th>
-                </tr>
-                </thead>
-                <tbody>
-
-                <tr>
-                    <td> 8.00 - 9.00</td>
-
-                </tr>
-                <tr><td> 9.00 - 10.00</td>
-                </tr>
-                <tr> <td>10.00 - 11.00</td>
-                </tr>
-                <tr><td>11.00 - 12.00</td>
-                </tr>
-                <tr> <td>12.00 - 1.00</td>
-                </tr>
-                <tr> <td>1.00 - 2.00</td>
-                </tr>
-                <tr><td> 2.00 - 3.00</td>
-                </tr>
-                <tr><td> 3.00 - 4.00</td>
-                </tr>
-                <tr><td> 4.00 - 5.00</td>
-                </tr>
-                </tbody>
-            </table>
-        </div>
+        </tr>
+        <tr>
+            <td> 9.00 - 10.00</td>
+        </tr>
+        <tr>
+            <td>10.00 - 11.00</td>
+        </tr>
+        <tr>
+            <td>11.00 - 12.00</td>
+        </tr>
+        <tr>
+            <td>12.00 - 1.00</td>
+        </tr>
+        <tr>
+            <td>1.00 - 2.00</td>
+        </tr>
+        <tr>
+            <td> 2.00 - 3.00</td>
+        </tr>
+        <tr>
+            <td> 3.00 - 4.00</td>
+        </tr>
+        <tr>
+            <td> 4.00 - 5.00</td>
+        </tr>
+        </tbody>
+    </table>
+</div>
 
 </body>
 </html>
+
+
+
