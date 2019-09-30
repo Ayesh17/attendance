@@ -3,113 +3,101 @@ input[type=text], select, textarea {
     width: 100px;
     border: 0px solid red; /* Gray border */
     /*  resize: vertical; Allow the user to vertically resize the textarea (not horizontally) */
-    font-size: 40px;
+    font-size: 20px;
     font-weight: bold;
     font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-    align:center;
+    align: center;
     vertical-align: center;
 
 }
 
-h1{
+h1 {
     font-size: 40px;
-    align:center;
+    align: center;
 
-    font-weight: bold;
-    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-    vertical-align: center;
-
-}
-
-h2{
-    font-size: 40px;
-    align:center;
-    text-align:right;
     font-weight: bold;
     font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
     vertical-align: center;
 
 }
-
-h3{
-    font-size: 40px;
-    align:center;
-    text-align:left;
-    font-weight: bold;
-    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-    vertical-align: center;
-
-}
-
-h4{
-    font-size: 40px;
-    align:center;
-    text-align:right;
-    font-weight: bold;
-    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-    padding-right: 120px;
-    vertical-align: center;
-
-}
-
-h5{
-    font-size: 40px;
-    align:center;
-    text-align:left;
-    font-weight: bold;
-    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-    vertical-align: center;
-
-}
-
-h6{
-    font-size: 40px;
-    align:center;
-    text-align:left;
-    font-weight: bold;
-    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-
-}
-
 
 .container {
     border-radius: 5px;
     background-color: #e1ebf1ec;
-
-    height:700px;
-    padding-top: 10px;
+    vertical-align: top;
+    height: 1200px;
+    padding-top: 5px;
     padding-left: 120px;
+
 }
 
-table.table2 {
+.grid-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+    grid-template-rows: 50px 50px 50px;
+    grid-template-areas: ". year Semester sem ." ". TimeTable TimeTable TimeTable ." ". StudentGroup StudentGroup CS2 .";
+}
+
+.Semester {
+    grid-area: Semester;
+    text-align: center;
+}
+
+.CS2 {
+    grid-area: CS2;
+    align: left;
+    text-align: left;
+}
+
+.TimeTable {
+    grid-area: TimeTable;
+    text-align: center;
+}
+
+.StudentGroup {
+    grid-area: StudentGroup;
+    text-align: right;
+    padding-right: 50px;
+}
+
+.year {
+    grid-area: year;
+    text-align: right;
+}
+
+.sem {
+    grid-area: sem;
+    text-align: left;
+}
+
+table {
     border-collapse: collapse;
-}
-
-table.table2, th, td {
-    border: 0px solid black;
-}
-
-table.table2 {
+    vertical-align: top;
     width: 80%;
 }
 
-table.table2 th {
+table, th, td {
+    border: 0px solid black;
+}
+
+th {
     height: 50px;
     background-color: cornflowerblue;
 }
 
-table.table2 td {
-    height: 20px;
+td {
+    height: 5px;
     vertical-align: bottom;
     background-color: darkgray;
+    font-size: 5px;
 }
 
-table.table2 th, td {
-    padding: 15px;
+th, td {
+    padding: 5px;
     text-align: left;
 }
 
-table.table2 tr:hover {background-color: rgb(14, 111, 156);}
+tr:hover {background-color: rgb(14, 111, 156);}
 
 a {
     color: #3b4652;
@@ -123,48 +111,28 @@ a:hover {
 
 
 
-table.table1 {
-    border-collapse: collapse;
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 10px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
 }
 
-table.table1, th, td {
-    border: 1px solid black;
+.dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
 }
 
-table.table1 {
-    width: 80%;
+.dropdown-content a:hover {background-color: #f1f1f1}
+
+.dropdown:hover .dropdown-content {
+    display: block;
 }
 
-table.table1 th {
-    height: 10px;
-    width: 80px;
-    background-color: white;
+.dropdown:hover .dropbtn {
+    background-color: #3e8e41;
 }
-
-table.table1 td {
-    height: 10px;
-    width:300px;
-    background-color:white;
-}
-
-table.table1 th, td {
-    text-align: left;
-}
-.grid-container {
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
-    grid-template-rows: 70px 70px 70px;
-    grid-template-areas: ". year Semester sem ." ". TimeTable TimeTable TimeTable ." ". StudentGroup StudentGroup CS2 .";
-}
-
-.Semester { grid-area: Semester; text-align:center; }
-
-.CS2 { grid-area: CS2; align:left;text-align:left;  }
-
-.TimeTable { grid-area: TimeTable;text-align:center;  }
-
-.StudentGroup { grid-area: StudentGroup; text-align:right; padding-right: 100px;}
-
-.year { grid-area: year;text-align:right;  }
-
-.sem { grid-area: sem; text-align:left; }
