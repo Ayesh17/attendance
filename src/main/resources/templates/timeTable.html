@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org">
+<head>
+    <link rel="stylesheet" type="text/css" href="static/css/view.css" th:href="@{/css/view.css}">
+    <meta charset="UTF-8">
+    <title>Time Table</title>
+</head>
+<body>
+
+<h1>Time Tables</h1>
+<a href="../timeTable/new"><h2>Add a new Time Table</h2></a>
+<div class="container" style="margin-top:30px">
+    <br><br>
+    <table border="1">
+        <thead>
+        <tr>
+            <th>Student Group</th>
+            <th>Year</th>
+            <th>Semester</th>
+            <th></th>
+            <th></th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="timeTable : ${timeTableDetails}">
+            <td th:text="${timeTable.group_code}">Code</td>
+            <td th:text="${timeTable.year}">Year</td>
+            <td th:text="${timeTable.semester}">Semester</td>
+            <td>
+                <a th:href="@{'/timeTable/edit/' + ${timeTable.id}}">Edit</a>
+            </td>
+            <td>
+                <a th:href="@{'/timeTable/delete/' + ${timeTable.id}}">Delete</a>
+            </td>
+
+        </tr>
+        </tbody>
+    </table>
+</div>
+
+
+</body>
+</html>

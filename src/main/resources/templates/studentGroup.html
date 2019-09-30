@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org">
+<head>
+    <link rel="stylesheet" type="text/css" href="static/css/view.css" th:href="@{/css/view.css}">
+    <meta charset="UTF-8">
+    <title>Student Group</title>
+</head>
+<body>
+
+<h1>Subject Details</h1>
+<a href="../studentGroup/new"><h2>Add a new Student Group</h2></a>
+<div class="container" style="margin-top:30px">
+    <br><br>
+    <table border="1">
+        <thead>
+        <tr>
+            <th>Group Code</th>
+            <th>Course</th>
+            <th>Year</th>
+            <th></th>
+            <th></th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="studentGroup : ${studentGroupDetails}">
+            <td th:text="${studentGroup.group_code}">Code</td>
+            <td th:text="${studentGroup.course_code}">Course</td>
+            <td th:text="${studentGroup.year}">Year</td>
+            <td>
+                <a th:href="@{'/studentGroup/edit/' + ${studentGroup.id}}">Edit</a>
+            </td>
+            <td>
+                <a th:href="@{'/studentGroup/delete/' + ${studentGroup.id}}">Delete</a>
+            </td>
+
+
+        </tr>
+        </tbody>
+    </table>
+</div>
+
+
+</body>
+</html>

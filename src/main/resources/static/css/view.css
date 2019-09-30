@@ -198,3 +198,8 @@ a:hover {
     color: darkred;
     text-decoration: none;
 }
+
+option{
+    margin-top: 0px;
+    padding-top: 0px;
+}

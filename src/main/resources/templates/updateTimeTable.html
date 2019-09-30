@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org">
+<head>
+    <link rel="stylesheet" type="text/css" href="static/css/timeTable.css" th:href="@{/css/timeTable.css}">
+    <meta charset="UTF-8">
+    <title>Time Table</title>
+</head>
+<body>
+
+<form action="#" th:action="@{/timeTable/save}" th:object="${timeTable}" method="post">
+
+    <div class="grid-container">
+        <div class="year"><h1><input style="font-size:40px;" type="text"  th:field="*{year}" readonly="readonly"/></h1></div>
+        <div class="Semester"><h1>Semester</h1></div>
+        <div class="sem"><h1><input style="font-size:40px;" type="text" th:field="*{semester}" readonly="readonly"/></h1></div>
+        <div class="TimeTable"><h1>Time Table for</h1></div>
+        <div class="StudentGroup"> <h1>Student Group</h1></div>
+        <div class="CS2"><h1><input style="font-size:40px;" type="text" th:field="*{group_code}" readonly="readonly"/></h1></div>
+
+
+    </div>
+
+</form>
+
+<div class="container" style="margin-top:30px">
+    <br><br>
+    <form action="#" th:action="@{/timeTable/save}" th:object="${timeTable}" method="post">
+    <table border="1" >
+        <thead>
+        <tr>
+        </tr>
+        <br>
+        <tr>
+            <th></th>
+            <th>Monday</th>
+            <th>Tuesday</th>
+            <th>Wednesday</th>
+            <th>Thursday</th>
+            <th>Friday</th>
+        </tr>
+        </thead>
+        <tbody>
+                <option th:each="i : ${#numbers.sequence( 8, 16)}">
+                    <tr>
+                        <th th:text="${ i }+':00 - ' + ${ i+1 }+':00'"></th>
+
+                         <td>
+                            <select th:field="*{subject_code}">
+                                <option value=""></option>
+                                <option th:each="subject: ${subjects}" th:value="${subject.subject_code}" th:text="${subject.name}"/>
+                            </select>
+                        </td>
+                        <td>
+                            <select th:field="*{subject_code}">
+                                <option value=""></option>
+                                <option th:each="subject: ${subjects}" th:value="${subject.subject_code}" th:text="${subject.name}"/>
+                            </select>
+                        </td>
+                        <td>
+                            <select th:field="*{subject_code}">
+                                <option value=""></option>
+                                <option th:each="subject: ${subjects}" th:value="${subject.subject_code}" th:text="${subject.name}"/>
+                            </select>
+                        </td>
+                        <td>
+                            <select th:field="*{subject_code}">
+                                <option value=""></option>
+                                <option th:each="subject: ${subjects}" th:value="${subject.subject_code}" th:text="${subject.name}"/>
+                            </select>
+                        </td>
+                        <td>
+                            <select th:field="*{subject_code}">
+                                <option value=""></option>
+                                <option th:each="subject: ${subjects}" th:value="${subject.subject_code}" th:text="${subject.name}"/>
+                            </select>
+                        </td>
+                    </tr>
+                </option>
+
+        </tbody>
+    </table>
+    </form>
+</div>
+
+</body>
+</html>
+
+
+
