@@ -69,8 +69,6 @@ public class SubjectController {
         List<LectureHall> lectureHallDetail = lectureHallDAO.findAll();
         mav.addObject("lectureHalls",lectureHallDetail);
 
-
-
         return  mav;
     }
 
