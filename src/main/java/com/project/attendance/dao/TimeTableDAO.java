@@ -19,6 +19,12 @@ public class TimeTableDAO {
         return timeTableRepository.save(timeTable);
     }
 
+    //to save all the records of time table
+    public TimeTable saveAll(TimeTable timeTable){
+        return timeTableRepository.save(timeTable);
+    }
+
+
     //to search all machines
     public List<TimeTable> findAll(){
         return timeTableRepository.findAll();

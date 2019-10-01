@@ -61,6 +61,12 @@ public class TimeTableController {
         return  "redirect:/timeTable";
     }
 
+    @RequestMapping(value="/timeTable/saveAll",method= RequestMethod.POST)
+    public String saveAll(@ModelAttribute("timeTable") TimeTable timeTable){
+        timeTableDAO.saveAll(timeTable);
+        return  "redirect:/timeTable";
+    }
+
     @RequestMapping("/timeTable/edit/{id}")
     public ModelAndView updateTimeTable(@PathVariable(name="id")Long id){
         ModelAndView mav=new ModelAndView(("updateTimeTable"));
