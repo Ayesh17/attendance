@@ -30,52 +30,56 @@
         <tr>
         </tr>
         <br>
-        <tr>
-            <th></th>
-            <th>Monday</th>
-            <th>Tuesday</th>
-            <th>Wednesday</th>
-            <th>Thursday</th>
-            <th>Friday</th>
-        </tr>
+        <th></th>
+        <th:block th:each="day : ${days}">
+                <th th:text="${day.name}"></th>
+        </th:block>
+
+
         </thead>
         <tbody>
-                <option th:each="i : ${#numbers.sequence( 8, 16)}">
-                    <tr>
-                        <th th:text="${ i }+':00 - ' + ${ i+1 }+':00'"></th>
 
-                         <td>
-                            <select th:field="*{subject_code}">
-                                <option value=""></option>
-                                <option th:each="subject: ${subjects}" th:value="${subject.subject_code}" th:text="${subject.name}"/>
-                            </select>
-                        </td>
-                        <td>
-                            <select th:field="*{subject_code}">
-                                <option value=""></option>
-                                <option th:each="subject: ${subjects}" th:value="${subject.subject_code}" th:text="${subject.name}"/>
-                            </select>
-                        </td>
-                        <td>
-                            <select th:field="*{subject_code}">
-                                <option value=""></option>
-                                <option th:each="subject: ${subjects}" th:value="${subject.subject_code}" th:text="${subject.name}"/>
-                            </select>
-                        </td>
-                        <td>
-                            <select th:field="*{subject_code}">
-                                <option value=""></option>
-                                <option th:each="subject: ${subjects}" th:value="${subject.subject_code}" th:text="${subject.name}"/>
-                            </select>
-                        </td>
-                        <td>
-                            <select th:field="*{subject_code}">
-                                <option value=""></option>
-                                <option th:each="subject: ${subjects}" th:value="${subject.subject_code}" th:text="${subject.name}"/>
-                            </select>
-                        </td>
+
+                <th:block th:each="time : ${times}">
+                    <tr>
+
+                        <th th:text="${ time.start }+':00 - ' + ${ time.end }+':00'"></th>
+
+                        <th:block th:each="day : ${days}">
+                            <td>
+                                <select th:field="*{subject_code}">
+                                    <option value=""></option>
+                                    <option th:each="subject: ${subjects}" th:value="${subject.subject_code}" th:text="${subject.name}"/>
+                                </select>
+                            </td>
+                        </th:block>
+
+
+
+
                     </tr>
-                </option>
+                </th:block>
+
+                <tr>
+                    <td><input type="hidden" th:field="*{id}" readonly="readonly"/></td>
+                </tr>
+                <tr>
+                    <td><input type="hidden" th:field="*{group_code}" readonly="readonly"/></td>
+                </tr>
+
+                <tr>
+                    <td><input type="hidden" th:field="*{year}" readonly="readonly"/></td>
+                </tr>
+                <tr>
+                    <td><input type="hidden" th:field="*{semester}" readonly="readonly"/></td>
+                </tr>
+
+                <tr>
+                    <td colspan="2">
+                        <button type="submit">Save</button>
+
+                    </td>
+                </tr>
 
         </tbody>
     </table>

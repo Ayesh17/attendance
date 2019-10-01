@@ -24,6 +24,12 @@ public class TimeTableController {
     @Autowired
     private StudentGroupDAO studentGroupDAO;
 
+    @Autowired
+    private DayDAO dayDAO;
+
+    @Autowired
+    private TimeDAO timeDAO;
+
 
     @RequestMapping("/timeTable")
     public String viewHomePage(Model model){
@@ -67,6 +73,12 @@ public class TimeTableController {
 
         List<StudentGroup> studentGroupDetails = studentGroupDAO.findAll();
         mav.addObject("studentGroups",studentGroupDetails);
+
+        List<Day> dayDetails = dayDAO.findAll();
+        mav.addObject("days",dayDetails);
+
+        List<Time> timeDetails = timeDAO.findAll();
+        mav.addObject("times",timeDetails);
 
         return  mav;
     }
