@@ -30,12 +30,12 @@
         <tr>
         </tr>
         <br>
-
+        <th></th>
         <th:block th:each="day : ${days}">
                 <th th:text="${day.name}"></th>
         </th:block>
 
-        
+
         </thead>
         <tbody>
 
@@ -45,13 +45,17 @@
 
                         <th th:text="${ time.start }+':00 - ' + ${ time.end }+':00'"></th>
 
+                        <th:block th:each="day : ${days}">
+                            <td>
+                                <select th:field="*{subject_code}">
+                                    <option value=""></option>
+                                    <option th:each="subject: ${subjects}" th:value="${subject.subject_code}" th:text="${subject.name}"/>
+                                </select>
+                            </td>
+                        </th:block>
 
-                        <td>
-                            <select th:field="*{subject_code}">
-                                <option value=""></option>
-                                <option th:each="subject: ${subjects}" th:value="${subject.subject_code}" th:text="${subject.name}"/>
-                            </select>
-                        </td>
+
+
 
                     </tr>
                 </th:block>

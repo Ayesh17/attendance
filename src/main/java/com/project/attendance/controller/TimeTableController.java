@@ -80,7 +80,6 @@ public class TimeTableController {
         List<Time> timeDetails = timeDAO.findAll();
         mav.addObject("times",timeDetails);
 
-
         return  mav;
     }
 
