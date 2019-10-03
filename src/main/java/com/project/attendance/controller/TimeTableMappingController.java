@@ -14,7 +14,10 @@ import org.springframework.web.servlet.ModelAndView;
 import java.util.List;
 
 @Controller
-public class TimeTableController {
+public class TimeTableMappingController {
+    @Autowired
+    private  TimeTableMappingDAO timeTableMappingDAO;
+
     @Autowired
     private TimeTableDAO timeTableDAO;
 
@@ -31,26 +34,25 @@ public class TimeTableController {
     private TimeDAO timeDAO;
 
 
-    @RequestMapping("/timeTable")
+    @RequestMapping("/timeTableMapping")
     public String viewHomePage(Model model){
-        List<TimeTable> timeTableDetails= timeTableDAO.findAll();
-        model.addAttribute("timeTableDetails",timeTableDetails);
-        return "timeTable";
+        List<TimeTableMapping> timeTableMappingDetails= timeTableMappingDAO.findAll();
+        model.addAttribute("timeTableMappingDetails",timeTableMappingDetails);
+        return "timeTableMapping";
     }
 
 
 
-    @RequestMapping("/timeTable/new")
-        public String addTimeTable(Model model){
-        TimeTable timeTable =new TimeTable();
-        model.addAttribute("timeTable",timeTable);
+    @RequestMapping("/timeTableMapping/new")
+    public String addTimeTableMapping(Model model){
+        TimeTableMapping timeTableMapping =new TimeTableMapping();
+        model.addAttribute("timeTableMapping",timeTableMapping);
+
+        List<TimeTable> timeTableDetail = timeTableDAO.findAll();
+        model.addAttribute("timeTables", timeTableDetail);
 
         List<Subject> subjectDetail = subjectDAO.findAll();
         model.addAttribute("subjects", subjectDetail);
-
-
-        List<StudentGroup> studentGroupDetail = studentGroupDAO.findAll();
-        model.addAttribute("studentGroups",studentGroupDetail);
 
         List<Day> dayDetails = dayDAO.findAll();
         model.addAttribute("days",dayDetails);
@@ -58,22 +60,22 @@ public class TimeTableController {
         List<Time> timeDetails = timeDAO.findAll();
         model.addAttribute("times",timeDetails);
 
-        return "addTimeTable";
+        return "addTimeTableMapping";
     }
 
-    @RequestMapping(value="/timeTable/save",method= RequestMethod.POST)
-    public String saveTimeTable(@ModelAttribute("timeTable") TimeTable timeTable){
-        timeTableDAO.save(timeTable);
-        return  "redirect:/timeTable";
+    @RequestMapping(value="/timeTableMapping/save",method= RequestMethod.POST)
+    public String saveTimeTable(@ModelAttribute("timeTableMapping") TimeTableMapping timeTableMapping){
+        timeTableMappingDAO.save(timeTableMapping);
+        return  "redirect:/timeTableMapping";
     }
 
-    @RequestMapping(value="/timeTable/saveAll",method= RequestMethod.POST)
+    @RequestMapping(value="/timeTableMapping/saveAll",method= RequestMethod.POST)
     public String saveAll(@ModelAttribute("timeTable") TimeTable timeTable){
         timeTableDAO.saveAll(timeTable);
         return  "redirect:/timeTable";
     }
 
-    @RequestMapping("/timeTable/edit/{id}")
+    @RequestMapping("/timeTableMapping/edit/{id}")
     public ModelAndView updateTimeTable(@PathVariable(name="id")Long id){
         ModelAndView mav=new ModelAndView(("updateTimeTable"));
 
@@ -95,16 +97,10 @@ public class TimeTableController {
         return  mav;
     }
 
-    @RequestMapping("/timeTable/map/{id}")
-    public String redirect(@PathVariable(name="id") Long id){
-        return  "redirect:/timeTableMapping/new";
-    }
-
-    @RequestMapping("/timeTable/delete/{id}")
+    @RequestMapping("/timeTableMapping/delete/{id}")
     public String deleteProduct(@PathVariable(name="id") Long id){
         timeTableDAO.delete(id);
         return  "redirect:/timeTable";
     }
 }
-
 

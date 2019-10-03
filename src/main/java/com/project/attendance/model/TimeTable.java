@@ -20,11 +20,12 @@ public class TimeTable {
     private String group_code;
     private int year;
     private int semester;
+    private String name;
 
     public TimeTable () {
     }
 
-    public TimeTable(String day, String time, String start, String end, String subject_code, String group_code, int year, int semester) {
+    public TimeTable(String day, String time, String start, String end, String subject_code, String group_code, int year, int semester, String name) {
         this.day = day;
         this.time = time;
         this.start = start;
@@ -33,6 +34,7 @@ public class TimeTable {
         this.group_code = group_code;
         this.year = year;
         this.semester = semester;
+        this.name = name;
     }
 
     public Long getId() {
@@ -105,5 +107,13 @@ public class TimeTable {
 
     public void setEnd(String end) {
         this.end = end;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 }

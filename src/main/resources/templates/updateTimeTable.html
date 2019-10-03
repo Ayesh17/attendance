@@ -50,6 +50,7 @@
                                 <select th:field="*{subject_code}">
                                     <option value=""></option>
                                     <option th:each="subject: ${subjects}" th:value="${subject.subject_code}" th:text="${subject.name}"/>
+
                                 </select>
                             </td>
                         </th:block>

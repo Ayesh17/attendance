@@ -7,30 +7,27 @@ import javax.persistence.*;
 
 
 @Entity
-@Table(name="timetables")
+@Table(name="timetablemappings")
 @EntityListeners(AuditingEntityListener.class)
 public class TimeTableMapping {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     private String day;
-    private String time;
     private String start;
     private String end;
     private String subject_code;
-    private String group_code;
-    private int year;
-    private int semester;
+    private String time_table_code;
 
     public TimeTableMapping () {
     }
 
-    public TimeTableMapping(String day, String time, String start, String end, String subject_code) {
+    public TimeTableMapping(String day, String start, String end, String subject_code, String time_table_code) {
         this.day = day;
-        this.time = time;
         this.start = start;
         this.end = end;
         this.subject_code = subject_code;
+        this.time_table_code = time_table_code;
     }
 
     public Long getId() {
@@ -49,46 +46,6 @@ public class TimeTableMapping {
         this.day = day;
     }
 
-    public String getTime() {
-        return time;
-    }
-
-    public void setTime(String time) {
-        this.time = time;
-    }
-
-    public String getSubject_code() {
-        return subject_code;
-    }
-
-    public void setSubject_code(String subject_code) {
-        this.subject_code = subject_code;
-    }
-
-    public String getGroup_code() {
-        return group_code;
-    }
-
-    public void setGroup_code(String group_code) {
-        this.group_code = group_code;
-    }
-
-    public int getYear() {
-        return year;
-    }
-
-    public void setYear(int year) {
-        this.year = year;
-    }
-
-    public int getSemester() {
-        return semester;
-    }
-
-    public void setSemester(int semester) {
-        this.semester = semester;
-    }
-
     public String getStart() {
         return start;
     }
@@ -103,5 +60,21 @@ public class TimeTableMapping {
 
     public void setEnd(String end) {
         this.end = end;
+    }
+
+    public String getSubject_code() {
+        return subject_code;
+    }
+
+    public void setSubject_code(String subject_code) {
+        this.subject_code = subject_code;
+    }
+
+    public String getTime_table_code() {
+        return time_table_code;
+    }
+
+    public void setTime_table_code(String time_table_code) {
+        this.time_table_code = time_table_code;
     }
 }

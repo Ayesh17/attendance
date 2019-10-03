@@ -17,6 +17,7 @@
             <th>Student Group</th>
             <th>Year</th>
             <th>Semester</th>
+            <th>Code</th>
             <th></th>
             <th></th>
         </tr>
@@ -26,6 +27,8 @@
             <td th:text="${timeTable.group_code}">Code</td>
             <td th:text="${timeTable.year}">Year</td>
             <td th:text="${timeTable.semester}">Semester</td>
+            <td th:text="${timeTable.name}">name</td>
+
             <td>
                 <a th:href="@{'/timeTable/edit/' + ${timeTable.id}}">Edit</a>
             </td>
