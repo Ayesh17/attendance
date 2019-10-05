@@ -24,7 +24,20 @@ public class TimeTableMappingDAO {
         return timeTableMappingRepository.save(timeTableMapping);
     }
 
-    //to search all machines
+    /*
+    //@Override
+    public void saveAll(List<TimeTableMapping> timeTableMapping) {
+
+        List<TimeTableMapping> timetable=new ArrayList<>();
+        timeTableMappingRepository.saveAll(timetable).forEach(timeTableMapping::add);   // TimeTable repository
+    }
+    */
+
+
+    public void saveAll(List<TimeTableMapping> timeTableMapping){ timeTableMappingRepository.saveAll(timeTableMapping);}
+
+
+        //to search all machines
     public List<TimeTableMapping> findAll(){
         return timeTableMappingRepository.findAll();
     }

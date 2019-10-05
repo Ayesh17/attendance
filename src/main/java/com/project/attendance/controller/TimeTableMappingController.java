@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Controller
@@ -34,6 +35,7 @@ public class TimeTableMappingController {
     private TimeDAO timeDAO;
 
 
+
     @RequestMapping("/timeTableMapping")
     public String viewHomePage(Model model){
         List<TimeTableMapping> timeTableMappingDetails= timeTableMappingDAO.findAll();
@@ -45,6 +47,8 @@ public class TimeTableMappingController {
 
     @RequestMapping("/timeTableMapping/new")
     public String addTimeTableMapping(Model model){
+        System.out.println("hey");
+        System.out.println("hey");
         TimeTableMapping timeTableMapping =new TimeTableMapping();
         model.addAttribute("timeTableMapping",timeTableMapping);
 
@@ -53,6 +57,8 @@ public class TimeTableMappingController {
 
         List<Subject> subjectDetail = subjectDAO.findAll();
         model.addAttribute("subjects", subjectDetail);
+
+        String[] days = new String[] { "Monday", "Tuesday"};
 
         List<Day> dayDetails = dayDAO.findAll();
         model.addAttribute("days",dayDetails);
@@ -63,17 +69,27 @@ public class TimeTableMappingController {
         return "addTimeTableMapping";
     }
 
-    @RequestMapping(value="/timeTableMapping/save",method= RequestMethod.POST)
+    @RequestMapping(value="/timeTableMapping/saveAll",method= RequestMethod.POST)
     public String saveTimeTable(@ModelAttribute("timeTableMapping") TimeTableMapping timeTableMapping){
+        System.out.println("hello");
+        System.out.println("hello");
+        System.out.println("hello");
+        System.out.println(timeTableMapping.getId());
+        System.out.println(timeTableMapping.getDay());
+        System.out.println(timeTableMapping.getStart());
+        System.out.println(timeTableMapping.getEnd());
+        System.out.println(timeTableMapping.getSubject_code());
+        System.out.println(timeTableMapping.getTime_table_code());
         timeTableMappingDAO.save(timeTableMapping);
         return  "redirect:/timeTableMapping";
     }
 
+    /*
     @RequestMapping(value="/timeTableMapping/saveAll",method= RequestMethod.POST)
-    public String saveAll(@ModelAttribute("timeTable") TimeTable timeTable){
-        timeTableDAO.saveAll(timeTable);
-        return  "redirect:/timeTable";
-    }
+    public String saveAll(@ModelAttribute("timeTableMapping") TimeTableMapping timeTableMapping){
+        timeTableDAO.saveAll(timeTableMapping);
+        return  "redirect:/timeTableMapping";
+    }*/
 
     @RequestMapping("/timeTableMapping/edit/{id}")
     public ModelAndView updateTimeTable(@PathVariable(name="id")Long id){

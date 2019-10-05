@@ -3,7 +3,7 @@ package com.project.attendance.model;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import javax.persistence.*;
-
+import java.util.List;
 
 
 @Entity
@@ -21,6 +21,10 @@ public class TimeTableMapping {
 
     public TimeTableMapping () {
     }
+
+
+
+
 
     public TimeTableMapping(String day, String start, String end, String subject_code, String time_table_code) {
         this.day = day;
