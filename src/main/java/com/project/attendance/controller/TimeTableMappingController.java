@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 @Controller
@@ -63,20 +64,31 @@ public class TimeTableMappingController {
 
         String[] dayArray = timeTableMapping.getDay().split(",");
         String[] subArray = timeTableMapping.getSubject_code().split(",");
+         String[] startArray = timeTableMapping.getStart().split(",");
+        String[] endArray = timeTableMapping.getEnd().split(",");
+
+        String[] uniqueDay = Arrays.stream(dayArray).distinct().toArray(String[]::new);
+        String[] uniqueStart = Arrays.stream(startArray).distinct().toArray(String[]::new);
+        String[] uniqueEnd = Arrays.stream(endArray).distinct().toArray(String[]::new);
 
 
         List<TimeTableMapping> tempList = new ArrayList<>();
-        for(int i = 0 ; i < dayArray.length; i++) {
-            TimeTableMapping tempTimeTable = new TimeTableMapping();
-            tempTimeTable.setTime_table_code(timeTableMapping.getTime_table_code());
-            System.out.println(timeTableMapping.getTime_table_code());
-            tempTimeTable.setDay(dayArray[i]);
-            System.out.println(dayArray[i]);
-            tempTimeTable.setSubject_code(subArray[i]);
-            System.out.println(subArray[i]);
-            tempTimeTable.setStart(timeTableMapping.getStart());
-            tempTimeTable.setEnd(timeTableMapping.getEnd());
-            tempList.add(tempTimeTable);
+        int count=0;
+        for(int j=0;j<uniqueStart.length;j++) {
+
+            for(int i = 0 ; i < uniqueDay.length; i++) {
+                TimeTableMapping tempTimeTable = new TimeTableMapping();
+                tempTimeTable.setStart(uniqueStart[j]);
+                System.out.println(uniqueStart[j]);
+
+                tempTimeTable.setEnd(uniqueEnd[j]);
+                tempTimeTable.setTime_table_code(timeTableMapping.getTime_table_code());
+                tempTimeTable.setDay(uniqueDay[i]);
+                tempTimeTable.setSubject_code(subArray[count]);
+                tempList.add(tempTimeTable);
+                count++;
+
+            }
         }
 
         timeTableMappingDAO.saveAll(tempList);

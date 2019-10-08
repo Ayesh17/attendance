@@ -86,10 +86,11 @@ th {
 }
 
 td {
-    height: 5px;
+    height: 0px;
     vertical-align: bottom;
     background-color: darkgray;
     font-size: 5px;
+    width:0px;
 }
 
 th, td {

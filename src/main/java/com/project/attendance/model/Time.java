@@ -12,10 +12,15 @@ public class Time {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-    private int start;
-    private int end;
+    private String start;
+    private String end;
 
     public Time() {
+    }
+
+    public Time(String start, String end) {
+        this.start = start;
+        this.end = end;
     }
 
     public Long getId() {
@@ -26,19 +31,19 @@ public class Time {
         this.id = id;
     }
 
-    public int getStart() {
+    public String getStart() {
         return start;
     }
 
-    public void setStart(int start) {
+    public void setStart(String start) {
         this.start = start;
     }
 
-    public int getEnd() {
+    public String getEnd() {
         return end;
     }
 
-    public void setEnd(int end) {
+    public void setEnd(String end) {
         this.end = end;
     }
 }
