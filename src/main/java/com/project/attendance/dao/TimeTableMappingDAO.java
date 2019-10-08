@@ -1,6 +1,5 @@
 package com.project.attendance.dao;
 
-import com.project.attendance.model.TimeTable;
 import com.project.attendance.model.TimeTableMapping;
 import com.project.attendance.repository.TimeTableMappingRepository;
 import com.project.attendance.repository.TimeTableRepository;
@@ -19,12 +18,26 @@ public class TimeTableMappingDAO {
     @Autowired
     TimeTableMappingRepository timeTableMappingRepository;
 
+
     //to save a time table
     public TimeTableMapping save(TimeTableMapping timeTableMapping){
         return timeTableMappingRepository.save(timeTableMapping);
     }
 
-    //to search all machines
+    /*
+
+    //@Override
+    public void saveAll(List<TimeTableMapping> timeTableMapping) {
+
+        List<TimeTableMapping> timetable=new ArrayList<>();
+        timeTableMappingRepository.saveAll(timetable).forEach(timeTableMapping::add);   // TimeTable repository
+    }
+*/
+    public void saveAll(List<TimeTableMapping> timeTableMapping){
+        timeTableMappingRepository.saveAll(timeTableMapping);
+    }
+
+        //to search all machines
     public List<TimeTableMapping> findAll(){
         return timeTableMappingRepository.findAll();
     }

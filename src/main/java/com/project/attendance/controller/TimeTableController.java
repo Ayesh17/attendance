@@ -52,6 +52,12 @@ public class TimeTableController {
         List<StudentGroup> studentGroupDetail = studentGroupDAO.findAll();
         model.addAttribute("studentGroups",studentGroupDetail);
 
+        List<Day> dayDetails = dayDAO.findAll();
+        model.addAttribute("days",dayDetails);
+
+        List<Time> timeDetails = timeDAO.findAll();
+        model.addAttribute("times",timeDetails);
+
         return "addTimeTable";
     }
 
@@ -87,6 +93,11 @@ public class TimeTableController {
         mav.addObject("times",timeDetails);
 
         return  mav;
+    }
+
+    @RequestMapping("/timeTable/map/{id}")
+    public String redirect(@PathVariable(name="id") Long id){
+        return  "redirect:/timeTableMapping/new";
     }
 
     @RequestMapping("/timeTable/delete/{id}")

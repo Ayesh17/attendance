@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org">
+<head>
+    <link rel="stylesheet" type="text/css" href="static/css/timeTableMapping.css" th:href="@{/css/timeTableMapping.css}">
+    <meta charset="UTF-8">
+    <title>Time Table</title>
+</head>
+<body>
+
+
+
+<form action="#" th:action="@{/timeTableMapping/save}" th:object="${form}"
+      method="post">
+    <fieldset>
+        <input type="submit" id="submitButton" th:value="Save">
+        <input type="reset" id="resetButton" name="reset" th:value="Reset"/>
+        <table>
+            <thead>
+            <tr>
+                <th> Title</th>
+                <th> Author</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="timeTableMapping, itemStat : *{timeTableMappings}">
+                <td><input th:field="*{timeTableMappings[__${itemStat.index}__].day}" /></td>
+                <td><input th:field="*{timeTableMappings[__${itemStat.index}__].subject_code}" /></td>
+            </tr>
+            </tbody>
+        </table>
+    </fieldset>
+</form>
+</body>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org">
+<head>
+    <link rel="stylesheet" type="text/css" href="static/css/view.css" th:href="@{/css/view.css}">
+    <meta charset="UTF-8">
+    <title>Time Table</title>
+</head>
+<body>
+<h1>Time Tables</h1>
+<a href="../timeTableMapping/new"><h2>Add a new Time Table</h2></a>
+<div class="container" style="margin-top:30px">
+    <br><br>
+    <table border="1">
+        <thead>
+        <tr>
+            <th>Time Table</th>
+            <th></th>
+            <th></th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="timeTableMapping : ${timeTableMappingDetails}">
+            <td th:text="${timeTableMapping.id}">Code</td>
+
+            <td>
+                <a th:href="@{'/timeTable/edit/' + ${timeTableMapping.id}}">Edit</a>
+            </td>
+            <td>
+                <a th:href="@{'/timeTable/delete/' + ${timeTableMapping.id}}">Delete</a>
+            </td>
+
+        </tr>
+        </tbody>
+    </table>
+</div>
+
+
+</body>
+</html>
+
