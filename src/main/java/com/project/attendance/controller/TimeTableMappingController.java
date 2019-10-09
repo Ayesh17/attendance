@@ -44,20 +44,6 @@ public class TimeTableMappingController {
         return "timeTableMapping";
     }
 
-    /*
-    @RequestMapping ("/timeTableMapping/new")
-    public String addTimeTableMapping(Model model) {
-        TimeTableMappingDTO timeTablesForm = new TimeTableMappingDTO();
-        for (int i = 1; i <= 3; i++) {
-            timeTablesForm.addTimeTableMapping(new TimeTableMapping());
-        }
-
-        model.addAttribute("form", timeTablesForm);
-
-        return "addTimeTableMapping";
-    }
-    */
-
 
     @RequestMapping(value="/timeTableMapping/saveAll",method= RequestMethod.POST)
     public String saveTimeTable(@ModelAttribute("timeTableMapping") TimeTableMapping timeTableMapping){
@@ -121,57 +107,17 @@ public class TimeTableMappingController {
     }
 
 
-/*
-
-    @RequestMapping(value="/timeTableMapping/saveAll",method= RequestMethod.POST)
-    public void saveAll(List<TimeTableMapping> timeTableMappingList) { timeTableMappingDAO.saveAll(timeTableMappingList);}
-
-    @RequestMapping(value="/timeTableMapping/save",method= RequestMethod.POST)
-    public String saveTimeTable(@ModelAttribute("timeTableMapping") TimeTableMapping timeTableMapping){
-        System.out.println("hello");
-        System.out.println("hello");
-        System.out.println("hello");
-        System.out.println(timeTableMapping.getId());
-        System.out.println(timeTableMapping.getDay());
-        System.out.println(timeTableMapping.getStart());
-        System.out.println(timeTableMapping.getEnd());
-        System.out.println(timeTableMapping.getSubject_code());
-        System.out.println(timeTableMapping.getTime_table_code());
-        timeTableMappingDAO.save(timeTableMapping);
-        return  "redirect:/timeTableMapping/new";
-    }
-@RequestMapping(value="/timeTableMapping/saveAll",method= RequestMethod.POST) public String saveTimeTable(@ModelAttribute("timeTableMapping") TimeTableMapping timeTableMapping){
-
-String[] dayArray = timeTableMapping.getDay().split(",");
-String[] subArray = timeTableMapping.getSubject_code().split(",");
-
-
-List<TimeTableMapping> tempList = new ArrayList<>();
-for(int i = 0 ; i < dayArray.length; i++) {
-    TimeTableMapping tempTimeTable = new TimeTableMapping();
-    tempTimeTable.setTime_table_code(timeTableMapping.getTime_table_code());
-    tempTimeTable.setDay(dayArray[i]);
-    tempTimeTable.setSubject_code(subArray[i]);
-    tempTimeTable.setStart(timeTableMapping.getStart());
-    tempTimeTable.setEnd(timeTableMapping.getEnd());
-    tempList.add(tempTimeTable);
-}
-timeTableMappingDAO.saveAll(tempList);
-    return  "redirect:/timeTableMapping";
-}
-    /*
-    @RequestMapping(value="/timeTableMapping/saveAll",method= RequestMethod.POST)
-    public String saveAll(@ModelAttribute("timeTableMapping") TimeTableMapping timeTableMapping){
-        timeTableDAO.saveAll(timeTableMapping);
-        return  "redirect:/timeTableMapping";
-    }*/
-
     @RequestMapping("/timeTableMapping/edit/{id}")
     public ModelAndView updateTimeTable(@PathVariable(name="id")Long id){
-        ModelAndView mav=new ModelAndView(("updateTimeTable"));
+        ModelAndView mav=new ModelAndView(("updateTimeTableMapping"));
 
-        TimeTable timeTable = timeTableDAO.findById(id);
-        mav.addObject("timeTable",timeTable);
+        //mav.addObject("timeTableMapping", new TimeTableMapping());
+
+        TimeTableMapping timeTableMapping = timeTableMappingDAO.findById(id);
+        mav.addObject("timeTableMapping",timeTableMapping);
+
+        List<TimeTable> timeTableDetails = timeTableDAO.findAll();
+        mav.addObject("timeTables", timeTableDetails);
 
         List<Subject> subjectDetails = subjectDAO.findAll();
         mav.addObject("subjects", subjectDetails);
