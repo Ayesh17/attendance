@@ -39,8 +39,17 @@ public class TimeTableMappingController {
 
     @RequestMapping("/timeTableMapping")
     public String viewHomePage(Model model){
-        List<TimeTableMapping> timeTableMappingDetails= timeTableMappingDAO.findAll();
-        model.addAttribute("timeTableMappingDetails",timeTableMappingDetails);
+        System.out.println("hey");
+        List<Long> timeTableMappingDetails= timeTableMappingDAO.findDistinct();
+       // List<TimeTableMapping>  timeTableMappingDetails=timeTableMappingDAO.select(timeTableMappingDetails1);
+        System.out.println("hey");
+        System.out.println(timeTableMappingDetails.toString());
+        TimeTableMapping tempTimeTable = new TimeTableMapping();
+        for(int i = 0 ; i < timeTableMappingDetails.size(); i++) {
+            tempTimeTable.setCode(timeTableMappingDetails.get(i));
+            System.out.println(timeTableMappingDetails.get(i));
+        }
+        model.addAttribute("timeTableMappingDetails",tempTimeTable);
         return "timeTableMapping";
     }
 
@@ -69,6 +78,7 @@ public class TimeTableMappingController {
 
                 tempTimeTable.setEnd(uniqueEnd[j]);
                 tempTimeTable.setTime_table_code(timeTableMapping.getTime_table_code());
+                tempTimeTable.setCode(timeTableMapping.getCode());
                 tempTimeTable.setDay(uniqueDay[i]);
                 tempTimeTable.setSubject_code(subArray[count]);
                 tempList.add(tempTimeTable);
@@ -114,7 +124,10 @@ public class TimeTableMappingController {
         //mav.addObject("timeTableMapping", new TimeTableMapping());
 
         TimeTableMapping timeTableMapping = timeTableMappingDAO.findById(id);
+        System.out.println(timeTableMapping.getTime_table_code());
+       // List<TimeTableMapping> timeTableMapping1= timeTableMappingDAO.select(timeTableMapping.getTime_table_code());
         mav.addObject("timeTableMapping",timeTableMapping);
+
 
         List<TimeTable> timeTableDetails = timeTableDAO.findAll();
         mav.addObject("timeTables", timeTableDetails);
@@ -131,13 +144,14 @@ public class TimeTableMappingController {
         List<Time> timeDetails = timeDAO.findAll();
         mav.addObject("times",timeDetails);
 
+
         return  mav;
     }
 
-    @RequestMapping("/timeTableMapping/delete/{id}")
-    public String deleteProduct(@PathVariable(name="id") Long id){
-        timeTableDAO.delete(id);
-        return  "redirect:/timeTable";
+    @RequestMapping("/timeTableMapping/delete/{code}")
+    public String deleteProduct(@PathVariable(name="code") Long code){
+        timeTableDAO.delete(code);
+        return  "redirect:/timeTableMapping";
     }
 }
 

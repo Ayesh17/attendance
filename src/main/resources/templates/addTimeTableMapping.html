@@ -16,12 +16,12 @@
             <tr>
                 <td><h1>Time Table:</h1></td>
                 <td>
-                    <select th:field="*{time_table_code}">
+                    <select th:field="*{code}">
                         <option value="">Choose..</option>
-                        <option th:each="timeTable: ${timeTables}" th:value="${timeTable.name}" th:text="${timeTable.name}"/>
+                        <option th:each="timeTable: ${timeTables}" th:value="${timeTable.id}" th:text="${timeTable.name}"/>
                     </select>
                 </td>
-            </tr>
+
         </table>
 
         <table border="1" >

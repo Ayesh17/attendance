@@ -34,6 +34,10 @@ public class TimeTableMappingDAO {
         return timeTableMappingRepository.findAll();
     }
 
+    public List<Long> findDistinct(){
+      return timeTableMappingRepository.findTimeTableMappingDistinctByCode();
+   }
+
     //get by id
     public TimeTableMapping findById(Long id){
         return timeTableMappingRepository.findById(id).orElse(null);
@@ -44,5 +48,9 @@ public class TimeTableMappingDAO {
     public void delete(Long id){
         timeTableMappingRepository.deleteById(id);
     }
+
+   // public List<TimeTableMapping>  select(String timeTableMapping){return timeTableMappingRepository.findDistinctByTime_table_code(timeTableMapping);}
+
+    //public void findByCode(String time_table_code){timeTableMappingRepository.findTimeTableMappingsByTime_table_code(time_table_code);}
 
 }
