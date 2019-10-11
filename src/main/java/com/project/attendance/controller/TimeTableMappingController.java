@@ -44,12 +44,17 @@ public class TimeTableMappingController {
        // List<TimeTableMapping>  timeTableMappingDetails=timeTableMappingDAO.select(timeTableMappingDetails1);
         System.out.println("hey");
         System.out.println(timeTableMappingDetails.toString());
-        TimeTableMapping tempTimeTable = new TimeTableMapping();
+        List<TimeTableMapping> tempList=new ArrayList<>();
+
         for(int i = 0 ; i < timeTableMappingDetails.size(); i++) {
+            TimeTableMapping tempTimeTable = new TimeTableMapping();
             tempTimeTable.setCode(timeTableMappingDetails.get(i));
+            tempList.add(tempTimeTable);
             System.out.println(timeTableMappingDetails.get(i));
+
         }
-        model.addAttribute("timeTableMappingDetails",tempTimeTable);
+        model.addAttribute("timeTableMappingDetails",tempList);
+       
         return "timeTableMapping";
     }
 
