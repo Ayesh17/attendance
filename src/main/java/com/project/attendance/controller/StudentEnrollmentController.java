@@ -1,6 +1,8 @@
 package com.project.attendance.controller;
 
+import com.project.attendance.dao.CourseDAO;
 import com.project.attendance.dao.StudentDAO;
+import com.project.attendance.model.Course;
 import com.project.attendance.model.Student;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -19,6 +21,10 @@ public class StudentEnrollmentController {
     @Autowired
     private StudentDAO studentDAO;
 
+    @Autowired
+    private CourseDAO courseDAO;
+
+
     @RequestMapping("/student")
     public String viewHomePage(Model model){
         List<Student> studentDetails=studentDAO.findAll();
@@ -30,6 +36,10 @@ public class StudentEnrollmentController {
     public String addStudent(Model model){
         Student student=new Student();
         model.addAttribute("student",student);
+
+        List<Course> courseDetail = courseDAO.findAll();
+        model.addAttribute("courses", courseDetail);
+
         return "addStudent";
     }
 
@@ -45,6 +55,10 @@ public class StudentEnrollmentController {
 
         Student student=studentDAO.findById(id);
         mav.addObject("student",student);
+
+        List<Course> courseDetail = courseDAO.findAll();
+        mav.addObject("courses", courseDetail);
+
         return  mav;
     }
 

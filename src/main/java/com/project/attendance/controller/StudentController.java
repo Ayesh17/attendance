@@ -1,3 +1,4 @@
+/*
 package com.project.attendance.controller;
 
 import com.project.attendance.dao.StudentDAO;
@@ -8,6 +9,12 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 import java.util.List;
+
+
+
+
+////////////////can be deleted
+////////////////not in use
 
 @RestController
 @RequestMapping("/details")
@@ -50,7 +57,7 @@ public class StudentController {
         }
         student.setName(studentDetails.getName());
         student.setNic(studentDetails.getNic());
-        student.setCourse(studentDetails.getCourse());
+       // student.setCourse(studentDetails.getCourse());
         student.setIndexNumber(studentDetails.getIndexNumber());
         student.setRegistrationNumber(studentDetails.getRegistrationNumber());
         student.setUser_id(studentDetails.getUser_id());
@@ -72,3 +79,4 @@ public class StudentController {
         return ResponseEntity.ok().build();
     }
 }
+*/

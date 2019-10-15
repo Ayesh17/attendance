@@ -36,7 +36,12 @@
                 </tr>
                 <tr>
                     <td>Course:</td>
-                    <td><input type="text" th:field="*{course}"/></td>
+                    <td>
+                        <select th:field="*{course_code}">
+                            <option value="">Choose..</option>
+                            <option th:each="course: ${courses}" th:value="${course.code}" th:text="${course.name}"/>
+                        </select>
+                    </td>
                 </tr>
                 <tr>
                     <td>Student NIC:</td>
