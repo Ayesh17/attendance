@@ -6,7 +6,6 @@ import com.project.attendance.repository.TimeTableRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -19,51 +18,49 @@ public class TimeTableMappingDAO {
     TimeTableMappingRepository timeTableMappingRepository;
 
 
-    //to save a time table
+    //to save
     public TimeTableMapping save(TimeTableMapping timeTableMapping){
         return timeTableMappingRepository.save(timeTableMapping);
     }
 
-    /*
-
-    //@Override
-    public void saveAll(List<TimeTableMapping> timeTableMapping) {
-
-        List<TimeTableMapping> timetable=new ArrayList<>();
-        timeTableMappingRepository.saveAll(timetable).forEach(timeTableMapping::add);   // TimeTable repository
-    }
-*/
+    //to save all
     public void saveAll(List<TimeTableMapping> timeTableMapping){
         timeTableMappingRepository.saveAll(timeTableMapping);
     }
 
-        //to search all machines
+        //to search all
     public List<TimeTableMapping> findAll(){
         return timeTableMappingRepository.findAll();
     }
 
-    //get a machine by id
+    public List<Long> findDistinct(){
+      return timeTableMappingRepository.findTimeTableMappingDistinctByCode();
+   }
+
+    //get by id
     public TimeTableMapping findById(Long id){
         return timeTableMappingRepository.findById(id).orElse(null);
     }
 
+    public TimeTableMapping findAllByDay(String day){
+             return (TimeTableMapping) timeTableMappingRepository.findAllByDay(day);
+        }
 
-    //delete a machine
+    //public TimeTableMapping findByCode(Long code){
+   //     return timeTableMappingRepository.findByCode(code);
+    //}
+
+    public int updateSubjectCode(){
+        return  timeTableMappingRepository.updateSubjectCode((long) 1024,"Monday");
+    }
+
+    //delete
     public void delete(Long id){
         timeTableMappingRepository.deleteById(id);
     }
 
-  /*  public void insertData(List<TimeTable> timeTableList){
-        String sql="INSERT INTO TIMETABLES"+"(start,end,day,subject_code,group_code,year,semester) VALUES(?,?,?,?,?,?,?)";
-        List<Object[]> batchArgsList=new ArrayList<Object[]>();
+   // public List<TimeTableMapping>  select(String timeTableMapping){return timeTableMappingRepository.findDistinctByTime_table_code(timeTableMapping);}
 
-        for(TimeTable timeTable : timeTableList)
-        {
-            Object[] objectArray = { timeTable.getStart(),timeTable.getEnd(),timeTable.getDay(),timeTable.getSubject_code(),timeTable.getGroup_code(),timeTable.getYear(),timeTable.getSemester()};
-            batchArgsList.add(objectArray);
-        }
+    //public void findByCode(String time_table_code){timeTableMappingRepository.findTimeTableMappingsByTime_table_code(time_table_code);}
 
-        getJdbcTemplate().batchUpdate(sql, batchArgsList);
-
-    }*/
 }

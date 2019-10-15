@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org">
+<head>
+    <link rel="stylesheet" type="text/css" href="static/css/view.css" th:href="@{/css/view.css}">
+    <meta charset="UTF-8">
+    <title>Finger Print Report</title>
+</head>
+<body>
+
+
+
+</form>
+<div class="container2">
+    <form action="#" th:action="@{/RecordsBySubject/save}" th:object="${RecordsBySubject}" method="post">
+        <table border="0" cell[adding="10">
+            <tr>
+                <td>Subject:</td>
+                <td><input type="text" th:field="*{subject}"/></td>
+            </tr>
+            <tr>
+                <td>Subject Name:</td>
+                <td><input type="text" th:field="*{name}"/></td>
+            </tr>
+            <tr>
+                <td>Course:</td>
+                <td>
+                    <select th:field="*{course_code}">
+                        <option value="">Choose..</option>
+                        <option th:each="course: ${courses}" th:value="${course.code}" th:text="${course.name}"/>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td>Lecture Hall:</td>
+                <td>
+                    <select th:field="*{hall_code}">
+                        <option value="">Choose..</option>
+                        <option th:each="hall: ${lectureHalls}" th:value="${hall.hall_code}"
+                                th:text="${hall.name}"/>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2">
+                    <button type="submit" class="btn btn-primary">Save</button>
+                </td>
+            </tr>
+        </table>
+    </form>
+</div>
+
+</body>
+</html>

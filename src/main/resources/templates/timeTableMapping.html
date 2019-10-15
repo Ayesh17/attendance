@@ -20,13 +20,13 @@
         </thead>
         <tbody>
         <tr th:each="timeTableMapping : ${timeTableMappingDetails}">
-            <td th:text="${timeTableMapping.id}">Code</td>
+            <td th:text="${timeTableMapping.code}">Code</td>
 
             <td>
-                <a th:href="@{'/timeTable/edit/' + ${timeTableMapping.id}}">Edit</a>
+                <a th:href="@{'/timeTableMapping/edit/' + ${timeTableMapping.code}}">Edit</a>
             </td>
             <td>
-                <a th:href="@{'/timeTable/delete/' + ${timeTableMapping.id}}">Delete</a>
+                <a th:href="@{'/timeTableMapping/delete/' + ${timeTableMapping.code}}">Delete</a>
             </td>
 
         </tr>

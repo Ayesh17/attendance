@@ -3,7 +3,7 @@
 <head>
     <link rel="stylesheet" type="text/css" href="static/css/timeTableMapping.css" th:href="@{/css/timeTableMapping.css}">
     <meta charset="UTF-8">
-    <title>Time Table</title>
+    <title>Update Time Table</title>
 </head>
 <body>
 
@@ -15,13 +15,14 @@
         <table border="0" cell[adding="10">
             <tr>
                 <td><h1>Time Table:</h1></td>
+
                 <td>
                     <select th:field="*{code}">
                         <option value="">Choose..</option>
                         <option th:each="timeTable: ${timeTables}" th:value="${timeTable.id}" th:text="${timeTable.name}"/>
                     </select>
                 </td>
-
+            </tr>
         </table>
 
         <table border="1" >
@@ -65,30 +66,31 @@
                         <td>
                             <select th:field="*{subject_code}">
                                 <option value=""></option>
-                                <option th:each="subject: ${subjects}" th:value="${subject.subject_code}" th:text="${subject.name}"/>
-                                <td><input type="text"  th:value="${day.name}" name="day" style="display:none;width:0px" /></td>
-                                <td><input type="text"  th:value="${time.start}" name="start" style="display:none;width:0px" /></td>
-                                <td><input type="text"  th:value="${time.end}" name="end" style="display:none;width:0px" /></td>
+                                <option th:each="subject: ${subjects}" th:value="${subject.subject_code}" th:selected="${subject_code}" th:text="${subject.name} "/>
+
+                        <td><input type="text"  th:value="${day.name}" name="day" style="display:none;width:0px" /></td>
+                        <td><input type="text"  th:value="${time.start}" name="start" style="display:none;width:0px" /></td>
+                        <td><input type="text"  th:value="${time.end}" name="end" style="display:none;width:0px" /></td>
 
 
-                     </select>
-                 </td>
-             </th:block>
+                        </select>
+                        </td>
+                    </th:block>
 
-         </tr>
+                </tr>
 
 
-     </th:block>
+            </th:block>
 
-     <tr>
-         <td colspan="2">
-             <button type="submit">Save</button>
-         </td>
-     </tr>
+            <tr>
+                <td colspan="2">
+                    <button type="submit">Save</button>
+                </td>
+            </tr>
 
-     </tbody>
- </table>
-</form>
+            </tbody>
+        </table>
+    </form>
 </div>
 
 </body>
