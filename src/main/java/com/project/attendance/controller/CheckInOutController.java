@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import java.sql.SQLException;
 import java.util.List;
 import java.text.ParseException;
 
@@ -41,7 +42,11 @@ public class CheckInOutController {
             System.out.println("id "+ recordsList.get(i).getUserid());
             System.out.println("day "+ recordsList.get(i).getDay());
             System.out.println("time"+ recordsList.get(i).getTime());
-            recordsDAO.save(recordsList.get(i));
+            try {
+                recordsDAO.save(recordsList.get(i));
+            }catch(Exception ex){
+                return "records";
+            }
 
         }
         //Records records=new Records();

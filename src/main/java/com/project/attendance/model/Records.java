@@ -3,6 +3,7 @@ package com.project.attendance.model;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import javax.persistence.*;
+import java.util.Date;
 
 @Entity
 @Table(name="records")
@@ -15,6 +16,7 @@ public class Records {
     private int userid;
     private String day;
     private int time;
+    private String timestamp;
 
 
     public Records() {
@@ -58,4 +60,11 @@ public class Records {
         this.time = time;
     }
 
+    public String getTimestamp() {
+        return timestamp;
+    }
+
+    public void setTimestamp(String timestamp) {
+        this.timestamp = timestamp;
+    }
 }

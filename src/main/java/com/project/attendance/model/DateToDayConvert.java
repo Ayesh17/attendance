@@ -38,6 +38,7 @@ public class DateToDayConvert {
             int Time=obj.calendarToTime(calendar);
             record.setDay(Day);
             record.setTime(Time);
+            record.setTimestamp(args[i].getChecktime());
             //System.out.println(newDate);
 
             records.add(record);
@@ -82,10 +83,14 @@ public class DateToDayConvert {
     }
 
     private int calendarToTime(Calendar calendar) {
-        int day= calendar.getTime().getDay();
+        //int day= calendar.getTime().getDay();
         int time=calendar.getTime().getHours();
+        if(time==0){
+            time=12;
+        }
         return time;
         // System.out.println(time);
 
     }
+
 }
