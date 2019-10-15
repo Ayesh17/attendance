@@ -1,12 +1,16 @@
 package com.project.attendance.controller;
 
 import com.project.attendance.dao.CheckInOutDAO;
+import com.project.attendance.dao.RecordsDAO;
 import com.project.attendance.model.DateToDayConvert;
 import com.project.attendance.model.CheckInOut;
+import com.project.attendance.model.Records;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 
 import java.util.List;
 import java.text.ParseException;
@@ -16,28 +20,47 @@ public class CheckInOutController {
     @Autowired
     private CheckInOutDAO checkInOutDAO;
 
+    @Autowired
+    private RecordsDAO recordsDAO;
+
     @RequestMapping("/records")
     public String read(Model model) throws ParseException {
         System.out.println("hey");
         List<CheckInOut> recordDetails= checkInOutDAO.findAll();
         //System.out.println(recordDetails.toString());
 
-        String[] arr = new String[recordDetails.size()];
+        CheckInOut[] arr = new CheckInOut[recordDetails.size()];
        for(int i = 0 ; i < recordDetails.size(); i++) {
             //System.out.println(recordDetails.get(i).getUserid());
-            arr[i]=recordDetails.get(i).getChecktime();
+            arr[i]=recordDetails.get(i);
         }
-
-            DateToDayConvert.main(arr);
-
+           List<Records> recordsList= DateToDayConvert.main(arr);
 
 
-        model.addAttribute("recordDetails",recordDetails);
+        for(int i=0;i<recordsList.size();i++){
+            System.out.println("id "+ recordsList.get(i).getUserid());
+            System.out.println("day "+ recordsList.get(i).getDay());
+            System.out.println("time"+ recordsList.get(i).getTime());
+            recordsDAO.save(recordsList.get(i));
+
+        }
+        //Records records=new Records();
+        model.addAttribute("records",recordsList);
         return "records";
     }
 
-    /*
 
+
+  @RequestMapping(value="/records/save",method= RequestMethod.POST)
+    public String saveRecords(@ModelAttribute("record") Records record){
+      System.out.println();
+      System.out.println(record.getUserid());
+      System.out.println(record.getDay());
+      System.out.println(record.getTime());
+        //recordsDAO.save(record);
+        return  "redirect:/records";
+    }
+     /*
     @RequestMapping("/subject")
     public String viewHomePage(Model model){
         List<Subject> subjectDetails= subjectDAO.findAll();

@@ -1,8 +1,6 @@
 package com.project.attendance.dao;
 
-import com.project.attendance.model.CheckInOut;
 import com.project.attendance.model.Records;
-import com.project.attendance.repository.CheckInOutRepository;
 import com.project.attendance.repository.RecordsRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -10,10 +8,7 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 @Service
-public class CheckInOutDAO {
-    @Autowired
-    CheckInOutRepository checkInOutRepository;
-
+public class RecordsDAO {
     @Autowired
     RecordsRepository recordsRepository;
     //to save a subject
@@ -22,20 +17,21 @@ public class CheckInOutDAO {
     }
 
     //to search all subjects
-    public List<CheckInOut> findAll(){
-        return checkInOutRepository.findAll();
+    public List<Records> findAll(){
+        return recordsRepository.findAll();
     }
 
     //get a subject by id
-    public CheckInOut findById(Long id){
-        return checkInOutRepository.findById(id).orElse(null);
+    public Records findById(Long id){
+        return recordsRepository.findById(id).orElse(null);
     }
 
 
     //delete a subject
     public void delete(Long id){
-        checkInOutRepository.deleteById(id);
+        recordsRepository.deleteById(id);
     }
 
 
 }
+
