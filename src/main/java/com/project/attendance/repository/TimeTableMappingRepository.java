@@ -2,7 +2,9 @@ package com.project.attendance.repository;
 
         import com.project.attendance.model.TimeTableMapping;
                 import org.springframework.data.jpa.repository.JpaRepository;
+        import org.springframework.data.jpa.repository.Modifying;
         import org.springframework.data.jpa.repository.Query;
+        import org.springframework.data.repository.query.Param;
         import org.springframework.stereotype.Repository;
 
         import java.util.List;
@@ -10,11 +12,17 @@ package com.project.attendance.repository;
 
 @Repository
 public interface TimeTableMappingRepository extends JpaRepository<TimeTableMapping, Long> {
-        //Optional<TimeTableMapping> findById(String id);
-        //TimeTableMapping findTimeTableMappingsByTime_table_code(String time_table_code);
+
         @Query("SELECT DISTINCT t.code  FROM TimeTableMapping t")
         List<Long> findTimeTableMappingDistinctByCode();
 
-        //public List<TimeTableMapping> findDistinctByCode();
+        List<TimeTableMapping> findByCode(Long code);
+        List<TimeTableMapping> findAllByDay(String day);
+
+        @Modifying
+        @Query("UPDATE TimeTableMapping t SET t.subject_code = :subject_code Where t.id = :id")
+        int updateSubjectCode(@Param("id") Long id, @Param("subject_code") String subject_code);
+
+
 }
 

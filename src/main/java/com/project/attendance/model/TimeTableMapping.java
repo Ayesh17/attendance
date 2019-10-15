@@ -1,9 +1,9 @@
 package com.project.attendance.model;
 
-import org.springframework.data.jpa.domain.support.AuditingEntityListener;
+        import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
-import javax.persistence.*;
-import java.util.List;
+        import javax.persistence.*;
+        import java.util.List;
 
 
 @Entity

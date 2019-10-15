@@ -40,6 +40,7 @@ public class TimeTableMappingController {
     @RequestMapping("/timeTableMapping")
     public String viewHomePage(Model model){
         System.out.println("hey");
+      //  timeTableMappingDAO.updateSubjectCode();
         List<Long> timeTableMappingDetails= timeTableMappingDAO.findDistinct();
        // List<TimeTableMapping>  timeTableMappingDetails=timeTableMappingDAO.select(timeTableMappingDetails1);
         System.out.println("hey");
@@ -54,10 +55,9 @@ public class TimeTableMappingController {
 
         }
         model.addAttribute("timeTableMappingDetails",tempList);
-       
+
         return "timeTableMapping";
     }
-
 
     @RequestMapping(value="/timeTableMapping/saveAll",method= RequestMethod.POST)
     public String saveTimeTable(@ModelAttribute("timeTableMapping") TimeTableMapping timeTableMapping){
@@ -129,7 +129,7 @@ public class TimeTableMappingController {
         //mav.addObject("timeTableMapping", new TimeTableMapping());
 
         TimeTableMapping timeTableMapping = timeTableMappingDAO.findById(id);
-        System.out.println(timeTableMapping.getTime_table_code());
+        //System.out.println(timeTableMapping.getTime_table_code());
        // List<TimeTableMapping> timeTableMapping1= timeTableMappingDAO.select(timeTableMapping.getTime_table_code());
         mav.addObject("timeTableMapping",timeTableMapping);
 

@@ -6,7 +6,6 @@ import com.project.attendance.repository.TimeTableRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -43,6 +42,17 @@ public class TimeTableMappingDAO {
         return timeTableMappingRepository.findById(id).orElse(null);
     }
 
+    public TimeTableMapping findAllByDay(String day){
+             return (TimeTableMapping) timeTableMappingRepository.findAllByDay(day);
+        }
+
+    //public TimeTableMapping findByCode(Long code){
+   //     return timeTableMappingRepository.findByCode(code);
+    //}
+
+    public int updateSubjectCode(){
+        return  timeTableMappingRepository.updateSubjectCode((long) 1024,"Monday");
+    }
 
     //delete
     public void delete(Long id){
