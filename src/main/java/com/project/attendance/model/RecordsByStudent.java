@@ -13,6 +13,7 @@ public class RecordsByStudent {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
+    private int userId;
     private int year;
     private int semester;
     private String subject;
@@ -22,7 +23,8 @@ public class RecordsByStudent {
     public RecordsByStudent() {
     }
 
-    public RecordsByStudent(int year, int semester, String subject, String days, int count) {
+    public RecordsByStudent(int userId, int year, int semester, String subject, String days, int count) {
+        this.userId = userId;
         this.year = year;
         this.semester = semester;
         this.subject = subject;
@@ -76,5 +78,13 @@ public class RecordsByStudent {
 
     public void setCount(int count) {
         this.count = count;
+    }
+
+    public int getUserId() {
+        return userId;
+    }
+
+    public void setUserId(int userId) {
+        this.userId = userId;
     }
 }

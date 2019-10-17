@@ -1,13 +1,7 @@
 package com.project.attendance.controller;
 
-import com.project.attendance.dao.CourseDAO;
-import com.project.attendance.dao.LectureHallDAO;
-import com.project.attendance.dao.RecordsByStudentDAO;
-import com.project.attendance.dao.SubjectDAO;
-import com.project.attendance.model.Course;
-import com.project.attendance.model.LectureHall;
-import com.project.attendance.model.RecordsByStudent;
-import com.project.attendance.model.Subject;
+import com.project.attendance.dao.*;
+import com.project.attendance.model.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -22,57 +16,55 @@ import java.util.List;
 @Controller
 public class RecordsByStudentController {
     @Autowired
+    private StudentDAO studentDAO;
+
+    @Autowired
     private RecordsByStudentDAO recordsByStudentDAO;
 
 
-/*
-    @RequestMapping("/subject")
+
+    @RequestMapping("/records-student")
     public String viewHomePage(Model model){
-        List<Subject> subjectDetails= subjectDAO.findAll();
-        model.addAttribute("subjectDetails",subjectDetails);
-        return "subject";
+        List<RecordsByStudent> recordsByStudentDetails= recordsByStudentDAO.findAll();
+        model.addAttribute("recordsByStudentDetails",recordsByStudentDetails);
+        return "recordsByStudent";
     }
 
-    @RequestMapping("/subject/new")
-    public String addSubject(Model model){
-        Subject subject =new Subject();
-        model.addAttribute("subject",subject);
+    @RequestMapping("/records-student/new")
+    public String addRecordsByStudent(Model model){
+        RecordsByStudent recordsByStudent = new RecordsByStudent();
+        model.addAttribute("recordsByStudent",recordsByStudent);
 
-        List<Course> courseDetail = courseDAO.findAll();
-        model.addAttribute("courses", courseDetail);
+        List<Student> studentDetail = studentDAO.findAll();
+        model.addAttribute("students", studentDetail);
 
-
-        List<LectureHall> lectureHallDetail = lectureHallDAO.findAll();
-        model.addAttribute("lectureHalls",lectureHallDetail);
-
-        return "addSubject";
+        return "addRecordsByStudent";
     }
 
-    @RequestMapping(value="/subject/save",method= RequestMethod.POST)
-    public String saveSubject(@ModelAttribute("subject") Subject subject){
-        subjectDAO.save(subject);
-        return  "redirect:/subject";
+
+    @RequestMapping(value="/records-student/save",method= RequestMethod.POST)
+    public String saveRecordsByStudent(@ModelAttribute("recordsByStudent") RecordsByStudent recordsByStudent){
+        recordsByStudentDAO.save(recordsByStudent);
+        return  "redirect:/records-student";
     }
 
-    @RequestMapping("/subject/edit/{id}")
-    public ModelAndView updateSubjcet(@PathVariable(name="id")Long id){
-        ModelAndView mav=new ModelAndView(("updateSubject"));
+    @RequestMapping("/records-student/edit/{id}")
+    public ModelAndView updateRecordsByStudent(@PathVariable(name="id")Long id){
+        ModelAndView mav=new ModelAndView(("updateRecordsByStudent"));
 
-        Subject subject=subjectDAO.findById(id);
-        mav.addObject("subject",subject);
+        RecordsByStudent recordsByStudent=recordsByStudentDAO.findById(id);
+        mav.addObject("recordsByStudent",recordsByStudent);
 
-        List<Course> courseDetail = courseDAO.findAll();
-        mav.addObject("courses", courseDetail);
-        List<LectureHall> lectureHallDetail = lectureHallDAO.findAll();
-        mav.addObject("lectureHalls",lectureHallDetail);
+        List<Student> studentDetail = studentDAO.findAll();
+        mav.addObject("students", studentDetail);
 
         return  mav;
     }
 
-    @RequestMapping("/subject/delete/{id}")
-    public String deleteProduct(@PathVariable(name="id") Long id){
-        subjectDAO.delete(id);
-        return  "redirect:/subject";
+    @RequestMapping("/records-student/delete/{id}")
+    public String deleteRecordsByStudent(@PathVariable(name="id") Long id){
+        recordsByStudentDAO.delete(id);
+        return  "redirect:/records-student";
     }
-    */
+
 }
