@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
+import java.sql.SQLException;
 import java.util.List;
 
 @Controller
@@ -49,7 +50,29 @@ public class EnrollController {
 
     @RequestMapping(value="/enroll/save",method= RequestMethod.POST)
     public String saveEnroll(@ModelAttribute("enroll") Enroll enroll){
+
+        try{
         enrollDAO.save(enroll);
+
+            List<Enroll> enrollDetails= enrollDAO.findAll();
+
+            for (int i=0;i<enrollDetails.size();i++) {
+
+                int id = enroll.getUserId();
+                List<Student> list = studentDAO.findByUserId(id);
+
+                for (int j = 0; j < list.size(); j++) {
+                    String name = list.get(j).getName();
+                    enroll.setName(name);
+
+                }
+                enrollDAO.save(enroll);
+            }
+
+        }catch(Exception ex){
+            System.out.println(ex);
+
+        }
         return  "redirect:/enroll";
     }
 

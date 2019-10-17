@@ -52,18 +52,22 @@
     <table border="1">
         <thead>
         <tr>
-            <th>Index Number</th>
-            <th>Subject code</th>
+            <th>User ID</th>
+            <th>Name</th>
             <th>Year</th>
+            <th>Semester</th>
+            <th>Subject code</th>
             <th></th>
             <th></th>
         </tr>
         </thead>
         <tbody>
         <tr th:each="enroll : ${enrollDetails}">
-            <td th:text="${enroll.index_number}">Index Number</td>
-            <td th:text="${enroll.subject_code}">Subject Code</td>
+            <td th:text="${enroll.userId}">User Id</td>
+            <td th:text="${enroll.name}">Name</td>
             <td th:text="${enroll.year}">Year</td>
+            <td th:text="${enroll.semester}">Semester</td>
+            <td th:text="${enroll.subject_code}">Subject Code</td>
             <td>
                 <a th:href="@{'/enroll/edit/' + ${enroll.id}}">Edit</a>
             </td>

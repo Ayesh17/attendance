@@ -11,17 +11,21 @@ public class Enroll {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-    private String index_number;
+    private int userId;
+    private String name;
     private String subject_code;
     private int year;
+    private int semester;
 
     public Enroll() {
     }
 
-    public Enroll(String index_number, String subject_code, int year) {
-        this.index_number = index_number;
+    public Enroll(int userId, String name, String subject_code, int year, int semester) {
+        this.userId = userId;
+        this.name = name;
         this.subject_code = subject_code;
         this.year = year;
+        this.semester = semester;
     }
 
     public Long getId() {
@@ -32,12 +36,20 @@ public class Enroll {
         this.id = id;
     }
 
-    public String getIndex_number() {
-        return index_number;
+    public int getUserId() {
+        return userId;
     }
 
-    public void setIndex_number(String index_number) {
-        this.index_number = index_number;
+    public void setUserId(int userId) {
+        this.userId = userId;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 
     public String getSubject_code() {
@@ -54,5 +66,13 @@ public class Enroll {
 
     public void setYear(int year) {
         this.year = year;
+    }
+
+    public int getSemester() {
+        return semester;
+    }
+
+    public void setSemester(int semester) {
+        this.semester = semester;
     }
 }

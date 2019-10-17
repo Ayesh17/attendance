@@ -19,7 +19,7 @@ public class Student {
     @NotBlank
     private String registrationNumber;
     @NotNull
-    private int user_id;
+    private int userId;
     private String name;
     private String course_code;
     private String address;
@@ -28,10 +28,10 @@ public class Student {
     public Student() {
     }
 
-    public Student(@NotNull int indexNumber, @NotBlank String registrationNumber, @NotNull int user_id, String name, String course_code, String address, String nic) {
+    public Student(@NotNull int indexNumber, @NotBlank String registrationNumber, @NotNull int userId, String name, String course_code, String address, String nic) {
         this.indexNumber = indexNumber;
         this.registrationNumber = registrationNumber;
-        this.user_id = user_id;
+        this.userId = userId;
         this.name = name;
         this.course_code = course_code;
         this.address = address;
@@ -62,12 +62,12 @@ public class Student {
         this.registrationNumber = registrationNumber;
     }
 
-    public int getUser_id() {
-        return user_id;
+    public int getUserId() {
+        return userId;
     }
 
-    public void setUser_id(int user_id) {
-        this.user_id = user_id;
+    public void setUserId(int userId) {
+        this.userId = userId;
     }
 
     public String getName() {

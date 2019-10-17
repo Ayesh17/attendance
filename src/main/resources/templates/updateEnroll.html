@@ -12,7 +12,7 @@
     <link href="../static/css/bootstrap.css" rel="stylesheet" th:href="@{/css/bootstrap.css}"/>
     <!-- End of Nav Bar header code-->
 
-    <link rel="stylesheet" type="text/css" href="static/css/edit.css" th:href="@{/css/edit.css}">
+    <link rel="stylesheet" type="text/css" href="static/css/enroll.css" th:href="@{/css/enroll.css}">
     <meta charset="UTF-8">
     <title>Update Enroll</title>
 </head>
@@ -58,23 +58,14 @@
                 <tr>
                     <td>Student:</td>
                     <td>
-                        <select th:field="*{index_number}">
+                        <select th:field="*{user_id}">
                             <option value="">Choose..</option>
-                            <option th:each="student: ${students}" th:value="${student.indexNumber}"
+                            <option th:each="student: ${students}" th:value="${student.user_id}"
                                     th:text="${student.name}"/>
                         </select>
                     </td>
                 </tr>
-                <tr>
-                    <td>Subject:</td>
-                    <td>
-                        <select th:field="*{subject_code}">
-                            <option value="">Choose..</option>
-                            <option th:each="subject: ${subjects}" th:value="${subject.subject_code}"
-                                    th:text="${subject.name}"/>
-                        </select>
-                    </td>
-                </tr>
+
                 <tr>
                     <td>Year:</td>
                     <td>
@@ -88,6 +79,116 @@
                         </select>
                     </td>
 
+                </tr>
+
+                <tr>
+                    <td>Semester:</td>
+                    <td>
+                        <select th:field="*{semester}">
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+
+                        </select>
+                    </td>
+
+                </tr>
+
+                <tr>
+                    <td>Subjects:</td>
+
+                </tr>
+
+                <tr>
+                    <td>
+                        <select th:field="*{subject_code}">
+                            <option value=""></option>
+                            <option th:each="subject: ${subjects}" th:value="${subject.subject_code}"
+                                    th:text="${subject.name}"/>
+                        </select>
+                    </td>
+                    <td>
+                        <select th:field="*{subject_code}">
+                            <option value=""></option>
+                            <option th:each="subject: ${subjects}" th:value="${subject.subject_code}"
+                                    th:text="${subject.name}"/>
+                        </select>
+                    </td>
+                    <td>
+                        <select th:field="*{subject_code}">
+                            <option value=""></option>
+                            <option th:each="subject: ${subjects}" th:value="${subject.subject_code}"
+                                    th:text="${subject.name}"/>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <select th:field="*{subject_code}">
+                            <option value=""></option>
+                            <option th:each="subject: ${subjects}" th:value="${subject.subject_code}"
+                                    th:text="${subject.name}"/>
+                        </select>
+                    </td>
+                    <td>
+                        <select th:field="*{subject_code}">
+                            <option value=""></option>
+                            <option th:each="subject: ${subjects}" th:value="${subject.subject_code}"
+                                    th:text="${subject.name}"/>
+                        </select>
+                    </td>
+                    <td>
+                        <select th:field="*{subject_code}">
+                            <option value=""></option>
+                            <option th:each="subject: ${subjects}" th:value="${subject.subject_code}"
+                                    th:text="${subject.name}"/>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <select th:field="*{subject_code}">
+                            <option value=""></option>
+                            <option th:each="subject: ${subjects}" th:value="${subject.subject_code}"
+                                    th:text="${subject.name}"/>
+                        </select>
+                    </td>
+                    <td>
+                        <select th:field="*{subject_code}">
+                            <option value=""></option>
+                            <option th:each="subject: ${subjects}" th:value="${subject.subject_code}"
+                                    th:text="${subject.name}"/>
+                        </select>
+                    </td>
+                    <td>
+                        <select th:field="*{subject_code}">
+                            <option value=""></option>
+                            <option th:each="subject: ${subjects}" th:value="${subject.subject_code}"
+                                    th:text="${subject.name}"/>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <select th:field="*{subject_code}">
+                            <option value=""></option>
+                            <option th:each="subject: ${subjects}" th:value="${subject.subject_code}"
+                                    th:text="${subject.name}"/>
+                        </select>
+                    </td>
+                    <td>
+                        <select th:field="*{subject_code}">
+                            <option value=""></option>
+                            <option th:each="subject: ${subjects}" th:value="${subject.subject_code}"
+                                    th:text="${subject.name}"/>
+                        </select>
+                    </td>
+                    <td>
+                        <select th:field="*{subject_code}">
+                            <option value=""></option>
+                            <option th:each="subject: ${subjects}" th:value="${subject.subject_code}"
+                                    th:text="${subject.name}"/>
+                        </select>
+                    </td>
                 </tr>
                 <tr>
                     <td colspan="2">
