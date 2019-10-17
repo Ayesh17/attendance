@@ -5,7 +5,7 @@ import javax.persistence.*;
 
 
 @Entity
-@Table(name="subjects")
+@Table(name="recordsbysubjects")
 @EntityListeners(AuditingEntityListener.class)
 
 public class RecordsBySubject {

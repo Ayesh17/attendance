@@ -66,6 +66,8 @@ public class EnrollController {
                     enroll.setName(name);
 
                 }
+               // String str=enrollDetails.get(i).getSubject_code();
+                //System.out.println(str);
                 enrollDAO.save(enroll);
             }
 
@@ -87,7 +89,6 @@ public class EnrollController {
         mav.addObject("students", studentDetails);
         List<Subject> subjectDetails = subjectDAO.findAll();
         mav.addObject("subjects",subjectDetails);
-
 
         return  mav;
     }

@@ -14,17 +14,13 @@ public class Subject {
     private Long id;
     private String subject_code;
     private String name;
-    private String hall_code;
-    private String course_code;
 
     public Subject() {
     }
 
-    public Subject(String subject_code, String name, String hall_code, String course_code) {
+    public Subject(String subject_code, String name) {
         this.subject_code = subject_code;
         this.name = name;
-        this.hall_code = hall_code;
-        this.course_code = course_code;
     }
 
     public Long getId() {
@@ -51,19 +47,4 @@ public class Subject {
         this.name = name;
     }
 
-    public String getHall_code() {
-        return hall_code;
-    }
-
-    public void setHall_code(String hall_code) {
-        this.hall_code = hall_code;
-    }
-
-    public String getCourse_code() {
-        return course_code;
-    }
-
-    public void setCourse_code(String course_code) {
-        this.course_code = course_code;
-    }
 }
