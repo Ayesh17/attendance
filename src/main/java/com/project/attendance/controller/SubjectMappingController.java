@@ -65,7 +65,7 @@ public class SubjectMappingController {
     }
 
     @RequestMapping("/subjectMapping/edit/{id}")
-    public ModelAndView updateSubjcetMapping(@PathVariable(name="id")Long id){
+    public ModelAndView updateSubjectMapping(@PathVariable(name="id")Long id){
         ModelAndView mav=new ModelAndView(("updateSubjectMapping"));
 
         SubjectMapping subjectMapping = subjectMappingDAO.findById(id);
@@ -73,6 +73,8 @@ public class SubjectMappingController {
 
         List<Subject> subjectDetail = subjectDAO.findAll();
         mav.addObject("subjects", subjectDetail);
+        List<StudentGroup> studentGroupDetail = studentGroupDAO.findAll();
+        mav.addObject("studentGroups", studentGroupDetail);
         List<Course> courseDetail = courseDAO.findAll();
         mav.addObject("courses", courseDetail);
         List<LectureHall> lectureHallDetail = lectureHallDAO.findAll();

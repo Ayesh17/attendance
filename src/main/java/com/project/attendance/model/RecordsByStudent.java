@@ -19,6 +19,7 @@ public class RecordsByStudent {
     private String subject;
     private String days;
     private int count;
+    private String timeStamp;
 
     public RecordsByStudent() {
     }
@@ -30,6 +31,16 @@ public class RecordsByStudent {
         this.subject = subject;
         this.days = days;
         this.count = count;
+    }
+
+    public RecordsByStudent(int userId, int year, int semester, String subject, String days, int count, String timeStamp) {
+        this.userId = userId;
+        this.year = year;
+        this.semester = semester;
+        this.subject = subject;
+        this.days = days;
+        this.count = count;
+        this.timeStamp = timeStamp;
     }
 
     public Long getId() {
@@ -86,5 +97,13 @@ public class RecordsByStudent {
 
     public void setUserId(int userId) {
         this.userId = userId;
+    }
+
+    public String getTimeStamp() {
+        return timeStamp;
+    }
+
+    public void setTimeStamp(String timeStamp) {
+        this.timeStamp = timeStamp;
     }
 }

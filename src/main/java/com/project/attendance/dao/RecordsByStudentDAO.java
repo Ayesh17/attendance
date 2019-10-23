@@ -13,6 +13,10 @@ public class RecordsByStudentDAO {
     @Autowired
     RecordsByStudentRepository recordsByStudentRepository;
 
+    //to save all
+    public void saveAll(List<RecordsByStudent> recordsByStudents){
+        recordsByStudentRepository.saveAll(recordsByStudents);
+    }
     //to save
     public RecordsByStudent save(RecordsByStudent recordsByStudent){
         return recordsByStudentRepository.save(recordsByStudent);

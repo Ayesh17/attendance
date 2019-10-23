@@ -17,6 +17,7 @@ public class SubjectMapping {
     private String courseCode;
     private String hallCode;
     private String groupCode;
+    private String day;
     private int start;
     private int end;
     private int year;
@@ -25,11 +26,12 @@ public class SubjectMapping {
     public SubjectMapping() {
     }
 
-    public SubjectMapping(String subjectCode, String courseCode, String hallCode, String groupCode, int start, int end, int year, int semester) {
+    public SubjectMapping(String subjectCode, String courseCode, String hallCode, String groupCode, String day, int start, int end, int year, int semester) {
         this.subjectCode = subjectCode;
         this.courseCode = courseCode;
         this.hallCode = hallCode;
         this.groupCode = groupCode;
+        this.day = day;
         this.start = start;
         this.end = end;
         this.year = year;
@@ -106,5 +108,13 @@ public class SubjectMapping {
 
     public void setGroupCode(String groupCode) {
         this.groupCode = groupCode;
+    }
+
+    public String getDay() {
+        return day;
+    }
+
+    public void setDay(String day) {
+        this.day = day;
     }
 }

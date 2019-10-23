@@ -30,6 +30,10 @@ public class SubjectMappingDAO {
         return subjectMappingRepository.findById(id).orElse(null);
     }
 
+    //to search all subjects
+    public List<SubjectMapping> getSubjectDetails(String subjectCode){
+        return subjectMappingRepository.getSubjectMappingBySubjectCode(subjectCode);
+    }
 
     //delete a subject
     public void delete(Long id){

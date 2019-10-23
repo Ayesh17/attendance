@@ -58,7 +58,7 @@ public class SubjectController {
     }
 
     @RequestMapping("/subject/edit/{id}")
-    public ModelAndView updateSubjcet(@PathVariable(name="id")Long id){
+    public ModelAndView updateSubject(@PathVariable(name="id")Long id){
         ModelAndView mav=new ModelAndView(("updateSubject"));
 
         Subject subject=subjectDAO.findById(id);
