@@ -32,6 +32,8 @@ public class RecordsByStudentDAO {
         return recordsByStudentRepository.findById(id).orElse(null);
     }
 
+    //get by userId
+    public List<RecordsByStudent> getByUserId(int userId,int year,int semester){return  recordsByStudentRepository.getRecordsByUserIdAndYearAndSemester(userId,year,semester);}
 
     //delete
     public void delete(Long id){

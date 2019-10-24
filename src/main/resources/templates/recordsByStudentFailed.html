@@ -12,9 +12,9 @@
     <link href="../static/css/bootstrap.css" rel="stylesheet" th:href="@{/css/bootstrap.css}"/>
     <!-- End of Nav Bar header code-->
 
-    <link rel="stylesheet" type="text/css" href="static/css/add.css" th:href="@{/css/add.css}">
+    <link rel="stylesheet" type="text/css" href="static/css/showRecords.css" th:href="@{/css/showRecords.css}">
     <meta charset="UTF-8">
-    <title>Adding a Record</title>
+    <title>Records Student View</title>
 </head>
 
 <body>
@@ -34,7 +34,7 @@
             </div>
             <div id="navbar" class="navbar-collapse collapse">
                 <ul class="nav navbar-nav navbar-right">
-                    <li class="active"><a href="../records-student/">Back</a></li>
+                    <li class="active"><a href="../records-student/new">Back</a></li>
                     <li class="active"><a href="../admin/">Home</a></li>
                     <li><a href="#">About</a></li>
                     <li><a href="#">Contact</a></li>
@@ -44,59 +44,11 @@
     </nav>
 </div>
 <!-- End of Nav Bar body code-->
-<h1>View Record</h1>
 
+<h1>Records Student View</h1>
 <div class="container" style="margin-top:30px">
-    <img src="static/img/books.jpeg" th:src="@{/img/books.jpeg}"/>
-
-    <div class="container2">
-        <form action="#" th:action="@{/records-student/save}" th:object="${recordsByStudent}" method="post">
-            <table border="0" cell[adding="10">
-
-                <tr>
-                    <td>Student</td>
-                    <td>
-                        <select th:field="*{userId}">
-                            <option th:each="student: ${students}" th:value="${student.userId}" th:text="${student.name}"/>
-                        </select>
-                    </td>
-                </tr>
-
-                <tr>
-                    <td>Year:</td>
-                    <td>
-                        <select th:field="*{year}">
-                            <option value="2015">2015</option>
-                            <option value="2016">2016</option>
-                            <option value="2017">2017</option>
-                            <option value="2018">2018</option>
-                            <option value="2019">2019</option>
-                            <option value="2020">2020</option>
-                        </select>
-                    </td>
-
-                </tr>
-                <tr>
-                    <td>Semester:</td>
-                    <td>
-                        <select th:field="*{semester}">
-                            <option value="1">Semester 1</option>
-                            <option value="2">Semester 2</option>
-                        </select>
-                    </td>
-                </tr>
-
-                <tr>
-                    <td colspan="2">
-                        <button type="submit" class="btn btn-primary">Show</button>
-                    </td>
-                </tr>
-            </table>
-
-        </form>
-    </div>
-
-
+    <br><br>
+    <h1>Sorry student not registered for any subjects in the selected semester </h1>
 </div>
 
 

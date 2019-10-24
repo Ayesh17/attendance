@@ -10,7 +10,9 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import javax.servlet.http.HttpServletRequest;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -50,7 +52,9 @@ public class RecordsByStudentController {
         return "addRecordsByStudent";
     }
 
-    @RequestMapping("/records-student/show/{id}")
+
+
+    /*@RequestMapping("/records-student/show/{id}")
     public ModelAndView showRecordsByStudent(@PathVariable(name = "id") Long id) {
         ModelAndView mav = new ModelAndView(("showRecordsByStudent"));
 
@@ -139,11 +143,11 @@ public class RecordsByStudentController {
         //mav.addObject("recordsbystudent", recordsByStudentList);
 
         return mav;
-    }
+    }*/
 
 
     @RequestMapping(value = "/records-student/save", method = RequestMethod.POST)
-    public String saveRecordsByStudent(@ModelAttribute("recordsByStudent") RecordsByStudent recordsByStudent) {
+    public String saveRecordsByStudent(@ModelAttribute("recordsByStudent") RecordsByStudent recordsByStudent,HttpServletRequest request) {
         int userId = recordsByStudent.getUserId();
         int year = recordsByStudent.getYear();
         int semester = recordsByStudent.getSemester();
@@ -663,9 +667,35 @@ public class RecordsByStudentController {
 
 
         }
+        if(recordsByStudentList.isEmpty()){
+            System.out.println("Empty List");
+            return "recordsByStudentFailed";
+        }else {
 
-        recordsByStudentDAO.saveAll(recordsByStudentList);
-        return "redirect:/records-student";
+            try {
+                recordsByStudentDAO.saveAll(recordsByStudentList);
+            } catch (Exception ex) {
+                System.out.println(ex);
+
+            }
+            request.setAttribute("userId", userId);
+            request.setAttribute("year", year);
+            request.setAttribute("semester", semester);
+            //System.out.println("hey1.1 "+userId);
+
+            return "forward:/records-student/show";
+        }
+    }
+
+    @RequestMapping("/records-student/show")
+    public String showRecordsByStudent(Model model, HttpServletRequest request) {
+       // System.out.println("hey1.2 "+request.getAttribute("userId"));
+        int userId = (int) request.getAttribute("userId");
+        int year = (int) request.getAttribute("year");
+        int semester = (int) request.getAttribute("semester");
+        List<RecordsByStudent> recordsByStudentDetails = recordsByStudentDAO.getByUserId(userId,year,semester);
+        model.addAttribute("recordsByStudentDetails", recordsByStudentDetails);
+        return "showRecordsByStudent";
     }
 
     @RequestMapping("/records-student/edit/{id}")

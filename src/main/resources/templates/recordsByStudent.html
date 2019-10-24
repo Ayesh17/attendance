@@ -1,16 +1,17 @@
+<!--
 <!DOCTYPE html>
 <html xmlns:th="https://www.thymeleaf.org">
 <head>
-    <!-- Nav Bar header code-->
+
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
     <meta name="viewport" content="width=device-width, initial-scale=1"/>
-    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+
     <link rel="icon" href="../../favicon.ico"/>
 
-    <!-- Bootstrap core CSS -->
+
     <link href="../static/css/bootstrap.css" rel="stylesheet" th:href="@{/css/bootstrap.css}"/>
-    <!-- End of Nav Bar header code-->
+
 
     <link rel="stylesheet" type="text/css" href="static/css/view.css" th:href="@{/css/view.css}">
     <meta charset="UTF-8">
@@ -18,9 +19,9 @@
 </head>
 
 <body>
-<!-- Nav Bar body code-->
+
 <div class="containerr">
-    <!-- Static navbar -->
+
     <nav class="navbar navbar-default">
         <div class="container-fluid">
             <div class="navbar-header">
@@ -38,11 +39,11 @@
                     <li><a href="#">About</a></li>
                     <li><a href="#">Contact</a></li>
                 </ul>
-            </div><!--/.nav-collapse -->
-        </div><!--/.container-fluid -->
+            </div>
+        </div>
     </nav>
 </div>
-<!-- End of Nav Bar body code-->
+
 
 <h1>Records Student View</h1>
 <a href="../records-student/new"><h2>Add a new Record</h2></a>
@@ -65,9 +66,6 @@
             <td th:text="${record.year}">Year</td>
             <td th:text="${record.semester}">Semester</td>
 
-            <td>
-                <a th:href="@{'/records-student/show/' + ${record.id}}">Show</a>
-            </td>
 
             <td>
                 <a th:href="@{'/records-student/edit/' + ${record.id}}">Edit</a>
@@ -82,11 +80,10 @@
 </div>
 
 
-<!-- Bootstrap core JavaScript
-================================================== -->
-<!-- Placed at the end of the document so the pages load faster -->
+
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 <script src="../static/js/bootstrap.js" th:href="@{/js/bootstrap.js}"></script>
-<!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+
 </body>
 </html>
+-->
