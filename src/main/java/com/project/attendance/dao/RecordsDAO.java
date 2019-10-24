@@ -26,6 +26,10 @@ public class RecordsDAO {
         return recordsRepository.findById(id).orElse(null);
     }
 
+    //get a subject by id
+    public List<Records> getTimestamp (String day, int start, int end){
+        return recordsRepository.getRecordsByDayAndTimeGreaterThanEqualAndTimeLessThanEqual(day,start,end);
+    }
 
     //delete a subject
     public void delete(Long id){

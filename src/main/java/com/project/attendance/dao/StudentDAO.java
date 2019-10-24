@@ -28,6 +28,11 @@ public class StudentDAO {
         return studentRepository.findById(id).orElse(null);
     }
 
+    //get a student by id
+    public List<Student> findByUserId(int userId){
+        return studentRepository.findByUserId(userId);
+    }
+
 
     //delete a student
     public void delete(Long id){

@@ -1,9 +1,7 @@
 package com.project.attendance.dao;
 
 import com.project.attendance.model.Enroll;
-import com.project.attendance.model.Machine;
 import com.project.attendance.repository.EnrollRepository;
-import com.project.attendance.repository.MachineRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -23,6 +21,11 @@ public class EnrollDAO {
     //to search all enroll records
     public List<Enroll> findAll(){
         return enrollRepository.findAll();
+    }
+
+    //to search all enroll records
+    public List<Enroll> getSubjects(int userId, int year, int semester){
+        return enrollRepository.getEnrollByUserIdAndYearAndSemester(userId, year, semester);
     }
 
     //get an enroll record by id

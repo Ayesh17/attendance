@@ -60,25 +60,7 @@
                     <td>Subject Name:</td>
                     <td><input type="text" th:field="*{name}"/></td>
                 </tr>
-                <tr>
-                    <td>Course:</td>
-                    <td>
-                        <select th:field="*{course_code}">
-                            <option value="">Choose..</option>
-                            <option th:each="course: ${courses}" th:value="${course.code}" th:text="${course.name}"/>
-                        </select>
-                    </td>
-                </tr>
-                <tr>
-                    <td>Lecture Hall:</td>
-                    <td>
-                        <select th:field="*{hall_code}">
-                            <option value="">Choose..</option>
-                            <option th:each="hall: ${lectureHalls}" th:value="${hall.hall_code}"
-                                    th:text="${hall.name}"/>
-                        </select>
-                    </td>
-                </tr>
+
                 <tr>
                     <td colspan="2">
                         <button type="submit" class="btn btn-primary">Save</button>

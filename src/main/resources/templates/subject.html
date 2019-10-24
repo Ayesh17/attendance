@@ -54,8 +54,6 @@
         <tr>
             <th>Subject Code</th>
             <th>Name</th>
-            <th>Course</th>
-            <th>Hall</th>
             <th></th>
             <th></th>
         </tr>
@@ -64,8 +62,7 @@
         <tr th:each="subject : ${subjectDetails}">
             <td th:text="${subject.subject_code}">Code</td>
             <td th:text="${subject.name}">Name</td>
-            <td th:text="${subject.course_code}">Course</td>
-            <td th:text="${subject.hall_code}">Hall</td>
+
             <td>
                 <a th:href="@{'/subject/edit/' + ${subject.id}}">Edit</a>
             </td>
