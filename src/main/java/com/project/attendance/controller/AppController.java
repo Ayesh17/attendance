@@ -14,6 +14,7 @@ public class AppController {
         return "index";
     }
 
+
     @RequestMapping("/default")
     public String defaultAfterLogin(HttpServletRequest request) {
         if (request.isUserInRole("ADMIN")) {
