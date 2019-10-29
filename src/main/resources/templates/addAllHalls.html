@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html xmlns:th="https://www.thymeleaf.org" xmlns="http://www.w3.org/1999/html">
+<html xmlns:th="https://www.thymeleaf.org">
 <head>
     <!-- Nav Bar header code-->
     <meta charset="utf-8">
@@ -12,11 +12,10 @@
     <link href="../static/css/bootstrap.css" rel="stylesheet" th:href="@{/css/bootstrap.css}"/>
     <!-- End of Nav Bar header code-->
 
-    <link rel="stylesheet" type="text/css" href="static/css/view.css" th:href="@{/css/view.css}">
+    <link rel="stylesheet" type="text/css" href="static/css/add.css" th:href="@{/css/add.css}">
     <meta charset="UTF-8">
-    <title>Lecturer Details</title>
+    <title>Uploadig a CSV File</title>
 </head>
-
 <body>
 <!-- Nav Bar body code-->
 <div class="containerr">
@@ -34,6 +33,7 @@
             </div>
             <div id="navbar" class="navbar-collapse collapse">
                 <ul class="nav navbar-nav navbar-right">
+                    <li class="active"><a href="../course/">Back</a></li>
                     <li class="active"><a href="../admin/">Home</a></li>
                     <li><a href="#">About</a></li>
                     <li><a href="#">Contact</a></li>
@@ -44,36 +44,19 @@
 </div>
 <!-- End of Nav Bar body code-->
 
-<h1>Lecturer Details</h1>
-<a href="../lecturer/new"><h2>Register a Lecturer</h2></a>
-<a href="../lecturer/csv"><h2>Upload a CSV File</h2></a>
+<h1>Upload CSV File</h1>
+
 <div class="container" style="margin-top:30px">
-    <br><br>
-    <table border="1">
-        <thead>
-        <tr>
-            <th>Name</th>
-            <th>Code</th>
-            <th></th>
-            <th></th>
-        </tr>
-        </thead>
-        <tbody>
-        <tr th:each="lecturer : ${lecturerDetails}">
-            <td th:text="${lecturer.name}">Id</td>
-            <td th:text="${lecturer.code}">Code</td>
+    <img src="static/img/books.jpeg" th:src="@{/img/books.jpeg}"/>
 
-            <td>
-                <a th:href="@{'/lecturer/edit/' + ${lecturer.id}}">Edit</a>
-            </td>
-            <td>
-                <a th:href="@{'/lecturer/delete/' + ${lecturer.id}}">Delete</a>
-            </td>
+    <div class="container2">
+        <form method="POST" action="/hall/upload" enctype="multipart/form-data">
+            <input type="file" name="file" /><br />
+            <br /> <input type="submit" value="Submit" />
+        </form>
+    </div>
 
 
-        </tr>
-        </tbody>
-    </table>
 </div>
 
 <!-- Bootstrap core JavaScript
@@ -84,3 +67,4 @@
 <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
 </body>
 </html>
+

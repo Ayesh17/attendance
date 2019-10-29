@@ -18,6 +18,11 @@ public class MachineDAO {
         return machineRepository.save(machine);
     }
 
+    //to save all
+    public void saveAll(List<Machine> machine){
+        machineRepository.saveAll(machine);
+    }
+
     //to search all machines
     public List<Machine> findAll(){
         return machineRepository.findAll();
