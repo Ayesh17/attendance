@@ -12,11 +12,10 @@
     <link href="../static/css/bootstrap.css" rel="stylesheet" th:href="@{/css/bootstrap.css}"/>
     <!-- End of Nav Bar header code-->
 
-    <link rel="stylesheet" type="text/css" href="static/css/view.css" th:href="@{/css/view.css}">
+    <link rel="stylesheet" type="text/css" href="static/css/add.css" th:href="@{/css/add.css}">
     <meta charset="UTF-8">
-    <title>Machine Mapping Details</title>
+    <title>Uploadig a CSV File</title>
 </head>
-
 <body>
 <!-- Nav Bar body code-->
 <div class="containerr">
@@ -34,6 +33,7 @@
             </div>
             <div id="navbar" class="navbar-collapse collapse">
                 <ul class="nav navbar-nav navbar-right">
+                    <li class="active"><a href="../course/">Back</a></li>
                     <li class="active"><a href="../admin/">Home</a></li>
                     <li><a href="#">About</a></li>
                     <li><a href="#">Contact</a></li>
@@ -44,35 +44,19 @@
 </div>
 <!-- End of Nav Bar body code-->
 
-<h1>Machine Mapping Details</h1>
-<a href="../machineMapping/new"><h2>Add a new Machine Mapping</h2></a>
-<a href="../machineMapping/csv"><h2>Upload a CSV File</h2></a>
+<h1>Upload CSV File</h1>
+
 <div class="container" style="margin-top:30px">
-    <br><br>
-    <table border="1">
-        <thead>
-        <tr>
-            <th>Machine Code</th>
-            <th>Lecture Hall</th>
-            <th></th>
-            <th></th>
-        </tr>
-        </thead>
-        <tbody>
-        <tr th:each="machineMapping : ${machineMappingDetails}">
-            <td th:text="${machineMapping.machine_code}">Code</td>
-            <td th:text="${machineMapping.hall_code}">Hall</td>
-            <td>
-                <a th:href="@{'/machineMapping/edit/' + ${machineMapping.id}}">Edit</a>
-            </td>
-            <td>
-                <a th:href="@{'/machineMapping/delete/' + ${machineMapping.id}}">Delete</a>
-            </td>
+    <img src="static/img/books.jpeg" th:src="@{/img/books.jpeg}"/>
+
+    <div class="container2">
+        <form method="POST" action="/enroll/upload" enctype="multipart/form-data">
+            <input type="file" name="file" /><br />
+            <br /> <input type="submit" value="Submit" />
+        </form>
+    </div>
 
 
-        </tr>
-        </tbody>
-    </table>
 </div>
 
 <!-- Bootstrap core JavaScript
@@ -83,3 +67,4 @@
 <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
 </body>
 </html>
+

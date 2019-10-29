@@ -18,6 +18,11 @@ public class EnrollDAO {
         return enrollRepository.save(enroll);
     }
 
+    //to save all
+    public void saveAll(List<Enroll> enroll){
+        enrollRepository.saveAll(enroll);
+    }
+
     //to search all enroll records
     public List<Enroll> findAll(){
         return enrollRepository.findAll();
