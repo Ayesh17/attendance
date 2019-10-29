@@ -1,16 +1,19 @@
-package com.project.attendance.model;
+package com.project.attendance.util;
 
 import java.io.*;
+import java.nio.file.Path;
 import java.util.*;
 
 import com.opencsv.CSVReader;
 import com.opencsv.bean.CsvToBean;
 import com.opencsv.bean.HeaderColumnNameTranslateMappingStrategy;
+import com.project.attendance.model.Subject;
 
-public class csvtobean {
-    public static List<Subject> main(String[] args)
+public class SubjectsCSV {
+    public static List<Subject> main(Path[] args)
     {
 
+        Path path=args[0];
         // Hashmap to map CSV data to
         // Bean attributes.
         Map<String, String> mapping = new
@@ -29,7 +32,7 @@ public class csvtobean {
         CSVReader csvReader = null;
         try {
             csvReader = new CSVReader(new FileReader
-                    ("F:\\subjects.csv"));
+                    (String.valueOf(path)));
         }
         catch (FileNotFoundException e) {
 

@@ -57,7 +57,7 @@
             <th>Address</th>
             <th>NIC</th>
             <th>Course</th>
-            <th>user_id</th>
+            <th>User ID</th>
             <th></th>
             <th></th>
         </tr>
@@ -69,7 +69,7 @@
             <td th:text="${student.address}">Address</td>
             <td th:text="${student.nic}">NIC</td>
             <td th:text="${student.course_code}">course</td>
-            <td th:text="${student.user_id}">user_id</td>
+            <td th:text="${student.userId}">user_id</td>
             <td>
                 <a th:href="@{'/student/edit/' + ${student.id}}">Edit</a>
             </td>
