@@ -19,6 +19,11 @@ public class LecturerDAO {
         return lecturerRepository.save(lecturer);
     }
 
+    //to save all
+    public void saveAll(List<Lecturer> lecturer){
+        lecturerRepository.saveAll(lecturer);
+    }
+
     //to search all students
     public List<Lecturer > findAll(){
         return lecturerRepository.findAll();

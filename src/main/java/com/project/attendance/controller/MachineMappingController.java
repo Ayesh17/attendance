@@ -6,15 +6,21 @@ import com.project.attendance.dao.MachineMappingDAO;
 import com.project.attendance.model.LectureHall;
 import com.project.attendance.model.Machine;
 import com.project.attendance.model.MachineMapping;
+import com.project.attendance.util.MachineMappingsCSV;
+import com.project.attendance.util.MachinesCSV;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import javax.servlet.http.HttpServletRequest;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.List;
 
 @Controller
@@ -79,4 +85,52 @@ public class MachineMappingController {
         return "redirect:/machineMapping";
     }
 
+    //Save the uploaded file to this folder
+    private static String UPLOADED_FOLDER = "F:\\upload\\";
+
+    @PostMapping("/machineMapping/upload") // //new annotation since 4.3
+    public String machineMappingCSVUpload(@RequestParam("file") MultipartFile file, HttpServletRequest request,
+                                   RedirectAttributes redirectAttributes) {
+
+        if (file.isEmpty()) {
+            redirectAttributes.addFlashAttribute("message", "Please select a file to upload");
+            return "redirect:/machineMapping/csv";
+        }
+
+        try {
+            // Get the file and save it somewhere
+            byte[] bytes = file.getBytes();
+            Path path = Paths.get(UPLOADED_FOLDER + file.getOriginalFilename());
+            Files.write(path, bytes);
+            request.setAttribute("path", path);
+
+            redirectAttributes.addFlashAttribute("message",
+                    "You successfully uploaded '" + file.getOriginalFilename() + "'");
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+
+        return "forward:/machineMapping/saveAll";
+    }
+
+
+
+    @RequestMapping(value="/machineMapping/saveAll",method= RequestMethod.POST)
+    public String saveAllMachineMappings(@ModelAttribute("machine") MachineMapping machineMapping, HttpServletRequest request){
+        Path path = (Path) request.getAttribute("path");
+        MachineMappingsCSV csv=new MachineMappingsCSV();
+        Path[] args={path} ;
+        List<MachineMapping> list = MachineMappingsCSV.main(args);
+        machineMappingDAO.saveAll(list);
+        return  "redirect:/machineMapping";
+    }
+
+    @RequestMapping("/machineMapping/csv")
+    public String view(Model model){
+        List<MachineMapping> machineMappingsDetails= machineMappingDAO.findAll();
+        model.addAttribute("machineMappingsDetails",machineMappingsDetails);
+        return "addAllMachineMappings";
+    }
 }

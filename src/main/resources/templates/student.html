@@ -47,6 +47,7 @@
 <h1>Student Details</h1>
 
 <a href="../student/new"><h2>Register a Student</h2></a>
+<a href="../student/csv"><h2>Upload a CSV File</h2></a>
 <div class="container" style="margin-top:30px">
     <br><br>
     <table border="1">
@@ -57,7 +58,7 @@
             <th>Address</th>
             <th>NIC</th>
             <th>Course</th>
-            <th>user_id</th>
+            <th>User ID</th>
             <th></th>
             <th></th>
         </tr>
@@ -69,7 +70,7 @@
             <td th:text="${student.address}">Address</td>
             <td th:text="${student.nic}">NIC</td>
             <td th:text="${student.course_code}">course</td>
-            <td th:text="${student.user_id}">user_id</td>
+            <td th:text="${student.userId}">user_id</td>
             <td>
                 <a th:href="@{'/student/edit/' + ${student.id}}">Edit</a>
             </td>

@@ -18,6 +18,11 @@ public class MachineMappingDAO {
         return machineMappingRepository.save(machineMapping);
     }
 
+    //to save all
+    public void saveAll(List<MachineMapping> machineMapping){
+        machineMappingRepository.saveAll(machineMapping);
+    }
+
     //to search all machines
     public List<MachineMapping> findAll(){
         return machineMappingRepository.findAll();

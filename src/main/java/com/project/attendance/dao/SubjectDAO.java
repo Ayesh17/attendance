@@ -19,6 +19,11 @@ public class SubjectDAO {
         return subjectRepository.save(subject);
     }
 
+    //to save all
+    public void saveAll(List<Subject> subject){
+        subjectRepository.saveAll(subject);
+    }
+
     //to search all subjects
     public List<Subject> findAll(){
         return subjectRepository.findAll();

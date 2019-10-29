@@ -18,6 +18,11 @@ public class LectureHallDAO {
         return lectureHallRepository.save(lectureHall);
     }
 
+    //to save all
+    public void saveAll(List<LectureHall> lectureHall){
+        lectureHallRepository.saveAll(lectureHall);
+    }
+
     //to search all lecture halls
     public List<LectureHall> findAll(){
         return lectureHallRepository.findAll();

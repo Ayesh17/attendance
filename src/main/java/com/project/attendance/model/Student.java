@@ -16,7 +16,7 @@ public class Student {
     private Long id;
     @NotNull
     private int indexNumber;
-    @NotBlank
+
     private String registrationNumber;
     @NotNull
     private int userId;

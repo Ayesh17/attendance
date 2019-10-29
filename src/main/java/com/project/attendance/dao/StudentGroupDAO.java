@@ -18,6 +18,11 @@ public class StudentGroupDAO {
         return studentGroupRepository.save(studentGroup);
     }
 
+    //to save all
+    public void saveAll(List<StudentGroup> studentGroup){
+        studentGroupRepository.saveAll(studentGroup);
+    }
+
     //to search all subjects
     public List<StudentGroup> findAll(){
         return studentGroupRepository.findAll();

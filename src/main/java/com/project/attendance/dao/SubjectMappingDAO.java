@@ -20,6 +20,11 @@ public class SubjectMappingDAO {
         return subjectMappingRepository.save(subjectMapping);
     }
 
+    //to save all
+    public void saveAll(List<SubjectMapping> subjectMapping){
+        subjectMappingRepository.saveAll(subjectMapping);
+    }
+
     //to search all subjects
     public List<SubjectMapping> findAll(){
         return subjectMappingRepository.findAll();
