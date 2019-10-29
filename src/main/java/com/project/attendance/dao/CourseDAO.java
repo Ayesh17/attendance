@@ -20,6 +20,11 @@ public class CourseDAO {
         return courseRepository.save(course);
     }
 
+    //to save all
+    public void saveAll(List<Course> course){
+        courseRepository.saveAll(course);
+    }
+
     //to search all courses
     public List<Course> findAll(){
         return courseRepository.findAll();

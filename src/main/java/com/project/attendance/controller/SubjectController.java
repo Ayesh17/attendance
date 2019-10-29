@@ -7,7 +7,6 @@ package com.project.attendance.controller;
         import com.project.attendance.model.LectureHall;
         import com.project.attendance.model.Subject;
         import com.project.attendance.util.SubjectsCSV;
-        import com.project.attendance.repository.SubjectRepository;
         import org.springframework.beans.factory.annotation.Autowired;
         import org.springframework.stereotype.Controller;
         import org.springframework.ui.Model;
@@ -34,30 +33,19 @@ public class SubjectController {
     @Autowired
     private LectureHallDAO lectureHallDAO;
 
-    private final SubjectRepository subjectRepository;
 
-
-
-    public SubjectController(SubjectRepository subjectRepository) {
-        this.subjectRepository = subjectRepository;
-    }
 
 
     //Save the uploaded file to this folder
     private static String UPLOADED_FOLDER = "F:\\upload\\";
 
-    @GetMapping("/sub")
-    public String index() {
-        return "addAllSubject";
-    }
-
-    @PostMapping("/upload") // //new annotation since 4.3
+    @PostMapping("/subject/upload") // //new annotation since 4.3
     public String singleFileUpload(@RequestParam("file") MultipartFile file, HttpServletRequest request,
                                    RedirectAttributes redirectAttributes) {
 
         if (file.isEmpty()) {
             redirectAttributes.addFlashAttribute("message", "Please select a file to upload");
-            return "redirect:uploadStatus";
+            return "redirect:subject/csv";
         }
 
         try {
@@ -78,12 +66,6 @@ public class SubjectController {
         return "forward:/subject/saveAll";
     }
 
-    @GetMapping("/uploadStatus")
-    public String uploadStatus() {
-        System.out.println("error");
-        return "uploadStatus";
-    }
-
     @RequestMapping(value="/subject/saveAll",method= RequestMethod.POST)
     public String saveAllSubjects(@ModelAttribute("subject") Subject subject, HttpServletRequest request){
         Path path = (Path) request.getAttribute("path");
@@ -94,6 +76,12 @@ public class SubjectController {
         return  "redirect:/subject";
     }
 
+    @RequestMapping("/subject/csv")
+    public String view(Model model){
+        List<Subject> subjectDetails= subjectDAO.findAll();
+        model.addAttribute("subjectDetails",subjectDetails);
+        return "addAllSubjects";
+    }
 
     @RequestMapping("/subject")
     public String viewHomePage(Model model){
@@ -102,12 +90,7 @@ public class SubjectController {
         return "subject";
     }
 
-    @RequestMapping("/subject/csv")
-    public String view(Model model){
-        List<Subject> subjectDetails= subjectDAO.findAll();
-        model.addAttribute("subjectDetails",subjectDetails);
-        return "addAllSubject";
-    }
+
 
     @RequestMapping("/subject/new")
     public String addSubject(Model model){
