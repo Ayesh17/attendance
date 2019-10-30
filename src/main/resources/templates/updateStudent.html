@@ -75,7 +75,7 @@
                 <tr>
                     <td>Course:</td>
                     <td>
-                        <select th:field="*{course_code}">
+                        <select th:field="*{courseCode}">
                             <option value="">Choose..</option>
                             <option th:each="course: ${courses}" th:value="${course.code}" th:text="${course.name}"/>
                         </select>

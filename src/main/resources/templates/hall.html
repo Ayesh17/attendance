@@ -59,7 +59,7 @@
         </thead>
         <tbody>
         <tr th:each="lectureHall : ${lectureHallDetails}">
-            <td th:text="${lectureHall.hall_code}">Code</td>
+            <td th:text="${lectureHall.hallCode}">Code</td>
             <td th:text="${lectureHall.name}">Name</td>
             <td>
                 <a th:href="@{'/hall/edit/' + ${lectureHall.id}}">Edit</a>

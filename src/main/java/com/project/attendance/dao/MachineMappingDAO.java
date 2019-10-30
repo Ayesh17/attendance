@@ -3,6 +3,7 @@ package com.project.attendance.dao;
 import com.project.attendance.model.MachineMapping;
 import com.project.attendance.repository.MachineMappingRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -25,7 +26,7 @@ public class MachineMappingDAO {
 
     //to search all machines
     public List<MachineMapping> findAll(){
-        return machineMappingRepository.findAll();
+        return machineMappingRepository.findAll(Sort.by(Sort.Direction.ASC, "machineCode"));
     }
 
     //get a machine by id

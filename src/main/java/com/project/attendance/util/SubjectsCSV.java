@@ -19,7 +19,7 @@ public class SubjectsCSV {
         Map<String, String> mapping = new
                 HashMap<String, String>();
         mapping.put("name", "name");
-        mapping.put("subject_code", "subject_code");
+        mapping.put("subject_code", "subjectCode");
 
         // HeaderColumnNameTranslateMappingStrategy
         // for Student class

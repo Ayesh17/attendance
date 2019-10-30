@@ -11,15 +11,15 @@ public class MachineMapping {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-    private String machine_code;
-    private String hall_code;
+    private String machineCode;
+    private String hallCode;
 
     public MachineMapping() {
     }
 
-    public MachineMapping(String machine_code, String hall_code) {
-        this.machine_code = machine_code;
-        this.hall_code = hall_code;
+    public MachineMapping(String machineCode, String hallCode) {
+        this.machineCode = machineCode;
+        this.hallCode = hallCode;
     }
 
     public Long getId() {
@@ -30,19 +30,19 @@ public class MachineMapping {
         this.id = id;
     }
 
-    public String getMachine_code() {
-        return machine_code;
+    public String getMachineCode() {
+        return machineCode;
     }
 
-    public void setMachine_code(String machine_code) {
-        this.machine_code = machine_code;
+    public void setMachineCode(String machineCode) {
+        this.machineCode = machineCode;
     }
 
-    public String getHall_code() {
-        return hall_code;
+    public String getHallCode() {
+        return hallCode;
     }
 
-    public void setHall_code(String hall_code) {
-        this.hall_code = hall_code;
+    public void setHallCode(String hallCode) {
+        this.hallCode = hallCode;
     }
 }

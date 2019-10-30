@@ -11,16 +11,16 @@ public class StudentGroup {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-    private String group_code;
-    private String course_code;
+    private String groupCode;
+    private String courseCode;
     private String year;
 
     public StudentGroup () {
     }
 
-    public StudentGroup(String group_code, String course_code, String year) {
-        this.group_code = group_code;
-        this.course_code = course_code;
+    public StudentGroup(String groupCode, String courseCode, String year) {
+        this.groupCode = groupCode;
+        this.courseCode = courseCode;
         this.year = year;
     }
 
@@ -32,20 +32,20 @@ public class StudentGroup {
         this.id = id;
     }
 
-    public String getGroup_code() {
-        return group_code;
+    public String getGroupCode() {
+        return groupCode;
     }
 
-    public void setGroup_code(String group_code) {
-        this.group_code = group_code;
+    public void setGroupCode(String groupCode) {
+        this.groupCode = groupCode;
     }
 
-    public String getCourse_code() {
-        return course_code;
+    public String getCourseCode() {
+        return courseCode;
     }
 
-    public void setCourse_code(String course_code) {
-        this.course_code = course_code;
+    public void setCourseCode(String courseCode) {
+        this.courseCode = courseCode;
     }
 
     public String getYear() {

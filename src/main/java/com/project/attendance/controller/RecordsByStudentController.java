@@ -164,7 +164,7 @@ public class RecordsByStudentController {
 
             //  System.out.println("hey3");
 
-            if (subjects.get(i).getSubject_code1().isEmpty()) {
+            if (subjects.get(i).getSubjectCode1().isEmpty()) {
                 System.out.println("1 is Empty");
             } else {
                 //  System.out.println("New Student");
@@ -174,7 +174,7 @@ public class RecordsByStudentController {
                 recordsByStudent1.setSemester(semester);
 
                 SubjectMapping subjectMapping1 = new SubjectMapping();
-                subjectMapping1.setSubjectCode(subjects.get(i).getSubject_code1());
+                subjectMapping1.setSubjectCode(subjects.get(i).getSubjectCode1());
                 subjectMappings.add(subjectMapping1);
 
                 //select day and time of subject from subjectmapping if subjectcode
@@ -214,7 +214,7 @@ public class RecordsByStudentController {
 
 
             }
-            if (subjects.get(i).getSubject_code2().isEmpty()) {
+            if (subjects.get(i).getSubjectCode2().isEmpty()) {
                 System.out.println("2 is Empty");
             } else {
                 //  System.out.println("New Student");
@@ -224,7 +224,7 @@ public class RecordsByStudentController {
                 recordsByStudent1.setSemester(semester);
 
                 SubjectMapping subjectMapping1 = new SubjectMapping();
-                subjectMapping1.setSubjectCode(subjects.get(i).getSubject_code2());
+                subjectMapping1.setSubjectCode(subjects.get(i).getSubjectCode2());
                 subjectMappings.add(subjectMapping1);
 
                 //select day and time of subject from subjectmapping if subjectcode
@@ -262,7 +262,7 @@ public class RecordsByStudentController {
 
                 }
             }
-            if (subjects.get(i).getSubject_code3().isEmpty()) {
+            if (subjects.get(i).getSubjectCode3().isEmpty()) {
                 System.out.println("3 is Empty");
             } else {
                 RecordsByStudent recordsByStudent1 = new RecordsByStudent();
@@ -271,7 +271,7 @@ public class RecordsByStudentController {
                 recordsByStudent1.setSemester(semester);
 
                 SubjectMapping subjectMapping1 = new SubjectMapping();
-                subjectMapping1.setSubjectCode(subjects.get(i).getSubject_code3());
+                subjectMapping1.setSubjectCode(subjects.get(i).getSubjectCode3());
                 subjectMappings.add(subjectMapping1);
 
                 //select day and time of subject from subjectmapping if subjectcode
@@ -302,7 +302,7 @@ public class RecordsByStudentController {
                     recordsByStudentList.add(recordsByStudent1);
 
                 }
-            }if (subjects.get(i).getSubject_code4().isEmpty()) {
+            }if (subjects.get(i).getSubjectCode4().isEmpty()) {
                 System.out.println("4 is Empty");
             } else {
                 RecordsByStudent recordsByStudent1 = new RecordsByStudent();
@@ -311,7 +311,7 @@ public class RecordsByStudentController {
                 recordsByStudent1.setSemester(semester);
 
                 SubjectMapping subjectMapping1 = new SubjectMapping();
-                subjectMapping1.setSubjectCode(subjects.get(i).getSubject_code4());
+                subjectMapping1.setSubjectCode(subjects.get(i).getSubjectCode4());
                 subjectMappings.add(subjectMapping1);
 
                 //select day and time of subject from subjectmapping if subjectcode
@@ -342,7 +342,7 @@ public class RecordsByStudentController {
                     recordsByStudentList.add(recordsByStudent1);
 
                 }
-            }if (subjects.get(i).getSubject_code5().isEmpty()) {
+            }if (subjects.get(i).getSubjectCode5().isEmpty()) {
                 System.out.println("5 is Empty");
             } else {
                 RecordsByStudent recordsByStudent1 = new RecordsByStudent();
@@ -351,7 +351,7 @@ public class RecordsByStudentController {
                 recordsByStudent1.setSemester(semester);
 
                 SubjectMapping subjectMapping1 = new SubjectMapping();
-                subjectMapping1.setSubjectCode(subjects.get(i).getSubject_code5());
+                subjectMapping1.setSubjectCode(subjects.get(i).getSubjectCode5());
                 subjectMappings.add(subjectMapping1);
 
                 //select day and time of subject from subjectmapping if subjectcode
@@ -382,7 +382,7 @@ public class RecordsByStudentController {
                     recordsByStudentList.add(recordsByStudent1);
 
                 }
-            }if (subjects.get(i).getSubject_code6().isEmpty()) {
+            }if (subjects.get(i).getSubjectCode6().isEmpty()) {
                 System.out.println("6 is Empty");
             } else {
                 RecordsByStudent recordsByStudent1 = new RecordsByStudent();
@@ -391,7 +391,7 @@ public class RecordsByStudentController {
                 recordsByStudent1.setSemester(semester);
 
                 SubjectMapping subjectMapping1 = new SubjectMapping();
-                subjectMapping1.setSubjectCode(subjects.get(i).getSubject_code6());
+                subjectMapping1.setSubjectCode(subjects.get(i).getSubjectCode6());
                 subjectMappings.add(subjectMapping1);
 
                 //select day and time of subject from subjectmapping if subjectcode
@@ -422,7 +422,7 @@ public class RecordsByStudentController {
                     recordsByStudentList.add(recordsByStudent1);
 
                 }
-            }if (subjects.get(i).getSubject_code7().isEmpty()) {
+            }if (subjects.get(i).getSubjectCode7().isEmpty()) {
                 System.out.println("7 is Empty");
             } else {
                 RecordsByStudent recordsByStudent1 = new RecordsByStudent();
@@ -431,7 +431,7 @@ public class RecordsByStudentController {
                 recordsByStudent1.setSemester(semester);
 
                 SubjectMapping subjectMapping1 = new SubjectMapping();
-                subjectMapping1.setSubjectCode(subjects.get(i).getSubject_code7());
+                subjectMapping1.setSubjectCode(subjects.get(i).getSubjectCode7());
                 subjectMappings.add(subjectMapping1);
 
                 //select day and time of subject from subjectmapping if subjectcode
@@ -462,7 +462,7 @@ public class RecordsByStudentController {
                     recordsByStudentList.add(recordsByStudent1);
 
                 }
-            }if (subjects.get(i).getSubject_code8().isEmpty()) {
+            }if (subjects.get(i).getSubjectCode8().isEmpty()) {
                 System.out.println("8 is Empty");
             } else {
                 RecordsByStudent recordsByStudent1 = new RecordsByStudent();
@@ -471,7 +471,7 @@ public class RecordsByStudentController {
                 recordsByStudent1.setSemester(semester);
 
                 SubjectMapping subjectMapping1 = new SubjectMapping();
-                subjectMapping1.setSubjectCode(subjects.get(i).getSubject_code8());
+                subjectMapping1.setSubjectCode(subjects.get(i).getSubjectCode8());
                 subjectMappings.add(subjectMapping1);
 
                 //select day and time of subject from subjectmapping if subjectcode
@@ -502,7 +502,7 @@ public class RecordsByStudentController {
                     recordsByStudentList.add(recordsByStudent1);
 
                 }
-            }if (subjects.get(i).getSubject_code9().isEmpty()) {
+            }if (subjects.get(i).getSubjectCode9().isEmpty()) {
                 System.out.println("9 is Empty");
             } else {
                 RecordsByStudent recordsByStudent1 = new RecordsByStudent();
@@ -511,7 +511,7 @@ public class RecordsByStudentController {
                 recordsByStudent1.setSemester(semester);
 
                 SubjectMapping subjectMapping1 = new SubjectMapping();
-                subjectMapping1.setSubjectCode(subjects.get(i).getSubject_code9());
+                subjectMapping1.setSubjectCode(subjects.get(i).getSubjectCode9());
                 subjectMappings.add(subjectMapping1);
 
                 //select day and time of subject from subjectmapping if subjectcode
@@ -542,7 +542,7 @@ public class RecordsByStudentController {
                     recordsByStudentList.add(recordsByStudent1);
 
                 }
-            }if (subjects.get(i).getSubject_code10().isEmpty()) {
+            }if (subjects.get(i).getSubjectCode10().isEmpty()) {
                 System.out.println("10 is Empty");
             } else {
                 RecordsByStudent recordsByStudent1 = new RecordsByStudent();
@@ -551,7 +551,7 @@ public class RecordsByStudentController {
                 recordsByStudent1.setSemester(semester);
 
                 SubjectMapping subjectMapping1 = new SubjectMapping();
-                subjectMapping1.setSubjectCode(subjects.get(i).getSubject_code10());
+                subjectMapping1.setSubjectCode(subjects.get(i).getSubjectCode10());
                 subjectMappings.add(subjectMapping1);
 
                 //select day and time of subject from subjectmapping if subjectcode
@@ -582,7 +582,7 @@ public class RecordsByStudentController {
                     recordsByStudentList.add(recordsByStudent1);
 
                 }
-            }if (subjects.get(i).getSubject_code11().isEmpty()) {
+            }if (subjects.get(i).getSubjectCode11().isEmpty()) {
                 System.out.println("11 is Empty");
             } else {
                 RecordsByStudent recordsByStudent1 = new RecordsByStudent();
@@ -591,7 +591,7 @@ public class RecordsByStudentController {
                 recordsByStudent1.setSemester(semester);
 
                 SubjectMapping subjectMapping1 = new SubjectMapping();
-                subjectMapping1.setSubjectCode(subjects.get(i).getSubject_code11());
+                subjectMapping1.setSubjectCode(subjects.get(i).getSubjectCode11());
                 subjectMappings.add(subjectMapping1);
 
                 //select day and time of subject from subjectmapping if subjectcode
@@ -622,7 +622,7 @@ public class RecordsByStudentController {
                     recordsByStudentList.add(recordsByStudent1);
 
                 }
-            }if (subjects.get(i).getSubject_code12().isEmpty()) {
+            }if (subjects.get(i).getSubjectCode12().isEmpty()) {
                 System.out.println("12 is Empty");
             } else {
                 RecordsByStudent recordsByStudent1 = new RecordsByStudent();
@@ -631,7 +631,7 @@ public class RecordsByStudentController {
                 recordsByStudent1.setSemester(semester);
 
                 SubjectMapping subjectMapping1 = new SubjectMapping();
-                subjectMapping1.setSubjectCode(subjects.get(i).getSubject_code12());
+                subjectMapping1.setSubjectCode(subjects.get(i).getSubjectCode12());
                 subjectMappings.add(subjectMapping1);
 
                 //select day and time of subject from subjectmapping if subjectcode

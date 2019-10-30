@@ -5,6 +5,7 @@ import com.project.attendance.model.SubjectMapping;
 import com.project.attendance.repository.SubjectMappingRepository;
 import com.project.attendance.repository.SubjectRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -27,7 +28,7 @@ public class SubjectMappingDAO {
 
     //to search all subjects
     public List<SubjectMapping> findAll(){
-        return subjectMappingRepository.findAll();
+        return subjectMappingRepository.findAll(Sort.by(Sort.Direction.ASC, "subjectCode"));
     }
 
     //get a subject by id

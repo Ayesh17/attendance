@@ -55,19 +55,19 @@
                 <tr>
                     <td>Machine:</td>
                     <td>
-                        <select th:field="*{machine_code}">
+                        <select th:field="*{machineCode}">
                             <option value="">Choose..</option>
-                            <option th:each="machine: ${machines}" th:value="${machine.machine_code}"
-                                    th:text="${machine.machine_code}"/>
+                            <option th:each="machine: ${machines}" th:value="${machine.machineCode}"
+                                    th:text="${machine.machineCode}"/>
                         </select>
                     </td>
                 </tr>
                 <tr>
                     <td>Lecture Hall:</td>
                     <td>
-                        <select th:field="*{hall_code}">
+                        <select th:field="*{hallCode}">
                             <option value="">Choose..</option>
-                            <option th:each="hall: ${lectureHalls}" th:value="${hall.hall_code}"
+                            <option th:each="hall: ${lectureHalls}" th:value="${hall.hallCode}"
                                     th:text="${hall.name}"/>
                         </select>
                     </td>

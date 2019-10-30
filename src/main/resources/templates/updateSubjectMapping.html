@@ -60,8 +60,8 @@
                     <td>
                         <select th:field="*{subjectCode}">
                             <option value="">Choose..</option>
-                            <option th:each="subject: ${subjects}" th:value="${subject.subject_code}"
-                                    th:text="${subject.subject_code}"/>
+                            <option th:each="subject: ${subjects}" th:value="${subject.subjectCode}"
+                                    th:text="${subject.subjectCode}"/>
                         </select>
                     </td>
                 </tr>
@@ -80,7 +80,7 @@
                     <td>
                         <select th:field="*{hallCode}">
                             <option value="">Choose..</option>
-                            <option th:each="hall: ${lectureHalls}" th:value="${hall.hall_code}"
+                            <option th:each="hall: ${lectureHalls}" th:value="${hall.hallCode}"
                                     th:text="${hall.name}"/>
                         </select>
                     </td>
@@ -90,7 +90,7 @@
                     <td>
                         <select th:field="*{groupCode}">
                             <option value="">Choose..</option>
-                            <option th:each="group: ${studentGroups}" th:value="${group.group_code}" th:text="${group.group_code}"/>
+                            <option th:each="group: ${studentGroups}" th:value="${group.groupCode}" th:text="${group.groupCode}"/>
                         </select>
                     </td>
                 </tr>

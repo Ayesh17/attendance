@@ -12,14 +12,14 @@ public class Subject {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-    private String subject_code;
+    private String subjectCode;
     private String name;
 
     public Subject() {
     }
 
-    public Subject(String subject_code, String name) {
-        this.subject_code = subject_code;
+    public Subject(String subjectCode, String name) {
+        this.subjectCode = subjectCode;
         this.name = name;
     }
 
@@ -31,12 +31,12 @@ public class Subject {
         this.id = id;
     }
 
-    public String getSubject_code() {
-        return subject_code;
+    public String getSubjectCode() {
+        return subjectCode;
     }
 
-    public void setSubject_code(String subject_code) {
-        this.subject_code = subject_code;
+    public void setSubjectCode(String subjectCode) {
+        this.subjectCode = subjectCode;
     }
 
     public String getName() {
@@ -50,7 +50,7 @@ public class Subject {
     @Override
     public String toString() {
         return "Subject{"  +
-                "subject_code='" + subject_code + '\'' +
+                "subject_code='" + subjectCode + '\'' +
                 ", name='" + name + '\'' +
                 '}';
     }
