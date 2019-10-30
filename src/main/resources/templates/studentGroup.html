@@ -60,8 +60,8 @@
         </thead>
         <tbody>
         <tr th:each="studentGroup : ${studentGroupDetails}">
-            <td th:text="${studentGroup.group_code}">Code</td>
-            <td th:text="${studentGroup.course_code}">Course</td>
+            <td th:text="${studentGroup.groupCode}">Code</td>
+            <td th:text="${studentGroup.courseCode}">Course</td>
             <td th:text="${studentGroup.year}">Year</td>
             <td>
                 <a th:href="@{'/studentGroup/edit/' + ${studentGroup.id}}">Edit</a>

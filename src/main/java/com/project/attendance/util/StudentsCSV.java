@@ -23,7 +23,7 @@ public class StudentsCSV {
         // Bean attributes.
         Map<String, String> mapping = new
                 HashMap<String, String>();
-        mapping.put("course_code", "course_code");
+        mapping.put("course_code", "courseCode");
         mapping.put("name", "name");
         mapping.put("address", "address");
         mapping.put("nic", "nic");

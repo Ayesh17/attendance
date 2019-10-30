@@ -60,8 +60,8 @@
         </thead>
         <tbody>
         <tr th:each="machineMapping : ${machineMappingDetails}">
-            <td th:text="${machineMapping.machine_code}">Code</td>
-            <td th:text="${machineMapping.hall_code}">Hall</td>
+            <td th:text="${machineMapping.machineCode}">Code</td>
+            <td th:text="${machineMapping.hallCode}">Hall</td>
             <td>
                 <a th:href="@{'/machineMapping/edit/' + ${machineMapping.id}}">Edit</a>
             </td>

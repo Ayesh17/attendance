@@ -3,6 +3,7 @@ package com.project.attendance.dao;
 import com.project.attendance.model.StudentGroup;
 import com.project.attendance.repository.StudentGroupRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -25,7 +26,7 @@ public class StudentGroupDAO {
 
     //to search all subjects
     public List<StudentGroup> findAll(){
-        return studentGroupRepository.findAll();
+        return studentGroupRepository.findAll(Sort.by(Sort.Direction.ASC, "groupCode"));
     }
 
     //get a subject by id

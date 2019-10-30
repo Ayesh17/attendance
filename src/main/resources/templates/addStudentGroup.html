@@ -54,13 +54,13 @@
             <table border="0" cell[adding="10">
                 <tr>
                     <td>Group code:</td>
-                    <td><input type="text" th:field="*{group_code}"/></td>
+                    <td><input type="text" th:field="*{groupCode}"/></td>
                 </tr>
 
                 <tr>
                     <td>Course:</td>
                     <td>
-                        <select th:field="*{course_code}">
+                        <select th:field="*{courseCode}">
                             <option value="">Choose..</option>
                             <option th:each="course: ${courses}" th:value="${course.code}" th:text="${course.name}"/>
                         </select>

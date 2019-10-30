@@ -11,15 +11,15 @@ public class Machine {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-    private String machine_code;
-    private String machine_index;
+    private String machineCode;
+    private String machineIndex;
 
     public Machine() {
     }
 
-    public Machine(String machine_code, String machine_index) {
-        this.machine_code = machine_code;
-        this.machine_index = machine_index;
+    public Machine(String machineCode, String machineIndex) {
+        this.machineCode = machineCode;
+        this.machineIndex = machineIndex;
     }
 
     public Long getId() {
@@ -30,19 +30,19 @@ public class Machine {
         this.id = id;
     }
 
-    public String getMachine_code() {
-        return machine_code;
+    public String getMachineCode() {
+        return machineCode;
     }
 
-    public void setMachine_code(String machine_code) {
-        this.machine_code = machine_code;
+    public void setMachineCode(String machineCode) {
+        this.machineCode = machineCode;
     }
 
-    public String getMachine_index() {
-        return machine_index;
+    public String getMachineIndex() {
+        return machineIndex;
     }
 
-    public void setMachine_index(String machine_index) {
-        this.machine_index = machine_index;
+    public void setMachineIndex(String machineIndex) {
+        this.machineIndex = machineIndex;
     }
 }

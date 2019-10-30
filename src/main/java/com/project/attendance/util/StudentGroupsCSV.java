@@ -23,8 +23,8 @@ public class StudentGroupsCSV {
         // Bean attributes.
         Map<String, String> mapping = new
                 HashMap<String, String>();
-        mapping.put("group_code", "group_code");
-        mapping.put("course_code", "course_code");
+        mapping.put("group_code", "groupCode");
+        mapping.put("course_code", "courseCode");
         mapping.put("year", "year");
 
         // HeaderColumnNameTranslateMappingStrategy

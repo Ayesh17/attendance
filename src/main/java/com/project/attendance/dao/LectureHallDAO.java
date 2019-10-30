@@ -3,6 +3,7 @@ package com.project.attendance.dao;
 import com.project.attendance.model.LectureHall;
 import com.project.attendance.repository.LectureHallRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -25,7 +26,7 @@ public class LectureHallDAO {
 
     //to search all lecture halls
     public List<LectureHall> findAll(){
-        return lectureHallRepository.findAll();
+        return lectureHallRepository.findAll(Sort.by(Sort.Direction.ASC, "name"));
     }
 
     //get a lecture hall by id

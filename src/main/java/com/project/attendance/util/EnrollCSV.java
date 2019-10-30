@@ -27,15 +27,18 @@ public class EnrollCSV {
         mapping.put("user_id", "userId");
         mapping.put("year", "year");
         mapping.put("semester", "semester");
-        mapping.put("subject_code1", "subject_code1");
-        mapping.put("subject_code2", "subject_code2");
-        mapping.put("subject_code3", "subject_code3");
-        mapping.put("subject_code4", "subject_code4");
-        mapping.put("subject_code5", "subject_code5");
-        mapping.put("subject_code6", "subject_code6");
-        mapping.put("subject_code7", "subject_code7");
-        mapping.put("subject_code8", "subject_code8");
-        mapping.put("subject_code9", "subject_code9");
+        mapping.put("subject_code1", "subjectCode1");
+        mapping.put("subject_code2", "subjectCode2");
+        mapping.put("subject_code3", "subjectCode3");
+        mapping.put("subject_code4", "subjectCode4");
+        mapping.put("subject_code5", "subjectCode5");
+        mapping.put("subject_code6", "subjectCode6");
+        mapping.put("subject_code7", "subjectCode7");
+        mapping.put("subject_code8", "subjectCode8");
+        mapping.put("subject_code9", "subjectCode9");
+        mapping.put("subject_code10", "subjectCode10");
+        mapping.put("subject_code11", "subjectCode11");
+        mapping.put("subject_code12", "subjectCode12");
 
         // HeaderColumnNameTranslateMappingStrategy
         // for Student class

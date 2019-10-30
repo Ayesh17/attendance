@@ -23,8 +23,8 @@ public class MachinesCSV {
         // Bean attributes.
         Map<String, String> mapping = new
                 HashMap<String, String>();
-        mapping.put("machine_code", "machine_code");
-        mapping.put("machine_index", "machine_index");
+        mapping.put("machine_code", "machineCode");
+        mapping.put("machine_index", "machineIndex");
 
         // HeaderColumnNameTranslateMappingStrategy
         // for Student class
