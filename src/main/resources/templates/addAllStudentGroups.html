@@ -50,7 +50,7 @@
     <img src="static/img/books.jpeg" th:src="@{/img/books.jpeg}"/>
 
     <div class="container2">
-        <form method="POST" action="/studentGroup/upload" enctype="multipart/form-data">
+        <form method="POST" action="#" th:action="@{/studentGroup/upload}" enctype="multipart/form-data">
             <input type="file" name="file" /><br />
             <br /> <input type="submit" value="Submit" />
         </form>
