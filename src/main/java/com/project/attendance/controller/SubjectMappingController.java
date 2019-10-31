@@ -133,7 +133,11 @@ public class SubjectMappingController {
         SubjectMappingsCSV csv=new SubjectMappingsCSV();
         Path[] args={path} ;
         List<SubjectMapping> list = SubjectMappingsCSV.main(args);
-        subjectMappingDAO.saveAll(list);
+        try {
+            subjectMappingDAO.saveAll(list);
+        }catch (Exception e){
+            System.out.println(e);
+        }
         return  "redirect:/subjectMapping";
     }
 

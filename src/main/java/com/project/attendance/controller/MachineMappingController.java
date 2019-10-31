@@ -123,7 +123,11 @@ public class MachineMappingController {
         MachineMappingsCSV csv=new MachineMappingsCSV();
         Path[] args={path} ;
         List<MachineMapping> list = MachineMappingsCSV.main(args);
-        machineMappingDAO.saveAll(list);
+        try {
+            machineMappingDAO.saveAll(list);
+        }catch (Exception e){
+            System.out.println(e);
+        }
         return  "redirect:/machineMapping";
     }
 

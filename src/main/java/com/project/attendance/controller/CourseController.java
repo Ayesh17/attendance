@@ -96,7 +96,11 @@ public class CourseController {
         CoursesCSV csv=new CoursesCSV();
         Path[] args={path} ;
         List<Course> list = CoursesCSV.main(args);
-        courseDAO.saveAll(list);
+        try {
+            courseDAO.saveAll(list);
+        }catch (Exception e){
+            System.out.println(e);
+        }
         return  "redirect:/course";
     }
 

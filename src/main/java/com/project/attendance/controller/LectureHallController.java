@@ -99,7 +99,11 @@ public class LectureHallController {
         LectureHallCSV csv=new LectureHallCSV();
         Path[] args={path} ;
         List<LectureHall> list = LectureHallCSV.main(args);
-        lectureHallDAO.saveAll(list);
+        try {
+            lectureHallDAO.saveAll(list);
+        }catch (Exception e){
+            System.out.println(e);
+        }
         return  "redirect:/hall";
     }
 
