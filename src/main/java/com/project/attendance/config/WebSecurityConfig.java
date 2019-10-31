@@ -41,8 +41,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter{
                 .logout()
                 .permitAll()
                 .logoutSuccessUrl("/login?logout");
-        //to upload
-        http.cors().and().csrf().disable();
+
     }
     BCryptPasswordEncoder bCryptPasswordEncoder;
 

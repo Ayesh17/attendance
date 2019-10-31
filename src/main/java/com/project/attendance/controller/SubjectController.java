@@ -7,7 +7,9 @@ package com.project.attendance.controller;
         import com.project.attendance.model.LectureHall;
         import com.project.attendance.model.Subject;
         import com.project.attendance.util.SubjectsCSV;
+        import org.hibernate.DuplicateMappingException;
         import org.springframework.beans.factory.annotation.Autowired;
+        import org.springframework.dao.DuplicateKeyException;
         import org.springframework.stereotype.Controller;
         import org.springframework.ui.Model;
         import org.springframework.web.bind.annotation.*;
@@ -16,6 +18,7 @@ package com.project.attendance.controller;
         import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
         import javax.servlet.http.HttpServletRequest;
+        import javax.validation.ConstraintViolationException;
         import java.io.*;
         import java.nio.file.Files;
         import java.nio.file.Path;
@@ -72,7 +75,13 @@ public class SubjectController {
         SubjectsCSV csv=new SubjectsCSV();
         Path[] args={path} ;
         List<Subject> list = SubjectsCSV.main(args);
-        subjectDAO.saveAll(list);
+        try {
+            subjectDAO.saveAll(list);
+        }catch(Exception e){
+            System.out.println(e);
+            return  "redirect:/subject";
+
+        }
         return  "redirect:/subject";
     }
 

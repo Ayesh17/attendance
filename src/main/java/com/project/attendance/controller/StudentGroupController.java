@@ -112,7 +112,11 @@ public class StudentGroupController {
         StudentGroupsCSV csv=new StudentGroupsCSV();
         Path[] args={path} ;
         List<StudentGroup> list = StudentGroupsCSV.main(args);
-        studentGroupDAO.saveAll(list);
+        try {
+            studentGroupDAO.saveAll(list);
+        }catch (Exception e){
+            System.out.println(e);
+        }
         return  "redirect:/studentGroup";
     }
 

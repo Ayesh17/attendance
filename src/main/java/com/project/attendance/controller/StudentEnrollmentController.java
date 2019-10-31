@@ -117,7 +117,6 @@ public class StudentEnrollmentController {
             studentDAO.saveAll(list);
         }catch (Exception e){
             redirectAttributes.addFlashAttribute("message", "Duplicate Entry");
-            return  "redirect:/student";
         }
         return  "redirect:/student";
     }

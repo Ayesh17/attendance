@@ -106,7 +106,11 @@ public class MachineController {
         MachinesCSV csv=new MachinesCSV();
         Path[] args={path} ;
         List<Machine> list = MachinesCSV.main(args);
-        machineDAO.saveAll(list);
+        try {
+            machineDAO.saveAll(list);
+        }catch (Exception e){
+            System.out.println(e);
+        }
         return  "redirect:/machine";
     }
 

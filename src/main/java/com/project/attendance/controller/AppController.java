@@ -24,7 +24,6 @@ public class AppController {
 
     }
 
-
     @GetMapping("/user")
     public String user() {
         return "user";
@@ -34,7 +33,6 @@ public class AppController {
     public String admin() {
         return "admin";
     }
-
 
 
 }
