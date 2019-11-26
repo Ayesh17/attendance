@@ -53,19 +53,17 @@
     <table border="1">
         <thead>
         <tr>
-            <th>Index Number</th>
             <th>Name</th>
             <th>Address</th>
             <th>NIC</th>
             <th>Course</th>
-            <th>User ID</th>
+            <th>Index Number</th>
             <th></th>
             <th></th>
         </tr>
         </thead>
         <tbody>
         <tr th:each="student : ${studentDetails}">
-            <td th:text="${student.indexNumber}">Id</td>
             <td th:text="${student.name}">Name</td>
             <td th:text="${student.address}">Address</td>
             <td th:text="${student.nic}">NIC</td>
