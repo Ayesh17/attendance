@@ -27,7 +27,6 @@ public class StudentsCSV {
         mapping.put("address", "address");
         mapping.put("nic", "nic");
         mapping.put("registration_number", "registrationNumber");
-        mapping.put("user_id", "userId");
         mapping.put("index_number", "indexNumber");
 
         // HeaderColumnNameTranslateMappingStrategy

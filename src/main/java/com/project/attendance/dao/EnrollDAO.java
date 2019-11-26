@@ -30,8 +30,8 @@ public class EnrollDAO {
     }
 
     //to search all enroll records
-    public List<Enroll> getCourses(int userId, int year, int semester){
-        return enrollRepository.getEnrollByUserIdAndYearAndSemester(userId, year, semester);
+    public List<Enroll> getCourses(int indexNumber, int year, int semester){
+        return enrollRepository.getEnrollByIndexNumberAndYearAndSemester(indexNumber, year, semester);
     }
 
     //get an enroll record by id

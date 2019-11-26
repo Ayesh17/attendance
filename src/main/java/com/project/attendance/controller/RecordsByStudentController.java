@@ -147,14 +147,14 @@ public class RecordsByStudentController {
 
     @RequestMapping(value = "/records-student/save", method = RequestMethod.POST)
     public String saveRecordsByStudent(@ModelAttribute("recordsByStudent") RecordsByStudent recordsByStudent,HttpServletRequest request) {
-        int userId = recordsByStudent.getUserId();
+        int indexNumber = recordsByStudent.getIndexNumber();
         int year = recordsByStudent.getYear();
         int semester = recordsByStudent.getSemester();
-        System.out.println(userId);
+        System.out.println(indexNumber);
         System.out.println(year);
         System.out.println(semester);
         List<RecordsByStudent> recordsByStudentList = new ArrayList<>();
-        List<Enroll> courses = enrollDAO.getCourses(userId, year, semester);
+        List<Enroll> courses = enrollDAO.getCourses(indexNumber, year, semester);
 
         //get a list of Course
         List<CourseMapping> courseMappings = new ArrayList<>();
@@ -168,7 +168,7 @@ public class RecordsByStudentController {
             } else {
                 //  System.out.println("New Student");
                 RecordsByStudent recordsByStudent1 = new RecordsByStudent();
-                recordsByStudent1.setUserId(userId);
+                recordsByStudent1.setIndexNumber(indexNumber);
                 recordsByStudent1.setYear(year);
                 recordsByStudent1.setSemester(semester);
 
@@ -221,7 +221,7 @@ public class RecordsByStudentController {
             } else {
                 //  System.out.println("New Student");
                 RecordsByStudent recordsByStudent1 = new RecordsByStudent();
-                recordsByStudent1.setUserId(userId);
+                recordsByStudent1.setIndexNumber(indexNumber);
                 recordsByStudent1.setYear(year);
                 recordsByStudent1.setSemester(semester);
 
@@ -268,7 +268,7 @@ public class RecordsByStudentController {
                 System.out.println("3 is Empty");
             } else {
                 RecordsByStudent recordsByStudent1 = new RecordsByStudent();
-                recordsByStudent1.setUserId(userId);
+                recordsByStudent1.setIndexNumber(indexNumber);
                 recordsByStudent1.setYear(year);
                 recordsByStudent1.setSemester(semester);
 
@@ -308,7 +308,7 @@ public class RecordsByStudentController {
                 System.out.println("4 is Empty");
             } else {
                 RecordsByStudent recordsByStudent1 = new RecordsByStudent();
-                recordsByStudent1.setUserId(userId);
+                recordsByStudent1.setIndexNumber(indexNumber);
                 recordsByStudent1.setYear(year);
                 recordsByStudent1.setSemester(semester);
 
@@ -348,7 +348,7 @@ public class RecordsByStudentController {
                 System.out.println("5 is Empty");
             } else {
                 RecordsByStudent recordsByStudent1 = new RecordsByStudent();
-                recordsByStudent1.setUserId(userId);
+                recordsByStudent1.setIndexNumber(indexNumber);
                 recordsByStudent1.setYear(year);
                 recordsByStudent1.setSemester(semester);
 
@@ -388,7 +388,7 @@ public class RecordsByStudentController {
                 System.out.println("6 is Empty");
             } else {
                 RecordsByStudent recordsByStudent1 = new RecordsByStudent();
-                recordsByStudent1.setUserId(userId);
+                recordsByStudent1.setIndexNumber(indexNumber);
                 recordsByStudent1.setYear(year);
                 recordsByStudent1.setSemester(semester);
 
@@ -428,7 +428,7 @@ public class RecordsByStudentController {
                 System.out.println("7 is Empty");
             } else {
                 RecordsByStudent recordsByStudent1 = new RecordsByStudent();
-                recordsByStudent1.setUserId(userId);
+                recordsByStudent1.setIndexNumber(indexNumber);
                 recordsByStudent1.setYear(year);
                 recordsByStudent1.setSemester(semester);
 
@@ -468,7 +468,7 @@ public class RecordsByStudentController {
                 System.out.println("8 is Empty");
             } else {
                 RecordsByStudent recordsByStudent1 = new RecordsByStudent();
-                recordsByStudent1.setUserId(userId);
+                recordsByStudent1.setIndexNumber(indexNumber);
                 recordsByStudent1.setYear(year);
                 recordsByStudent1.setSemester(semester);
 
@@ -508,7 +508,7 @@ public class RecordsByStudentController {
                 System.out.println("9 is Empty");
             } else {
                 RecordsByStudent recordsByStudent1 = new RecordsByStudent();
-                recordsByStudent1.setUserId(userId);
+                recordsByStudent1.setIndexNumber(indexNumber);
                 recordsByStudent1.setYear(year);
                 recordsByStudent1.setSemester(semester);
 
@@ -548,7 +548,7 @@ public class RecordsByStudentController {
                 System.out.println("10 is Empty");
             } else {
                 RecordsByStudent recordsByStudent1 = new RecordsByStudent();
-                recordsByStudent1.setUserId(userId);
+                recordsByStudent1.setIndexNumber(indexNumber);
                 recordsByStudent1.setYear(year);
                 recordsByStudent1.setSemester(semester);
 
@@ -588,7 +588,7 @@ public class RecordsByStudentController {
                 System.out.println("11 is Empty");
             } else {
                 RecordsByStudent recordsByStudent1 = new RecordsByStudent();
-                recordsByStudent1.setUserId(userId);
+                recordsByStudent1.setIndexNumber(indexNumber);
                 recordsByStudent1.setYear(year);
                 recordsByStudent1.setSemester(semester);
 
@@ -628,7 +628,7 @@ public class RecordsByStudentController {
                 System.out.println("12 is Empty");
             } else {
                 RecordsByStudent recordsByStudent1 = new RecordsByStudent();
-                recordsByStudent1.setUserId(userId);
+                recordsByStudent1.setIndexNumber(indexNumber);
                 recordsByStudent1.setYear(year);
                 recordsByStudent1.setSemester(semester);
 
@@ -680,7 +680,7 @@ public class RecordsByStudentController {
                 System.out.println(ex);
 
             }
-            request.setAttribute("userId", userId);
+            request.setAttribute("indexNumber", indexNumber);
             request.setAttribute("year", year);
             request.setAttribute("semester", semester);
             //System.out.println("hey1.1 "+userId);
@@ -692,10 +692,15 @@ public class RecordsByStudentController {
     @RequestMapping("/records-student/show")
     public String showRecordsByStudent(Model model, HttpServletRequest request) {
        // System.out.println("hey1.2 "+request.getAttribute("userId"));
-        int userId = (int) request.getAttribute("userId");
+        int indexNumber = (int) request.getAttribute("indexNumber");
         int year = (int) request.getAttribute("year");
         int semester = (int) request.getAttribute("semester");
-        List<RecordsByStudent> recordsByStudentDetails = recordsByStudentDAO.getByUserId(userId,year,semester);
+        List<RecordsByStudent> recordsByStudentDetails = recordsByStudentDAO.getByIndexNumber(indexNumber,year,semester);
+        System.out.println("hello");
+        for(int i=0;i<recordsByStudentDetails.size();i++){
+            System.out.println(recordsByStudentDetails.get(i));
+        }
+
         model.addAttribute("recordsByStudentDetails", recordsByStudentDetails);
         return "showRecordsByStudent";
     }

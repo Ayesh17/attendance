@@ -18,8 +18,6 @@ public class Student {
     private int indexNumber;
 
     private String registrationNumber;
-    @NotNull
-    private int userId;
     private String name;
     private String courseCode;
     private String address;
@@ -28,10 +26,9 @@ public class Student {
     public Student() {
     }
 
-    public Student(@NotNull int indexNumber, String registrationNumber, @NotNull int userId, String name, String courseCode, String address, String nic) {
+    public Student(@NotNull int indexNumber, String registrationNumber, String name, String courseCode, String address, String nic) {
         this.indexNumber = indexNumber;
         this.registrationNumber = registrationNumber;
-        this.userId = userId;
         this.name = name;
         this.courseCode = courseCode;
         this.address = address;
@@ -60,14 +57,6 @@ public class Student {
 
     public void setRegistrationNumber(String registrationNumber) {
         this.registrationNumber = registrationNumber;
-    }
-
-    public int getUserId() {
-        return userId;
-    }
-
-    public void setUserId(int userId) {
-        this.userId = userId;
     }
 
     public String getName() {

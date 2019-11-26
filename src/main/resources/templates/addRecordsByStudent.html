@@ -55,8 +55,8 @@
                 <tr>
                     <td>Student</td>
                     <td>
-                        <select th:field="*{userId}">
-                            <option th:each="student: ${students}" th:value="${student.userId}" th:text="${student.name}"/>
+                        <select th:field="*{indexNumber}">
+                            <option th:each="student: ${students}" th:value="${student.indexNumber}" th:text="${student.name}"/>
                         </select>
                     </td>
                 </tr>
