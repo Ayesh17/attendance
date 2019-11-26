@@ -47,7 +47,7 @@ public class EnrollController {
 
 
         List<Course> courseDetail = courseDAO.findAll();
-        model.addAttribute("subjects", courseDetail);
+        model.addAttribute("courses", courseDetail);
 
         return "addEnroll";
     }
@@ -92,7 +92,7 @@ public class EnrollController {
         List<Student> studentDetails = studentDAO.findAll();
         mav.addObject("students", studentDetails);
         List<Course> courseDetails = courseDAO.findAll();
-        mav.addObject("subjects", courseDetails);
+        mav.addObject("courses", courseDetails);
 
         return  mav;
     }
