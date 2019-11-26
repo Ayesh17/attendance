@@ -51,7 +51,7 @@
         <table border="0" cell[adding="10">
             <tr>
                 <td>Subject:</td>
-                <td><input type="text" th:field="*{subject}"/></td>
+                <td><input type="text" th:field="*{course}"/></td>
             </tr>
             <tr>
                 <td>Subject Name:</td>
@@ -62,7 +62,7 @@
                 <td>
                     <select th:field="*{course_code}">
                         <option value="">Choose..</option>
-                        <option th:each="course: ${courses}" th:value="${course.code}" th:text="${course.name}"/>
+                        <option th:each="stream: ${courses}" th:value="${stream.code}" th:text="${stream.name}"/>
                     </select>
                 </td>
             </tr>

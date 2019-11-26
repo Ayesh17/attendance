@@ -6,15 +6,15 @@ import javax.persistence.*;
 
 
 @Entity
-@Table(name="subjectmappings")
+@Table(name="coursemappings")
 @EntityListeners(AuditingEntityListener.class)
 
-public class SubjectMapping {
+public class CourseMapping {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-    private String subjectCode;
     private String courseCode;
+    private String streamCode;
     private String hallCode;
     private String groupCode;
     private String day;
@@ -23,12 +23,12 @@ public class SubjectMapping {
     private int year;
     private int semester;
 
-    public SubjectMapping() {
+    public CourseMapping() {
     }
 
-    public SubjectMapping(String subjectCode, String courseCode, String hallCode, String groupCode, String day, int start, int end, int year, int semester) {
-        this.subjectCode = subjectCode;
+    public CourseMapping(String courseCode, String streamCode, String hallCode, String groupCode, String day, int start, int end, int year, int semester) {
         this.courseCode = courseCode;
+        this.streamCode = streamCode;
         this.hallCode = hallCode;
         this.groupCode = groupCode;
         this.day = day;
@@ -46,14 +46,6 @@ public class SubjectMapping {
         this.id = id;
     }
 
-    public String getSubjectCode() {
-        return subjectCode;
-    }
-
-    public void setSubjectCode(String subjectCode) {
-        this.subjectCode = subjectCode;
-    }
-
     public String getCourseCode() {
         return courseCode;
     }
@@ -62,12 +54,36 @@ public class SubjectMapping {
         this.courseCode = courseCode;
     }
 
+    public String getStreamCode() {
+        return streamCode;
+    }
+
+    public void setStreamCode(String streamCode) {
+        this.streamCode = streamCode;
+    }
+
     public String getHallCode() {
         return hallCode;
     }
 
     public void setHallCode(String hallCode) {
         this.hallCode = hallCode;
+    }
+
+    public String getGroupCode() {
+        return groupCode;
+    }
+
+    public void setGroupCode(String groupCode) {
+        this.groupCode = groupCode;
+    }
+
+    public String getDay() {
+        return day;
+    }
+
+    public void setDay(String day) {
+        this.day = day;
     }
 
     public int getStart() {
@@ -100,21 +116,5 @@ public class SubjectMapping {
 
     public void setSemester(int semester) {
         this.semester = semester;
-    }
-
-    public String getGroupCode() {
-        return groupCode;
-    }
-
-    public void setGroupCode(String groupCode) {
-        this.groupCode = groupCode;
-    }
-
-    public String getDay() {
-        return day;
-    }
-
-    public void setDay(String day) {
-        this.day = day;
     }
 }

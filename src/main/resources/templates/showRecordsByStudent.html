@@ -71,7 +71,7 @@
     <table border="1">
         <thead>
         <tr>
-            <th>Subject</th>
+            <th>Course</th>
             <th>No.of Days Attended</th>
             <th>Days Attended</th>
 
@@ -79,9 +79,9 @@
         </thead>
         <tbody>
         <tr th:each="record : ${recordsByStudentDetails}">
-            <td th:text="${record.subject}">UserId</td>
-            <td th:text="${record.count}">Semester</td>
-            <td th:text="${record.timeStamp}">Year</td>
+            <td th:text="${record.course}">Course</td>
+            <td th:text="${record.count}">Count</td>
+            <td th:text="${record.timeStamp}">TimeStamp</td>
 
 
 

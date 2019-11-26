@@ -7,7 +7,6 @@ import com.project.attendance.model.LectureHall;
 import com.project.attendance.model.Machine;
 import com.project.attendance.model.MachineMapping;
 import com.project.attendance.util.MachineMappingsCSV;
-import com.project.attendance.util.MachinesCSV;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;

@@ -68,14 +68,14 @@ public class CheckInOutController {
      /*
     @RequestMapping("/subject")
     public String viewHomePage(Model model){
-        List<Subject> subjectDetails= subjectDAO.findAll();
+        List<Course> subjectDetails= subjectDAO.findAll();
         model.addAttribute("subjectDetails",subjectDetails);
         return "subject";
     }
 
     @RequestMapping("/subject/new")
     public String addSubject(Model model){
-        Subject subject =new Subject();
+        Course subject =new Course();
         model.addAttribute("subject",subject);
 
         List<Course> courseDetail = courseDAO.findAll();
@@ -89,7 +89,7 @@ public class CheckInOutController {
     }
 
     @RequestMapping(value="/subject/save",method= RequestMethod.POST)
-    public String saveSubject(@ModelAttribute("subject") Subject subject){
+    public String saveSubject(@ModelAttribute("subject") Course subject){
         subjectDAO.save(subject);
         return  "redirect:/subject";
     }
@@ -98,7 +98,7 @@ public class CheckInOutController {
     public ModelAndView updateSubjcet(@PathVariable(name="id")Long id){
         ModelAndView mav=new ModelAndView(("updateSubject"));
 
-        Subject subject=subjectDAO.findById(id);
+        Course subject=subjectDAO.findById(id);
         mav.addObject("subject",subject);
 
         List<Course> courseDetail = courseDAO.findAll();

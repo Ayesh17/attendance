@@ -24,7 +24,7 @@ public class TimeTableMappingController {
     private TimeTableDAO timeTableDAO;
 
     @Autowired
-    private SubjectDAO subjectDAO;
+    private CourseDAO courseDAO;
 
     @Autowired
     private StudentGroupDAO studentGroupDAO;
@@ -107,8 +107,8 @@ public class TimeTableMappingController {
         List<TimeTable> timeTableDetail = timeTableDAO.findAll();
         model.addAttribute("timeTables", timeTableDetail);
 
-        List<Subject> subjectDetail = subjectDAO.findAll();
-        model.addAttribute("subjects", subjectDetail);
+        List<Course> courseDetail = courseDAO.findAll();
+        model.addAttribute("subjects", courseDetail);
 
         String[] days = new String[] { "Monday", "Tuesday"};
 
@@ -137,8 +137,8 @@ public class TimeTableMappingController {
         List<TimeTable> timeTableDetails = timeTableDAO.findAll();
         mav.addObject("timeTables", timeTableDetails);
 
-        List<Subject> subjectDetails = subjectDAO.findAll();
-        mav.addObject("subjects", subjectDetails);
+        List<Course> courseDetails = courseDAO.findAll();
+        mav.addObject("subjects", courseDetails);
 
         List<StudentGroup> studentGroupDetails = studentGroupDAO.findAll();
         mav.addObject("studentGroups",studentGroupDetails);

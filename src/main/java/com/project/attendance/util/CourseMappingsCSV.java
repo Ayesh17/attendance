@@ -1,16 +1,20 @@
 package com.project.attendance.util;
 
-import java.io.*;
-import java.nio.file.Path;
-import java.util.*;
-
 import com.opencsv.CSVReader;
 import com.opencsv.bean.CsvToBean;
 import com.opencsv.bean.HeaderColumnNameTranslateMappingStrategy;
-import com.project.attendance.model.Subject;
+import com.project.attendance.model.CourseMapping;
 
-public class SubjectsCSV {
-    public static List<Subject> main(Path[] args)
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.nio.file.Path;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
+public class CourseMappingsCSV {
+
+    public static List<CourseMapping> main(Path[] args)
     {
 
         Path path=args[0];
@@ -18,14 +22,22 @@ public class SubjectsCSV {
         // Bean attributes.
         Map<String, String> mapping = new
                 HashMap<String, String>();
-        mapping.put("name", "name");
-        mapping.put("subject_code", "subjectCode");
+        mapping.put("stream_code", "streamCode");
+        mapping.put("course_code", "courseCode");
+        mapping.put("hall_code", "hallCode");
+        mapping.put("group_code", "groupCode");
+        mapping.put("semester", "semester");
+        mapping.put("year", "year");
+        mapping.put("day", "day");
+        mapping.put("start", "start");
+        mapping.put("end", "end");
+
 
         // HeaderColumnNameTranslateMappingStrategy
         // for Student class
-        HeaderColumnNameTranslateMappingStrategy<Subject> strategy =
-                new HeaderColumnNameTranslateMappingStrategy<Subject>();
-        strategy.setType(Subject.class);
+        HeaderColumnNameTranslateMappingStrategy<CourseMapping> strategy =
+                new HeaderColumnNameTranslateMappingStrategy<CourseMapping>();
+        strategy.setType(CourseMapping.class);
         strategy.setColumnMapping(mapping);
 
         // Create castobaen and csvreader object
@@ -43,7 +55,7 @@ public class SubjectsCSV {
 
         // call the parse method of CsvToBean
         // pass strategy, csvReader to parse method
-        List<Subject> list = csvToBean.parse(strategy, csvReader);
+        List<CourseMapping> list = csvToBean.parse(strategy, csvReader);
 
         return list;
     }

@@ -1,9 +1,7 @@
 package com.project.attendance.controller;
 
 import com.project.attendance.dao.LecturerDAO;
-import com.project.attendance.model.Course;
 import com.project.attendance.model.Lecturer;
-import com.project.attendance.util.CoursesCSV;
 import com.project.attendance.util.LecturersCSV;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;

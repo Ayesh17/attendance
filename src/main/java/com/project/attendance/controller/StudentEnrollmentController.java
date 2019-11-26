@@ -1,11 +1,9 @@
 package com.project.attendance.controller;
 
-import com.project.attendance.dao.CourseDAO;
+import com.project.attendance.dao.StreamDAO;
 import com.project.attendance.dao.StudentDAO;
-import com.project.attendance.model.Course;
-import com.project.attendance.model.LectureHall;
+import com.project.attendance.model.Stream;
 import com.project.attendance.model.Student;
-import com.project.attendance.util.LectureHallCSV;
 import com.project.attendance.util.StudentsCSV;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -29,7 +27,7 @@ public class StudentEnrollmentController {
     private StudentDAO studentDAO;
 
     @Autowired
-    private CourseDAO courseDAO;
+    private StreamDAO streamDAO;
 
 
     @RequestMapping("/student")
@@ -44,8 +42,8 @@ public class StudentEnrollmentController {
         Student student=new Student();
         model.addAttribute("student",student);
 
-        List<Course> courseDetail = courseDAO.findAll();
-        model.addAttribute("courses", courseDetail);
+        List<Stream> streamDetail = streamDAO.findAll();
+        model.addAttribute("courses", streamDetail);
 
         return "addStudent";
     }
@@ -63,8 +61,8 @@ public class StudentEnrollmentController {
         Student student=studentDAO.findById(id);
         mav.addObject("student",student);
 
-        List<Course> courseDetail = courseDAO.findAll();
-        mav.addObject("courses", courseDetail);
+        List<Stream> streamDetail = streamDAO.findAll();
+        mav.addObject("courses", streamDetail);
 
         return  mav;
     }

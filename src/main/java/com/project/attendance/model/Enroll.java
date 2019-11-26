@@ -13,39 +13,39 @@ public class Enroll {
     private Long id;
     private int userId;
     private String name;
-    private String subjectCode1;
-    private String subjectCode2;
-    private String subjectCode3;
-    private String subjectCode4;
-    private String subjectCode5;
-    private String subjectCode6;
-    private String subjectCode7;
-    private String subjectCode8;
-    private String subjectCode9;
-    private String subjectCode10;
-    private String subjectCode11;
-    private String subjectCode12;
+    private String courseCode1;
+    private String courseCode2;
+    private String courseCode3;
+    private String courseCode4;
+    private String courseCode5;
+    private String courseCode6;
+    private String courseCode7;
+    private String courseCode8;
+    private String courseCode9;
+    private String courseCode10;
+    private String courseCode11;
+    private String courseCode12;
     private int year;
     private int semester;
 
     public Enroll() {
     }
 
-    public Enroll(int userId, String name, String subjectCode1, String subjectCode2, String subjectCode3, String subjectCode4, String subjectCode5, String subjectCode6, String subjectCode7, String subjectCode8, String subjectCode9, String subjectCode10, String subjectCode11, String subjectCode12, int year, int semester) {
+    public Enroll(int userId, String name, String courseCode1, String courseCode2, String courseCode3, String courseCode4, String courseCode5, String courseCode6, String courseCode7, String courseCode8, String courseCode9, String courseCode10, String courseCode11, String courseCode12, int year, int semester) {
         this.userId = userId;
         this.name = name;
-        this.subjectCode1 = subjectCode1;
-        this.subjectCode2 = subjectCode2;
-        this.subjectCode3 = subjectCode3;
-        this.subjectCode4 = subjectCode4;
-        this.subjectCode5 = subjectCode5;
-        this.subjectCode6 = subjectCode6;
-        this.subjectCode7 = subjectCode7;
-        this.subjectCode8 = subjectCode8;
-        this.subjectCode9 = subjectCode9;
-        this.subjectCode10 = subjectCode10;
-        this.subjectCode11 = subjectCode11;
-        this.subjectCode12 = subjectCode12;
+        this.courseCode1 = courseCode1;
+        this.courseCode2 = courseCode2;
+        this.courseCode3 = courseCode3;
+        this.courseCode4 = courseCode4;
+        this.courseCode5 = courseCode5;
+        this.courseCode6 = courseCode6;
+        this.courseCode7 = courseCode7;
+        this.courseCode8 = courseCode8;
+        this.courseCode9 = courseCode9;
+        this.courseCode10 = courseCode10;
+        this.courseCode11 = courseCode11;
+        this.courseCode12 = courseCode12;
         this.year = year;
         this.semester = semester;
     }
@@ -74,6 +74,101 @@ public class Enroll {
         this.name = name;
     }
 
+    public String getCourseCode1() {
+        return courseCode1;
+    }
+
+    public void setCourseCode1(String courseCode1) {
+        this.courseCode1 = courseCode1;
+    }
+
+    public String getCourseCode2() {
+        return courseCode2;
+    }
+
+    public void setCourseCode2(String courseCode2) {
+        this.courseCode2 = courseCode2;
+    }
+
+    public String getCourseCode3() {
+        return courseCode3;
+    }
+
+    public void setCourseCode3(String courseCode3) {
+        this.courseCode3 = courseCode3;
+    }
+
+    public String getCourseCode4() {
+        return courseCode4;
+    }
+
+    public void setCourseCode4(String courseCode4) {
+        this.courseCode4 = courseCode4;
+    }
+
+    public String getCourseCode5() {
+        return courseCode5;
+    }
+
+    public void setCourseCode5(String courseCode5) {
+        this.courseCode5 = courseCode5;
+    }
+
+    public String getCourseCode6() {
+        return courseCode6;
+    }
+
+    public void setCourseCode6(String courseCode6) {
+        this.courseCode6 = courseCode6;
+    }
+
+    public String getCourseCode7() {
+        return courseCode7;
+    }
+
+    public void setCourseCode7(String courseCode7) {
+        this.courseCode7 = courseCode7;
+    }
+
+    public String getCourseCode8() {
+        return courseCode8;
+    }
+
+    public void setCourseCode8(String courseCode8) {
+        this.courseCode8 = courseCode8;
+    }
+
+    public String getCourseCode9() {
+        return courseCode9;
+    }
+
+    public void setCourseCode9(String courseCode9) {
+        this.courseCode9 = courseCode9;
+    }
+
+    public String getCourseCode10() {
+        return courseCode10;
+    }
+
+    public void setCourseCode10(String courseCode10) {
+        this.courseCode10 = courseCode10;
+    }
+
+    public String getCourseCode11() {
+        return courseCode11;
+    }
+
+    public void setCourseCode11(String courseCode11) {
+        this.courseCode11 = courseCode11;
+    }
+
+    public String getCourseCode12() {
+        return courseCode12;
+    }
+
+    public void setCourseCode12(String courseCode12) {
+        this.courseCode12 = courseCode12;
+    }
 
     public int getYear() {
         return year;
@@ -89,101 +184,5 @@ public class Enroll {
 
     public void setSemester(int semester) {
         this.semester = semester;
-    }
-
-    public String getSubjectCode1() {
-        return subjectCode1;
-    }
-
-    public void setSubjectCode1(String subjectCode1) {
-        this.subjectCode1 = subjectCode1;
-    }
-
-    public String getSubjectCode2() {
-        return subjectCode2;
-    }
-
-    public void setSubjectCode2(String subjectCode2) {
-        this.subjectCode2 = subjectCode2;
-    }
-
-    public String getSubjectCode3() {
-        return subjectCode3;
-    }
-
-    public void setSubjectCode3(String subjectCode3) {
-        this.subjectCode3 = subjectCode3;
-    }
-
-    public String getSubjectCode4() {
-        return subjectCode4;
-    }
-
-    public void setSubjectCode4(String subjectCode4) {
-        this.subjectCode4 = subjectCode4;
-    }
-
-    public String getSubjectCode5() {
-        return subjectCode5;
-    }
-
-    public void setSubjectCode5(String subjectCode5) {
-        this.subjectCode5 = subjectCode5;
-    }
-
-    public String getSubjectCode6() {
-        return subjectCode6;
-    }
-
-    public void setSubjectCode6(String subjectCode6) {
-        this.subjectCode6 = subjectCode6;
-    }
-
-    public String getSubjectCode7() {
-        return subjectCode7;
-    }
-
-    public void setSubjectCode7(String subjectCode7) {
-        this.subjectCode7 = subjectCode7;
-    }
-
-    public String getSubjectCode8() {
-        return subjectCode8;
-    }
-
-    public void setSubjectCode8(String subjectCode8) {
-        this.subjectCode8 = subjectCode8;
-    }
-
-    public String getSubjectCode9() {
-        return subjectCode9;
-    }
-
-    public void setSubjectCode9(String subjectCode9) {
-        this.subjectCode9 = subjectCode9;
-    }
-
-    public String getSubjectCode10() {
-        return subjectCode10;
-    }
-
-    public void setSubjectCode10(String subjectCode10) {
-        this.subjectCode10 = subjectCode10;
-    }
-
-    public String getSubjectCode11() {
-        return subjectCode11;
-    }
-
-    public void setSubjectCode11(String subjectCode11) {
-        this.subjectCode11 = subjectCode11;
-    }
-
-    public String getSubjectCode12() {
-        return subjectCode12;
-    }
-
-    public void setSubjectCode12(String subjectCode12) {
-        this.subjectCode12 = subjectCode12;
     }
 }

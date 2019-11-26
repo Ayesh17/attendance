@@ -10,7 +10,6 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
-import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.ArrayList;
@@ -25,7 +24,7 @@ public class RecordsByStudentController {
     private RecordsByStudentDAO recordsByStudentDAO;
 
     @Autowired
-    private SubjectMappingDAO subjectMappingDAO;
+    private CourseMappingDAO courseMappingDAO;
 
     @Autowired
     private RecordsDAO recordsDAO;
@@ -73,7 +72,7 @@ public class RecordsByStudentController {
         List<Enroll> subjects = enrollDAO.getSubjects(userId, year, semester);
 
         //get a list of subjectCodes
-        List<SubjectMapping> subjectMappings = new ArrayList<>();
+        List<CourseMapping> subjectMappings = new ArrayList<>();
         //System.out.println("hey2");
         for (int i = 0; i < subjects.size(); i++) {
             RecordsByStudent recordsByStudent1 = new RecordsByStudent();
@@ -86,12 +85,12 @@ public class RecordsByStudentController {
                 System.out.println("1 is Empty");
             } else {
                 System.out.println("New Student");
-                SubjectMapping subjectMapping1 = new SubjectMapping();
+                CourseMapping subjectMapping1 = new CourseMapping();
                 subjectMapping1.setSubjectCode(subjects.get(i).getSubject_code1());
                 subjectMappings.add(subjectMapping1);
 
                 //select day and time of subject from subjectmapping if subjectcode
-                List<SubjectMapping> subjectMappings1;
+                List<CourseMapping> subjectMappings1;
                 int count = 0;
                 for (int a = 0; a < subjectMappings.size(); a++) {
                     subjectMappings1 = subjectMappingDAO.getSubjectDetails(subjectMappings.get(a).getSubjectCode());
@@ -155,16 +154,16 @@ public class RecordsByStudentController {
         System.out.println(year);
         System.out.println(semester);
         List<RecordsByStudent> recordsByStudentList = new ArrayList<>();
-        List<Enroll> subjects = enrollDAO.getSubjects(userId, year, semester);
+        List<Enroll> courses = enrollDAO.getCourses(userId, year, semester);
 
-        //get a list of subjectCodes
-        List<SubjectMapping> subjectMappings = new ArrayList<>();
+        //get a list of Course
+        List<CourseMapping> courseMappings = new ArrayList<>();
         //System.out.println("hey2");
-        for (int i = 0; i < subjects.size(); i++) {
+        for (int i = 0; i < courses.size(); i++) {
 
-            //  System.out.println("hey3");
+             // System.out.println("hey3");
 
-            if (subjects.get(i).getSubjectCode1().isEmpty()) {
+            if (courses.get(i).getCourseCode1().isEmpty()) {
                 System.out.println("1 is Empty");
             } else {
                 //  System.out.println("New Student");
@@ -173,24 +172,26 @@ public class RecordsByStudentController {
                 recordsByStudent1.setYear(year);
                 recordsByStudent1.setSemester(semester);
 
-                SubjectMapping subjectMapping1 = new SubjectMapping();
-                subjectMapping1.setSubjectCode(subjects.get(i).getSubjectCode1());
-                subjectMappings.add(subjectMapping1);
+                CourseMapping courseMapping1 = new CourseMapping();
+                courseMapping1.setCourseCode(courses.get(i).getCourseCode1());
+                courseMappings.add(courseMapping1);
 
                 //select day and time of subject from subjectmapping if subjectcode
-                List<SubjectMapping> subjectMappings1;
+                List<CourseMapping> courseMappings1;
                 int count = 0;
-                for (int a = 0; a < subjectMappings.size(); a++) {
-                    subjectMappings1 = subjectMappingDAO.getSubjectDetails(subjectMappings.get(a).getSubjectCode());
+                for (int a = 0; a < courseMappings.size(); a++) {
+                    courseMappings1 = courseMappingDAO.getCourseDetails(courseMappings.get(a).getCourseCode());
                     //   System.out.println("hey4 "+ a);
-                    //System.out.println(subjectMappings.get(a).getSubjectCode());
-                    recordsByStudent1.setSubject(subjectMappings.get(a).getSubjectCode());
+                    //System.out.println(courseMappings.get(a).getCourseCode());
 
-                    for (int j = 0; j < subjectMappings1.size(); j++) {
+                    recordsByStudent1.setCourse(courseMappings.get(a).getCourseCode());
+
+
+                    for (int j = 0; j < courseMappings1.size(); j++) {
                         //    System.out.println("hey5");
-                        String day = subjectMappings1.get(j).getDay();
-                        int start = subjectMappings1.get(j).getStart();
-                        int end = subjectMappings1.get(j).getEnd();
+                        String day = courseMappings1.get(j).getDay();
+                        int start = courseMappings1.get(j).getStart();
+                        int end = courseMappings1.get(j).getEnd();
                         //    System.out.println(day);
                         //   System.out.println("start" + start);
                         //   System.out.println("end" + end);
@@ -204,6 +205,7 @@ public class RecordsByStudentController {
                             timetsamp += records.get(k).getTimestamp() + " , ";
 
                         }
+
                         recordsByStudent1.setCount(count);
                         recordsByStudent1.setTimeStamp(timetsamp);
 
@@ -214,7 +216,7 @@ public class RecordsByStudentController {
 
 
             }
-            if (subjects.get(i).getSubjectCode2().isEmpty()) {
+            if (courses.get(i).getCourseCode2().isEmpty()) {
                 System.out.println("2 is Empty");
             } else {
                 //  System.out.println("New Student");
@@ -223,24 +225,24 @@ public class RecordsByStudentController {
                 recordsByStudent1.setYear(year);
                 recordsByStudent1.setSemester(semester);
 
-                SubjectMapping subjectMapping1 = new SubjectMapping();
-                subjectMapping1.setSubjectCode(subjects.get(i).getSubjectCode2());
-                subjectMappings.add(subjectMapping1);
+                CourseMapping courseMapping1 = new CourseMapping();
+                courseMapping1.setCourseCode(courses.get(i).getCourseCode2());
+                courseMappings.add(courseMapping1);
 
                 //select day and time of subject from subjectmapping if subjectcode
-                List<SubjectMapping> subjectMappings1;
+                List<CourseMapping> courseMappings1;
                 int count = 0;
-                for (int a = 0; a < subjectMappings.size(); a++) {
-                    subjectMappings1 = subjectMappingDAO.getSubjectDetails(subjectMappings.get(a).getSubjectCode());
+                for (int a = 0; a < courseMappings.size(); a++) {
+                    courseMappings1 = courseMappingDAO.getCourseDetails(courseMappings.get(a).getCourseCode());
                     //   System.out.println("hey4 "+ a);
-                    //System.out.println(subjectMappings.get(a).getSubjectCode());
-                    recordsByStudent1.setSubject(subjectMappings.get(a).getSubjectCode());
+                    //System.out.println(courseMappings.get(a).getCoursetCode());
+                    recordsByStudent1.setCourse(courseMappings.get(a).getCourseCode());
 
-                    for (int j = 0; j < subjectMappings1.size(); j++) {
+                    for (int j = 0; j < courseMappings1.size(); j++) {
                         //    System.out.println("hey5");
-                        String day = subjectMappings1.get(j).getDay();
-                        int start = subjectMappings1.get(j).getStart();
-                        int end = subjectMappings1.get(j).getEnd();
+                        String day = courseMappings1.get(j).getDay();
+                        int start = courseMappings1.get(j).getStart();
+                        int end = courseMappings1.get(j).getEnd();
                         //    System.out.println(day);
                         //   System.out.println("start" + start);
                         //   System.out.println("end" + end);
@@ -262,7 +264,7 @@ public class RecordsByStudentController {
 
                 }
             }
-            if (subjects.get(i).getSubjectCode3().isEmpty()) {
+            if (courses.get(i).getCourseCode3().isEmpty()) {
                 System.out.println("3 is Empty");
             } else {
                 RecordsByStudent recordsByStudent1 = new RecordsByStudent();
@@ -270,21 +272,21 @@ public class RecordsByStudentController {
                 recordsByStudent1.setYear(year);
                 recordsByStudent1.setSemester(semester);
 
-                SubjectMapping subjectMapping1 = new SubjectMapping();
-                subjectMapping1.setSubjectCode(subjects.get(i).getSubjectCode3());
-                subjectMappings.add(subjectMapping1);
+                CourseMapping courseMapping1 = new CourseMapping();
+                courseMapping1.setCourseCode(courses.get(i).getCourseCode3());
+                courseMappings.add(courseMapping1);
 
                 //select day and time of subject from subjectmapping if subjectcode
-                List<SubjectMapping> subjectMappings1;
+                List<CourseMapping> courseMappings1;
                 int count = 0;
-                for (int a = 0; a < subjectMappings.size(); a++) {
-                    subjectMappings1 = subjectMappingDAO.getSubjectDetails(subjectMappings.get(a).getSubjectCode());
-                    recordsByStudent1.setSubject(subjectMappings.get(a).getSubjectCode());
+                for (int a = 0; a < courseMappings.size(); a++) {
+                    courseMappings1 = courseMappingDAO.getCourseDetails(courseMappings.get(a).getCourseCode());
+                    recordsByStudent1.setCourse(courseMappings.get(a).getCourseCode());
 
-                    for (int j = 0; j < subjectMappings1.size(); j++) {
-                        String day = subjectMappings1.get(j).getDay();
-                        int start = subjectMappings1.get(j).getStart();
-                        int end = subjectMappings1.get(j).getEnd();
+                    for (int j = 0; j < courseMappings1.size(); j++) {
+                        String day = courseMappings1.get(j).getDay();
+                        int start = courseMappings1.get(j).getStart();
+                        int end = courseMappings1.get(j).getEnd();
 
                         List<Records> records = recordsDAO.getTimestamp(day, start, end);
 
@@ -302,7 +304,7 @@ public class RecordsByStudentController {
                     recordsByStudentList.add(recordsByStudent1);
 
                 }
-            }if (subjects.get(i).getSubjectCode4().isEmpty()) {
+            }if (courses.get(i).getCourseCode4().isEmpty()) {
                 System.out.println("4 is Empty");
             } else {
                 RecordsByStudent recordsByStudent1 = new RecordsByStudent();
@@ -310,21 +312,21 @@ public class RecordsByStudentController {
                 recordsByStudent1.setYear(year);
                 recordsByStudent1.setSemester(semester);
 
-                SubjectMapping subjectMapping1 = new SubjectMapping();
-                subjectMapping1.setSubjectCode(subjects.get(i).getSubjectCode4());
-                subjectMappings.add(subjectMapping1);
+                CourseMapping courseMapping1 = new CourseMapping();
+                courseMapping1.setCourseCode(courses.get(i).getCourseCode4());
+                courseMappings.add(courseMapping1);
 
                 //select day and time of subject from subjectmapping if subjectcode
-                List<SubjectMapping> subjectMappings1;
+                List<CourseMapping> courseMappings1;
                 int count = 0;
-                for (int a = 0; a < subjectMappings.size(); a++) {
-                    subjectMappings1 = subjectMappingDAO.getSubjectDetails(subjectMappings.get(a).getSubjectCode());
-                    recordsByStudent1.setSubject(subjectMappings.get(a).getSubjectCode());
+                for (int a = 0; a < courseMappings.size(); a++) {
+                    courseMappings1 = courseMappingDAO.getCourseDetails(courseMappings.get(a).getCourseCode());
+                    recordsByStudent1.setCourse(courseMappings.get(a).getCourseCode());
 
-                    for (int j = 0; j < subjectMappings1.size(); j++) {
-                        String day = subjectMappings1.get(j).getDay();
-                        int start = subjectMappings1.get(j).getStart();
-                        int end = subjectMappings1.get(j).getEnd();
+                    for (int j = 0; j < courseMappings1.size(); j++) {
+                        String day = courseMappings1.get(j).getDay();
+                        int start = courseMappings1.get(j).getStart();
+                        int end = courseMappings1.get(j).getEnd();
 
                         List<Records> records = recordsDAO.getTimestamp(day, start, end);
 
@@ -342,7 +344,7 @@ public class RecordsByStudentController {
                     recordsByStudentList.add(recordsByStudent1);
 
                 }
-            }if (subjects.get(i).getSubjectCode5().isEmpty()) {
+            }if (courses.get(i).getCourseCode5().isEmpty()) {
                 System.out.println("5 is Empty");
             } else {
                 RecordsByStudent recordsByStudent1 = new RecordsByStudent();
@@ -350,21 +352,21 @@ public class RecordsByStudentController {
                 recordsByStudent1.setYear(year);
                 recordsByStudent1.setSemester(semester);
 
-                SubjectMapping subjectMapping1 = new SubjectMapping();
-                subjectMapping1.setSubjectCode(subjects.get(i).getSubjectCode5());
-                subjectMappings.add(subjectMapping1);
+                CourseMapping courseMapping1 = new CourseMapping();
+                courseMapping1.setCourseCode(courses.get(i).getCourseCode5());
+                courseMappings.add(courseMapping1);
 
                 //select day and time of subject from subjectmapping if subjectcode
-                List<SubjectMapping> subjectMappings1;
+                List<CourseMapping> courseMappings1;
                 int count = 0;
-                for (int a = 0; a < subjectMappings.size(); a++) {
-                    subjectMappings1 = subjectMappingDAO.getSubjectDetails(subjectMappings.get(a).getSubjectCode());
-                    recordsByStudent1.setSubject(subjectMappings.get(a).getSubjectCode());
+                for (int a = 0; a < courseMappings.size(); a++) {
+                    courseMappings1 = courseMappingDAO.getCourseDetails(courseMappings.get(a).getCourseCode());
+                    recordsByStudent1.setCourse(courseMappings.get(a).getCourseCode());
 
-                    for (int j = 0; j < subjectMappings1.size(); j++) {
-                        String day = subjectMappings1.get(j).getDay();
-                        int start = subjectMappings1.get(j).getStart();
-                        int end = subjectMappings1.get(j).getEnd();
+                    for (int j = 0; j < courseMappings1.size(); j++) {
+                        String day = courseMappings1.get(j).getDay();
+                        int start = courseMappings1.get(j).getStart();
+                        int end = courseMappings1.get(j).getEnd();
 
                         List<Records> records = recordsDAO.getTimestamp(day, start, end);
 
@@ -382,7 +384,7 @@ public class RecordsByStudentController {
                     recordsByStudentList.add(recordsByStudent1);
 
                 }
-            }if (subjects.get(i).getSubjectCode6().isEmpty()) {
+            }if (courses.get(i).getCourseCode6().isEmpty()) {
                 System.out.println("6 is Empty");
             } else {
                 RecordsByStudent recordsByStudent1 = new RecordsByStudent();
@@ -390,21 +392,21 @@ public class RecordsByStudentController {
                 recordsByStudent1.setYear(year);
                 recordsByStudent1.setSemester(semester);
 
-                SubjectMapping subjectMapping1 = new SubjectMapping();
-                subjectMapping1.setSubjectCode(subjects.get(i).getSubjectCode6());
-                subjectMappings.add(subjectMapping1);
+                CourseMapping courseMapping1 = new CourseMapping();
+                courseMapping1.setCourseCode(courses.get(i).getCourseCode6());
+                courseMappings.add(courseMapping1);
 
                 //select day and time of subject from subjectmapping if subjectcode
-                List<SubjectMapping> subjectMappings1;
+                List<CourseMapping> courseMappings1;
                 int count = 0;
-                for (int a = 0; a < subjectMappings.size(); a++) {
-                    subjectMappings1 = subjectMappingDAO.getSubjectDetails(subjectMappings.get(a).getSubjectCode());
-                    recordsByStudent1.setSubject(subjectMappings.get(a).getSubjectCode());
+                for (int a = 0; a < courseMappings.size(); a++) {
+                    courseMappings1 = courseMappingDAO.getCourseDetails(courseMappings.get(a).getCourseCode());
+                    recordsByStudent1.setCourse(courseMappings.get(a).getCourseCode());
 
-                    for (int j = 0; j < subjectMappings1.size(); j++) {
-                        String day = subjectMappings1.get(j).getDay();
-                        int start = subjectMappings1.get(j).getStart();
-                        int end = subjectMappings1.get(j).getEnd();
+                    for (int j = 0; j < courseMappings1.size(); j++) {
+                        String day = courseMappings1.get(j).getDay();
+                        int start = courseMappings1.get(j).getStart();
+                        int end = courseMappings1.get(j).getEnd();
 
                         List<Records> records = recordsDAO.getTimestamp(day, start, end);
 
@@ -422,7 +424,7 @@ public class RecordsByStudentController {
                     recordsByStudentList.add(recordsByStudent1);
 
                 }
-            }if (subjects.get(i).getSubjectCode7().isEmpty()) {
+            }if (courses.get(i).getCourseCode7().isEmpty()) {
                 System.out.println("7 is Empty");
             } else {
                 RecordsByStudent recordsByStudent1 = new RecordsByStudent();
@@ -430,21 +432,21 @@ public class RecordsByStudentController {
                 recordsByStudent1.setYear(year);
                 recordsByStudent1.setSemester(semester);
 
-                SubjectMapping subjectMapping1 = new SubjectMapping();
-                subjectMapping1.setSubjectCode(subjects.get(i).getSubjectCode7());
-                subjectMappings.add(subjectMapping1);
+                CourseMapping courseMapping1 = new CourseMapping();
+                courseMapping1.setCourseCode(courses.get(i).getCourseCode7());
+                courseMappings.add(courseMapping1);
 
                 //select day and time of subject from subjectmapping if subjectcode
-                List<SubjectMapping> subjectMappings1;
+                List<CourseMapping> courseMappings1;
                 int count = 0;
-                for (int a = 0; a < subjectMappings.size(); a++) {
-                    subjectMappings1 = subjectMappingDAO.getSubjectDetails(subjectMappings.get(a).getSubjectCode());
-                    recordsByStudent1.setSubject(subjectMappings.get(a).getSubjectCode());
+                for (int a = 0; a < courseMappings.size(); a++) {
+                    courseMappings1 = courseMappingDAO.getCourseDetails(courseMappings.get(a).getCourseCode());
+                    recordsByStudent1.setCourse(courseMappings.get(a).getCourseCode());
 
-                    for (int j = 0; j < subjectMappings1.size(); j++) {
-                        String day = subjectMappings1.get(j).getDay();
-                        int start = subjectMappings1.get(j).getStart();
-                        int end = subjectMappings1.get(j).getEnd();
+                    for (int j = 0; j < courseMappings1.size(); j++) {
+                        String day = courseMappings1.get(j).getDay();
+                        int start = courseMappings1.get(j).getStart();
+                        int end = courseMappings1.get(j).getEnd();
 
                         List<Records> records = recordsDAO.getTimestamp(day, start, end);
 
@@ -462,7 +464,7 @@ public class RecordsByStudentController {
                     recordsByStudentList.add(recordsByStudent1);
 
                 }
-            }if (subjects.get(i).getSubjectCode8().isEmpty()) {
+            }if (courses.get(i).getCourseCode8().isEmpty()) {
                 System.out.println("8 is Empty");
             } else {
                 RecordsByStudent recordsByStudent1 = new RecordsByStudent();
@@ -470,21 +472,21 @@ public class RecordsByStudentController {
                 recordsByStudent1.setYear(year);
                 recordsByStudent1.setSemester(semester);
 
-                SubjectMapping subjectMapping1 = new SubjectMapping();
-                subjectMapping1.setSubjectCode(subjects.get(i).getSubjectCode8());
-                subjectMappings.add(subjectMapping1);
+                CourseMapping courseMapping1 = new CourseMapping();
+                courseMapping1.setCourseCode(courses.get(i).getCourseCode8());
+                courseMappings.add(courseMapping1);
 
                 //select day and time of subject from subjectmapping if subjectcode
-                List<SubjectMapping> subjectMappings1;
+                List<CourseMapping> courseMappings1;
                 int count = 0;
-                for (int a = 0; a < subjectMappings.size(); a++) {
-                    subjectMappings1 = subjectMappingDAO.getSubjectDetails(subjectMappings.get(a).getSubjectCode());
-                    recordsByStudent1.setSubject(subjectMappings.get(a).getSubjectCode());
+                for (int a = 0; a < courseMappings.size(); a++) {
+                    courseMappings1 = courseMappingDAO.getCourseDetails(courseMappings.get(a).getCourseCode());
+                    recordsByStudent1.setCourse(courseMappings.get(a).getCourseCode());
 
-                    for (int j = 0; j < subjectMappings1.size(); j++) {
-                        String day = subjectMappings1.get(j).getDay();
-                        int start = subjectMappings1.get(j).getStart();
-                        int end = subjectMappings1.get(j).getEnd();
+                    for (int j = 0; j < courseMappings1.size(); j++) {
+                        String day = courseMappings1.get(j).getDay();
+                        int start = courseMappings1.get(j).getStart();
+                        int end = courseMappings1.get(j).getEnd();
 
                         List<Records> records = recordsDAO.getTimestamp(day, start, end);
 
@@ -502,7 +504,7 @@ public class RecordsByStudentController {
                     recordsByStudentList.add(recordsByStudent1);
 
                 }
-            }if (subjects.get(i).getSubjectCode9().isEmpty()) {
+            }if (courses.get(i).getCourseCode9().isEmpty()) {
                 System.out.println("9 is Empty");
             } else {
                 RecordsByStudent recordsByStudent1 = new RecordsByStudent();
@@ -510,21 +512,21 @@ public class RecordsByStudentController {
                 recordsByStudent1.setYear(year);
                 recordsByStudent1.setSemester(semester);
 
-                SubjectMapping subjectMapping1 = new SubjectMapping();
-                subjectMapping1.setSubjectCode(subjects.get(i).getSubjectCode9());
-                subjectMappings.add(subjectMapping1);
+                CourseMapping courseMapping1 = new CourseMapping();
+                courseMapping1.setCourseCode(courses.get(i).getCourseCode9());
+                courseMappings.add(courseMapping1);
 
                 //select day and time of subject from subjectmapping if subjectcode
-                List<SubjectMapping> subjectMappings1;
+                List<CourseMapping> courseMappings1;
                 int count = 0;
-                for (int a = 0; a < subjectMappings.size(); a++) {
-                    subjectMappings1 = subjectMappingDAO.getSubjectDetails(subjectMappings.get(a).getSubjectCode());
-                    recordsByStudent1.setSubject(subjectMappings.get(a).getSubjectCode());
+                for (int a = 0; a < courseMappings.size(); a++) {
+                    courseMappings1 = courseMappingDAO.getCourseDetails(courseMappings.get(a).getCourseCode());
+                    recordsByStudent1.setCourse(courseMappings.get(a).getCourseCode());
 
-                    for (int j = 0; j < subjectMappings1.size(); j++) {
-                        String day = subjectMappings1.get(j).getDay();
-                        int start = subjectMappings1.get(j).getStart();
-                        int end = subjectMappings1.get(j).getEnd();
+                    for (int j = 0; j < courseMappings1.size(); j++) {
+                        String day = courseMappings1.get(j).getDay();
+                        int start = courseMappings1.get(j).getStart();
+                        int end = courseMappings1.get(j).getEnd();
 
                         List<Records> records = recordsDAO.getTimestamp(day, start, end);
 
@@ -542,7 +544,7 @@ public class RecordsByStudentController {
                     recordsByStudentList.add(recordsByStudent1);
 
                 }
-            }if (subjects.get(i).getSubjectCode10().isEmpty()) {
+            }if (courses.get(i).getCourseCode10().isEmpty()) {
                 System.out.println("10 is Empty");
             } else {
                 RecordsByStudent recordsByStudent1 = new RecordsByStudent();
@@ -550,21 +552,21 @@ public class RecordsByStudentController {
                 recordsByStudent1.setYear(year);
                 recordsByStudent1.setSemester(semester);
 
-                SubjectMapping subjectMapping1 = new SubjectMapping();
-                subjectMapping1.setSubjectCode(subjects.get(i).getSubjectCode10());
-                subjectMappings.add(subjectMapping1);
+                CourseMapping courseMapping1 = new CourseMapping();
+                courseMapping1.setCourseCode(courses.get(i).getCourseCode10());
+                courseMappings.add(courseMapping1);
 
                 //select day and time of subject from subjectmapping if subjectcode
-                List<SubjectMapping> subjectMappings1;
+                List<CourseMapping> courseMappings1;
                 int count = 0;
-                for (int a = 0; a < subjectMappings.size(); a++) {
-                    subjectMappings1 = subjectMappingDAO.getSubjectDetails(subjectMappings.get(a).getSubjectCode());
-                    recordsByStudent1.setSubject(subjectMappings.get(a).getSubjectCode());
+                for (int a = 0; a < courseMappings.size(); a++) {
+                    courseMappings1 = courseMappingDAO.getCourseDetails(courseMappings.get(a).getCourseCode());
+                    recordsByStudent1.setCourse(courseMappings.get(a).getCourseCode());
 
-                    for (int j = 0; j < subjectMappings1.size(); j++) {
-                        String day = subjectMappings1.get(j).getDay();
-                        int start = subjectMappings1.get(j).getStart();
-                        int end = subjectMappings1.get(j).getEnd();
+                    for (int j = 0; j < courseMappings1.size(); j++) {
+                        String day = courseMappings1.get(j).getDay();
+                        int start = courseMappings1.get(j).getStart();
+                        int end = courseMappings1.get(j).getEnd();
 
                         List<Records> records = recordsDAO.getTimestamp(day, start, end);
 
@@ -582,7 +584,7 @@ public class RecordsByStudentController {
                     recordsByStudentList.add(recordsByStudent1);
 
                 }
-            }if (subjects.get(i).getSubjectCode11().isEmpty()) {
+            }if (courses.get(i).getCourseCode11().isEmpty()) {
                 System.out.println("11 is Empty");
             } else {
                 RecordsByStudent recordsByStudent1 = new RecordsByStudent();
@@ -590,21 +592,21 @@ public class RecordsByStudentController {
                 recordsByStudent1.setYear(year);
                 recordsByStudent1.setSemester(semester);
 
-                SubjectMapping subjectMapping1 = new SubjectMapping();
-                subjectMapping1.setSubjectCode(subjects.get(i).getSubjectCode11());
-                subjectMappings.add(subjectMapping1);
+                CourseMapping courseMapping1 = new CourseMapping();
+                courseMapping1.setCourseCode(courses.get(i).getCourseCode11());
+                courseMappings.add(courseMapping1);
 
                 //select day and time of subject from subjectmapping if subjectcode
-                List<SubjectMapping> subjectMappings1;
+                List<CourseMapping> courseMappings1;
                 int count = 0;
-                for (int a = 0; a < subjectMappings.size(); a++) {
-                    subjectMappings1 = subjectMappingDAO.getSubjectDetails(subjectMappings.get(a).getSubjectCode());
-                    recordsByStudent1.setSubject(subjectMappings.get(a).getSubjectCode());
+                for (int a = 0; a < courseMappings.size(); a++) {
+                    courseMappings1 = courseMappingDAO.getCourseDetails(courseMappings.get(a).getCourseCode());
+                    recordsByStudent1.setCourse(courseMappings.get(a).getCourseCode());
 
-                    for (int j = 0; j < subjectMappings1.size(); j++) {
-                        String day = subjectMappings1.get(j).getDay();
-                        int start = subjectMappings1.get(j).getStart();
-                        int end = subjectMappings1.get(j).getEnd();
+                    for (int j = 0; j < courseMappings1.size(); j++) {
+                        String day = courseMappings1.get(j).getDay();
+                        int start = courseMappings1.get(j).getStart();
+                        int end = courseMappings1.get(j).getEnd();
 
                         List<Records> records = recordsDAO.getTimestamp(day, start, end);
 
@@ -622,7 +624,7 @@ public class RecordsByStudentController {
                     recordsByStudentList.add(recordsByStudent1);
 
                 }
-            }if (subjects.get(i).getSubjectCode12().isEmpty()) {
+            }if (courses.get(i).getCourseCode12().isEmpty()) {
                 System.out.println("12 is Empty");
             } else {
                 RecordsByStudent recordsByStudent1 = new RecordsByStudent();
@@ -630,21 +632,21 @@ public class RecordsByStudentController {
                 recordsByStudent1.setYear(year);
                 recordsByStudent1.setSemester(semester);
 
-                SubjectMapping subjectMapping1 = new SubjectMapping();
-                subjectMapping1.setSubjectCode(subjects.get(i).getSubjectCode12());
-                subjectMappings.add(subjectMapping1);
+                CourseMapping courseMapping1 = new CourseMapping();
+                courseMapping1.setCourseCode(courses.get(i).getCourseCode12());
+                courseMappings.add(courseMapping1);
 
                 //select day and time of subject from subjectmapping if subjectcode
-                List<SubjectMapping> subjectMappings1;
+                List<CourseMapping> courseMappings1;
                 int count = 0;
-                for (int a = 0; a < subjectMappings.size(); a++) {
-                    subjectMappings1 = subjectMappingDAO.getSubjectDetails(subjectMappings.get(a).getSubjectCode());
-                    recordsByStudent1.setSubject(subjectMappings.get(a).getSubjectCode());
+                for (int a = 0; a < courseMappings.size(); a++) {
+                    courseMappings1 = courseMappingDAO.getCourseDetails(courseMappings.get(a).getCourseCode());
+                    recordsByStudent1.setCourse(courseMappings.get(a).getCourseCode());
 
-                    for (int j = 0; j < subjectMappings1.size(); j++) {
-                        String day = subjectMappings1.get(j).getDay();
-                        int start = subjectMappings1.get(j).getStart();
-                        int end = subjectMappings1.get(j).getEnd();
+                    for (int j = 0; j < courseMappings1.size(); j++) {
+                        String day = courseMappings1.get(j).getDay();
+                        int start = courseMappings1.get(j).getStart();
+                        int end = courseMappings1.get(j).getEnd();
 
                         List<Records> records = recordsDAO.getTimestamp(day, start, end);
 

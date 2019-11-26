@@ -15,7 +15,7 @@
 
     <link rel="stylesheet" type="text/css" href="static/css/view.css" th:href="@{/css/view.css}">
     <meta charset="UTF-8">
-    <title>Subject Mapping Details</title>
+    <title>Stream Details</title>
 </head>
 <body>
 
@@ -45,31 +45,29 @@
 </div>
 <!-- End of Nav Bar body code-->
 
-<h1>Subject Mapping Details</h1>
-<a href="../subjectMapping/new"><h2>Add Subject Mapping</h2></a>
-<a href="../subjectMapping/csv"><h4>Upload a CSV File</h4></a>
+<h1>Stream Details</h1>
+<a href="../stream/new"><h2>Add a new Stream</h2></a>
+<a href="../stream/csv"><h4>Upload a CSV File</h4></a>
 <div class="container" style="margin-top:30px">
     <br><br>
     <table border="1">
         <thead>
         <tr>
-            <th>Subject Code</th>
-            <th>Course</th>
-            <th>Hall</th>
+            <th>Stream Code</th>
+            <th>Name</th>
             <th></th>
             <th></th>
         </tr>
         </thead>
         <tbody>
-        <tr th:each="subjectMapping : ${subjectMappingDetails}">
-            <td th:text="${subjectMapping.subjectCode}">Code</td>
-            <td th:text="${subjectMapping.courseCode}">Course</td>
-            <td th:text="${subjectMapping.hallCode}">Hall</td>
+        <tr th:each="stream : ${streamDetails}">
+            <td th:text="${stream.code}">Code</td>
+            <td th:text="${stream.name}">Name</td>
             <td>
-                <a th:href="@{'/subjectMapping/edit/' + ${subjectMapping.id}}">Edit</a>
+                <a th:href="@{'/stream/edit/' + ${stream.id}}">Edit</a>
             </td>
             <td>
-                <a th:href="@{'/subjectMapping/delete/' + ${subjectMapping.id}}">Delete</a>
+                <a th:href="@{'/stream/delete/' + ${stream.id}}">Delete</a>
             </td>
 
 
@@ -77,7 +75,6 @@
         </tbody>
     </table>
 </div>
-
 
 <!-- Bootstrap core JavaScript
 ================================================== -->

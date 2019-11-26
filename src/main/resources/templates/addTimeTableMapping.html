@@ -102,7 +102,7 @@
                         <td>
                             <select th:field="*{subject_code}">
                                 <option value=""></option>
-                                <option th:each="subject: ${subjects}" th:value="${subject.subject_code}" th:text="${subject.name}"/>
+                                <option th:each="course: ${subjects}" th:value="${course.subject_code}" th:text="${course.name}"/>
                                 <td><input type="text"  th:value="${day.name}" name="day" style="display:none;width:0px" /></td>
                                 <td><input type="text"  th:value="${time.start}" name="start" style="display:none;width:0px" /></td>
                                 <td><input type="text"  th:value="${time.end}" name="end" style="display:none;width:0px" /></td>
