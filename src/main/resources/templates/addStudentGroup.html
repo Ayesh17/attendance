@@ -62,7 +62,7 @@
                     <td>
                         <select th:field="*{courseCode}">
                             <option value="">Choose..</option>
-                            <option th:each="course: ${courses}" th:value="${course.code}" th:text="${course.name}"/>
+                            <option th:each="stream: ${courses}" th:value="${stream.code}" th:text="${stream.name}"/>
                         </select>
                     </td>
                 </tr>

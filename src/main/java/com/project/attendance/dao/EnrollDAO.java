@@ -30,7 +30,7 @@ public class EnrollDAO {
     }
 
     //to search all enroll records
-    public List<Enroll> getSubjects(int userId, int year, int semester){
+    public List<Enroll> getCourses(int userId, int year, int semester){
         return enrollRepository.getEnrollByUserIdAndYearAndSemester(userId, year, semester);
     }
 

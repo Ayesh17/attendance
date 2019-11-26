@@ -16,7 +16,7 @@ public class RecordsByStudent {
     private int userId;
     private int year;
     private int semester;
-    private String subject;
+    private String course;
     private String days;
     private int count;
     private String timeStamp;
@@ -24,20 +24,11 @@ public class RecordsByStudent {
     public RecordsByStudent() {
     }
 
-    public RecordsByStudent(int userId, int year, int semester, String subject, String days, int count) {
+    public RecordsByStudent(int userId, int year, int semester, String course, String days, int count, String timeStamp) {
         this.userId = userId;
         this.year = year;
         this.semester = semester;
-        this.subject = subject;
-        this.days = days;
-        this.count = count;
-    }
-
-    public RecordsByStudent(int userId, int year, int semester, String subject, String days, int count, String timeStamp) {
-        this.userId = userId;
-        this.year = year;
-        this.semester = semester;
-        this.subject = subject;
+        this.course = course;
         this.days = days;
         this.count = count;
         this.timeStamp = timeStamp;
@@ -67,12 +58,12 @@ public class RecordsByStudent {
         this.semester = semester;
     }
 
-    public String getSubject() {
-        return subject;
+    public String getCourse() {
+        return course;
     }
 
-    public void setSubject(String subject) {
-        this.subject = subject;
+    public void setCourse(String course) {
+        this.course = course;
     }
 
     public String getDays() {

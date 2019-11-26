@@ -1,17 +1,13 @@
 package com.project.attendance.util;
 
+import java.io.*;
+import java.nio.file.Path;
+import java.util.*;
+
 import com.opencsv.CSVReader;
 import com.opencsv.bean.CsvToBean;
 import com.opencsv.bean.HeaderColumnNameTranslateMappingStrategy;
 import com.project.attendance.model.Course;
-import com.project.attendance.model.Subject;
-
-import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.nio.file.Path;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
 
 public class CoursesCSV {
     public static List<Course> main(Path[] args)
@@ -22,8 +18,8 @@ public class CoursesCSV {
         // Bean attributes.
         Map<String, String> mapping = new
                 HashMap<String, String>();
-        mapping.put("code", "code");
         mapping.put("name", "name");
+        mapping.put("course_code", "courseCode");
 
         // HeaderColumnNameTranslateMappingStrategy
         // for Student class

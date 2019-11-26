@@ -4,7 +4,6 @@ import com.opencsv.CSVReader;
 import com.opencsv.bean.CsvToBean;
 import com.opencsv.bean.HeaderColumnNameTranslateMappingStrategy;
 import com.project.attendance.model.Lecturer;
-import com.project.attendance.model.Subject;
 
 import java.io.FileNotFoundException;
 import java.io.FileReader;

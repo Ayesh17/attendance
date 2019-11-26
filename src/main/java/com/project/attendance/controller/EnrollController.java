@@ -3,7 +3,6 @@ package com.project.attendance.controller;
 import com.project.attendance.dao.*;
 import com.project.attendance.model.*;
 import com.project.attendance.util.EnrollCSV;
-import com.project.attendance.util.SubjectMappingsCSV;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -17,7 +16,6 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.sql.SQLException;
 import java.util.List;
 
 @Controller
@@ -29,7 +27,7 @@ public class EnrollController {
     private StudentDAO studentDAO;
 
     @Autowired
-    private SubjectDAO subjectDAO;
+    private CourseDAO courseDAO;
 
 
     @RequestMapping("/enroll")
@@ -48,8 +46,8 @@ public class EnrollController {
         model.addAttribute("students", studentDetail);
 
 
-        List<Subject> subjectDetail = subjectDAO.findAll();
-        model.addAttribute("subjects",subjectDetail);
+        List<Course> courseDetail = courseDAO.findAll();
+        model.addAttribute("subjects", courseDetail);
 
         return "addEnroll";
     }
@@ -93,8 +91,8 @@ public class EnrollController {
 
         List<Student> studentDetails = studentDAO.findAll();
         mav.addObject("students", studentDetails);
-        List<Subject> subjectDetails = subjectDAO.findAll();
-        mav.addObject("subjects",subjectDetails);
+        List<Course> courseDetails = courseDAO.findAll();
+        mav.addObject("subjects", courseDetails);
 
         return  mav;
     }

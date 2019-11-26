@@ -47,7 +47,7 @@
 
 <h1>Course Details</h1>
 <a href="../course/new"><h2>Add a new Course</h2></a>
-<a href="../course/csv"><h2>Upload a CSV File</h2></a>
+<a href="../course/csv"><h4>Upload a CSV File</h4></a>
 <div class="container" style="margin-top:30px">
     <br><br>
     <table border="1">
@@ -61,8 +61,9 @@
         </thead>
         <tbody>
         <tr th:each="course : ${courseDetails}">
-            <td th:text="${course.code}">Code</td>
+            <td th:text="${course.courseCode}">Code</td>
             <td th:text="${course.name}">Name</td>
+
             <td>
                 <a th:href="@{'/course/edit/' + ${course.id}}">Edit</a>
             </td>
@@ -75,6 +76,7 @@
         </tbody>
     </table>
 </div>
+
 
 <!-- Bootstrap core JavaScript
 ================================================== -->

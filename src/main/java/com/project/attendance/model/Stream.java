@@ -1,25 +1,29 @@
 package com.project.attendance.model;
+
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
+
 import javax.persistence.*;
-//import com.project.attendance.model.Course;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 
 
 @Entity
-@Table(name="subjects")
+@Table(name="streams")
 @EntityListeners(AuditingEntityListener.class)
 
-public class Subject {
+public class Stream {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-    private String subjectCode;
+    @NotNull
+    private String code;
     private String name;
 
-    public Subject() {
+    public Stream() {
     }
 
-    public Subject(String subjectCode, String name) {
-        this.subjectCode = subjectCode;
+    public Stream(@NotNull String code, String name) {
+        this.code = code;
         this.name = name;
     }
 
@@ -31,12 +35,12 @@ public class Subject {
         this.id = id;
     }
 
-    public String getSubjectCode() {
-        return subjectCode;
+    public String getCode() {
+        return code;
     }
 
-    public void setSubjectCode(String subjectCode) {
-        this.subjectCode = subjectCode;
+    public void setCode(String code) {
+        this.code = code;
     }
 
     public String getName() {
@@ -45,13 +49,5 @@ public class Subject {
 
     public void setName(String name) {
         this.name = name;
-    }
-
-    @Override
-    public String toString() {
-        return "Subject{"  +
-                "subject_code='" + subjectCode + '\'' +
-                ", name='" + name + '\'' +
-                '}';
     }
 }

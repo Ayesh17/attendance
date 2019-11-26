@@ -19,7 +19,7 @@ public class TimeTableController {
     private TimeTableDAO timeTableDAO;
 
     @Autowired
-    private SubjectDAO subjectDAO;
+    private CourseDAO courseDAO;
 
     @Autowired
     private StudentGroupDAO studentGroupDAO;
@@ -45,8 +45,8 @@ public class TimeTableController {
         TimeTable timeTable =new TimeTable();
         model.addAttribute("timeTable",timeTable);
 
-        List<Subject> subjectDetail = subjectDAO.findAll();
-        model.addAttribute("subjects", subjectDetail);
+        List<Course> courseDetail = courseDAO.findAll();
+        model.addAttribute("subjects", courseDetail);
 
 
         List<StudentGroup> studentGroupDetail = studentGroupDAO.findAll();
@@ -80,8 +80,8 @@ public class TimeTableController {
         TimeTable timeTable = timeTableDAO.findById(id);
         mav.addObject("timeTable",timeTable);
 
-        List<Subject> subjectDetails = subjectDAO.findAll();
-        mav.addObject("subjects", subjectDetails);
+        List<Course> courseDetails = courseDAO.findAll();
+        mav.addObject("subjects", courseDetails);
 
         List<StudentGroup> studentGroupDetails = studentGroupDAO.findAll();
         mav.addObject("studentGroups",studentGroupDetails);

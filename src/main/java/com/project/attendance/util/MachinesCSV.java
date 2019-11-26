@@ -3,7 +3,6 @@ package com.project.attendance.util;
 import com.opencsv.CSVReader;
 import com.opencsv.bean.CsvToBean;
 import com.opencsv.bean.HeaderColumnNameTranslateMappingStrategy;
-import com.project.attendance.model.Course;
 import com.project.attendance.model.Machine;
 
 import java.io.FileNotFoundException;

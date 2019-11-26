@@ -12,9 +12,9 @@
     <link href="../static/css/bootstrap.css" rel="stylesheet" th:href="@{/css/bootstrap.css}"/>
     <!-- End of Nav Bar header code-->
 
-    <link rel="stylesheet" type="text/css" href="static/css/subjectMapping.css" th:href="@{/css/subjectMapping.css}">
+    <link rel="stylesheet" type="text/css" href="static/css/courseMapping.css" th:href="@{/css/courseMapping.css}">
     <meta charset="UTF-8">
-    <title>Adding a Subject Mapping</title>
+    <title>Adding a Course Mapping</title>
 </head>
 <body>
 <!-- Nav Bar body code-->
@@ -33,7 +33,7 @@
             </div>
             <div id="navbar" class="navbar-collapse collapse">
                 <ul class="nav navbar-nav navbar-right">
-                    <li class="active"><a href="../subjectMapping/">Back</a></li>
+                    <li class="active"><a href="../courseMapping/">Back</a></li>
                     <li class="active"><a href="../admin/">Home</a></li>
                     <li><a href="#">About</a></li>
                     <li><a href="#">Contact</a></li>
@@ -44,31 +44,31 @@
 </div>
 <!-- End of Nav Bar body code-->
 
-<h1>Add a new Subject Mapping</h1>
+<h1>Add a new Course Mapping</h1>
 
 <div class="container" style="margin-top:30px">
     <img src="static/img/books.jpeg" th:src="@{/img/books.jpeg}"/>
 
     <div class="container2">
-        <form action="#" th:action="@{/subjectMapping/save}" th:object="${subjectMapping}" method="post">
+        <form action="#" th:action="@{/courseMapping/save}" th:object="${courseMapping}" method="post">
             <table border="0" cell[adding="10">
                 <tr>
-                    <td>Subject Code:</td>
+                    <td>Course Code:</td>
                     <td>
-                        <select th:field="*{subjectCode}">
+                        <select th:field="*{courseCode}">
                             <option value="">Choose..</option>
-                            <option th:each="subject: ${subjects}" th:value="${subject.subjectCode}"
-                                    th:text="${subject.subjectCode}"/>
+                            <option th:each="course: ${courses}" th:value="${course.courseCode}"
+                                    th:text="${course.courseCode}"/>
                         </select>
                     </td>
                 </tr>
 
                 <tr>
-                    <td>Course:</td>
+                    <td>Stream:</td>
                     <td>
-                        <select th:field="*{courseCode}">
+                        <select th:field="*{streamCode}">
                             <option value="">Choose..</option>
-                            <option th:each="course: ${courses}" th:value="${course.code}" th:text="${course.name}"/>
+                            <option th:each="stream: ${streams}" th:value="${stream.code}" th:text="${stream.name}"/>
                         </select>
                     </td>
                 </tr>

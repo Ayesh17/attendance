@@ -1,10 +1,7 @@
 package com.project.attendance.model;
-
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
-
 import javax.persistence.*;
-import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.NotNull;
+//import com.project.attendance.model.Course;
 
 
 @Entity
@@ -15,15 +12,14 @@ public class Course {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-    @NotNull
-    private String code;
+    private String courseCode;
     private String name;
 
     public Course() {
     }
 
-    public Course(@NotNull String code, String name) {
-        this.code = code;
+    public Course(String courseCode, String name) {
+        this.courseCode = courseCode;
         this.name = name;
     }
 
@@ -35,12 +31,12 @@ public class Course {
         this.id = id;
     }
 
-    public String getCode() {
-        return code;
+    public String getCourseCode() {
+        return courseCode;
     }
 
-    public void setCode(String code) {
-        this.code = code;
+    public void setCourseCode(String courseCode) {
+        this.courseCode = courseCode;
     }
 
     public String getName() {
@@ -49,5 +45,13 @@ public class Course {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    @Override
+    public String toString() {
+        return "Course{"  +
+                "course_code='" + courseCode + '\'' +
+                ", name='" + name + '\'' +
+                '}';
     }
 }
