@@ -56,7 +56,7 @@
             <th>Name</th>
             <th>Address</th>
             <th>NIC</th>
-            <th>Course</th>
+            <th>Stream</th>
             <th>Index Number</th>
             <th></th>
             <th></th>
@@ -67,7 +67,7 @@
             <td th:text="${student.name}">Name</td>
             <td th:text="${student.address}">Address</td>
             <td th:text="${student.nic}">NIC</td>
-            <td th:text="${student.courseCode}">stream</td>
+            <td th:text="${student.streamCode}">stream</td>
             <td th:text="${student.indexNumber}">user_id</td>
             <td>
                 <a th:href="@{'/student/edit/' + ${student.id}}">Edit</a>

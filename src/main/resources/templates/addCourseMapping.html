@@ -139,6 +139,10 @@
                             <option value="11">11.00</option>
                             <option value="12">12.00</option>
                             <option value="13">13.00</option>
+                            <option value="10">14.00</option>
+                            <option value="11">15.00</option>
+                            <option value="12">16.00</option>
+                            <option value="13">17.00</option>
                         </select>
                     </td>
                 </tr>
@@ -146,16 +150,38 @@
                     <td>End:</td>
                     <td>
                         <select th:field="*{end}">
-                            <option value="8">8.00</option>
                             <option value="9">9.00</option>
                             <option value="10">10.00</option>
                             <option value="11">11.00</option>
                             <option value="12">12.00</option>
                             <option value="13">13.00</option>
+                            <option value="10">14.00</option>
+                            <option value="11">15.00</option>
+                            <option value="12">16.00</option>
+                            <option value="13">17.00</option>
+                            <option value="13">18.00</option>
                         </select>
                     </td>
                 </tr>
                 <tr>
+                <tr>
+                    <td>Lecturer 1:</td>
+                    <td>
+                        <select th:field="*{lecturer1Code}">
+                            <option value="">Choose..</option>
+                            <option th:each="lecturer: ${lecturers}" th:value="${lecturer.code}" th:text="${lecturer.code}"/>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Lecturer 2:</td>
+                    <td>
+                        <select th:field="*{lecturer2Code}">
+                            <option value="">Choose..</option>
+                            <option th:each="lecturer: ${lecturers}" th:value="${lecturer.code}" th:text="${lecturer.code}"/>
+                        </select>
+                    </td>
+                </tr>
                     <td colspan="2">
                         <button type="submit" class="btn btn-primary">Save</button>
                     </td>

@@ -19,18 +19,18 @@ public class Student {
 
     private String registrationNumber;
     private String name;
-    private String courseCode;
+    private String streamCode;
     private String address;
     private String nic;
 
     public Student() {
     }
 
-    public Student(@NotNull int indexNumber, String registrationNumber, String name, String courseCode, String address, String nic) {
+    public Student(@NotNull int indexNumber, String registrationNumber, String name, String streamCode, String address, String nic) {
         this.indexNumber = indexNumber;
         this.registrationNumber = registrationNumber;
         this.name = name;
-        this.courseCode = courseCode;
+        this.streamCode = streamCode;
         this.address = address;
         this.nic = nic;
     }
@@ -67,12 +67,12 @@ public class Student {
         this.name = name;
     }
 
-    public String getCourseCode() {
-        return courseCode;
+    public String getStreamCode() {
+        return streamCode;
     }
 
-    public void setCourseCode(String courseCode) {
-        this.courseCode = courseCode;
+    public void setStreamCode(String streamCode) {
+        this.streamCode = streamCode;
     }
 
     public String getAddress() {

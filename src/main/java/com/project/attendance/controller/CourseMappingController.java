@@ -33,6 +33,9 @@ public class CourseMappingController {
     private StreamDAO streamDAO;
 
     @Autowired
+    private LecturerDAO lecturerDAO;
+
+    @Autowired
     private LectureHallDAO lectureHallDAO;
 
 
@@ -60,6 +63,9 @@ public class CourseMappingController {
         List<LectureHall> lectureHallDetail = lectureHallDAO.findAll();
         model.addAttribute("lectureHalls",lectureHallDetail);
 
+        List<Lecturer> lecturerDetail = lecturerDAO.findAll();
+        model.addAttribute("lecturers",lecturerDetail);
+
         return "addCourseMapping";
     }
 
@@ -84,6 +90,8 @@ public class CourseMappingController {
         mav.addObject("streams", streamDetail);
         List<LectureHall> lectureHallDetail = lectureHallDAO.findAll();
         mav.addObject("lectureHalls",lectureHallDetail);
+        List<Lecturer> lecturerDetail = lecturerDAO.findAll();
+        mav.addObject("lecturers",lecturerDetail);
 
         return  mav;
     }

@@ -43,7 +43,7 @@ public class StudentEnrollmentController {
         model.addAttribute("student",student);
 
         List<Stream> streamDetail = streamDAO.findAll();
-        model.addAttribute("courses", streamDetail);
+        model.addAttribute("streams", streamDetail);
 
         return "addStudent";
     }
@@ -62,7 +62,7 @@ public class StudentEnrollmentController {
         mav.addObject("student",student);
 
         List<Stream> streamDetail = streamDAO.findAll();
-        mav.addObject("courses", streamDetail);
+        mav.addObject("streams", streamDetail);
 
         return  mav;
     }
