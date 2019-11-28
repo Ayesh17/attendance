@@ -23,6 +23,7 @@ public class LectureHallCSV {
                 HashMap<String, String>();
         mapping.put("name", "name");
         mapping.put("hall_code", "hallCode");
+        mapping.put("index_number", "index_number");
 
         // HeaderColumnNameTranslateMappingStrategy
         // for Student class

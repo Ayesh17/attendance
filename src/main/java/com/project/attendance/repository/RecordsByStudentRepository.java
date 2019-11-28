@@ -7,6 +7,6 @@ import org.springframework.data.repository.query.Param;
 import java.util.List;
 
 public interface RecordsByStudentRepository extends JpaRepository<RecordsByStudent, Long> {
-    List<RecordsByStudent> getRecordsByUserIdAndYearAndSemester(@Param("userId") int userId,@Param("year") int year,@Param("semester") int semester);
+    List<RecordsByStudent> getRecordsByIndexNumberAndYearAndSemester(@Param("indexNumber") int indexNumber,@Param("year") int year,@Param("semester") int semester);
 
 }

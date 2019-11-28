@@ -54,6 +54,7 @@
         <tr>
             <th>Name</th>
             <th>Code</th>
+            <th>NIC</th>
             <th></th>
             <th></th>
         </tr>
@@ -62,6 +63,7 @@
         <tr th:each="lecturer : ${lecturerDetails}">
             <td th:text="${lecturer.name}">Id</td>
             <td th:text="${lecturer.code}">Code</td>
+            <td th:text="${lecturer.nic}">NIC</td>
 
             <td>
                 <a th:href="@{'/lecturer/edit/' + ${lecturer.id}}">Edit</a>

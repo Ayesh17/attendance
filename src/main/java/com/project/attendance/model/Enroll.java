@@ -11,7 +11,7 @@ public class Enroll {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-    private int userId;
+    private int indexNumber;
     private String name;
     private String courseCode1;
     private String courseCode2;
@@ -31,8 +31,8 @@ public class Enroll {
     public Enroll() {
     }
 
-    public Enroll(int userId, String name, String courseCode1, String courseCode2, String courseCode3, String courseCode4, String courseCode5, String courseCode6, String courseCode7, String courseCode8, String courseCode9, String courseCode10, String courseCode11, String courseCode12, int year, int semester) {
-        this.userId = userId;
+    public Enroll(int indexNumber, String name, String courseCode1, String courseCode2, String courseCode3, String courseCode4, String courseCode5, String courseCode6, String courseCode7, String courseCode8, String courseCode9, String courseCode10, String courseCode11, String courseCode12, int year, int semester) {
+        this.indexNumber = indexNumber;
         this.name = name;
         this.courseCode1 = courseCode1;
         this.courseCode2 = courseCode2;
@@ -58,12 +58,12 @@ public class Enroll {
         this.id = id;
     }
 
-    public int getUserId() {
-        return userId;
+    public int getIndexNumber() {
+        return indexNumber;
     }
 
-    public void setUserId(int userId) {
-        this.userId = userId;
+    public void setIndexNumber(int indexNumber) {
+        this.indexNumber = indexNumber;
     }
 
     public String getName() {

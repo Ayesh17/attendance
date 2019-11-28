@@ -22,11 +22,13 @@ public class CourseMapping {
     private int end;
     private int year;
     private int semester;
+    private String lecturer1Code;
+    private String lecturer2Code;
 
     public CourseMapping() {
     }
 
-    public CourseMapping(String courseCode, String streamCode, String hallCode, String groupCode, String day, int start, int end, int year, int semester) {
+    public CourseMapping(String courseCode, String streamCode, String hallCode, String groupCode, String day, int start, int end, int year, int semester, String lecturer1Code, String lecturer2Code) {
         this.courseCode = courseCode;
         this.streamCode = streamCode;
         this.hallCode = hallCode;
@@ -36,6 +38,8 @@ public class CourseMapping {
         this.end = end;
         this.year = year;
         this.semester = semester;
+        this.lecturer1Code = lecturer1Code;
+        this.lecturer2Code = lecturer2Code;
     }
 
     public Long getId() {
@@ -116,5 +120,21 @@ public class CourseMapping {
 
     public void setSemester(int semester) {
         this.semester = semester;
+    }
+
+    public String getLecturer1Code() {
+        return lecturer1Code;
+    }
+
+    public void setLecturer1Code(String lecturer1Code) {
+        this.lecturer1Code = lecturer1Code;
+    }
+
+    public String getLecturer2Code() {
+        return lecturer2Code;
+    }
+
+    public void setLecturer2Code(String lecturer2Code) {
+        this.lecturer2Code = lecturer2Code;
     }
 }

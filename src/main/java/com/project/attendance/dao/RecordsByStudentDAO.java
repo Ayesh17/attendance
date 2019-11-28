@@ -33,7 +33,7 @@ public class RecordsByStudentDAO {
     }
 
     //get by userId
-    public List<RecordsByStudent> getByUserId(int userId,int year,int semester){return  recordsByStudentRepository.getRecordsByUserIdAndYearAndSemester(userId,year,semester);}
+    public List<RecordsByStudent> getByIndexNumber(int indexNumber,int year,int semester){return  recordsByStudentRepository.getRecordsByIndexNumberAndYearAndSemester(indexNumber,year,semester);}
 
     //delete
     public void delete(Long id){

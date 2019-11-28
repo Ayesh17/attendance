@@ -20,13 +20,15 @@ public class Lecturer {
     private String name;
     @NotNull
     private String code;
+    private String nic;
 
     public Lecturer() {
     }
 
-    public Lecturer(String name, @NotNull String code) {
+    public Lecturer(String name, @NotNull String code, String nic) {
         this.name = name;
         this.code = code;
+        this.nic = nic;
     }
 
     public Long getId() {
@@ -52,4 +54,13 @@ public class Lecturer {
     public void setCode(String code) {
         this.code = code;
     }
+
+    public String getNic() {
+        return nic;
+    }
+
+    public void setNic(String nic) {
+        this.nic = nic;
+    }
+
 }

@@ -31,7 +31,8 @@ public class CourseMappingsCSV {
         mapping.put("day", "day");
         mapping.put("start", "start");
         mapping.put("end", "end");
-
+        mapping.put("lecturer1Code", "lecturer1Code");
+        mapping.put("lecturer2Code", "lecturer2Code");
 
         // HeaderColumnNameTranslateMappingStrategy
         // for Student class

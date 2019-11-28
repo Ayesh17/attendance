@@ -22,12 +22,11 @@ public class StudentsCSV {
         // Bean attributes.
         Map<String, String> mapping = new
                 HashMap<String, String>();
-        mapping.put("course_code", "courseCode");
+        mapping.put("stream_code", "streamCode");
         mapping.put("name", "name");
         mapping.put("address", "address");
         mapping.put("nic", "nic");
         mapping.put("registration_number", "registrationNumber");
-        mapping.put("user_id", "userId");
         mapping.put("index_number", "indexNumber");
 
         // HeaderColumnNameTranslateMappingStrategy

@@ -13,7 +13,7 @@ public class RecordsByStudent {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-    private int userId;
+    private int indexNumber;
     private int year;
     private int semester;
     private String course;
@@ -24,8 +24,8 @@ public class RecordsByStudent {
     public RecordsByStudent() {
     }
 
-    public RecordsByStudent(int userId, int year, int semester, String course, String days, int count, String timeStamp) {
-        this.userId = userId;
+    public RecordsByStudent(int indexNumber, int year, int semester, String course, String days, int count, String timeStamp) {
+        this.indexNumber = indexNumber;
         this.year = year;
         this.semester = semester;
         this.course = course;
@@ -40,6 +40,14 @@ public class RecordsByStudent {
 
     public void setId(Long id) {
         this.id = id;
+    }
+
+    public int getIndexNumber() {
+        return indexNumber;
+    }
+
+    public void setIndexNumber(int indexNumber) {
+        this.indexNumber = indexNumber;
     }
 
     public int getYear() {
@@ -80,14 +88,6 @@ public class RecordsByStudent {
 
     public void setCount(int count) {
         this.count = count;
-    }
-
-    public int getUserId() {
-        return userId;
-    }
-
-    public void setUserId(int userId) {
-        this.userId = userId;
     }
 
     public String getTimeStamp() {

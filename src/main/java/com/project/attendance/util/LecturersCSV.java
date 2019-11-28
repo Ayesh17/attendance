@@ -24,6 +24,7 @@ public class LecturersCSV {
                 HashMap<String, String>();
         mapping.put("name", "name");
         mapping.put("code", "code");
+        mapping.put("nic", "nic");
 
         // HeaderColumnNameTranslateMappingStrategy
         // for Student class

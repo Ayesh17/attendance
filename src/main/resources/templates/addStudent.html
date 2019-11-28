@@ -56,10 +56,6 @@
                     <td><input type="text" th:field="*{name}"/></td>
                 </tr>
                 <tr>
-                    <td>Index Number:</td>
-                    <td><input type="text" th:field="*{indexNumber}"/></td>
-                </tr>
-                <tr>
                     <td>Registration Number:</td>
                     <td><input type="text" th:field="*{registrationNumber}"/></td>
                 </tr>
@@ -68,11 +64,11 @@
                     <td><input type="text" th:field="*{address}"/></td>
                 </tr>
                 <tr>
-                    <td>Course:</td>
+                    <td>Stream:</td>
                     <td>
-                        <select th:field="*{courseCode}">
+                        <select th:field="*{streamCode}">
                             <option value="">Choose..</option>
-                            <option th:each="stream: ${courses}" th:value="${stream.code}" th:text="${stream.name}"/>
+                            <option th:each="stream: ${streams}" th:value="${stream.code}" th:text="${stream.name}"/>
                         </select>
                     </td>
                 </tr>
@@ -81,8 +77,8 @@
                     <td><input type="text" th:field="*{nic}"/></td>
                 </tr>
                 <tr>
-                    <td>User Id:</td>
-                    <td><input type="text" th:field="*{userId}"/></td>
+                    <td>Index Number:</td>
+                    <td><input type="text" th:field="*{indexNumber}"/></td>
                 </tr>
                 <tr>
                     <td colspan="2">

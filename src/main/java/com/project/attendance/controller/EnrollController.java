@@ -62,7 +62,7 @@ public class EnrollController {
 
             for (int i=0;i<enrollDetails.size();i++) {
 
-                int id = enroll.getUserId();
+                int id = enroll.getIndexNumber();
                 List<Student> list = studentDAO.findByUserId(id);
 
                 for (int j = 0; j < list.size(); j++) {
@@ -146,7 +146,7 @@ public class EnrollController {
             enrollDAO.saveAll(list);
             List<Enroll> enrollDetails= list;
             for (int i=0;i<enrollDetails.size();i++) {
-                int id = list.get(i).getUserId();
+                int id = list.get(i).getIndexNumber();
                 List<Student> list2 = studentDAO.findByUserId(id);
 
                 for (int j = 0; j < list2.size(); j++) {

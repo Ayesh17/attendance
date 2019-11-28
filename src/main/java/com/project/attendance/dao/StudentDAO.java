@@ -35,8 +35,8 @@ public class StudentDAO {
     }
 
     //get a student by id
-    public List<Student> findByUserId(int userId){
-        return studentRepository.findByUserId(userId);
+    public List<Student> findByUserId(int indexNumber){
+        return studentRepository.findByIndexNumber(indexNumber);
     }
 
 
