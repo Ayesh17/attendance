@@ -1,5 +1,6 @@
 package com.project.attendance.dao;
 
+import com.project.attendance.model.Course;
 import com.project.attendance.model.TimeTableMapping;
 import com.project.attendance.repository.TimeTableMappingRepository;
 import com.project.attendance.repository.TimeTableRepository;
@@ -46,12 +47,8 @@ public class TimeTableMappingDAO {
              return (TimeTableMapping) timeTableMappingRepository.findAllByDay(day);
         }
 
-    //public TimeTableMapping findByCode(Long code){
-   //     return timeTableMappingRepository.findByCode(code);
-    //}
-
-    public int updateSubjectCode(){
-        return  timeTableMappingRepository.updateSubjectCode((long) 1024,"Monday");
+    public void updateCourseCode(Long id,String courseCode){
+         timeTableMappingRepository.updateCourseCode(id,courseCode);
     }
 
     //delete
@@ -59,8 +56,7 @@ public class TimeTableMappingDAO {
         timeTableMappingRepository.deleteById(id);
     }
 
-   // public List<TimeTableMapping>  select(String timeTableMapping){return timeTableMappingRepository.findDistinctByTime_table_code(timeTableMapping);}
+    public List<TimeTableMapping> getTimeTableMappingsByCode(Long code){ return timeTableMappingRepository.getTimeTableMappingsByCode(code);}
 
-    //public void findByCode(String time_table_code){timeTableMappingRepository.findTimeTableMappingsByTime_table_code(time_table_code);}
 
 }

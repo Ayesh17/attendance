@@ -12,7 +12,8 @@
     <link href="../static/css/bootstrap.css" rel="stylesheet" th:href="@{/css/bootstrap.css}"/>
     <!-- End of Nav Bar header code-->
 
-    <link rel="stylesheet" type="text/css" href="static/css/timeTableMapping.css" th:href="@{/css/timeTableMapping.css}">
+    <link rel="stylesheet" type="text/css" href="static/css/timeTableMapping.css"
+          th:href="@{/css/timeTableMapping.css}">
     <meta charset="UTF-8">
     <title>Update Time Table</title>
 </head>
@@ -47,21 +48,17 @@
 
 </form>
 <div class="container2">
-    <form action="#" th:action="@{/timeTableMapping/saveAll}" th:object="${timeTableMapping}" method="post">
+    <form action="#" th:action="@{/timeTableMapping/saveUpdated}" th:object="${timeTableMapping}" method="post">
         <table border="0" cell[adding="10">
             <tr>
                 <td><h1>Time Table:</h1></td>
+                <th th:text="${timeTableName}"></th>
+                <th th:text="${code}" style="display:none;width:0px"></th>
 
-                <td>
-                    <select th:field="*{code}">
-                        <option value="">Choose..</option>
-                        <option th:each="timeTable: ${timeTables}" th:value="${timeTable.id}" th:text="${timeTable.name}"/>
-                    </select>
-                </td>
             </tr>
         </table>
 
-        <table border="1" >
+        <table border="1">
             <thead>
             <tr>
             </tr>
@@ -69,54 +66,50 @@
             <th></th>
             <th>Monday</th>
             <td style="background-color: cornflowerblue;"></td >
-            <td style="background-color: cornflowerblue;"></td>
-            <td style="background-color: cornflowerblue;"></td>
+
             <th>Tuesday</th>
             <td style="background-color: cornflowerblue;"></td >
-            <td style="background-color: cornflowerblue;"></td>
-            <td style="background-color: cornflowerblue;"></td>
+
             <th>Wednesday</th>
             <td style="background-color: cornflowerblue;"></td >
-            <td style="background-color: cornflowerblue;"></td>
-            <td style="background-color: cornflowerblue;"></td>
+
             <th>Thursday</th>
             <td style="background-color: cornflowerblue;"></td >
-            <td style="background-color: cornflowerblue;"></td>
-            <td style="background-color: cornflowerblue;"></td>
+
             <th>Friday</th>
             <td style="background-color: cornflowerblue;"></td >
-            <td style="background-color: cornflowerblue;"></td>
-            <td style="background-color: cornflowerblue;"></td>
-
 
 
             </thead>
             <tbody>
-
-            <th:block th:each="time : ${times}">
+            <script>var i = 0;</script>
+            <th:block th:each="i : ${#numbers.sequence(0, 1)}" >
                 <tr>
 
-                    <th th:text="${ time.start }+':00 - ' + ${ time.end }+':00'"></th>
+                    <th th:text="${ times[i].start }+':00 - ' + ${ times[i].end }+':00'"></th>
 
-                    <th:block th:each="day : ${days}">
+                    <th:block th:each="j : ${#numbers.sequence(0, 4)}">
+
                         <td>
-                            <select th:field="*{subject_code}">
-                                <option value=""></option>
-                                <option th:each="course: ${subjects}" th:value="${course.subject_code}" th:selected="${subject_code}" th:text="${course.name} "/>
-
-                        <td><input type="text"  th:value="${day.name}" name="day" style="display:none;width:0px" /></td>
-                        <td><input type="text"  th:value="${time.start}" name="start" style="display:none;width:0px" /></td>
-                        <td><input type="text"  th:value="${time.end}" name="end" style="display:none;width:0px" /></td>
+                            <select th:field="*{courseCode}">
+                                <option value=""><th:block th:text="${timeTableMapping2[i+j].courseCode}" ></th:block></option>
+                                <option th:each="course: ${courses}" th:value="${course.courseCode}"
+                                        th:text="${course.courseCode}"/>
+                        <td><input type="text"  th:value="${code}" name="code" style="display:none;width:0px" /></td>
 
 
-                        </select>
+                            </select>
                         </td>
-                    </th:block>
 
+
+
+
+                    </th:block>
                 </tr>
 
-
             </th:block>
+
+
 
             <tr>
                 <td colspan="2">

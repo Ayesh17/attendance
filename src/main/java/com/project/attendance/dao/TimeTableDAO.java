@@ -54,4 +54,5 @@ public class TimeTableDAO {
         getJdbcTemplate().batchUpdate(sql, batchArgsList);
 
     }*/
+  public String getTimeTableNameById(Long id){return timeTableRepository.getTimeTableById(id).getName();}
 }

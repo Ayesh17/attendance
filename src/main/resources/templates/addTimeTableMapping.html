@@ -100,19 +100,20 @@
 
                     <th:block th:each="day : ${days}">
                         <td>
-                            <select th:field="*{subject_code}">
+                            <select th:field="*{courseCode}">
                                 <option value=""></option>
-                                <option th:each="course: ${subjects}" th:value="${course.subject_code}" th:text="${course.name}"/>
-                                <td><input type="text"  th:value="${day.name}" name="day" style="display:none;width:0px" /></td>
-                                <td><input type="text"  th:value="${time.start}" name="start" style="display:none;width:0px" /></td>
-                                <td><input type="text"  th:value="${time.end}" name="end" style="display:none;width:0px" /></td>
+                                <option th:each="course: ${courses}" th:value="${course.courseCode}" th:text="${course.name}"/>
+                        <td><input type="text"  th:value="${day.name}" name="day" style="display:none;width:0px" /></td>
+                        <td><input type="text"  th:value="${time.start}" name="start" style="display:none;width:0px" /></td>
+                        <td><input type="text"  th:value="${time.end}" name="end" style="display:none;width:0px" /></td>
 
 
-                     </select>
-                 </td>
-             </th:block>
+                        </select>
+                        </td>
+                    </th:block>
 
-         </tr>
+                </tr>
+
 
 
      </th:block>

@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
+import javax.servlet.http.HttpServletRequest;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -59,12 +60,13 @@ public class TimeTableMappingController {
         return "timeTableMapping";
     }
 
+
     @RequestMapping(value="/timeTableMapping/saveAll",method= RequestMethod.POST)
     public String saveTimeTable(@ModelAttribute("timeTableMapping") TimeTableMapping timeTableMapping){
 
         String[] dayArray = timeTableMapping.getDay().split(",");
-        String[] subArray = timeTableMapping.getSubject_code().split(",");
-         String[] startArray = timeTableMapping.getStart().split(",");
+        String[] subArray = timeTableMapping.getCourseCode().split(",");
+        String[] startArray = timeTableMapping.getStart().split(",");
         String[] endArray = timeTableMapping.getEnd().split(",");
 
         String[] uniqueDay = Arrays.stream(dayArray).distinct().toArray(String[]::new);
@@ -85,7 +87,7 @@ public class TimeTableMappingController {
                 tempTimeTable.setTime_table_code(timeTableMapping.getTime_table_code());
                 tempTimeTable.setCode(timeTableMapping.getCode());
                 tempTimeTable.setDay(uniqueDay[i]);
-                tempTimeTable.setSubject_code(subArray[count]);
+                tempTimeTable.setCourseCode(subArray[count]);
                 tempList.add(tempTimeTable);
                 count++;
 
@@ -95,7 +97,6 @@ public class TimeTableMappingController {
         timeTableMappingDAO.saveAll(tempList);
         return  "redirect:/timeTableMapping";
     }
-
 
     @RequestMapping("/timeTableMapping/new")
     public String addTimeTableMapping(Model model){
@@ -108,7 +109,7 @@ public class TimeTableMappingController {
         model.addAttribute("timeTables", timeTableDetail);
 
         List<Course> courseDetail = courseDAO.findAll();
-        model.addAttribute("subjects", courseDetail);
+        model.addAttribute("courses", courseDetail);
 
         String[] days = new String[] { "Monday", "Tuesday"};
 
@@ -121,24 +122,59 @@ public class TimeTableMappingController {
         return "addTimeTableMapping";
     }
 
+    @RequestMapping(value="/timeTableMapping/saveUpdated",method= RequestMethod.POST)
+    public String saveUpdatedTimeTable(@ModelAttribute("timeTableMapping") TimeTableMapping timeTableMapping){
+
+        Long code   = timeTableMapping.getCode();
+
+        List<TimeTableMapping> map=timeTableMappingDAO.getTimeTableMappingsByCode(code);
+
+        Long[] idArray=new Long[map.size()];
+        for(int i=0;i<map.size();i++){
+            idArray[i]=map.get(i).getId();
+        }
+
+        for(int i=0;i<idArray.length;i++) {
+            System.out.println(idArray[i]);
+        }
+
+        String[] subArray = timeTableMapping.getCourseCode().split(",");
+
+        List<TimeTableMapping> tempList = new ArrayList<>();
+
+        for(int i=0;i<subArray.length;i++){
+            TimeTableMapping tempTimeTable = new TimeTableMapping();
+            if(subArray[i].isEmpty()){
+                System.out.println(i+ "is null");
+            }else {
+                tempTimeTable.setCourseCode(subArray[i]);
+                tempTimeTable.setId(idArray[i]);
+                tempList.add(tempTimeTable);
+            }
+        }
+
+        for(int i=0;i<tempList.size();i++){
+            timeTableMappingDAO.updateCourseCode(tempList.get(i).getId(),tempList.get(i).getCourseCode());
+        }
+
+        return  "redirect:/timeTableMapping";
+    }
 
     @RequestMapping("/timeTableMapping/edit/{id}")
     public ModelAndView updateTimeTable(@PathVariable(name="id")Long id){
         ModelAndView mav=new ModelAndView(("updateTimeTableMapping"));
 
-        //mav.addObject("timeTableMapping", new TimeTableMapping());
-
-        TimeTableMapping timeTableMapping = timeTableMappingDAO.findById(id);
-        //System.out.println(timeTableMapping.getTime_table_code());
-       // List<TimeTableMapping> timeTableMapping1= timeTableMappingDAO.select(timeTableMapping.getTime_table_code());
-        mav.addObject("timeTableMapping",timeTableMapping);
+        mav.addObject("code",id);
 
 
         List<TimeTable> timeTableDetails = timeTableDAO.findAll();
         mav.addObject("timeTables", timeTableDetails);
 
+        String  timeTableName = timeTableDAO.getTimeTableNameById(id);
+        mav.addObject("timeTableName", timeTableName);
+
         List<Course> courseDetails = courseDAO.findAll();
-        mav.addObject("subjects", courseDetails);
+        mav.addObject("courses", courseDetails);
 
         List<StudentGroup> studentGroupDetails = studentGroupDAO.findAll();
         mav.addObject("studentGroups",studentGroupDetails);
@@ -148,6 +184,23 @@ public class TimeTableMappingController {
 
         List<Time> timeDetails = timeDAO.findAll();
         mav.addObject("times",timeDetails);
+
+        List<TimeTableMapping> timeTableMappingList=timeTableMappingDAO.getTimeTableMappingsByCode(id);
+        mav.addObject("timeTableMapping", timeTableMappingList.get(3));
+
+        List<TimeTableMapping> timeTableMappingList2=timeTableMappingDAO.getTimeTableMappingsByCode(id);
+        mav.addObject("timeTableMapping2", timeTableMappingList2);
+
+
+        String[][] courses=new String[2][5];
+        int count=0;
+        for(int i=0;i<2;i++){
+            for(int j=0;j<5;j++){
+                courses[i][j]= timeTableMappingList.get(count).getCourseCode();
+                System.out.println("Course: "+courses[i][j]);
+                count++;
+            }
+        }
 
 
         return  mav;
