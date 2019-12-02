@@ -122,10 +122,11 @@ public class TimeTableMappingController {
         return "addTimeTableMapping";
     }
 
-    @RequestMapping(value="/timeTableMapping/saveUpdated",method= RequestMethod.POST)
+    @RequestMapping(value="/timeTableMapping/saveUpdatedAll",method= RequestMethod.POST)
     public String saveUpdatedTimeTable(@ModelAttribute("timeTableMapping") TimeTableMapping timeTableMapping){
 
         Long code   = timeTableMapping.getCode();
+        System.out.println("code " +code);
 
         List<TimeTableMapping> map=timeTableMappingDAO.getTimeTableMappingsByCode(code);
 
@@ -153,6 +154,10 @@ public class TimeTableMappingController {
             }
         }
 
+        for(int i=0;i<tempList.size();i++){
+            System.out.println("tempList"+tempList.get(i).getCourseCode()+" "+tempList.get(i).getId());
+
+        }
         for(int i=0;i<tempList.size();i++){
             timeTableMappingDAO.updateCourseCode(tempList.get(i).getId(),tempList.get(i).getCourseCode());
         }
