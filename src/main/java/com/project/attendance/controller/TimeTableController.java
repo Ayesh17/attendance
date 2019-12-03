@@ -81,7 +81,7 @@ public class TimeTableController {
         mav.addObject("timeTable",timeTable);
 
         List<Course> courseDetails = courseDAO.findAll();
-        mav.addObject("subjects", courseDetails);
+        mav.addObject("courses", courseDetails);
 
         List<StudentGroup> studentGroupDetails = studentGroupDAO.findAll();
         mav.addObject("studentGroups",studentGroupDetails);

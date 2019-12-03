@@ -41,18 +41,5 @@ public class TimeTableDAO {
         timeTableRepository.deleteById(id);
     }
 
-  /*  public void insertData(List<TimeTable> timeTableList){
-        String sql="INSERT INTO TIMETABLES"+"(start,end,day,subject_code,group_code,year,semester) VALUES(?,?,?,?,?,?,?)";
-        List<Object[]> batchArgsList=new ArrayList<Object[]>();
-
-        for(TimeTable timeTable : timeTableList)
-        {
-            Object[] objectArray = { timeTable.getStart(),timeTable.getEnd(),timeTable.getDay(),timeTable.getSubject_code(),timeTable.getGroup_code(),timeTable.getYear(),timeTable.getSemester()};
-            batchArgsList.add(objectArray);
-        }
-
-        getJdbcTemplate().batchUpdate(sql, batchArgsList);
-
-    }*/
   public String getTimeTableNameById(Long id){return timeTableRepository.getTimeTableById(id).getName();}
 }

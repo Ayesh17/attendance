@@ -51,12 +51,14 @@
     <form action="#" th:action="@{/timeTableMapping/saveAll}" th:object="${timeTableMapping}" method="post">
         <table border="0" cell[adding="10">
             <tr>
-                <td><h1>Time Table:</h1></td>
-                <td>
-                    <select th:field="*{code}">
-                        <option value="">Choose..</option>
-                        <option th:each="timeTable: ${timeTables}" th:value="${timeTable.id}" th:text="${timeTable.name}"/>
-                    </select>
+                <td style="alignment: left;width: 270px;text-align: left;font-size:30px"><h1>Time Table:</h1></td>
+                <td style="alignment: left;text-align: left;font-size:30px">
+                    <h1>
+                        <select th:field="*{code}" style="width: 180px;height:40px " >
+                            <option value="">Choose.....</option>
+                            <option th:each="timeTable: ${timeTables}" th:value="${timeTable.id}" th:text="${timeTable.name}"/>
+                        </select>
+                    </h1>
                 </td>
 
         </table>
@@ -66,24 +68,24 @@
             <tr>
             </tr>
             <br>
-            <th></th>
-            <th>Monday</th>
+            <th style="background-color: cornflowerblue;"></th>
+            <th style="background-color: cornflowerblue;">Monday</th>
+            <td style="background-color: cornflowerblue;width:0px"></td >
+            <td style="background-color: cornflowerblue;width:0px"></td>
+            <td style="background-color: cornflowerblue;width:0px"></td>
+            <th style="background-color: cornflowerblue;">Tuesday</th>
             <td style="background-color: cornflowerblue;"></td >
             <td style="background-color: cornflowerblue;"></td>
             <td style="background-color: cornflowerblue;"></td>
-            <th>Tuesday</th>
+            <th style="background-color: cornflowerblue;">Wednesday</th>
             <td style="background-color: cornflowerblue;"></td >
             <td style="background-color: cornflowerblue;"></td>
             <td style="background-color: cornflowerblue;"></td>
-            <th>Wednesday</th>
+            <th style="background-color: cornflowerblue;">Thursday</th>
             <td style="background-color: cornflowerblue;"></td >
             <td style="background-color: cornflowerblue;"></td>
             <td style="background-color: cornflowerblue;"></td>
-            <th>Thursday</th>
-            <td style="background-color: cornflowerblue;"></td >
-            <td style="background-color: cornflowerblue;"></td>
-            <td style="background-color: cornflowerblue;"></td>
-            <th>Friday</th>
+            <th style="background-color: cornflowerblue;">Friday</th>
             <td style="background-color: cornflowerblue;"></td >
             <td style="background-color: cornflowerblue;"></td>
             <td style="background-color: cornflowerblue;"></td>
@@ -96,13 +98,13 @@
             <th:block th:each="time : ${times}">
                 <tr>
 
-                    <th th:text="${ time.start }+':00 - ' + ${ time.end }+':00'"></th>
+                    <th th:text="${ time.start }+':00 - ' + ${ time.end }+':00'" style="background-color: cornflowerblue;"></th>
 
                     <th:block th:each="day : ${days}">
-                        <td>
-                            <select th:field="*{courseCode}">
-                                <option value=""></option>
-                                <option th:each="course: ${courses}" th:value="${course.courseCode}" th:text="${course.name}"/>
+                        <th>
+                            <select th:field="*{courseCode}" style="width:150px;height:40px">
+                                <option value="" style="width:150px"></option>
+                                <option th:each="course: ${courses}" th:value="${course.courseCode}" th:text="${course.courseCode}"/>
                         <td><input type="text"  th:value="${day.name}" name="day" style="display:none;width:0px" /></td>
                         <td><input type="text"  th:value="${time.start}" name="start" style="display:none;width:0px" /></td>
                         <td><input type="text"  th:value="${time.end}" name="end" style="display:none;width:0px" /></td>
@@ -119,9 +121,14 @@
      </th:block>
 
      <tr>
-         <td colspan="2">
-             <button type="submit">Save</button>
-         </td>
+         <th></th><td></td><td></td><td></td>
+         <th></th><td></td><td></td><td></td>
+         <th></th><td></td><td></td><td></td>
+         <th></th><td></td><td></td><td></td>
+         <th colspan="2" style="alignment: right">
+             <button type="submit" style="width: 100px;height: 40px;font-size:20px;alignment: right">Save</button>
+         </th>
+         <td></td><td></td><td></td>
      </tr>
 
      </tbody>

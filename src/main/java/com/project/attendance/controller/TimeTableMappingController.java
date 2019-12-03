@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -65,15 +66,25 @@ public class TimeTableMappingController {
     public String saveTimeTable(@ModelAttribute("timeTableMapping") TimeTableMapping timeTableMapping){
 
         String[] dayArray = timeTableMapping.getDay().split(",");
-        String[] subArray = timeTableMapping.getCourseCode().split(",");
+        String[] subArray1 = timeTableMapping.getCourseCode().split(",");
+        String[] subArray= new String[10];
+        for(int i=0;i<subArray1.length;i++){
+            subArray[i]=subArray1[i];
+        }
+
         String[] startArray = timeTableMapping.getStart().split(",");
+        for(int i=0;i<startArray.length;i++){
+            System.out.println("start "+i+" is"+startArray[i]);
+        }
         String[] endArray = timeTableMapping.getEnd().split(",");
 
         String[] uniqueDay = Arrays.stream(dayArray).distinct().toArray(String[]::new);
         String[] uniqueStart = Arrays.stream(startArray).distinct().toArray(String[]::new);
         String[] uniqueEnd = Arrays.stream(endArray).distinct().toArray(String[]::new);
 
-
+for(int i=0;i<subArray.length;i++){
+    System.out.println("subject "+i+" is"+subArray[i]);
+}
         List<TimeTableMapping> tempList = new ArrayList<>();
         int count=0;
         for(int j=0;j<uniqueStart.length;j++) {
@@ -84,10 +95,18 @@ public class TimeTableMappingController {
                 System.out.println(uniqueStart[j]);
 
                 tempTimeTable.setEnd(uniqueEnd[j]);
-                tempTimeTable.setTime_table_code(timeTableMapping.getTime_table_code());
+               // tempTimeTable.setTime_table_code(timeTableMapping.getTime_table_code());
                 tempTimeTable.setCode(timeTableMapping.getCode());
                 tempTimeTable.setDay(uniqueDay[i]);
-                tempTimeTable.setCourseCode(subArray[count]);
+                if(subArray[count] == null ){
+                    System.out.println(count+" is null");
+                    tempTimeTable.setCourseCode(" ");
+                }else if(subArray[count].isEmpty() ){
+                    System.out.println(count+" is empty");
+                    tempTimeTable.setCourseCode(" ");
+                }else{
+                    tempTimeTable.setCourseCode(subArray[count]);
+                }
                 tempList.add(tempTimeTable);
                 count++;
 
@@ -195,7 +214,6 @@ public class TimeTableMappingController {
 
         List<TimeTableMapping> timeTableMappingList2=timeTableMappingDAO.getTimeTableMappingsByCode(id);
         mav.addObject("timeTableMapping2", timeTableMappingList2);
-
 
         String[][] courses=new String[2][5];
         int count=0;
