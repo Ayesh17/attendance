@@ -48,7 +48,7 @@
 
 </form>
 <div class="container2">
-    <form action="#" th:action="@{/timeTableMapping/saveUpdatedAll}" th:object="${timeTableMapping}" method="post">
+    <form action="#" th:action="@{/timeTableMapping/saveAll2}" th:object="${timeTableMapping}" method="post">
         <table border="0" cell[adding="10">
             <tr>
                 <td><h1>Time Table:</h1></td>
@@ -91,10 +91,13 @@
                     <th:block th:each="j : ${#numbers.sequence(0, 4)}">
 
                         <td>
-                            <select th:field="*{courseCode}">
+                            <select id="courseCode" name="courseCode" >
                                 <option value=""><th:block th:text="${timeTableMapping2[i+j].courseCode}" ></th:block></option>
                                 <option th:each="course: ${courses}" th:value="${course.courseCode}"
-                                        th:text="${course.courseCode}"/>
+                                        th:text="${course.courseCode}" />
+                        <td><input type="text"  th:value="${code}" name="code" style="display:none;width:0px" /></td>
+
+
                             </select>
                         </td>
 

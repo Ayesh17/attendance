@@ -122,7 +122,7 @@ public class TimeTableMappingController {
         return "addTimeTableMapping";
     }
 
-    @RequestMapping(value="/timeTableMapping/saveUpdatedAll",method= RequestMethod.POST)
+    @RequestMapping(value="/timeTableMapping/saveAll2",method= RequestMethod.POST)
     public String saveUpdatedTimeTable(@ModelAttribute("timeTableMapping") TimeTableMapping timeTableMapping){
 
         Long code   = timeTableMapping.getCode();
