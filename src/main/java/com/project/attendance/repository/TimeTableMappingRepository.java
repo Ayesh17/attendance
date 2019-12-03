@@ -1,11 +1,13 @@
 package com.project.attendance.repository;
 
+        import com.project.attendance.model.Course;
         import com.project.attendance.model.TimeTableMapping;
                 import org.springframework.data.jpa.repository.JpaRepository;
         import org.springframework.data.jpa.repository.Modifying;
         import org.springframework.data.jpa.repository.Query;
         import org.springframework.data.repository.query.Param;
         import org.springframework.stereotype.Repository;
+        import org.springframework.transaction.annotation.Transactional;
 
         import java.util.List;
         import java.util.Optional;
@@ -20,8 +22,16 @@ public interface TimeTableMappingRepository extends JpaRepository<TimeTableMappi
         List<TimeTableMapping> findAllByDay(String day);
 
         @Modifying
-        @Query("UPDATE TimeTableMapping t SET t.subject_code = :subject_code Where t.id = :id")
-        int updateSubjectCode(@Param("id") Long id, @Param("subject_code") String subject_code);
+        @Transactional
+        @Query("UPDATE TimeTableMapping t SET t.courseCode = :courseCode Where t.id = :id")
+        int updateCourseCode(@Param("id") Long id, @Param("courseCode") String courseCode);
+
+
+
+        List<TimeTableMapping> getTimeTableMappingsByCode(@Param("code") Long code);
+
+
+
 
 
 }

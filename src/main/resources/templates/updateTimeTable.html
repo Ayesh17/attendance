@@ -57,9 +57,9 @@
                 <tr>
                     <td>Student Group:</td>
                     <td>
-                        <select th:field="*{group_code}">
+                        <select th:field="*{groupCode}">
                             <option value="">Choose..</option>
-                            <option th:each="studentGroup: ${studentGroups}" th:value="${studentGroup.group_code}" th:text="${studentGroup.group_code}"/>
+                            <option th:each="studentGroup: ${studentGroups}" th:value="${studentGroup.groupCode}" th:text="${studentGroup.groupCode}"/>
                         </select>
                     </td>
                 </tr>

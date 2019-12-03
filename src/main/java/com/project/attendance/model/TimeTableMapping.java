@@ -16,7 +16,7 @@ public class TimeTableMapping {
     private String day;
     private String start;
     private String end;
-    private String subject_code;
+    private String courseCode;
     private String time_table_code;
     private Long code;
 
@@ -27,22 +27,13 @@ public class TimeTableMapping {
         this.code = code;
     }
 
-    public TimeTableMapping(String day, String start, String end, String subject_code, String time_table_code, Long code) {
+    public TimeTableMapping(String day, String start, String end, String courseCode, String time_table_code, Long code) {
         this.day = day;
         this.start = start;
         this.end = end;
-        this.subject_code = subject_code;
+        this.courseCode = courseCode;
         this.time_table_code = time_table_code;
         this.code = code;
-    }
-
-    public TimeTableMapping( Long code,String day, String start, String end, String subject_code) {
-        this.code = code;
-        this.day = day;
-        this.start = start;
-        this.end = end;
-        this.subject_code = subject_code;
-
     }
 
     public Long getId() {
@@ -77,12 +68,12 @@ public class TimeTableMapping {
         this.end = end;
     }
 
-    public String getSubject_code() {
-        return subject_code;
+    public String getCourseCode() {
+        return courseCode;
     }
 
-    public void setSubject_code(String subject_code) {
-        this.subject_code = subject_code;
+    public void setCourseCode(String courseCode) {
+        this.courseCode = courseCode;
     }
 
     public String getTime_table_code() {

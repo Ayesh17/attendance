@@ -8,7 +8,6 @@ input[type=text], select, textarea {
     font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
     align: center;
     vertical-align: center;
-
 }
 
 h1 {
@@ -28,6 +27,20 @@ h1 {
     height: 1200px;
     padding-top: 5px;
     padding-left: 120px;
+    width: 100%;
+    align-self: center;
+
+}
+
+
+.container2 {
+    border-radius: 5px;
+    background-color: #e1ebf1ec;
+    vertical-align: top;
+    padding: 70px;
+
+    width: 98%;
+    align-self: center;
 
 }
 
@@ -73,7 +86,8 @@ h1 {
 table {
     border-collapse: collapse;
     vertical-align: top;
-    width: 80%;
+    width: 90%;
+    horiz-align: center;
 }
 
 table, th, td {
@@ -81,12 +95,14 @@ table, th, td {
 }
 
 th {
-    height: 50px;
-    background-color: cornflowerblue;
+    height: 60px;
+    background-color: darkgray;
+
+    font-size: 20px;
 }
 
 td {
-    height: 0px;
+    height: 40px;
     vertical-align: bottom;
     background-color: darkgray;
     font-size: 5px;
@@ -95,22 +111,8 @@ td {
 
 th, td {
     padding: 5px;
-    text-align: left;
+    text-align: center;
 }
-
-tr:hover {background-color: rgb(14, 111, 156);}
-
-a {
-    color: #3b4652;
-    text-decoration: none;
-    font-size: 15px;
-}
-a:hover {
-    color: darkred;
-    text-decoration: none;
-}
-
-
 
 .dropdown-content {
     display: none;
@@ -137,3 +139,4 @@ a:hover {
 .dropdown:hover .dropbtn {
     background-color: #3e8e41;
 }
+
