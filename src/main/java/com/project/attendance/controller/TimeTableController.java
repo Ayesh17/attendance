@@ -46,8 +46,7 @@ public class TimeTableController {
         model.addAttribute("timeTable",timeTable);
 
         List<Course> courseDetail = courseDAO.findAll();
-        model.addAttribute("subjects", courseDetail);
-
+        model.addAttribute("courses", courseDetail);
 
         List<StudentGroup> studentGroupDetail = studentGroupDAO.findAll();
         model.addAttribute("studentGroups",studentGroupDetail);

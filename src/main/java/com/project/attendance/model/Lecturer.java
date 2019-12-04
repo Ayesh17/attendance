@@ -21,15 +21,12 @@ public class Lecturer {
     @NotNull
     private String code;
     private String nic;
+    private int fingerId;
 
     public Lecturer() {
     }
 
-    public Lecturer(String name, @NotNull String code, String nic) {
-        this.name = name;
-        this.code = code;
-        this.nic = nic;
-    }
+
 
     public Long getId() {
         return id;
@@ -63,4 +60,11 @@ public class Lecturer {
         this.nic = nic;
     }
 
+    public int getFingerId() {
+        return fingerId;
+    }
+
+    public void setFingerId(int fingerId) {
+        this.fingerId = fingerId;
+    }
 }
