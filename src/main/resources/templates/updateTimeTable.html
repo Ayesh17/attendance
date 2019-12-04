@@ -53,6 +53,9 @@
     <div class="container2">
         <form action="#" th:action="@{/timeTable/save}" th:object="${timeTable}" method="post">
             <table border="0" cell[adding="10">
+                <tr>
+                    <td><input type="hidden" th:field="*{id}" readonly="readonly"/></td>
+                </tr>
 
                 <tr>
                     <td>Student Group:</td>

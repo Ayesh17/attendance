@@ -55,6 +55,7 @@
             <th>Name</th>
             <th>Code</th>
             <th>NIC</th>
+            <th>Finger Id</th>
             <th></th>
             <th></th>
         </tr>
@@ -64,6 +65,7 @@
             <td th:text="${lecturer.name}">Id</td>
             <td th:text="${lecturer.code}">Code</td>
             <td th:text="${lecturer.nic}">NIC</td>
+            <td th:text="${lecturer.fingerId}">FingerId</td>
 
             <td>
                 <a th:href="@{'/lecturer/edit/' + ${lecturer.id}}">Edit</a>

@@ -52,7 +52,7 @@
         <thead>
         <tr>
             <th>Group Code</th>
-            <th>Course</th>
+            <th>Stream</th>
             <th>Year</th>
             <th></th>
             <th></th>
@@ -61,7 +61,7 @@
         <tbody>
         <tr th:each="studentGroup : ${studentGroupDetails}">
             <td th:text="${studentGroup.groupCode}">Code</td>
-            <td th:text="${studentGroup.courseCode}">Course</td>
+            <td th:text="${studentGroup.streamCode}">Stream</td>
             <td th:text="${studentGroup.year}">Year</td>
             <td>
                 <a th:href="@{'/studentGroup/edit/' + ${studentGroup.id}}">Edit</a>

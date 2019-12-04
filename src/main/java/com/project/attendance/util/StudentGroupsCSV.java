@@ -23,7 +23,7 @@ public class StudentGroupsCSV {
         Map<String, String> mapping = new
                 HashMap<String, String>();
         mapping.put("group_code", "groupCode");
-        mapping.put("course_code", "courseCode");
+        mapping.put("stream_code", "streamCode");
         mapping.put("year", "year");
 
         // HeaderColumnNameTranslateMappingStrategy

@@ -25,6 +25,7 @@ public class LecturersCSV {
         mapping.put("name", "name");
         mapping.put("code", "code");
         mapping.put("nic", "nic");
+        mapping.put("finger_id", "fingerId");
 
         // HeaderColumnNameTranslateMappingStrategy
         // for Student class

@@ -41,7 +41,7 @@ public class StudentGroupController {
         model.addAttribute("studentGroup",studentGroup);
 
         List<Stream> streamDetail = streamDAO.findAll();
-        model.addAttribute("courses", streamDetail);
+        model.addAttribute("streams", streamDetail);
 
         return "addStudentGroup";
     }
@@ -60,7 +60,7 @@ public class StudentGroupController {
         mav.addObject("studentGroup",studentGroup);
 
         List<Stream> streamDetail = streamDAO.findAll();
-        mav.addObject("courses", streamDetail);
+        mav.addObject("streams", streamDetail);
 
         return  mav;
     }

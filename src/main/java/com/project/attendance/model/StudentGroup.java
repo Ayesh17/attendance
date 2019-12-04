@@ -12,17 +12,13 @@ public class StudentGroup {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     private String groupCode;
-    private String courseCode;
+    private String streamCode;
     private String year;
 
     public StudentGroup () {
     }
 
-    public StudentGroup(String groupCode, String courseCode, String year) {
-        this.groupCode = groupCode;
-        this.courseCode = courseCode;
-        this.year = year;
-    }
+
 
     public Long getId() {
         return id;
@@ -40,12 +36,12 @@ public class StudentGroup {
         this.groupCode = groupCode;
     }
 
-    public String getCourseCode() {
-        return courseCode;
+    public String getStreamCode() {
+        return streamCode;
     }
 
-    public void setCourseCode(String courseCode) {
-        this.courseCode = courseCode;
+    public void setStreamCode(String streamCode) {
+        this.streamCode = streamCode;
     }
 
     public String getYear() {
