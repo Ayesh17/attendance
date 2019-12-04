@@ -60,11 +60,11 @@
                     <td><input type="text" th:field="*{groupCode}"/></td>
                 </tr>
                 <tr>
-                    <td>Course:</td>
+                    <td>Stream:</td>
                     <td>
-                        <select th:field="*{courseCode}">
+                        <select th:field="*{streamCode}">
                             <option value="">Choose..</option>
-                            <option th:each="stream: ${courses}" th:value="${stream.code}" th:text="${stream.name}"/>
+                            <option th:each="stream: ${streams}" th:value="${stream.code}" th:text="${stream.name}"/>
                         </select>
                     </td>
                 </tr>
