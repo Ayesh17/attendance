@@ -1,8 +1,10 @@
 package com.project.attendance.controller;
 
 import com.project.attendance.dao.CheckInOutDAO;
+import com.project.attendance.dao.LecturerDAO;
 import com.project.attendance.dao.RecordsDAO;
-import com.project.attendance.model.DateToDayConvert;
+import com.project.attendance.model.Lecturer;
+import com.project.attendance.util.DateToDayConvert;
 import com.project.attendance.model.CheckInOut;
 import com.project.attendance.model.Records;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,7 +14,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 import java.text.ParseException;
 
@@ -23,6 +25,9 @@ public class CheckInOutController {
 
     @Autowired
     private RecordsDAO recordsDAO;
+
+    @Autowired
+    private LecturerDAO lecturerDAO;
 
     @RequestMapping("/records")
     public String read(Model model) throws ParseException {
@@ -37,18 +42,39 @@ public class CheckInOutController {
         }
            List<Records> recordsList= DateToDayConvert.main(arr);
 
+        List<Records> finalList= new ArrayList<Records>();
 
+        List<Lecturer> lecturers= new ArrayList<Lecturer>();
         for(int i=0;i<recordsList.size();i++){
-            System.out.println("id "+ recordsList.get(i).getUserid());
-            System.out.println("day "+ recordsList.get(i).getDay());
-            System.out.println("time"+ recordsList.get(i).getTime());
-            try {
-                recordsDAO.save(recordsList.get(i));
-            }catch(Exception ex){
-                return "records";
+            int id= recordsList.get(i).getUserid();
+
+            if(lecturerDAO.findBYFIngerId(id)!=null) {
+                System.out.println("lecturerDAO " + lecturerDAO.findBYFIngerId(id).getName());
+                lecturers.add(lecturerDAO.findBYFIngerId(id));
             }
+           System.out.println("id "+ recordsList.get(i).getUserid());
+            System.out.println("day "+ recordsList.get(i).getDay());
+            System.out.println("time "+ recordsList.get(i).getTime());
+            System.out.println("date "+ recordsList.get(i).getDate());
+
 
         }
+
+        for(int i=0;i<lecturers.size();i++){
+            int fingerId=lecturers.get(i).getFingerId();
+            for(int j=0;j<recordsList.size();j++) {
+                int id = recordsList.get(i).getUserid();
+
+
+                try {
+                    // recordsDAO.save(recordsList.get(i));
+                } catch (Exception ex) {
+                    return "records";
+                }
+            }
+        }
+
+
         //Records records=new Records();
         model.addAttribute("records",recordsList);
         return "records";
@@ -62,6 +88,7 @@ public class CheckInOutController {
       System.out.println(record.getUserid());
       System.out.println(record.getDay());
       System.out.println(record.getTime());
+      System.out.println(record.getDate());
         //recordsDAO.save(record);
         return  "redirect:/records";
     }

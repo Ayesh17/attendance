@@ -58,8 +58,8 @@
                 <tr>
                     <td>Student:</td>
                     <td>
-                        <select th:field="*{userId}">
-                            <option th:each="student: ${students}" th:value="${student.userId}"
+                        <select th:field="*{indexNumber}">
+                            <option th:each="student: ${students}" th:value="${student.indexNumber}"
                                     th:text="${student.name}"/>
                         </select>
                     </td>

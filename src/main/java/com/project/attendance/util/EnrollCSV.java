@@ -22,7 +22,7 @@ public class EnrollCSV {
         // Bean attributes.
         Map<String, String> mapping = new
                 HashMap<String, String>();
-        mapping.put("user_id", "userId");
+        mapping.put("index_number", "indexNumber");
         mapping.put("year", "year");
         mapping.put("semester", "semester");
         mapping.put("subject_code1", "subjectCode1");
