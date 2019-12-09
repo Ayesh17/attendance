@@ -30,6 +30,9 @@ public interface TimeTableMappingRepository extends JpaRepository<TimeTableMappi
 
         List<TimeTableMapping> getTimeTableMappingsByCode(@Param("code") Long code);
 
+        List<TimeTableMapping> getTimeTableMappingsByCourseCode(@Param("course_code") String courseCode);
+
+
 
 
 
