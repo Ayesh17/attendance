@@ -31,7 +31,8 @@ public class DateToDayConvert {
             record.setUserid(args[i].getUserid());
             String dateInString = args[i].getChecktime();
             Date dateIn = sdf.parse(dateInString);
-            String d1=sdf.format(new Date());
+            System.out.println(dateIn);
+          //  String d1=sdf.format(new Date());
 
             DateToDayConvert obj = new DateToDayConvert();
 
@@ -42,7 +43,7 @@ public class DateToDayConvert {
             //3. Test - Convert Calendar to Date
             String Day = obj.calendarToDay(calendar);
             String Time=obj.calendarToTime(calendar);
-            String Date=obj.calendarToDate(d1);
+            String Date=obj.calendarToDate(dateInString);
             record.setDay(Day);
             record.setDate(Date);
             record.setTime(Time);
@@ -63,6 +64,7 @@ public class DateToDayConvert {
 
         Calendar calendar = Calendar.getInstance();
         calendar.setTime(date);
+        System.out.println("Date"+date);
         return calendar;
 
     }
@@ -73,28 +75,32 @@ public class DateToDayConvert {
         //int time=calendar.getTime().getHours();
        // System.out.println(time);
         switch(day) {
-            case 1:
-                return "Monday";
-            case 2:
-                return "Tuesday";
-            case 3:
-                return "Wednesday";
-            case 4:
-                return "Thursday";
-            case 5:
-                return "Friday";
             case 6:
+                return "Sunday";
+            case 0:
+                return "Monday";
+            case 1:
+                return "Tuesday";
+            case 2:
+                return "Wednesday";
+            case 3:
+                return "Thursday";
+            case 4:
+                return "Friday";
+            case 5:
                 return "Satarday";
             default:
-                return "Sunday";
+                return " ";
         }
     }
 
     //Convert Calendar to Date
     private String calendarToDate(String str) {
-        String[] spl=str.split(" ");
-        String date= spl[0];
+        String[] arr=str.split(" ");
+        //String[] spl=str.split(" ");
+        //String date= spl[0];
         //int time=calendar.getTime().getHours();
+        String date=arr[0];
         return date;
     }
 

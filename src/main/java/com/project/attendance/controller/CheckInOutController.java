@@ -47,6 +47,8 @@ public class CheckInOutController {
         }
            List<Records> recordsList= DateToDayConvert.main(arr);
 
+
+
         List<Records> finalList= new ArrayList<Records>();
 
         //initialize a List with  lecture objects
@@ -84,6 +86,26 @@ public class CheckInOutController {
             uniqueLecturers.add(lecturerDAO.findBYFIngerId(uniquelec[i]));
         }
 
+        List<Records> lecturersRecordsList=new ArrayList<Records>();
+        for (Records record:recordsList) {
+            for(Lecturer ulec:uniqueLecturers) {
+                //System.out.println("ulec "+ ulec.getFingerId());
+               // System.out.println("id "+ record.getUserid());
+                if (record.getUserid() ==ulec.getFingerId()){
+                    lecturersRecordsList.add(record);
+                   // System.out.println("record fingerId "+ ulec.getFingerId());
+                }
+            }
+        }
+
+        System.out.println("record fingerId ");
+        for (Records r:lecturersRecordsList
+             ) {
+
+            System.out.println( r.getUserid()+r.getDay()+r.getTime()+r.getDate());
+
+        }
+
         //get lecturers enrolled subjects
        // Map<Integer,List<CourseMapping>> courseMap = new HashMap<Integer, List<CourseMapping>>();
         String[][] array=new String[uniqueLecturers.size()][];
@@ -117,9 +139,7 @@ public class CheckInOutController {
                 List<TimeTableMapping> courseTimes = timeTableMappingDAO.getTimeTableMappingsByCourseCode(array[i][j]);
 
                 for (TimeTableMapping courseTime: courseTimes) {
-                    System.out.println("start "+courseTime.getCourseCode());
-                  System.out.println("start "+courseTime.getStart());
-                    System.out.println("start "+courseTime.getDay());
+                    System.out.println("course: "+courseTime.getCourseCode() +" start: "+courseTime.getStart()+" end: "+courseTime.getEnd()+" day: "+courseTime.getDay());
                 }
                 courseMap.put(fingerId,courseTimes);
             }
@@ -127,14 +147,123 @@ public class CheckInOutController {
         }
 
 
+        List<Records> lecturerRecords=new ArrayList<Records>() ;
+
+
         //check whether lecturers are between correct timestamp
-        for(int i=0;i<lecturers.size();i++){
+        for(int i=0;i<lecturersRecordsList.size();i++){
+            //System.out.println("map "+i +" "+lecturers.get(i).getFingerId());
+            int time=Integer.parseInt(lecturersRecordsList.get(i).getTime());
+            String rday=lecturersRecordsList.get(i).getDay();
+            String date=lecturersRecordsList.get(i).getDate();
+            int userid=lecturersRecordsList.get(i).getUserid();
+
+
             List<TimeTableMapping> lists=courseMap.get(lecturers.get(i).getFingerId());
+
+            System.out.println("finger  "+lecturers.get(i).getFingerId());
             for (TimeTableMapping list:lists) {
-                System.out.println("map "+list.getCourseCode());
+                int start=Integer.parseInt(list.getStart());
+                if(start<10){
+                    start=Integer.parseInt("0"+start);
+                }
+                start=Integer.parseInt(start+"00");
+                int end=Integer.parseInt(list.getEnd()+"00");
+                String day=list.getDay();
+
+               // System.out.println("course"+list.getCourseCode()+"    day   "+day+"  start1  "+start+"   end1  "+end);
+
+
+                //System.out.println("agsgfsdasdzda ");
+                //System.out.println(day+" "+rday);
+                if(day.equals(rday)){
+                    System.out.println("day matched " + list.getDay() + " " + list.getCourseCode());
+                  //  System.out.println("time" +time +" start:"+start+" end:"+end);
+
+                    Records lecturerRecord=new Records();
+                    if(time>start && time<end) {
+                        //System.out.println("all matched ");
+                        System.out.println("all matched " + list.getDay() + " " + list.getCourseCode()+" start:"+list.getStart()+" end:"+list.getEnd());
+                        //create a list of lecturers time
+                        lecturerRecord.setDay(list.getDay());
+                        lecturerRecord.setTime(time+"");
+                        lecturerRecord.setDate(date);
+                        lecturerRecord.setUserid(userid);
+                        System.out.println(date);
+                        lecturerRecords.add(lecturerRecord);
+
+                    }else{
+                        System.out.println("time not matched");
+                    }
+                }else {
+                    System.out.println("day not matched"+ list.getDay() + " " + list.getCourseCode());
+                }
+
+               // System.out.println("map "+list.getCourseCode());
+
+                //add lecturerRecord to lecturerRecords
+
             }
 
+        }
 
+
+
+        //print lecturerRecord in lecturerRecords
+        for (Records lecturerRecord:lecturerRecords
+             ) {
+            System.out.println("lecccccccc");
+            System.out.println("day "+lecturerRecord.getDay()+" time "+lecturerRecord.getTime()+" date "+lecturerRecord.getDate()+" userId "+lecturerRecord.getUserid());
+
+        }
+
+        //remove lecturer records if their date is equal and time difference is less than 2 mins
+        List<Records> editedLecturers= new ArrayList<Records>();
+        editedLecturers.add(lecturerRecords.get(0));
+        int count=-1;
+        for (int i=0;i< lecturerRecords.size();i++) {
+
+            if(count<lecturerRecords.size()-2){
+                count++;
+            }
+
+          //  System.out.println(lecturerRecords.get(i).getDate());
+            if (lecturerRecords.get(count).getDate().equals(lecturerRecords.get(count+1).getDate())){
+                if(Math.abs(Integer.parseInt(lecturerRecords.get(count).getTime())-Integer.parseInt(lecturerRecords.get(count+1).getTime()))<2) {
+                    System.out.println("dateeeeee");
+                    //System.out.println(lecturerRecords.get(i).getDate());
+                }else{
+                    System.out.println("notttttttt");
+                    editedLecturers.add(lecturerRecords.get(count+1));
+                }
+            }else {
+                System.out.println("notttttttt2222222222");
+                editedLecturers.add(lecturerRecords.get(count+1));
+                System.out.println("added");
+            }
+
+        }
+
+        //print eddited lecturerslist
+        System.out.println("size"+editedLecturers.size());
+        for(int i=0;i<editedLecturers.size();i++){
+            System.out.println("time"+editedLecturers.get(i).getTime()+" "+editedLecturers.get(i).getDate()+" userId "+editedLecturers.get(i).getUserid());
+        }
+
+
+        //get lecturers start and end times.if no end end=start+1hr
+        int count2=0;
+        for(int i=0;i<editedLecturers.size();i++){
+            if(count2<editedLecturers.size()-2) {
+
+
+                if ((Integer.parseInt(editedLecturers.get(count2 + 1).getTime()) - Integer.parseInt(editedLecturers.get(count2).getTime())) < 100) {
+                    System.out.println("both"+editedLecturers.get(count).getTime()+" - "+editedLecturers.get(count+1).getTime());
+                    count2=count2+2;
+                }else{
+                    count2++;
+                }
+            }
         }
 
 
