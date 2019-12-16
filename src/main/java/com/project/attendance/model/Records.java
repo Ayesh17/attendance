@@ -3,7 +3,6 @@ package com.project.attendance.model;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import javax.persistence.*;
-import java.util.Date;
 
 @Entity
 @Table(name="records")
@@ -15,18 +14,14 @@ public class Records {
     private Long id;
     private int userid;
     private String day;
-    private int time;
+    private String time;
     private String timestamp;
+    private String date;
 
 
     public Records() {
     }
 
-    public Records(int userid, String day, int time) {
-        this.userid = userid;
-        this.day = day;
-        this.time = time;
-    }
 
     public Long getId() {
         return id;
@@ -52,11 +47,11 @@ public class Records {
         this.day = day;
     }
 
-    public int getTime() {
+    public String getTime() {
         return time;
     }
 
-    public void setTime(int time) {
+    public void setTime(String time) {
         this.time = time;
     }
 
@@ -66,5 +61,13 @@ public class Records {
 
     public void setTimestamp(String timestamp) {
         this.timestamp = timestamp;
+    }
+
+    public String getDate() {
+        return date;
+    }
+
+    public void setDate(String date) {
+        this.date = date;
     }
 }

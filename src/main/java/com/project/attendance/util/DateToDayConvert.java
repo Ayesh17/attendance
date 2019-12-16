@@ -1,4 +1,8 @@
-package com.project.attendance.model;
+package com.project.attendance.util;
+
+import com.project.attendance.model.CheckInOut;
+import com.project.attendance.model.Records;
+import com.project.attendance.model.Time;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -26,17 +30,22 @@ public class DateToDayConvert {
             SimpleDateFormat sdf = new SimpleDateFormat("dd-M-yyyy hh:mm:ss");
             record.setUserid(args[i].getUserid());
             String dateInString = args[i].getChecktime();
-            Date date = sdf.parse(dateInString);
+            Date dateIn = sdf.parse(dateInString);
+            System.out.println(dateIn);
+          //  String d1=sdf.format(new Date());
+
             DateToDayConvert obj = new DateToDayConvert();
 
             //2. Test - Convert Date to Calendar
-            Calendar calendar = obj.dateToCalendar(date);
+            Calendar calendar = obj.dateToCalendar(dateIn);
            // System.out.println(calendar.getTime());
 
             //3. Test - Convert Calendar to Date
-            String Day = obj.calendarToDate(calendar);
-            int Time=obj.calendarToTime(calendar);
+            String Day = obj.calendarToDay(calendar);
+            String Time=obj.calendarToTime(calendar);
+            String Date=obj.calendarToDate(dateInString);
             record.setDay(Day);
+            record.setDate(Date);
             record.setTime(Time);
             record.setTimestamp(args[i].getChecktime());
             //System.out.println(newDate);
@@ -55,39 +64,68 @@ public class DateToDayConvert {
 
         Calendar calendar = Calendar.getInstance();
         calendar.setTime(date);
+        System.out.println("Date"+date);
         return calendar;
 
     }
 
     //Convert Calendar to Day
-    private String calendarToDate(Calendar calendar) {
+    private String calendarToDay(Calendar calendar) {
         int day= calendar.getTime().getDay();
         //int time=calendar.getTime().getHours();
        // System.out.println(time);
         switch(day) {
-            case 1:
-                return "Monday";
-            case 2:
-                return "Tuesday";
-            case 3:
-                return "Wednesday";
-            case 4:
-                return "Thursday";
-            case 5:
-                return "Friday";
             case 6:
+                return "Sunday";
+            case 0:
+                return "Monday";
+            case 1:
+                return "Tuesday";
+            case 2:
+                return "Wednesday";
+            case 3:
+                return "Thursday";
+            case 4:
+                return "Friday";
+            case 5:
                 return "Satarday";
             default:
-                return "Sunday";
+                return " ";
         }
     }
 
-    private int calendarToTime(Calendar calendar) {
+    //Convert Calendar to Date
+    private String calendarToDate(String str) {
+        String[] arr=str.split(" ");
+        //String[] spl=str.split(" ");
+        //String date= spl[0];
+        //int time=calendar.getTime().getHours();
+        String date=arr[0];
+        return date;
+    }
+
+    private String calendarToTime(Calendar calendar) {
         //int day= calendar.getTime().getDay();
-        int time=calendar.getTime().getHours();
-        if(time==0){
-            time=12;
+        int hour=calendar.getTime().getHours();
+        if(hour==0){
+            hour=12;
         }
+        String hourstr;
+        if(hour<10){
+            hourstr=0+""+hour;
+        }else{
+            hourstr=""+hour;
+        }
+        int min=calendar.getTime().getMinutes();
+        String minstr;
+        if(min<10){
+            minstr=0+""+min;
+        }else{
+            minstr=""+min;
+        }
+
+        String time=hourstr+""+minstr;
+
         return time;
         // System.out.println(time);
 

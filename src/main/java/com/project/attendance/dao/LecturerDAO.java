@@ -35,6 +35,8 @@ public class LecturerDAO {
         return lecturerRepository.findById(id).orElse(null);
     }
 
+    public Lecturer findBYFIngerId(int fingerId){ return  lecturerRepository.getLecturerByFingerId(fingerId);}
+
 
     //delete a student
     public void delete(Long id){

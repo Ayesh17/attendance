@@ -39,6 +39,12 @@ public class CourseMappingDAO {
         return courseMappingRepository.getCourseMappingByCourseCode(courseCode);
     }
 
+    //to search all subjects assigned as lecturer
+    public List<CourseMapping> getCoursesByLecturer(String lecturerCode){
+        return courseMappingRepository.getCourseMappingByLecturer1CodeOrLecturer2Code(lecturerCode,lecturerCode);
+    }
+
+
     //delete a subject
     public void delete(Long id){
         courseMappingRepository.deleteById(id);

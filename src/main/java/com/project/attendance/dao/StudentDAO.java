@@ -35,10 +35,9 @@ public class StudentDAO {
     }
 
     //get a student by id
-    public List<Student> findByUserId(int indexNumber){
+    public List<Student> findByIndexNumber(int indexNumber){
         return studentRepository.findByIndexNumber(indexNumber);
     }
-
 
     //delete a student
     public void delete(Long id){

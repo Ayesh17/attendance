@@ -34,6 +34,12 @@ public class EnrollDAO {
         return enrollRepository.getEnrollByIndexNumberAndYearAndSemester(indexNumber, year, semester);
     }
 
+    //to search enroll records by indexNumber
+    public List<Enroll> getCoursesByIndexNumber(int indexNumber){
+        return enrollRepository.getEnrollByIndexNumber(indexNumber);
+    }
+
+
     //get an enroll record by id
     public Enroll findById(Long id){
         return enrollRepository.findById(id).orElse(null);

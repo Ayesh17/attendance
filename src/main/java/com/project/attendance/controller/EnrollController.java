@@ -2,6 +2,7 @@ package com.project.attendance.controller;
 
 import com.project.attendance.dao.*;
 import com.project.attendance.model.*;
+import com.project.attendance.util.EnrollBatchCSV;
 import com.project.attendance.util.EnrollCSV;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -63,7 +64,7 @@ public class EnrollController {
             for (int i=0;i<enrollDetails.size();i++) {
 
                 int id = enroll.getIndexNumber();
-                List<Student> list = studentDAO.findByUserId(id);
+                List<Student> list = studentDAO.findByIndexNumber(id);
 
                 for (int j = 0; j < list.size(); j++) {
                     String name = list.get(j).getName();
@@ -147,7 +148,7 @@ public class EnrollController {
             List<Enroll> enrollDetails= list;
             for (int i=0;i<enrollDetails.size();i++) {
                 int id = list.get(i).getIndexNumber();
-                List<Student> list2 = studentDAO.findByUserId(id);
+                List<Student> list2 = studentDAO.findByIndexNumber(id);
 
                 for (int j = 0; j < list2.size(); j++) {
                     String name = list2.get(j).getName();
@@ -165,10 +166,66 @@ public class EnrollController {
         return  "redirect:/enroll";
     }
 
+
+    @PostMapping("/enroll/upload2") // //new annotation since 4.3
+    public String enrollCSVUpload2(@RequestParam("file") MultipartFile file, HttpServletRequest request,
+                                  RedirectAttributes redirectAttributes) {
+
+        if (file.isEmpty()) {
+            redirectAttributes.addFlashAttribute("message", "Please select a file to upload");
+            return "redirect:/enroll/csv";
+        }
+
+        try {
+            // Get the file and save it somewhere
+            byte[] bytes = file.getBytes();
+            Path path = Paths.get(UPLOADED_FOLDER + file.getOriginalFilename());
+            Files.write(path, bytes);
+            request.setAttribute("path", path);
+
+            redirectAttributes.addFlashAttribute("message",
+                    "You successfully uploaded '" + file.getOriginalFilename() + "'");
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+
+        return "forward:/enroll/saveAll2";
+    }
+
+
+
+
+    @RequestMapping(value="/enroll/saveAll2",method= RequestMethod.POST)
+    public String saveAllEnrolls2(@ModelAttribute("enroll") Enroll enroll, HttpServletRequest request){
+        Path path = (Path) request.getAttribute("path");
+        EnrollBatchCSV csv=new EnrollBatchCSV();
+        Path[] args={path};
+        List<List<String>> list = EnrollBatchCSV.main(args);
+
+       for(int i=0;i<list.size();i++){
+           for(int j=0;j<6;j++){
+               System.out.println(i+" "+list.get(i).get(j).toString());
+           }
+       }
+
+        return  "redirect:/enroll";
+    }
+
+
+
     @RequestMapping("/enroll/csv")
     public String view(Model model){
         List<Enroll> enrollDetails= enrollDAO.findAll();
         model.addAttribute("enrollDetails",enrollDetails);
         return "addAllEnrolls";
+    }
+
+    @RequestMapping("/enroll/csv2")
+    public String view2(Model model){
+        List<Enroll> enrollDetails= enrollDAO.findAll();
+        model.addAttribute("enrollDetails",enrollDetails);
+        return "addAllBatchEnrolls";
     }
 }

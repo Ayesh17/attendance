@@ -58,5 +58,7 @@ public class TimeTableMappingDAO {
 
     public List<TimeTableMapping> getTimeTableMappingsByCode(Long code){ return timeTableMappingRepository.getTimeTableMappingsByCode(code);}
 
+    public List<TimeTableMapping> getTimeTableMappingsByCourseCode(String courseCode){ return timeTableMappingRepository.getTimeTableMappingsByCourseCode(courseCode);}
+
 
 }
