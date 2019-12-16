@@ -147,7 +147,7 @@ public class CheckInOutController {
         }
 
 
-        List<Records> lecturerRecords = new ArrayList<Records>();
+        List<LecturersWithStartAndEnd> lecturerRecords = new ArrayList<LecturersWithStartAndEnd>();
 
 
         //check whether lecturers are between correct timestamp
@@ -180,15 +180,17 @@ public class CheckInOutController {
                     System.out.println("day matched " + list.getDay() + " " + list.getCourseCode());
                     //  System.out.println("time" +time +" start:"+start+" end:"+end);
 
-                    Records lecturerRecord = new Records();
+                    LecturersWithStartAndEnd lecturerRecord = new LecturersWithStartAndEnd();
                     if (time > start && time < end) {
                         //System.out.println("all matched ");
                         System.out.println("all matched " + list.getDay() + " " + list.getCourseCode() + " start:" + list.getStart() + " end:" + list.getEnd());
+                        String courseCode=list.getCourseCode();
                         //create a list of lecturers time
                         lecturerRecord.setDay(list.getDay());
                         lecturerRecord.setTime(time + "");
                         lecturerRecord.setDate(date);
-                        lecturerRecord.setUserid(userid);
+                        lecturerRecord.setUserId(userid);
+                        lecturerRecord.setCourseCode(courseCode);
                         System.out.println(date);
                         lecturerRecords.add(lecturerRecord);
 
@@ -209,15 +211,15 @@ public class CheckInOutController {
 
 
         //print lecturerRecord in lecturerRecords
-        for (Records lecturerRecord : lecturerRecords
+        for (LecturersWithStartAndEnd lecturerRecord : lecturerRecords
         ) {
             System.out.println("lecccccccc");
-            System.out.println("day " + lecturerRecord.getDay() + " time " + lecturerRecord.getTime() + " date " + lecturerRecord.getDate() + " userId " + lecturerRecord.getUserid());
+            System.out.println("day " + lecturerRecord.getDay() + " time " + lecturerRecord.getTime() + " date " + lecturerRecord.getDate() + " userId " + lecturerRecord.getUserId());
 
         }
 
         //remove lecturer records if their date is equal and time difference is less than 2 mins
-        List<Records> editedLecturers = new ArrayList<Records>();
+        List<LecturersWithStartAndEnd> editedLecturers = new ArrayList<LecturersWithStartAndEnd>();
         editedLecturers.add(lecturerRecords.get(0));
         int count = -1;
         for (int i = 0; i < lecturerRecords.size(); i++) {
@@ -246,7 +248,7 @@ public class CheckInOutController {
         //print eddited lecturerslist
         System.out.println("size" + editedLecturers.size());
         for (int i = 0; i < editedLecturers.size(); i++) {
-            System.out.println("time" + editedLecturers.get(i).getTime() + " " + editedLecturers.get(i).getDate() + " userId " + editedLecturers.get(i).getUserid());
+            System.out.println("time" + editedLecturers.get(i).getTime() + " " + editedLecturers.get(i).getDate() + " userId " + editedLecturers.get(i).getUserId());
         }
 
 
@@ -258,10 +260,10 @@ public class CheckInOutController {
 
         int count2 = 0;
         for (int i = 0; i < editedLecturers.size()-1; i++) {
-            for(int j=1;j<editedLecturers.size();j++) {
-                int userId=editedLecturers.get(i).getUserid();
-                    if ((editedLecturers.get(i).getUserid() == editedLecturers.get(j).getUserid()) && (editedLecturers.get(i).getDate().equals(editedLecturers.get(j).getDate()))) {
-                       // System.out.println("both111" + editedLecturers.get(i).getTime() + " - " + editedLecturers.get(j).getTime());
+            for(int j=0;j<editedLecturers.size();j++) {
+                int userId=editedLecturers.get(i).getUserId();
+                    if ((editedLecturers.get(i).getUserId() == editedLecturers.get(j).getUserId()) && (editedLecturers.get(i).getDate().equals(editedLecturers.get(j).getDate()))) {
+                       System.out.println("both111" + editedLecturers.get(i).getTime() + " - " + editedLecturers.get(j).getTime());
 
 
                         LecturersWithStartAndEnd finalLecturers= new LecturersWithStartAndEnd();
@@ -272,12 +274,18 @@ public class CheckInOutController {
                             finalLecturers.setEnd(editedLecturers.get(j).getTime());
                             finalLecturers.setDay(editedLecturers.get(i).getDay());
                             finalLecturers.setDate(editedLecturers.get(i).getDate());
+                            finalLecturers.setCourseCode(editedLecturers.get(i).getCourseCode());
+                            finalLecturers.setUserId(editedLecturers.get(i).getUserId());
 
                         }else{
+                            System.out.println("both2222" + editedLecturers.get(i).getTime() + " - " + editedLecturers.get(j).getTime());
+
                             finalLecturers.setStart(editedLecturers.get(i).getTime());
                             finalLecturers.setEnd((Integer.parseInt(editedLecturers.get(i).getTime())+100)+"");
                             finalLecturers.setDay(editedLecturers.get(i).getDay());
                             finalLecturers.setDate(editedLecturers.get(i).getDate());
+                            finalLecturers.setCourseCode(editedLecturers.get(i).getCourseCode());
+                            finalLecturers.setUserId(editedLecturers.get(i).getUserId());
                         }
                         finalLecturersList.add(finalLecturers);
 
@@ -290,7 +298,7 @@ public class CheckInOutController {
         for (Integer name: finalLecturersMap.keySet()){
             String key = name.toString();
             List<LecturersWithStartAndEnd> value = finalLecturersMap.get(name);
-                System.out.println(key + " " +value.get(ct).getDate()+" "+ value.get(ct).getDay()+" "+value.get(ct).getStart()+" "+value.get(ct).getEnd());
+                System.out.println(key + " " +value.get(ct).getDate()+" "+ value.get(ct).getDay()+" "+value.get(ct).getCourseCode()+" "+value.get(ct).getStart()+" "+value.get(ct).getEnd() +" "+value.get(ct).getUserId());
             ct++;
 
         }
@@ -300,8 +308,17 @@ public class CheckInOutController {
         for (Integer name: finalLecturersMap.keySet()){
             String key = name.toString();
             List<LecturersWithStartAndEnd> value = finalLecturersMap.get(name);
-            System.out.println(key + " " +value.get(counter).getDate()+" "+ value.get(counter).getDay()+" "+value.get(counter).getStart()+" "+value.get(counter).getEnd());
-            ct++;
+            int userId=value.get(counter).getUserId();
+            String date=value.get(counter).getDate();
+            String day=value.get(counter).getDay();
+            String courseCode=value.get(counter).getCourseCode();
+            String start=value.get(counter).getStart();
+            String end=value.get(counter).getEnd();
+            counter++;
+
+            for(int i=0;i<finalList.size();i++){
+
+            }
 
         }
 
