@@ -315,7 +315,7 @@ public class CheckInOutController {
 
         }
 
-        //get list of students who registered for the same course and signed between lectureres start and end
+        //get list of students who registered for the same course and signed between lectureres start and end save in the database
         List<Records> finalList = new ArrayList<Records>();
         int counter=0;
         for (Integer name: finalLecturersMap.keySet()){
@@ -339,8 +339,10 @@ public class CheckInOutController {
                       List<Enroll> courseList= enrollDAO.getCoursesByIndexNumber(recordsList.get(i).getUserid());
                       for(Enroll course:courseList){
                           System.out.println(course.getCourseCode1());
-                          if(courseCode.equals(course.getCourseCode1())||courseCode.equals(course.getCourseCode2())){
+                          //check whether students enrolled in a course done by the lecturer
+                          if(courseCode.equals(course.getCourseCode1())||courseCode.equals(course.getCourseCode2())||courseCode.equals(course.getCourseCode3())||courseCode.equals(course.getCourseCode4())||courseCode.equals(course.getCourseCode5())||courseCode.equals(course.getCourseCode6())||courseCode.equals(course.getCourseCode7())||courseCode.equals(course.getCourseCode8())||courseCode.equals(course.getCourseCode9())||courseCode.equals(course.getCourseCode10())||courseCode.equals(course.getCourseCode11())||courseCode.equals(course.getCourseCode12())){
                               System.out.println("match1 found");
+                              //check whether student used fingerprint between 2 fingerprints of lecturer
                               if(recordsList.get(i).getDate().equals(date)&&(Integer.parseInt(recordsList.get(i).getTime())>=start)&&(Integer.parseInt(recordsList.get(i).getTime())<=end)){
                                  Records record=new Records();
                                  record.setUserid(recordsList.get(i).getUserid());
