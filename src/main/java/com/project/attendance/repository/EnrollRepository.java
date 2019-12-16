@@ -9,4 +9,6 @@ import java.util.List;
 public interface EnrollRepository extends JpaRepository<Enroll, Long> {
 
     List<Enroll> getEnrollByIndexNumberAndYearAndSemester(@Param("indexNumber") int indexNumber,@Param("year") int year,@Param("semester") int semester);
+
+    List<Enroll> getEnrollByIndexNumber(@Param("indexNumber") int indexNumber);
 }

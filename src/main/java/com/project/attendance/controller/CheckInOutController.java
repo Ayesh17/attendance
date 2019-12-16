@@ -35,6 +35,9 @@ public class CheckInOutController {
     @Autowired
     private TimeTableMappingDAO timeTableMappingDAO;
 
+    @Autowired
+    private EnrollDAO enrollDAO;
+
     @RequestMapping("/records")
     public String read(Model model) throws ParseException {
         System.out.println("hey");
@@ -49,7 +52,6 @@ public class CheckInOutController {
         List<Records> recordsList = DateToDayConvert.main(arr);
 
 
-        List<Records> finalList = new ArrayList<Records>();
 
         //initialize a List with  lecture objects
         List<Lecturer> lecturers = new ArrayList<Lecturer>();
@@ -260,15 +262,18 @@ public class CheckInOutController {
 
         int count2 = 0;
         for (int i = 0; i < editedLecturers.size()-1; i++) {
+            int userId=editedLecturers.get(i).getUserId();
+            int flag=0;
+            LecturersWithStartAndEnd finalLecturers= new LecturersWithStartAndEnd();
             for(int j=0;j<editedLecturers.size();j++) {
-                int userId=editedLecturers.get(i).getUserId();
+
                     if ((editedLecturers.get(i).getUserId() == editedLecturers.get(j).getUserId()) && (editedLecturers.get(i).getDate().equals(editedLecturers.get(j).getDate()))) {
-                       System.out.println("both111" + editedLecturers.get(i).getTime() + " - " + editedLecturers.get(j).getTime());
+                       //System.out.println("both111 " + editedLecturers.get(i).getTime() + " - " + editedLecturers.get(j).getTime());
 
 
-                        LecturersWithStartAndEnd finalLecturers= new LecturersWithStartAndEnd();
+
                         if ((Math.abs(Integer.parseInt(editedLecturers.get(i).getTime()) - Integer.parseInt(editedLecturers.get(j).getTime())) < 100)&& (Integer.parseInt(editedLecturers.get(i).getTime()) != Integer.parseInt(editedLecturers.get(j).getTime()))){
-                            System.out.println("both" + editedLecturers.get(i).getTime() + " - " + editedLecturers.get(j).getTime());
+                            System.out.println("both " + editedLecturers.get(i).getTime() + " - " + editedLecturers.get(j).getTime());
 
                             finalLecturers.setStart(editedLecturers.get(i).getTime());
                             finalLecturers.setEnd(editedLecturers.get(j).getTime());
@@ -276,9 +281,11 @@ public class CheckInOutController {
                             finalLecturers.setDate(editedLecturers.get(i).getDate());
                             finalLecturers.setCourseCode(editedLecturers.get(i).getCourseCode());
                             finalLecturers.setUserId(editedLecturers.get(i).getUserId());
+                            finalLecturersList.add(finalLecturers);
+                            flag=1;
 
                         }else{
-                            System.out.println("both2222" + editedLecturers.get(i).getTime() + " - " + editedLecturers.get(j).getTime());
+                            //System.out.println("both2222 " + editedLecturers.get(i).getTime() + " - " + editedLecturers.get(j).getTime());
 
                             finalLecturers.setStart(editedLecturers.get(i).getTime());
                             finalLecturers.setEnd((Integer.parseInt(editedLecturers.get(i).getTime())+100)+"");
@@ -287,11 +294,16 @@ public class CheckInOutController {
                             finalLecturers.setCourseCode(editedLecturers.get(i).getCourseCode());
                             finalLecturers.setUserId(editedLecturers.get(i).getUserId());
                         }
-                        finalLecturersList.add(finalLecturers);
 
-                    }    finalLecturersMap.put(userId,finalLecturersList);
+
+                    }
 
             }
+            if(flag==0){
+                finalLecturersList.add(finalLecturers);
+            }
+
+            finalLecturersMap.put(userId,finalLecturersList);
         }
 
         int ct=0;
@@ -304,6 +316,7 @@ public class CheckInOutController {
         }
 
         //get list of students who registered for the same course and signed between lectureres start and end
+        List<Records> finalList = new ArrayList<Records>();
         int counter=0;
         for (Integer name: finalLecturersMap.keySet()){
             String key = name.toString();
@@ -312,17 +325,47 @@ public class CheckInOutController {
             String date=value.get(counter).getDate();
             String day=value.get(counter).getDay();
             String courseCode=value.get(counter).getCourseCode();
-            String start=value.get(counter).getStart();
-            String end=value.get(counter).getEnd();
+            System.out.println("course "+courseCode);
+            int start=Integer.parseInt(value.get(counter).getStart());
+            int end=Integer.parseInt(value.get(counter).getEnd());
             counter++;
+            System.out.println(courseCode+" "+date+" "+start+" "+end+" "+userId);
 
-            for(int i=0;i<finalList.size();i++){
+            for(int i=0;i<recordsList.size();i++){
+
+                if(userId != recordsList.get(i).getUserid()){
+                    System.out.println("user "+recordsList.get(i).getUserid());
+
+                      List<Enroll> courseList= enrollDAO.getCoursesByIndexNumber(recordsList.get(i).getUserid());
+                      for(Enroll course:courseList){
+                          System.out.println(course.getCourseCode1());
+                          if(courseCode.equals(course.getCourseCode1())||courseCode.equals(course.getCourseCode2())){
+                              System.out.println("match1 found");
+                              if(recordsList.get(i).getDate().equals(date)&&(Integer.parseInt(recordsList.get(i).getTime())>=start)&&(Integer.parseInt(recordsList.get(i).getTime())<=end)){
+                                 Records record=new Records();
+                                 record.setUserid(recordsList.get(i).getUserid());
+                                 record.setDate(recordsList.get(i).getDate());
+                                 record.setDay(recordsList.get(i).getDay());
+                                 record.setTime(recordsList.get(i).getTime());
+                                 record.setTimestamp(recordsList.get(i).getTimestamp());
+                                  recordsDAO.save(record);
+                                  finalList.add(record);
+                                  System.out.println("match found");
+
+                              }
+                          }
+                      }
+                }
 
             }
 
         }
 
+        for(int i=0;i<finalList.size();i++){
+            System.out.println(finalList.get(i).getUserid()+" "+finalList.get(i).getTimestamp());
+        }
 
+        /*
         for (int i = 0; i < uniqueLecturers.size(); i++) {
             int fingerId = uniqueLecturers.get(i).getFingerId();
             for (int j = 0; j < recordsList.size(); j++) {
@@ -340,7 +383,7 @@ public class CheckInOutController {
                 }
             }
         }
-
+*/
 
         //Records records=new Records();
         model.addAttribute("records", recordsList);
