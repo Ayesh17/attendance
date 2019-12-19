@@ -26,29 +26,10 @@ public class Enroll {
     private String courseCode10;
     private String courseCode11;
     private String courseCode12;
-    private int year;
+    private String year;
     private int semester;
 
     public Enroll() {
-    }
-
-    public Enroll(int indexNumber, String name, String courseCode1, String courseCode2, String courseCode3, String courseCode4, String courseCode5, String courseCode6, String courseCode7, String courseCode8, String courseCode9, String courseCode10, String courseCode11, String courseCode12, int year, int semester) {
-        this.indexNumber = indexNumber;
-        this.name = name;
-        this.courseCode1 = courseCode1;
-        this.courseCode2 = courseCode2;
-        this.courseCode3 = courseCode3;
-        this.courseCode4 = courseCode4;
-        this.courseCode5 = courseCode5;
-        this.courseCode6 = courseCode6;
-        this.courseCode7 = courseCode7;
-        this.courseCode8 = courseCode8;
-        this.courseCode9 = courseCode9;
-        this.courseCode10 = courseCode10;
-        this.courseCode11 = courseCode11;
-        this.courseCode12 = courseCode12;
-        this.year = year;
-        this.semester = semester;
     }
 
     public Long getId() {
@@ -179,11 +160,11 @@ public class Enroll {
         this.courseCode12 = courseCode12;
     }
 
-    public int getYear() {
+    public String getYear() {
         return year;
     }
 
-    public void setYear(int year) {
+    public void setYear(String year) {
         this.year = year;
     }
 

@@ -214,9 +214,20 @@ public class EnrollController {
         for(int i=0;i<courseStrList.size();i++){
             courseList.add(courseStrList.get(i)+courseNoList.get(i));
         }
+
+
        for (int i=0;i<courseList.size();i++){
            System.out.println(courseList.get(i));
        }
+
+
+       //get the academic year
+        System.out.println("year");
+        System.out.println(list.get(3));
+        String rawYear=list.get(3).get(0);
+        String[] yearArr=rawYear.split(" ");
+        String year=yearArr[3];
+        System.out.println(year);
 
        for(int i=10;i<list.size();i++){
            for(int j=5;j<30;j++){
@@ -227,6 +238,7 @@ public class EnrollController {
                    enrollst.setIndexNumber(Integer.parseInt(list.get(i).get(2)));
                    enrollst.setName(list.get(i).get(4));
                    enrollst.setCourseCode(courseList.get(j));
+                   enrollst.setYear(year);
                    System.out.println(courseList.get(j));
                    enrollList.add(enrollst);
                }else{
@@ -238,8 +250,13 @@ public class EnrollController {
 
        for (int i=0;i<enrollList.size();i++){
            System.out.println(" Enroll"+ enrollList.get(i).getCourseCode()+" "+enrollList.get(i).getIndexNumber()+" "+enrollList.get(i).getName());
-           enrollDAO.saveAll(enrollList);
+
        }
+        try {
+            enrollDAO.saveAll(enrollList);
+        }catch (Exception e){
+            System.out.println(e);
+        }
 
         return  "redirect:/enroll";
     }
