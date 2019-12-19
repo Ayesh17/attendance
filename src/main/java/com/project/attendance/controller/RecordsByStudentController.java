@@ -15,6 +15,7 @@ import javax.servlet.http.HttpServletRequest;
 import java.util.ArrayList;
 import java.util.List;
 
+
 @Controller
 public class RecordsByStudentController {
     @Autowired
@@ -50,6 +51,8 @@ public class RecordsByStudentController {
 
         return "addRecordsByStudent";
     }
+
+
 
 
 
@@ -145,6 +148,13 @@ public class RecordsByStudentController {
     }*/
 
 
+
+
+
+
+
+    ///latest commented
+    /*
     @RequestMapping(value = "/records-student/save", method = RequestMethod.POST)
     public String saveRecordsByStudent(@ModelAttribute("recordsByStudent") RecordsByStudent recordsByStudent,HttpServletRequest request) {
         int indexNumber = recordsByStudent.getIndexNumber();
@@ -723,5 +733,6 @@ public class RecordsByStudentController {
         recordsByStudentDAO.delete(id);
         return "redirect:/records-student";
     }
-
+*/
 }
+
