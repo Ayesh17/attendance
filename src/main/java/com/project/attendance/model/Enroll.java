@@ -13,6 +13,7 @@ public class Enroll {
     private Long id;
     private int indexNumber;
     private String name;
+    private String courseCode;
     private String courseCode1;
     private String courseCode2;
     private String courseCode3;
@@ -72,6 +73,14 @@ public class Enroll {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public String getCourseCode() {
+        return courseCode;
+    }
+
+    public void setCourseCode(String courseCode) {
+        this.courseCode = courseCode;
     }
 
     public String getCourseCode1() {

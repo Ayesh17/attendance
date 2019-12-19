@@ -17,6 +17,7 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.ArrayList;
 import java.util.List;
 
 @Controller
@@ -204,10 +205,40 @@ public class EnrollController {
         Path[] args={path};
         List<List<String>> list = EnrollBatchCSV.main(args);
 
-       for(int i=0;i<list.size();i++){
-           for(int j=0;j<6;j++){
-               System.out.println(i+" "+list.get(i).get(j).toString());
+      List<Enroll> enrollList=new ArrayList<>();
+
+
+       List<String> courseStrList= list.get(7);
+        List<String> courseNoList= list.get(8);
+        List<String> courseList= new ArrayList<>();
+        for(int i=0;i<courseStrList.size();i++){
+            courseList.add(courseStrList.get(i)+courseNoList.get(i));
+        }
+       for (int i=0;i<courseList.size();i++){
+           System.out.println(courseList.get(i));
+       }
+
+       for(int i=10;i<list.size();i++){
+           for(int j=5;j<30;j++){
+               Enroll enrollst=new Enroll();
+               System.out.println(i+" "+list.get(i).get(j));
+               System.out.println("course"+courseList.get(j));
+               if(list.get(i).get(j).equals("1")){
+                   enrollst.setIndexNumber(Integer.parseInt(list.get(i).get(2)));
+                   enrollst.setName(list.get(i).get(4));
+                   enrollst.setCourseCode(courseList.get(j));
+                   System.out.println(courseList.get(j));
+                   enrollList.add(enrollst);
+               }else{
+                   System.out.println("No "+list.get(i).get(j));
+               }
            }
+
+       }
+
+       for (int i=0;i<enrollList.size();i++){
+           System.out.println(" Enroll"+ enrollList.get(i).getCourseCode()+" "+enrollList.get(i).getIndexNumber()+" "+enrollList.get(i).getName());
+           enrollDAO.saveAll(enrollList);
        }
 
         return  "redirect:/enroll";
