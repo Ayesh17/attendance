@@ -26,12 +26,12 @@ public class EnrollDAO {
 
     //to search all enroll records
     public List<Enroll> findAll(){
-        return enrollRepository.findAll(Sort.by(Sort.Direction.ASC, "name"));
+        return enrollRepository.findAll(Sort.by(Sort.Direction.ASC, "name","courseCode"));
     }
 
     //to search all enroll records
-    public List<Enroll> getCourses(int indexNumber, int year, int semester){
-        return enrollRepository.getEnrollByIndexNumberAndYearAndSemester(indexNumber, year, semester);
+    public List<Enroll> getCourses(int indexNumber, int year){
+        return enrollRepository.getEnrollByIndexNumberAndYear(indexNumber, year);
     }
 
     //to search enroll records by indexNumber

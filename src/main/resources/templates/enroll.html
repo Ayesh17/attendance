@@ -45,8 +45,7 @@
 <!-- End of Nav Bar body code-->
 <h1>Enroll Details</h1>
 <a href="../enroll/new"><h2>New Enrollment</h2></a>
-<a href="../enroll/csv"><h4>Upload a CSV File</h4></a>
-<a href="../enroll/csv2"><h2>Batch Enroll</h2></a>
+<a href="../enroll/csv2"><h4>Upload a CSV File</h4></a>
 <div class="container" style="margin-top:30px">
     <br><br>
     <table border="1">
@@ -55,7 +54,7 @@
             <th>Index Number</th>
             <th>Name</th>
             <th>Year</th>
-            <th>Semester</th>
+            <th>Course</th>
             <th></th>
             <th></th>
         </tr>
@@ -65,7 +64,7 @@
             <td th:text="${enroll.indexNumber}" style="padding-right:0px">index Number</td>
             <td th:text="${enroll.name}">Name</td>
             <td th:text="${enroll.year}">Year</td>
-            <td th:text="${enroll.semester}">Semester</td>
+            <td th:text="${enroll.courseCode}">CourseCode</td>
             <td>
                 <a th:href="@{'/enroll/edit/' + ${enroll.id}}">Edit</a>
             </td>

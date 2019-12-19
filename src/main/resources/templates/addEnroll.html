@@ -80,113 +80,19 @@
                 </tr>
 
                 <tr>
-                    <td>Semester:</td>
-                    <td>
-                        <select th:field="*{semester}">
-                            <option value="1">1</option>
-                            <option value="2">2</option>
-
-                        </select>
-                    </td>
-
-                </tr>
-
-                <tr>
                     <td>Courses:</td>
 
                 </tr>
 
                 <tr>
                     <td>
-                        <select th:field="*{courseCode1}">
+                        <select th:field="*{courseCode}">
                             <option value=""></option>
                             <option th:each="course: ${courses}" th:value="${course.courseCode}"
                                     th:text="${course.name}"/>
                         </select>
                     </td>
-                    <td>
-                        <select th:field="*{courseCode2}">
-                            <option value=""></option>
-                            <option th:each="course: ${courses}" th:value="${course.courseCode}"
-                                    th:text="${course.name}"/>
-                        </select>
-                    </td>
-                    <td>
-                        <select th:field="*{courseCode3}">
-                            <option value=""></option>
-                            <option th:each="course: ${courses}" th:value="${course.courseCode}"
-                                    th:text="${course.name}"/>
-                        </select>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <select th:field="*{courseCode4}">
-                            <option value=""></option>
-                            <option th:each="course: ${courses}" th:value="${course.courseCode}"
-                                    th:text="${course.name}"/>
-                        </select>
-                    </td>
-                    <td>
-                        <select th:field="*{courseCode5}">
-                            <option value=""></option>
-                            <option th:each="course: ${courses}" th:value="${course.courseCode}"
-                                    th:text="${course.name}"/>
-                        </select>
-                    </td>
-                    <td>
-                        <select th:field="*{courseCode6}">
-                            <option value=""></option>
-                            <option th:each="course: ${courses}" th:value="${course.courseCode}"
-                                    th:text="${course.name}"/>
-                        </select>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <select th:field="*{courseCode7}">
-                            <option value=""></option>
-                            <option th:each="course: ${courses}" th:value="${course.courseCode}"
-                                    th:text="${course.name}"/>
-                        </select>
-                    </td>
-                    <td>
-                        <select th:field="*{courseCode8}">
-                            <option value=""></option>
-                            <option th:each="course: ${courses}" th:value="${course.courseCode}"
-                                    th:text="${course.name}"/>
-                        </select>
-                    </td>
-                    <td>
-                        <select th:field="*{courseCode9}">
-                            <option value=""></option>
-                            <option th:each="course: ${courses}" th:value="${course.courseCode}"
-                                    th:text="${course.name}"/>
-                        </select>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <select th:field="*{courseCode10}">
-                            <option value=""></option>
-                            <option th:each="course: ${courses}" th:value="${course.courseCode}"
-                                    th:text="${course.name}"/>
-                        </select>
-                    </td>
-                    <td>
-                        <select th:field="*{courseCode1}">
-                            <option value=""></option>
-                            <option th:each="course: ${courses}" th:value="${course.courseCode}"
-                                    th:text="${course.name}"/>
-                        </select>
-                    </td>
-                    <td>
-                        <select th:field="*{courseCode12}">
-                            <option value=""></option>
-                            <option th:each="course: ${courses}" th:value="${course.courseCode}"
-                                    th:text="${course.name}"/>
-                        </select>
-                    </td>
+
                 </tr>
 
                 <tr>

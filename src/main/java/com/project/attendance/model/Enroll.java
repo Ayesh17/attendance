@@ -15,7 +15,6 @@ public class Enroll {
     private String name;
     private String courseCode;
     private String year;
-    private int semester;
 
     public Enroll() {
     }
@@ -60,11 +59,4 @@ public class Enroll {
         this.year = year;
     }
 
-    public int getSemester() {
-        return semester;
-    }
-
-    public void setSemester(int semester) {
-        this.semester = semester;
-    }
 }
