@@ -126,7 +126,7 @@ img {
 
     height:auto;
     padding-top: 10px;
-    padding-left: 120px;
+    padding-left: 70px;
     padding-bottom:30px;
 }
 
@@ -174,15 +174,13 @@ img {
 }
 
 table {
+    align-self: center;
+    width:97%;
     border-collapse: collapse;
 }
 
 table, th, td {
     border: 0px solid black;
-}
-
-table {
-    width: 80%;
 }
 
 th {

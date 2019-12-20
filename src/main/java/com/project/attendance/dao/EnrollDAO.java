@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 
@@ -30,7 +31,7 @@ public class EnrollDAO {
     }
 
     //to search all enroll records
-    public List<Enroll> getCourses(int indexNumber, int year){
+    public List<Enroll> getCourses(int indexNumber, String year){
         return enrollRepository.getEnrollByIndexNumberAndYear(indexNumber, year);
     }
 
@@ -43,6 +44,16 @@ public class EnrollDAO {
     //get an enroll record by id
     public Enroll findById(Long id){
         return enrollRepository.findById(id).orElse(null);
+    }
+
+    //get distinct enroll by indexNumber
+    public List<Enroll> getDistinct(){
+        List<Integer> indexNumberList=enrollRepository.findEnrollDistinctByIndexNumber();
+        List<Enroll> enrollList=new ArrayList<>();
+        for(int i=0;i<indexNumberList.size();i++){
+           enrollList.add(enrollRepository.getEnrollByIndexNumber(indexNumberList.get(i)).get(0));
+        }
+       return enrollList;
     }
 
     //delete an enroll record by indexNumber
