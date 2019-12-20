@@ -19,4 +19,8 @@ public interface EnrollRepository extends JpaRepository<Enroll, Long> {
     @Query("SELECT DISTINCT t.indexNumber  FROM Enroll t")
     List<Integer> findEnrollDistinctByIndexNumber();
 
+    @Query("SELECT t.year  FROM Enroll t where  t.indexNumber = :indexNumber")
+    List<Enroll> findYearByIndexNumber(@Param("indexNumber") int indexNumber);
+
+
 }
