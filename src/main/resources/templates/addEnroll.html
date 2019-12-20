@@ -85,6 +85,16 @@
                 </tr>
 
                 <tr>
+                <td>
+                    <select th:field="*{courseCode}">
+                        <option value=""></option>
+                        <option th:each="course: ${courses}" th:value="${course.courseCode}"
+                                th:text="${course.name}"/>
+                    </select>
+                </td>
+
+            </tr>
+                <tr>
                     <td>
                         <select th:field="*{courseCode}">
                             <option value=""></option>
@@ -93,7 +103,16 @@
                         </select>
                     </td>
 
-                </tr>
+                </tr>   <tr>
+                <td>
+                    <select th:field="*{courseCode}">
+                        <option value=""></option>
+                        <option th:each="course: ${courses}" th:value="${course.courseCode}"
+                                th:text="${course.name}"/>
+                    </select>
+                </td>
+
+            </tr>
 
                 <tr>
                     <td colspan="2">

@@ -11,4 +11,5 @@ public interface EnrollRepository extends JpaRepository<Enroll, Long> {
     List<Enroll> getEnrollByIndexNumberAndYear(@Param("indexNumber") int indexNumber,@Param("year") int year);
 
     List<Enroll> getEnrollByIndexNumber(@Param("indexNumber") int indexNumber);
+
 }

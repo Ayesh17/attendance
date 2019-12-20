@@ -65,11 +65,9 @@
             <td th:text="${enroll.name}">Name</td>
             <td th:text="${enroll.year}">Year</td>
             <td th:text="${enroll.courseCode}">CourseCode</td>
+
             <td>
-                <a th:href="@{'/enroll/edit/' + ${enroll.id}}">Edit</a>
-            </td>
-            <td>
-                <a th:href="@{'/enroll/delete/' + ${enroll.id}}">Delete</a>
+                <a th:href="@{'/enroll/delete/' + ${enroll.indexNumber}}">Delete</a>
             </td>
 
 

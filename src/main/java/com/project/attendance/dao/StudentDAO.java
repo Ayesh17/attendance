@@ -39,6 +39,12 @@ public class StudentDAO {
         return studentRepository.findByIndexNumber(indexNumber);
     }
 
+    //get name by indexNumber
+    public  String findNameByIndexNumber(int indexNumber){
+        List<Student> st=studentRepository.findByIndexNumber(indexNumber);
+        return st.get(0).getName();
+    }
+
     //delete a student
     public void delete(Long id){
         studentRepository.deleteById(id);

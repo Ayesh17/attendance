@@ -57,39 +57,63 @@ public class EnrollController {
     @RequestMapping(value="/enroll/save",method= RequestMethod.POST)
     public String saveEnroll(@ModelAttribute("enroll") Enroll enroll){
 
-        try{
-        enrollDAO.save(enroll);
+        List<Enroll> enrollList = new ArrayList<Enroll>();
 
-            List<Enroll> enrollDetails= enrollDAO.findAll();
-
-            for (int i=0;i<enrollDetails.size();i++) {
-
-                int id = enroll.getIndexNumber();
-                List<Student> list = studentDAO.findByIndexNumber(id);
-
-                for (int j = 0; j < list.size(); j++) {
-                    String name = list.get(j).getName();
-                    enroll.setName(name);
-
-                }
-               // String str=enrollDetails.get(i).getSubject_code();
-                //System.out.println(str);
-                enrollDAO.save(enroll);
+        String[] splitArr= enroll.getCourseCode().split(",");
+        int count=0;
+        for(int i=0;i<splitArr.length;i++){
+            if(!splitArr[i].equals(" ")){
+                count++;
             }
+        }
+        String[] courseCodeArr=new String[count];
+        int counter=0;
+        for (int i=0;i<splitArr.length;i++){
+            if(!splitArr.equals(" ")){
+                courseCodeArr[counter]=splitArr[i];
+            }
+        }
 
-        }catch(Exception ex){
-            System.out.println(ex);
+        for(int i=0;i<courseCodeArr.length;i++){
+
+                Enroll enrollItem = new Enroll();
+                enrollItem.setIndexNumber(enroll.getIndexNumber());
+                enrollItem.setName(studentDAO.findNameByIndexNumber(enroll.getIndexNumber()));
+                enrollItem.setYear(enroll.getYear());
+                enrollItem.setCourseCode(courseCodeArr[i]);
+                enrollList.add(enrollItem);
 
         }
+
+        for (Enroll en:enrollList
+             ) {
+            try {
+                enrollDAO.save(en);
+               // System.out.println(en.getCourseCode()+" "+en.getName()+" "+en.getIndexNumber()+" "+en.getYear());
+            }catch (Exception ex){
+                System.out.println(ex);
+            }
+
+        }
+
+
         return  "redirect:/enroll";
     }
 
-    @RequestMapping("/enroll/edit/{id}")
-    public ModelAndView updateEnroll(@PathVariable(name="id")Long id){
+    @RequestMapping("/enroll/edit/{indexNumber}")
+    public ModelAndView updateEnroll(@PathVariable(name="indexNumber")int indexNumber){
         ModelAndView mav=new ModelAndView(("updateEnroll"));
+        List<Enroll> en =enrollDAO.getCoursesByIndexNumber(indexNumber);
+        for(int i=0;i<en.size();i++) {
+            System.out.println(en.get(i).getCourseCode());
+        }
+        String courseCode1=en.get(1).getCourseCode();
+        mav.addObject("courseCode1",courseCode1);
 
-        Enroll enroll = enrollDAO.findById(id);
-        mav.addObject("enroll",enroll);
+       mav.addObject("enroll",en.get(0));
+
+        //Enroll enroll = enrollDAO.findById(id);
+       // mav.addObject("enroll",enroll);
 
         List<Student> studentDetails = studentDAO.findAll();
         mav.addObject("students", studentDetails);
@@ -99,9 +123,9 @@ public class EnrollController {
         return  mav;
     }
 
-    @RequestMapping("/enroll/delete/{id}")
-    public String deleteProduct(@PathVariable(name="id") Long id){
-        enrollDAO.delete(id);
+    @RequestMapping("/enroll/delete/{indexNumber}")
+    public String deleteProduct(@PathVariable(name="indexNumber") int indexNumber){
+        enrollDAO.deleteByIndexNumber(indexNumber);
         return  "redirect:/enroll";
     }
 

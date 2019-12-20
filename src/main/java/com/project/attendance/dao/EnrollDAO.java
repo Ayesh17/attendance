@@ -45,9 +45,20 @@ public class EnrollDAO {
         return enrollRepository.findById(id).orElse(null);
     }
 
+    //delete an enroll record by indexNumber
+    public void deleteByIndexNumber(int indexNumber){
+        List<Enroll> enrollList=enrollRepository.getEnrollByIndexNumber(indexNumber);
+        for (Enroll enroll:enrollList) {
+            Long id=enroll.getId();
+            enrollRepository.deleteById(id);
+        }
+
+    }
 
     //delete an enroll record
     public void delete(Long id){
         enrollRepository.deleteById(id);
     }
+
+
 }
