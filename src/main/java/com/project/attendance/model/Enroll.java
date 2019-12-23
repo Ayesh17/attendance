@@ -15,6 +15,7 @@ public class Enroll {
     private String name;
     private String courseCode;
     private String year;
+    private Long groupId;
 
     public Enroll() {
     }
@@ -59,4 +60,11 @@ public class Enroll {
         this.year = year;
     }
 
+    public Long getGroupId() {
+        return groupId;
+    }
+
+    public void setGroupId(Long groupId) {
+        this.groupId = groupId;
+    }
 }
