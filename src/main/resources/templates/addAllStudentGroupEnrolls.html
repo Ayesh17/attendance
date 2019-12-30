@@ -12,11 +12,10 @@
     <link href="../static/css/bootstrap.css" rel="stylesheet" th:href="@{/css/bootstrap.css}"/>
     <!-- End of Nav Bar header code-->
 
-    <link rel="stylesheet" type="text/css" href="static/css/enroll.css" th:href="@{/css/enroll.css}">
+    <link rel="stylesheet" type="text/css" href="static/css/add.css" th:href="@{/css/add.css}">
     <meta charset="UTF-8">
-    <title>Update Enroll</title>
+    <title>Uploadig a CSV File</title>
 </head>
-
 <body>
 <!-- Nav Bar body code-->
 <div class="containerr">
@@ -34,8 +33,8 @@
             </div>
             <div id="navbar" class="navbar-collapse collapse">
                 <ul class="nav navbar-nav navbar-right">
-                    <li class="active"><a href="../">Back</a></li>
-                    <li class="active"><a href="../../admin/">Home</a></li>
+                    <li class="active"><a href="../enroll/">Back</a></li>
+                    <li class="active"><a href="../admin/">Home</a></li>
                     <li><a href="#">About</a></li>
                     <li><a href="#">Contact</a></li>
                 </ul>
@@ -45,65 +44,19 @@
 </div>
 <!-- End of Nav Bar body code-->
 
-<h1>Update Subject</h1>
+<h1>Upload CSV File</h1>
+
 <div class="container" style="margin-top:30px">
     <img src="static/img/books.jpeg" th:src="@{/img/books.jpeg}"/>
 
     <div class="container2">
-        <form action="#" th:action="@{/enroll/save}" th:object="${enroll}" method="post">
-            <table border="0" cell[adding="10">
-                <tr>
-                    <td><input type="hidden" th:field="*{id}" readonly="readonly"/></td>
-                </tr>
-                <tr>
-                    <td>Student:</td>
-                    <td>
-                        <select th:field="*{indexNumber}">
-                            <option th:each="student: ${students}" th:value="${student.indexNumber}"
-                                    th:text="${student.name}"/>
-                        </select>
-                    </td>
-                </tr>
-
-                <tr>
-                    <td>Year:</td>
-                    <td>
-                        <select th:field="*{year}">
-                            <option value="2015">2015</option>
-                            <option value="2016">2016</option>
-                            <option value="2017">2017</option>
-                            <option value="2018">2018</option>
-                            <option value="2019">2019</option>
-                            <option value="2020">2020</option>
-                        </select>
-                    </td>
-
-                </tr>
-
-                <tr>
-                    <td>Courses:</td>
-
-                </tr>
-
-                <tr>
-                    <td>
-                        <select th:field="*{courseCode}">
-                            <option value=""></option>
-                            <option th:each="course: ${courses}" th:value="${course.courseCode}"
-                                    th:text="${course.name}"/>
-                        </select>
-                    </td>
-
-                </tr>
-
-                <tr>
-                    <td colspan="2">
-                        <button type="submit">Save</button>
-                    </td>
-                </tr>
-            </table>
+        <form method="POST" action="#" th:action="@{/enroll/upload1}" enctype="multipart/form-data">
+            <input type="file" name="file" /><br />
+            <br /> <input type="submit" value="Submit" />
         </form>
     </div>
+
+
 </div>
 
 <!-- Bootstrap core JavaScript

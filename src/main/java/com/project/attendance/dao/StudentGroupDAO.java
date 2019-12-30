@@ -34,11 +34,15 @@ public class StudentGroupDAO {
         return studentGroupRepository.findById(id).orElse(null);
     }
 
-
     //delete a subject
     public void delete(Long id){
         studentGroupRepository.deleteById(id);
     }
 
 
+    public StudentGroup findByGroupCode(String groupCode) {
+        StudentGroup st= studentGroupRepository.getStudentGroupByGroupCode(groupCode);
+        System.out.println("studentGroup");
+        return  studentGroupRepository.getStudentGroupByGroupCode(groupCode);
+    }
 }

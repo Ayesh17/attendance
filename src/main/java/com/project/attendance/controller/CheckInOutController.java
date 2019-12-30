@@ -338,9 +338,9 @@ public class CheckInOutController {
 
                       List<Enroll> courseList= enrollDAO.getCoursesByIndexNumber(recordsList.get(i).getUserid());
                       for(Enroll course:courseList){
-                          System.out.println(course.getCourseCode1());
+                          System.out.println(course.getCourseCode());
                           //check whether students enrolled in a course done by the lecturer
-                          if(courseCode.equals(course.getCourseCode1())||courseCode.equals(course.getCourseCode2())||courseCode.equals(course.getCourseCode3())||courseCode.equals(course.getCourseCode4())||courseCode.equals(course.getCourseCode5())||courseCode.equals(course.getCourseCode6())||courseCode.equals(course.getCourseCode7())||courseCode.equals(course.getCourseCode8())||courseCode.equals(course.getCourseCode9())||courseCode.equals(course.getCourseCode10())||courseCode.equals(course.getCourseCode11())||courseCode.equals(course.getCourseCode12())){
+                          if(courseCode.equals(course.getCourseCode())){
                               System.out.println("match1 found");
                               //check whether student used fingerprint between 2 fingerprints of lecturer
                               if(recordsList.get(i).getDate().equals(date)&&(Integer.parseInt(recordsList.get(i).getTime())>=start)&&(Integer.parseInt(recordsList.get(i).getTime())<=end)){
@@ -350,7 +350,12 @@ public class CheckInOutController {
                                  record.setDay(recordsList.get(i).getDay());
                                  record.setTime(recordsList.get(i).getTime());
                                  record.setTimestamp(recordsList.get(i).getTimestamp());
-                                  recordsDAO.save(record);
+                                  try {
+                                      recordsDAO.save(record);
+                                  }catch (Exception e){
+                                      System.out.println(e);
+                                  }
+
                                   finalList.add(record);
                                   System.out.println("match found");
 
