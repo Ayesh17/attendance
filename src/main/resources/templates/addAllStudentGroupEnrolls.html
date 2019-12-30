@@ -12,11 +12,10 @@
     <link href="../static/css/bootstrap.css" rel="stylesheet" th:href="@{/css/bootstrap.css}"/>
     <!-- End of Nav Bar header code-->
 
-    <link rel="stylesheet" type="text/css" href="static/css/enrollView.css" th:href="@{/css/enrollView.css}">
+    <link rel="stylesheet" type="text/css" href="static/css/add.css" th:href="@{/css/add.css}">
     <meta charset="UTF-8">
-    <title>Enroll Details</title>
+    <title>Uploadig a CSV File</title>
 </head>
-
 <body>
 <!-- Nav Bar body code-->
 <div class="containerr">
@@ -34,6 +33,7 @@
             </div>
             <div id="navbar" class="navbar-collapse collapse">
                 <ul class="nav navbar-nav navbar-right">
+                    <li class="active"><a href="../enroll/">Back</a></li>
                     <li class="active"><a href="../admin/">Home</a></li>
                     <li><a href="#">About</a></li>
                     <li><a href="#">Contact</a></li>
@@ -43,38 +43,20 @@
     </nav>
 </div>
 <!-- End of Nav Bar body code-->
-<h1>Enroll Details</h1>
-<a href="../enroll/new"><h2>New Enrollment</h2></a>
-<a href="../enroll/csv2"><h4>Upload a CSV File</h4></a>
-<a href="../enroll/studentGroup"><h4>Student Group Enroll</h4></a>
-<a href="../enroll/csv1"><h4>Student Group CSV</h4></a>
+
+<h1>Upload CSV File</h1>
+
 <div class="container" style="margin-top:30px">
-    <br><br>
-    <table border="1">
-        <thead>
-        <tr>
-            <th>Index Number</th>
-            <th>Name</th>
-            <th>Year</th>
-            <th>Course</th>
-            <th></th>
-        </tr>
-        </thead>
-        <tbody>
-        <tr th:each="enroll : ${enrollDetails}">
-            <td th:text="${enroll.indexNumber}" style="padding-right:0px">index Number</td>
-            <td th:text="${enroll.name}">Name</td>
-            <td th:text="${enroll.year}">Year</td>
-            <td th:text="${enroll.courseCode}">CourseCode</td>
+    <img src="static/img/books.jpeg" th:src="@{/img/books.jpeg}"/>
 
-            <td>
-                <a th:href="@{'/enroll/delete/' + ${enroll.indexNumber}}">Delete</a>
-            </td>
+    <div class="container2">
+        <form method="POST" action="#" th:action="@{/enroll/upload1}" enctype="multipart/form-data">
+            <input type="file" name="file" /><br />
+            <br /> <input type="submit" value="Submit" />
+        </form>
+    </div>
 
 
-        </tr>
-        </tbody>
-    </table>
 </div>
 
 <!-- Bootstrap core JavaScript
@@ -85,3 +67,4 @@
 <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
 </body>
 </html>
+

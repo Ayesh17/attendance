@@ -4,6 +4,7 @@ import com.project.attendance.dao.*;
 import com.project.attendance.model.*;
 import com.project.attendance.util.EnrollBatchCSV;
 import com.project.attendance.util.EnrollCSV;
+import com.project.attendance.util.EnrollStudentGroupCSV;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -301,7 +302,7 @@ public class EnrollController {
 
         if (file.isEmpty()) {
             redirectAttributes.addFlashAttribute("message", "Please select a file to upload");
-            return "redirect:/enroll/csv";
+            return "redirect:/enroll/csv2";
         }
 
         try {
@@ -386,6 +387,158 @@ public class EnrollController {
         return "redirect:/enroll";
     }
 
+    @PostMapping("/enroll/upload1") // //new annotation since 4.3
+    public String enrollCSVUpload1(@RequestParam("file") MultipartFile file, HttpServletRequest request,
+                                   RedirectAttributes redirectAttributes) {
+
+        if (file.isEmpty()) {
+            redirectAttributes.addFlashAttribute("message", "Please select a file to upload");
+            return "redirect:/enroll/csv1";
+        }
+
+        try {
+            // Get the file and save it somewhere
+            byte[] bytes = file.getBytes();
+            Path path = Paths.get(UPLOADED_FOLDER + file.getOriginalFilename());
+            Files.write(path, bytes);
+            request.setAttribute("path", path);
+
+            redirectAttributes.addFlashAttribute("message",
+                    "You successfully uploaded '" + file.getOriginalFilename() + "'");
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+
+        return "forward:/enroll/saveAll1";
+    }
+
+
+    @RequestMapping(value = "/enroll/saveAll1", method = RequestMethod.POST)
+    public String saveAllEnrolls1(@ModelAttribute("enroll") Enroll enroll, HttpServletRequest request) {
+        Path path = (Path) request.getAttribute("path");
+        EnrollBatchCSV csv = new EnrollBatchCSV();
+        Path[] args = {path};
+        List<List<String>> list = EnrollStudentGroupCSV.main(args);
+
+        List<Enroll> enrollList = new ArrayList<>();
+
+
+        List<String> courseStrList = list.get(0);
+        //List<String> courseNoList = list.get(8);
+
+
+        //for each row in the csv
+        for(int i=1;i<list.size();i++){
+        String groupCode=list.get(i).get(0);
+            System.out.println("groupCode ");
+            //System.out.println(groupCode);
+            List<String> courseList=new ArrayList<String>();
+            for(int j=2;j<list.get(i).size();j++){
+                courseList.add(list.get(i).get(j));
+                System.out.println(list.get(i).get(j));
+            }
+
+
+            StudentGroup studentGroup = studentGroupDAO.findByGroupCode(groupCode);
+            System.out.println(studentGroup.getGroupCode());
+            String enrollyear = studentGroup.getYear();
+            String stream = studentGroup.getStreamCode();
+            String curYear=list.get(i).get(1);
+            System.out.println(enrollyear+" "+stream+" "+curYear);
+            List<Student> studentList=studentDAO.findByStreamAndYear(stream,enrollyear);
+
+
+            //for each student in the relevent studentGroup
+            for(int j=0;j<studentList.size();j++){
+
+                //for each course student enrolled to
+                for(int k=0;k<courseList.size();k++){
+                    System.out.println("course "+courseList.get(k));
+                    Enroll enrollStudent=new Enroll();
+                    enrollStudent.setName(studentList.get(j).getName());
+                    enrollStudent.setIndexNumber(studentList.get(j).getIndexNumber());
+                    enrollStudent.setYear(curYear);
+                    System.out.println("student "+studentList.get(j).getName());
+                    enrollStudent.setCourseCode(courseList.get(k));
+                    enrollList.add(enrollStudent);
+                }
+
+                try {
+                    enrollDAO.saveAll(enrollList);
+                }  catch (Exception ex) {
+                ex.printStackTrace();
+            }
+
+            }
+
+
+
+          /*  List<CourseMapping> courseMapping=new ArrayList<CourseMapping>(list.get(i).size());
+            for(int j=0;j<list.get(i).size();j++){
+
+            }*/
+
+        }
+
+
+
+
+
+/*
+
+        List<String> courseList = new ArrayList<>();
+        for (int i = 0; i < courseStrList.size(); i++) {
+            courseList.add(courseStrList.get(i) + courseNoList.get(i));
+        }
+
+
+        for (int i = 0; i < courseList.size(); i++) {
+            System.out.println(courseList.get(i));
+        }
+
+
+        //get the academic year
+        System.out.println("year");
+        System.out.println(list.get(3));
+        String rawYear = list.get(3).get(0);
+        String[] yearArr = rawYear.split(" ");
+        String year = yearArr[3];
+        System.out.println(year);
+
+        for (int i = 10; i < list.size(); i++) {
+            for (int j = 5; j < 30; j++) {
+                Enroll enrollst = new Enroll();
+                System.out.println(i + " " + list.get(i).get(j));
+                System.out.println("course" + courseList.get(j));
+                if (list.get(i).get(j).equals("1")) {
+                    enrollst.setIndexNumber(Integer.parseInt(list.get(i).get(2)));
+                    enrollst.setName(list.get(i).get(4));
+                    enrollst.setCourseCode(courseList.get(j));
+                    enrollst.setYear(year);
+                    System.out.println(courseList.get(j));
+                    enrollList.add(enrollst);
+                } else {
+                    System.out.println("No " + list.get(i).get(j));
+                }
+            }
+
+        }
+
+        for (int i = 0; i < enrollList.size(); i++) {
+            System.out.println(" Enroll" + enrollList.get(i).getCourseCode() + " " + enrollList.get(i).getIndexNumber() + " " + enrollList.get(i).getName());
+
+        }
+        try {
+            enrollDAO.saveAll(enrollList);
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+*/
+        return "redirect:/enroll";
+    }
+
 
     @RequestMapping("/enroll/csv")
     public String view(Model model) {
@@ -393,6 +546,14 @@ public class EnrollController {
         model.addAttribute("enrollDetails", enrollDetails);
         return "addAllEnrolls";
     }
+
+    @RequestMapping("/enroll/csv1")
+    public String view1(Model model) {
+        List<Enroll> enrollDetails = enrollDAO.findAll();
+        model.addAttribute("enrollDetails", enrollDetails);
+        return "addAllStudentGroupEnrolls";
+    }
+
 
     @RequestMapping("/enroll/csv2")
     public String view2(Model model) {
