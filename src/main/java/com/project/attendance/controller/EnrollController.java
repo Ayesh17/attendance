@@ -40,6 +40,7 @@ public class EnrollController {
     public String viewHomePage(Model model) {
         List<Enroll> enrollDetails = enrollDAO.getDistinct();
 
+
         for (int i = 0; i < enrollDetails.size(); i++) {
             int indexNumber = enrollDetails.get(i).getIndexNumber();
             String year = enrollDetails.get(i).getYear();

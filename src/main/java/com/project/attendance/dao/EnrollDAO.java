@@ -50,7 +50,7 @@ public class EnrollDAO {
     public List<Enroll> getDistinct() {
         List<Integer> indexNumberList = enrollRepository.findEnrollDistinctByIndexNumber();
 
-        List<Enroll> enrollList = enrollRepository.findAll();
+        List<Enroll> enrollList = new ArrayList<Enroll>();
         List<Enroll> editedList = new ArrayList<Enroll>();
         List<Enroll> yearList = new ArrayList<Enroll>();
         for (int i = 0; i < indexNumberList.size(); i++) {
@@ -80,8 +80,11 @@ public class EnrollDAO {
 
         }
 
+        for(int i=1;i<editedList.size();i++){
+            enrollList.add(editedList.get(i));
+        }
 
-        return editedList;
+        return enrollList;
     }
 
     //delete an enroll record by indexNumber
