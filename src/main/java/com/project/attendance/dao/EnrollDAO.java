@@ -1,5 +1,6 @@
 package com.project.attendance.dao;
 
+import com.project.attendance.model.Course;
 import com.project.attendance.model.Enroll;
 import com.project.attendance.repository.EnrollRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -33,6 +34,18 @@ public class EnrollDAO {
     //to search all enroll records
     public List<Enroll> getCourses(int indexNumber, String year) {
         return enrollRepository.getEnrollByIndexNumberAndYear(indexNumber, year);
+    }
+
+    //to search all enroll records by year and semester
+    public List<Enroll> getCoursesByYearAndSemester(int indexNumber, String year, int semester) {
+        List<Enroll> enroll= enrollRepository.getEnrollByIndexNumberAndYearAndSemester(indexNumber, year, semester);
+        List<String> courseList=new ArrayList<>();
+        for(int i=0;i<enroll.size();i++){
+            courseList.add(enroll.get(i).getCourseCode());
+            System.out.println(enroll.get(i).getCourseCode());
+        }
+
+            return enrollRepository.getEnrollByIndexNumberAndYearAndSemester(indexNumber, year, semester);
     }
 
     //to search enroll records by indexNumber

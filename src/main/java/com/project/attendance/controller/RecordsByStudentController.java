@@ -154,36 +154,39 @@ public class RecordsByStudentController {
 
 
     ///latest commented
-    /*
+
     @RequestMapping(value = "/records-student/save", method = RequestMethod.POST)
     public String saveRecordsByStudent(@ModelAttribute("recordsByStudent") RecordsByStudent recordsByStudent,HttpServletRequest request) {
         int indexNumber = recordsByStudent.getIndexNumber();
-        int year = recordsByStudent.getYear();
+        String year = recordsByStudent.getYear()+"";
         int semester = recordsByStudent.getSemester();
         System.out.println(indexNumber);
         System.out.println(year);
         System.out.println(semester);
         List<RecordsByStudent> recordsByStudentList = new ArrayList<>();
-        List<Enroll> courses = enrollDAO.getCourses(indexNumber, year, semester);
+        List<Enroll> courses = enrollDAO.getCoursesByYearAndSemester(indexNumber, year, semester);
 
         //get a list of Course
         List<CourseMapping> courseMappings = new ArrayList<>();
-        //System.out.println("hey2");
+        System.out.println("hey2");
         for (int i = 0; i < courses.size(); i++) {
 
-             // System.out.println("hey3");
 
-            if (courses.get(i).getCourseCode1().isEmpty()) {
+
+
+              System.out.println("hey3");
+
+            if (courses.get(i).getCourseCode().isEmpty()) {
                 System.out.println("1 is Empty");
             } else {
-                //  System.out.println("New Student");
+                  System.out.println("New Student");
                 RecordsByStudent recordsByStudent1 = new RecordsByStudent();
                 recordsByStudent1.setIndexNumber(indexNumber);
                 recordsByStudent1.setYear(year);
                 recordsByStudent1.setSemester(semester);
 
                 CourseMapping courseMapping1 = new CourseMapping();
-                courseMapping1.setCourseCode(courses.get(i).getCourseCode1());
+                courseMapping1.setCourseCode(courses.get(i).getCourseCode());
                 courseMappings.add(courseMapping1);
 
                 //select day and time of subject from subjectmapping if subjectcode
@@ -191,26 +194,26 @@ public class RecordsByStudentController {
                 int count = 0;
                 for (int a = 0; a < courseMappings.size(); a++) {
                     courseMappings1 = courseMappingDAO.getCourseDetails(courseMappings.get(a).getCourseCode());
-                    //   System.out.println("hey4 "+ a);
+                       System.out.println("hey4 "+ a);
                     //System.out.println(courseMappings.get(a).getCourseCode());
 
                     recordsByStudent1.setCourse(courseMappings.get(a).getCourseCode());
 
 
                     for (int j = 0; j < courseMappings1.size(); j++) {
-                        //    System.out.println("hey5");
+                            System.out.println("hey5");
                         String day = courseMappings1.get(j).getDay();
                         int start = courseMappings1.get(j).getStart();
                         int end = courseMappings1.get(j).getEnd();
-                        //    System.out.println(day);
-                        //   System.out.println("start" + start);
-                        //   System.out.println("end" + end);
+                            System.out.println("day " + day);
+                          System.out.println("start " + start);
+                           System.out.println("end " +  end);
                         List<Records> records = recordsDAO.getTimestamp(day, start, end);
 
-                        //   System.out.println("hey6");
+                           System.out.println("hey6");
                         String timetsamp = "";
                         for (int k = 0; k < records.size(); k++) {
-                            //    System.out.println("timestamp" + records.get(k).getTimestamp());
+                               System.out.println("timestamp" + records.get(k).getTimestamp());
                             count++;
                             timetsamp += records.get(k).getTimestamp() + " , ";
 
@@ -226,6 +229,8 @@ public class RecordsByStudentController {
 
 
             }
+
+            /*
             if (courses.get(i).getCourseCode2().isEmpty()) {
                 System.out.println("2 is Empty");
             } else {
@@ -676,7 +681,7 @@ public class RecordsByStudentController {
                 }
             }
 
-
+*/
 
         }
         if(recordsByStudentList.isEmpty()){
@@ -703,7 +708,7 @@ public class RecordsByStudentController {
     public String showRecordsByStudent(Model model, HttpServletRequest request) {
        // System.out.println("hey1.2 "+request.getAttribute("userId"));
         int indexNumber = (int) request.getAttribute("indexNumber");
-        int year = (int) request.getAttribute("year");
+        String year = request.getAttribute("year")+"";
         int semester = (int) request.getAttribute("semester");
         List<RecordsByStudent> recordsByStudentDetails = recordsByStudentDAO.getByIndexNumber(indexNumber,year,semester);
         System.out.println("hello");
@@ -733,6 +738,6 @@ public class RecordsByStudentController {
         recordsByStudentDAO.delete(id);
         return "redirect:/records-student";
     }
-*/
+
 }
 

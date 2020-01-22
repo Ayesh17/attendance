@@ -42,7 +42,7 @@ public class DateToDayConvert {
 
             //3. Test - Convert Calendar to Date
             String Day = obj.calendarToDay(calendar);
-            String Time=obj.calendarToTime(calendar);
+           int Time=Integer.parseInt(obj.calendarToTime(calendar));
             String Date=obj.calendarToDate(dateInString);
             record.setDay(Day);
             record.setDate(Date);
