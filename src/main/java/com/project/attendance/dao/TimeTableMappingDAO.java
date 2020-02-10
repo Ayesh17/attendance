@@ -1,6 +1,7 @@
 package com.project.attendance.dao;
 
 import com.project.attendance.model.Course;
+import com.project.attendance.model.CourseMapping;
 import com.project.attendance.model.TimeTableMapping;
 import com.project.attendance.repository.TimeTableMappingRepository;
 import com.project.attendance.repository.TimeTableRepository;
@@ -60,5 +61,10 @@ public class TimeTableMappingDAO {
 
     public List<TimeTableMapping> getTimeTableMappingsByCourseCode(String courseCode){ return timeTableMappingRepository.getTimeTableMappingsByCourseCode(courseCode);}
 
+
+    //to search all subjects
+    public List<TimeTableMapping> getTimeTableMappingDetails(String courseCode){
+        return timeTableMappingRepository.getTimeTableMappingsByCourseCode(courseCode);
+    }
 
 }
