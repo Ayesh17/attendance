@@ -14,7 +14,7 @@ public class RecordsByStudent {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     private int indexNumber;
-    private int year;
+    private String year;
     private int semester;
     private String course;
     private String days;
@@ -24,15 +24,6 @@ public class RecordsByStudent {
     public RecordsByStudent() {
     }
 
-    public RecordsByStudent(int indexNumber, int year, int semester, String course, String days, int count, String timeStamp) {
-        this.indexNumber = indexNumber;
-        this.year = year;
-        this.semester = semester;
-        this.course = course;
-        this.days = days;
-        this.count = count;
-        this.timeStamp = timeStamp;
-    }
 
     public Long getId() {
         return id;
@@ -50,11 +41,11 @@ public class RecordsByStudent {
         this.indexNumber = indexNumber;
     }
 
-    public int getYear() {
+    public String getYear() {
         return year;
     }
 
-    public void setYear(int year) {
+    public void setYear(String year) {
         this.year = year;
     }
 

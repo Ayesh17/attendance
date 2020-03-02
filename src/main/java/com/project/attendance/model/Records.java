@@ -14,7 +14,7 @@ public class Records {
     private Long id;
     private int userid;
     private String day;
-    private String time;
+    private int time;
     private String timestamp;
     private String date;
 
@@ -47,11 +47,11 @@ public class Records {
         this.day = day;
     }
 
-    public String getTime() {
+    public int getTime() {
         return time;
     }
 
-    public void setTime(String time) {
+    public void setTime(int time) {
         this.time = time;
     }
 

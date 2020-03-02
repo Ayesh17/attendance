@@ -155,7 +155,7 @@ public class CheckInOutController {
         //check whether lecturers are between correct timestamp
         for (int i = 0; i < lecturersRecordsList.size(); i++) {
             //System.out.println("map "+i +" "+lecturers.get(i).getFingerId());
-            int time = Integer.parseInt(lecturersRecordsList.get(i).getTime());
+            int time = lecturersRecordsList.get(i).getTime();
             String rday = lecturersRecordsList.get(i).getDay();
             String date = lecturersRecordsList.get(i).getDate();
             int userid = lecturersRecordsList.get(i).getUserid();
@@ -343,7 +343,7 @@ public class CheckInOutController {
                           if(courseCode.equals(course.getCourseCode())){
                               System.out.println("match1 found");
                               //check whether student used fingerprint between 2 fingerprints of lecturer
-                              if(recordsList.get(i).getDate().equals(date)&&(Integer.parseInt(recordsList.get(i).getTime())>=start)&&(Integer.parseInt(recordsList.get(i).getTime())<=end)){
+                              if(recordsList.get(i).getDate().equals(date)&&(recordsList.get(i).getTime()>=start)&&(recordsList.get(i).getTime())<=end){
                                  Records record=new Records();
                                  record.setUserid(recordsList.get(i).getUserid());
                                  record.setDate(recordsList.get(i).getDate());

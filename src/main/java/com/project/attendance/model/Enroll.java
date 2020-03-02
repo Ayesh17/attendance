@@ -16,6 +16,7 @@ public class Enroll {
     private String courseCode;
     private String year;
     private Long groupId;
+    private int semester;
 
     public Enroll() {
     }
@@ -66,5 +67,13 @@ public class Enroll {
 
     public void setGroupId(Long groupId) {
         this.groupId = groupId;
+    }
+
+    public int getSemester() {
+        return semester;
+    }
+
+    public void setSemester(int semester) {
+        this.semester = semester;
     }
 }
